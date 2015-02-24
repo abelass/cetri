@@ -1,0 +1,38 @@
+<BOUCLE_rubrique (RUBRIQUES) {id_rubrique}>
+
+<div class="row">
+  <div class="container content">
+    <div class="headline-center-v2 headline-center-v2-dark margin-bottom-10">
+      <div class="icon-cetri"></div>
+    </div>
+    <B_publications_fr>
+      #ANCRE_PAGINATION
+        <BOUCLE_publications_fr (ARTICLES) {id_mot} {par date} {inverse} {doublons} {pagination 8}>
+          <div class="col-md-3 shadow-wrapper">
+            <dl class="box-shadow shadow-effect-2">
+               <dt>
+                <div class="magazine-news-img">
+                  <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:voir:>"> 
+                                <B_contenuenligne_fr><BOUCLE_contenuenligne_fr (MOTS) {id_mot=1056} {id_article}>
+                                <div class="easy-bg-v2 rgba-yellow"><:enligne:></div>
+                                </BOUCLE_contenuenligne_fr> </B_contenuenligne_fr>
+                                [(#LOGO_ARTICLE|?{
+                                [(#LOGO_ARTICLE_NORMAL
+                                    |vider_attribut{class,spip_logos}
+                                    |inserer_attribut{class,img-responsive}
+                                    |inserer_attribut{alt,#TITRE}
+                                    |image_reduire{0,800}
+                                    |image_recadre{536,800,center})]
+                                    ,'<img src="/squelettes/img/logo_nocover.jpg" width="429" height="640" alt="#TITRE" class="img-responsive img-bordered" />'})]           
+                   </a>
+                </div>
+              </dt>
+            </dl>
+          </div>
+        </BOUCLE_publications_fr>
+        [<p class="pagination">(#PAGINATION{precedent_suivant} {ajax} {env})</p>]
+    </B_publications_fr>
+  </div><!--End Container Content-->
+</div><!--End Row-->
+
+</BOUCLE_rubrique>

@@ -1,0 +1,109 @@
+<ul class="nav nav-tabs" id="myTab">
+  <li><a href="#fr" data-toggle="tab">Fr</a></li>
+  <li><a href="#es" data-toggle="tab">Es</a></li>
+  <li><a href="#en" data-toggle="tab">En</a></li>
+   <li class="pull-right"><a href="rss"><span class="glyphicon glyphicon-rss"></span></a></li>
+  
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="fr">
+  
+   <B_articles_fr>
+  #ANCRE_PAGINATION
+   <BOUCLE_articles_fr(ARTICLES) {id_mot=8} {par date}{inverse} {pagination}{lang=fr}>
+  <div class="media">
+  <a class="pull-left" href="#">
+    
+    [(#LOGO_ARTICLE
+        |image_reduire{250,373}
+        |inserer_attribut{class,media-object}
+        |inserer_attribut{alt,#TITRE})]
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="#URL_ARTICLE">#TITRE</a></h4>
+    
+   #DESCRIPTIF
+  </div>
+</div>
+ </BOUCLE_articles_fr>
+
+   [<p class="pagination">(#PAGINATION)</p>]
+       
+        </B_articles_fr>
+  
+ </div>
+
+  <div class="tab-pane active" id="es">
+  
+   <B_articles_es>
+  #ANCRE_PAGINATION
+   <BOUCLE_articles_es(ARTICLES) {id_mot=8} {par date}{inverse} {pagination}{lang=es}>
+  <div class="media">
+  <a class="pull-left" href="#">
+    
+    [(#LOGO_ARTICLE
+        |image_reduire{250,373}
+        |inserer_attribut{class,media-object}
+        |inserer_attribut{alt,#TITRE})]
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="#URL_ARTICLE">#TITRE</a></h4>
+    
+   #DESCRIPTIF
+  </div>
+</div>
+ </BOUCLE_articles_es>
+
+   [<p class="pagination">(#PAGINATION)</p>]
+       
+        </B_articles_es>
+  
+ </div>
+
+
+<div class="tab-pane active" id="en">
+  
+   <B_articles_en>
+  #ANCRE_PAGINATION
+   <BOUCLE_articles_en(ARTICLES) {id_mot=8} {par date}{inverse} {pagination}{lang=en}>
+  <div class="media">
+  <a class="pull-left" href="#">
+    
+    [(#LOGO_ARTICLE
+        |image_reduire{250,373}
+        |inserer_attribut{class,media-object}
+        |inserer_attribut{alt,#TITRE})]
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="#URL_ARTICLE">#TITRE</a></h4>
+    
+   #DESCRIPTIF
+  </div>
+</div>
+ </BOUCLE_articles_en>
+
+   [<p class="pagination">(#PAGINATION)</p>]
+       
+        </B_articles_en>
+  
+ </div>
+ 
+</div>
+
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>
+
+
+
+
+
+
+  
+  
+
+
+        

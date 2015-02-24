@@ -1,0 +1,65 @@
+<B_actualites>
+  [(#ONGLETS_DEBUT{<:actualites:>})]
+      #ANCRE_PAGINATION
+      <div class="list-group">
+        <BOUCLE_actualites (ARTICLES){id_mot?} {id_auteur?} {par date}{inverse}{pagination 10} {id_rubrique IN 38,165, 166,167,168,169,223,226,227}>
+          <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE" class="list-group-item">
+            <h5 class="list-group-item-heading">
+              
+              <BOUCLE_multimedia (MOTS) {id_article} {id_groupe=13}>
+                [(#ID_MOT|=={124}|?{<i class="fa fa-file-audio-o"></i>,''})]
+                [(#ID_MOT|=={125}|?{<i class="fa fa-file-video-o"></i>,''})]
+                [(#ID_MOT|=={126}|?{<i class="fa fa-file-photo-o"></i>,''})]
+              </BOUCLE_multimedia>
+              </B_multimedia>
+              
+              <i class="fa fa-file-text-o"></i>
+              <//B_multimedia>
+              
+              [(#TITRE|couper{85}||majuscules)]
+            
+                  [<br /><small>[<i class="icon-user"></i> (#LESAUTEURS|textebrut)]  <i class="icon-calendar"></i> (#DATE|affdate{'d/m/y'})</small>]
+              </h5>
+                 [<p class="list-group-item-text">(#INTRODUCTION|couper{250})</p>]</a>
+        </BOUCLE_actualites>
+      </div>
+    [<p class="pagination">(#PAGINATION{page_precedent_suivant} {ajax} {env})</p>]
+</B_actualites>
+
+
+<B_publications>
+  [(#ONGLETS_TITRE{<:publications:>})]
+    #ANCRE_PAGINATION
+    <div class="list-group">
+      <BOUCLE_publications (ARTICLES){id_mot?} {id_auteur?} {par date}{inverse}{pagination 10} {id_rubrique IN 151,152,153,158,159,160}>   
+                    <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE" class="list-group-item">
+                    <h5 class="list-group-item-heading">
+                     <i class="fa fa-book"></i>
+                    [(#TITRE|couper{75}||majuscules)]
+                  <small class="pull-right">[<i class="icon-calendar"></i> (#DATE|affdate{'m/y'})]
+                  </small></h5>
+                 </a>
+      </BOUCLE_publications>
+    </div>
+  [<p class="pagination">(#PAGINATION{page_precedent_suivant} {ajax} {env})</p>]
+</B_publications>
+
+
+
+<B_liste_evt>
+  [(#ONGLETS_TITRE{<:agenda:>})]
+    <div class="list-group">
+      <BOUCLE_liste_evt(EVENEMENTS auteurs_liens){id_auteur}{par date_debut} {age_fin<=0}>
+        <a href="#URL_PAGE{evenement-unify,id_article=#ID_EVENEMENT}" title="#TITRE" class="list-group-item">
+          <h5 class="list-group-item-heading">
+            [(#TITRE|couper{75}||majuscules)] 
+              <small class="pull-right">
+                <i class="icon-calendar"></i> [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })] [<i class="fa fa-map-marker"></i> (#LIEU)]
+              </small>
+          </h5>
+         </a>
+      </BOUCLE_liste_evt>
+    </div>
+</B_liste_evt>
+
+#ONGLETS_FIN

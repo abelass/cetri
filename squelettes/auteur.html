@@ -1,0 +1,138 @@
+#CACHE{86400}
+<BOUCLE_auteur_principal(AUTEURS) {id_auteur} {lang_select}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#NOM|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#BIO|couper{150}|textebrut)" />]
+<B_keywords><meta name="Keywords" content="<BOUCLE_keywords(ARTICLES) {id_auteur} {","}>[(#TITRE|supprimer_numero|textebrut),][(#SURTITRE|textebrut),]</BOUCLE_keywords>" /></B_keywords>
+<meta name="generator" content="Bluefish 1.0.7"/>
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+<meta name="revisit-after" content="7 days">
+<meta name="robots" content="ALL">
+[<meta name="Reply-to" content="(#EMAIL_WEBMASTER|textebrut)" />]
+
+<INCLURE{fond=inc-head}>
+
+</head>
+
+<body class="page_auteur">
+<div id="page">
+<INCLURE{fond=inc/inc-entete, env} />
+
+<div id="conteneur">
+
+		[(#REM) Contenu principal : affichage de l'auteur ]
+		<div id="contenu">
+
+			<div class="cartouche">
+
+[(#LOGO_AUTEUR||image_reduire{120,120})]
+<h1 class="#EDIT{qui} titre">#NOM</h1>
+[<div class="#EDIT{texte} texte">(#BIO)</div><br />]
+
+<div class="#EDIT{texte} texte">
+[<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#URL_SITE|sinon{[(#URL_SITE|couper{80})]})]</a>]
+</div>
+
+</div>
+<br class="nettoyeur" />
+
+
+[(#REM) Exclusion des articles fantômes ]
+<BOUCLE_articles_fantomes (ARTICLES) {id_mot=248} {doublons}>
+</BOUCLE_articles_fantomes>
+
+
+[(#REM) Articles de l'auteur ]
+<B_articles>
+<div class="bloc">
+<div class="sous-bloc-blanc-sans-border">
+#ANCRE_PAGINATION
+<BOUCLE_articles(ARTICLES) {id_auteur} {id_rubrique!=101} {lang_select=non}{par date}{inverse}{pagination 20} {doublons}>
+[<font color="#999999">(#SURTITRE)</font><br>]
+[<img src="../IMG/icones/carre-nav.gif"> <b>(#TITRE|supprimer_numero)</b><br>]
+<font color="#999999">
+(<B_source><BOUCLE_source(MOTS) {id_article} {id_groupe=3}>[(#TITRE) - ]</BOUCLE_source></B_source>[(#DATE|affdate)])</font>
+<p>
+
+<div align="right">
+<!-- lien vers l'article si publié en html-->
+[(#TEXTE|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><:lire_article:></a>," "})]
+<B_document><BOUCLE_document(DOCUMENTS){id_article}{mode=document} {extension==pdf|doc|rtf} {lang_select=non}>[(#FICHIER|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_DOCUMENT" title="<:telecharger_article:>"><:telecharger_article:></a> [((#TYPE_DOCUMENT)]-[(#TAILLE|taille_en_octets))]," "})]</BOUCLE_document></B_document>
+
+
+
+<!-- Menu dépliant résumé de l'article-->
+<img src="../IMG/icones/carre-blanc-bordgris-9.gif">
+<a href="javascript:swap_couche('#ID_ARTICLE')" title="<:introduction_article:>"><:introduction_article:></a></div>
+<script language='JavaScript'>
+	<!--
+	vis['#INTRODUCTION'] = 'hide';
+	//-->
+	</script>
+<div id='Layer#ID_ARTICLE' style='display: none; margin-top: 1;'>
+[(#INTRODUCTION|justifier)]<br>
+
+[(#REM) Hiérachie - numéro de la revue]
+<B_ariane>
+<:article_disponible:>
+<BOUCLE_ariane(HIERARCHIE){id_article} {1,1}>
+<a href="#URL_RUBRIQUE&lang=#LANG">[-(#TITRE)-]</a>
+</BOUCLE_ariane>
+</B_ariane>
+
+</div>
+<div class="liste-articles-ligne"></div>
+</BOUCLE_articles>
+
+
+[<p><div align="center">(#PAGINATION)</div><p>]
+</div></div>
+
+</B_articles>
+<//B_articles>
+
+
+
+		</div><!-- fin contenu -->
+
+		[(#REM) Menu de navigation laterale ]
+<div id="navigation">
+<B_auteur_livre>
+<div class="bloc">
+<div class="bloc-titre">-<:livres_revues:>-</div>
+<div class="sous-bloc-jaune">
+<BOUCLE_auteur_livre (ARTICLES) {id_auteur} {id_rubrique=101} {par date} {inverse} {doublons} {lang_select=non}{0,5}>
+<div class="sous-bloc-conteneur-pour-colonnes">
+<div class="colonne-1">
+[<a href="#URL_ARTICLE&lang=#LANG" title="[(#TITRE)]">(#LOGO_ARTICLE_NORMAL||image_reduire{70,0}||inserer_attribut{alt,#TITRE})</a>]
+</div>
+<div class="colonne-2">
+[<img src="../IMG/icones/fleche-rouge-8x8.gif"> <b>(#TITRE)</b>]
+</div>
+</div>
+</BOUCLE_auteur_livre>
+<BOUCLE_auteur_livre_2(ARTICLES){id_auteur} {id_rubrique=101} {par date} {inverse}{tout}  {doublons} {lang_select=non}>
+[<img src="../IMG/icones/fleche-rouge-8x8.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="[(#TITRE)]">(#TITRE)</a><p>]
+</BOUCLE_auteur_livre_2>
+
+
+</div>
+</div>
+</B_auteur_livre>
+
+
+<INCLURE{fond=inc-index}>
+<INCLURE{fond=inc-multimedia}>
+</div><!-- fin navigation-rubrique -->
+
+	</div><!-- fin conteneur -->
+
+
+[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+	</div><!-- fin page -->
+	</body>
+</html>
+</BOUCLE_auteur_principal>

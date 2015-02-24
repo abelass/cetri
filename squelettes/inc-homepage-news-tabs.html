@@ -1,0 +1,37 @@
+<!--  Actualites - HomepageTemplate Unify Magazine News -->
+<div class="magazine-news">
+
+<!--=== Content Part ===-->
+    <div class="news-v1">
+            <BOUCLE_actu_1 (ARTICLES) {id_mot=#ENV{id_mot}} {0,10} {par date} {inverse} {doublons}>
+               [(#COMPTEUR_BOUCLE|alterner{<div class="row margin-bottom-30">,''})]
+                <div class="col-md-6 md-margin-bottom-40">
+                    <div class="news-v1-in">
+                        <div class="magazine-news-img">
+                            [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>">
+                            [<span class="magazine-badge label-u">(#SURTITRE)</span>]
+                            (#LOGO_ARTICLE_NORMAL
+                                |image_recadre{[(#LOGO_ARTICLE||extraire_attribut{width})],*}
+                                |image_recadre{*,[(#LOGO_ARTICLE||extraire_attribut{height})]}
+                                |vider_attribut{class,spip_logos}
+                                |inserer_attribut{class,img-responsive}
+                                |inserer_attribut{alt,#TITRE}
+                                |inserer_attribut{style,border-bottom:3px solid #E3E3E3;}) 
+                            </a>]
+                        </div>
+                            <h3>
+                                [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>">(#TITRE|couper{70})
+                                </a>]
+                            </h3>
+                            [<p>(#INTRODUCTION|couper{300})</p>]
+                            <ul class="list-inline news-v1-info">
+                                [<li><i class="icon-user" style="color:brown"></i> (#LESAUTEURS)</li>
+                                <li>|</li>]
+                                [<li><i class="icon-calendar" style="color:red"></i> (#DATE|affdate)</li>]
+                            </ul>
+                    </div>
+                </div>
+                [(#COMPTEUR_BOUCLE|alterner{'',</div>})]
+            </BOUCLE_actu_1>
+        </div>
+    </div> 

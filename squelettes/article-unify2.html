@@ -1,0 +1,455 @@
+<BOUCLE_principale(ARTICLES) {id_article} {doublons}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+[(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
+<head>
+
+
+<title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+[<link rel="canonical" href="(#URL_ARTICLE|url_absolue)" />]
+[<meta name="Author" content="(#LESAUTEURS|textebrut)" />]
+<meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+[<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+<meta name="ROBOTS" content="none">
+<meta name="revisit-after" content="7 days">
+[<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+<meta property="og:url" content="#URL_ARTICLE" />
+[(#LOGO_ARTICLE_NORMAL|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+
+
+[(#INCLURE{fond=inclure/head-unify})]
+
+
+
+<script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+
+
+
+</head>
+
+<body class="pas_surlignable page_article">
+  <div class="wrapper">
+  <!--=== Header ===-->    
+    
+    <div class="header">
+           <INCLURE{fond=inclure/topbar-unify} {env} {ajax}{lang_select=non} />
+            <INCLURE{fond=inclure/header-unify} {env} {ajax} {lang_select=non}  />
+
+    </div><!--/header-->
+  
+  <!--=== End Header ===--> 
+  
+
+	<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs-v3">
+    <div class="container">
+      <!-- BOUCLE 1 pour ne pas afficher la rubrique des extraits d'Alternatives Sud -->
+      <BOUCLE_extraits_1 (RUBRIQUES) {id_rubrique IN 223,226,227} {id_rubrique}>
+        [<h1 class="pull-left">(#TITRE_PARENT)</h1>]
+      </BOUCLE_extraits_1>
+      </B_extraits_1>
+        [<h1 class="pull-left">(#TITRE_PARENT)</h1>]
+      <//B_extraits_1>
+            <small>
+              <ul class="pull-right breadcrumb">
+                <BOUCLE_ariane(HIERARCHIE){id_article} {id_rubrique !IN 223,226,227}> 
+                  [<li> <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">(#TITRE|couper{35})</a>]
+                </BOUCLE_ariane>
+                <!-- BOUCLE 2 pour ne pas afficher la rubrique des extraits d'Alternatives Sud -->
+                <BOUCLE_extraits_2 (RUBRIQUES) {id_rubrique IN 223,226,227} {id_rubrique}></BOUCLE_extraits_2>
+                <BOUCLE_numero_publication (ARTICLES) {id_article=#ID_PUBLICATION}>
+                [<li> <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">(#TITRE|couper{35})</a></li>]
+                </BOUCLE_numero_publication>
+                 <//B_extraits_2>
+              [<li> (#TITRE|couper{35})</li>]
+              </ul>
+            </small>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+
+
+
+
+<!--=== Content Part ===-->
+<div class="container content">
+  <!--=== Main Row ===--> 
+  <div class="row">    
+
+  <BOUCLE_actualites (ARTICLES) {id_article} {id_rubrique IN 38,165,166,167,168,169,223,226,227}>
+    <!-- Main Content -->
+    <div class="col-md-8 md-margin-bottom-60">
+        [<h4>(#SURTITRE)</h4>]
+        <h2 class="#EDIT{titre}"> #TITRE </h2>
+            <div class="blog-post-tags">
+                <ul class="list-unstyled list-inline blog-info">
+                   [<li><i class="icon-user"></i> (#LESAUTEURS)</li>]
+                    <li><i class="icon-calendar"></i> [(#DATE|affdate)]</li>
+                    [<li class="pull-right">(#MODELE{article_traductions_unify})</li>]
+                 </ul>
+                 <ul class="list-unstyled list-inline blog-tags">
+                    <li>
+                        <B_tags_1>
+                         <BOUCLE_combien_tags_1(MOTS) {id_article}  {plat} {id_groupe=4}></BOUCLE_combien_tags_1>[(#TOTAL_BOUCLE|=={1}|?{<:pays:> : ,<:pays_pluriel:> : })]<//B_combien_tags_1>
+                         <BOUCLE_tags_1 (MOTS) {id_article} {id_groupe=4} {par titre}>
+                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                         <i class="icon-tag"></i> #TITRE</a>
+                         </BOUCLE_tags_1>
+                         </B_tags_1>
+                          <B_tags_2>
+                         <BOUCLE_combien_tags_2(MOTS) {id_article}  {plat} {id_groupe=5}></BOUCLE_combien_tags_2>[(#TOTAL_BOUCLE|=={1}|?{<:theme:> : ,<:themes:> : })]<//B_combien_tags_2>
+                         <BOUCLE_tags_2 (MOTS) {id_article} {id_groupe=5} {par titre}>
+                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                         <i class="icon-tag"></i> #TITRE</a>
+                         </BOUCLE_tags_2>
+                         </B_tags_2>
+                         <B_tags_3>
+                         <BOUCLE_combien_tags_3(MOTS) {id_article}  {plat} {id_groupe=3}></BOUCLE_combien_tags_3>[(#TOTAL_BOUCLE|=={1}|?{<:source:> : ,<:sources:> : })]<//B_combien_tags_3>
+                         <BOUCLE_tags_3 (MOTS) {id_article} {id_groupe=3}>
+                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                         <i class="icon-tag"></i> #TITRE</a>
+                         </BOUCLE_tags_3>
+                         </B_tags_3>
+                    </li>
+                  </ul>
+            </div><!-- End list-unstyled list-inline blog-info -->
+
+
+            [<p align="justify"><strong style="font-size:14px;">(#CHAPO|justifier|image_reduire{640,*})</strong> </p>]
+            [<p align="justify">(#TEXTE|justifier|image_reduire{640,*})</p>]
+
+
+
+
+              <table class="table">
+                    <tbody>
+                      <BOUCLE_documents_joints(DOCUMENTS) {id_article} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>
+                      <tr>
+                        <td width="5%"><i class="fa fa-download"></i></td>
+                        <td width="15%"><strong style="text-transform:uppercase"><:download:></strong></td>
+                        <td width="65%"class="#EDIT{titre}">
+                          <a href="#URL_DOCUMENT" type="#MIME_TYPE" class="spip_doc [(#EXTENSION|attribut_html)]">
+                          [(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</a>
+                          [<br /><small>(#CREDITS)</small>]
+                          [<br /><small>(#DESCRIPTIF)</small>]
+                        </td>
+                        <td width="15%"><span class="badge badge-u rounded">[(#EXTENSION|strtoupper) - ]  [(#TAILLE|taille_en_octets)]</span></td>
+                      </tr>
+                      </BOUCLE_documents_joints>
+                      [<tr>
+                        <td width="5%"><i class="icon-link"></i></td>
+                        <td width="10%"><strong style="text-transform:uppercase"><:voir_en_ligne:></strong></td>
+                        <td class="#EDIT{titre}"><a href="#URL_SITE" title="#TITRE">(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})</a></td>
+                        <td></td>
+                      </tr>]
+                    </tbody>
+              </table>
+
+              [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_notes:></h3><small>(#NOTES|image_reduire{500,*})</small></p>]
+              [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_ps:></h3><small>(#PS|image_reduire{500,*})</small></p>]
+             <hr class="devider devider-dotted"><p><small><:article_opinion:></small></p>
+    </div><!-- End col-md-8 -->
+
+    <!-- Right Sidebar -->
+    <div class="col-md-4">
+
+
+      <!-- Article d'alternatives sud : affichage logo de la publication -->
+            <BOUCLE_as_couverture (ARTICLES) {id_article=#ID_PUBLICATION}>
+            [<div class="shadow-wrapper">
+              <dl class="box-shadow shadow-effect-2">
+               <dt>
+                  <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>"> 
+                            (#LOGO_ARTICLE_NORMAL
+                            |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
+                            |vider_attribut{class,spip_logos}
+                            |inserer_attribut{class,img-responsive img-bordered}
+                            |inserer_attribut{alt,#TITRE_LOGO})                  
+                   </a>
+                 </dt>
+            </dl>
+            </div>
+
+            <p><a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>" class="btn btn-u" role="button"><:lire_article:></a></p>
+
+            ]
+            </BOUCLE_as_couverture>
+            </B_as_couverture>
+
+            [<div class="shadow-wrapper">
+              <dl class="box-shadow shadow-effect-2">
+               <dt>
+                  <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]> 
+                        <span class="overlay-zoom"> 
+                            (#LOGO_ARTICLE_NORMAL
+                            |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
+                            |vider_attribut{class,spip_logos}
+                            |inserer_attribut{class,img-responsive img-bordered}
+                            |inserer_attribut{alt,#TITRE_LOGO}) 
+                            <span class="zoom-icon"></span>                   
+                         </span>   
+                   </a>
+                 </dt>
+              [<dt class="spip_doc_titre">(#TITRE_LOGO) [<br />(#DESCRIPTIF_LOGO)]</dt>]
+            </dl>
+            </div>]
+
+            <//B_as_couverture>
+
+
+
+
+
+        [(#ID_RUBRIQUE|match{^(38|165|166|167|168|169)$}|?{[(#INCLURE{fond=inclure/meme-sujet-unify} {env}{ajax} {doublons})],' '})]
+    </div><!-- End Right Sidebar -->
+
+  </BOUCLE_actualites>
+  </B_actualites>
+
+
+
+
+
+  <B_modele_publications>
+  <BOUCLE_modele_publications (ARTICLES) {id_rubrique} {id_rubrique IN 151,152,153,158,159,160}>
+  </BOUCLE_modele_publications>
+
+  [<h2 class="#EDIT{titre}">(#TITRE|textebrut)</h2>]
+  
+  <div class="row" style="margin-top:50px"> 
+  <!-- Left Sidebar -->
+  <div class="col-md-4">
+    <div class="shadow-wrapper">
+        <dl class="box-shadow shadow-effect-2">
+          [<dt>
+          <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]>
+            <span class="overlay-zoom">
+                    (#LOGO_ARTICLE_NORMAL
+                      |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
+                      |vider_attribut{class,spip_logos}
+                      |inserer_attribut{class,img-responsive img-bordered}
+                      |inserer_attribut{alt,#TITRE})
+            <span class="zoom-icon"></span>                   
+            </span>  
+           </a>
+          </dt>]
+        </dl>
+    </div>
+
+
+    <B_mot1036><BOUCLE_mot1036 (MOTS){id_article}{id_mot=1036}>
+    <div class="margin-bottom-40">
+      <form name="f1" class="product-quantity sm-margin-bottom-20">
+        <button type='button' class="quantity-button" name='subtract' onclick='javascript: subtractQty();' value='-'>-</button>
+        <input type='text' class="quantity-field" name='qty' value="1" id='qty'/>
+        <button type='button' class="quantity-button" name='add' onclick='javascript: document.getElementById("qty").value++;' value='+'>+</button>
+       </form>
+       <button type="button" class="btn-u "><:ajouter_panier:></button>
+
+     </div><!--/end product quantity-->
+      </BOUCLE_mot1036>
+      </B_mot1036>
+      <a class="btn btn-link" href="#"><i class="fa fa-times"></i><:outofstock:></a>
+      <//B_mot1036>
+      <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
+       <BOUCLE_mot2 (MOTS){id_article} {id_mot=1040}>
+       [<li class="wishlist-in">
+        <i class="fa fa-euro"></i> (#PRIX_LIVRE) 
+        ([<small>(#FRAISDEPORT|sinon{<:fraisdeport_compris:>})</small>])
+       </li>]
+        <li class="wishlist-in">
+          <a href="#"><:abonner:></a>
+        </li>
+        </BOUCLE_mot2>
+        <li class="wishlist-in">
+          <a href="#"><:votre_panier:></a>
+        </li>
+      </ul>
+      <p class="wishlist-category"><:contact:> : <a href="mailto:cetri@cetri.be"> <i class="fa fa-envelope-o"></i> cetri[at]cetri.be</a> <i class="fa fa-phone"></i> +32 (0)10 48 95 60</p>
+
+
+
+
+
+
+
+  </div><!-- End left Sidebar -->
+
+  <!-- Main Content -->
+    <div class="col-md-8 md-margin-bottom-60">
+        
+            <!-- Présentation de la publication --> 
+            [(#ONGLETS_DEBUT{<i class="fa fa-info"></i><:presentation:>})]
+            [<div class="#EDIT{texte}">(#TEXTE|justifier|image_reduire{640,*})</div>]
+
+            <table class="table">
+                    <tbody>
+                      <tr>
+                        <td width="25%"><strong style="text-transform:uppercase"><:titre:></strong></td>
+                        <td class="#EDIT{titre}">[(#TITRE|textebrut)]</td>
+                      </tr>
+                      <BOUCLE_type_publication (RUBRIQUES) {id_rubrique} {id_rubrique IN 151,152,153}> 
+                      <B_collection>
+                      <tr>
+                        <td><strong style="text-transform:uppercase"><:collection:></strong></td>
+                        <td>
+                          <BOUCLE_collection (MOTS) {id_article} {id_groupe=2} {par num titre}{" - "}>
+                          #TITRE
+                          </BOUCLE_collection>
+                        </td>
+                      </tr>
+                      </B_collection>
+                      </BOUCLE_type_publication>
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:volume:></strong></td>
+                        <td class="#EDIT{volume}">(#VOLUME)</td>
+                      </tr>]
+                      <tr>
+                        <td><strong style="text-transform:uppercase"><:date:></strong></td>
+                        <td>[(#DATE|affdate{'m/Y'})]</td>
+                      </tr>
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:coordination_auteur:></strong></td>
+                        <td><i class="icon-user"></i> (#LESAUTEURS)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:edition:></strong></td>
+                        <td class="#EDIT{editeurs}">(#EDITEURS)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:format:></strong></td>
+                        <td class="#EDIT{format_livre}">(#FORMAT_LIVRE)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:pages:></strong></td>
+                        <td class="#EDIT{pages}">(#PAGES)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:isbn:></strong></td>
+                        <td class="#EDIT{ibsn}">(#ISBN)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:prix:></strong></td>
+                        <td class="#EDIT{prix_livre}"><i class="fa fa-euro"></i> (#PRIX_LIVRE) 
+                          ([<small>(#FRAISDEPORT|sinon{<:fraisdeport_compris:>})</small>])</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:traduction:></strong></td>
+                        <td>
+                        (#MODELE{article_traductions_unify})
+                        </td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:voir_en_ligne:></strong>
+                        </td>
+                        <td>
+                          <a href="#URL_SITE" title="#NOM_SITE">(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})</a>
+                        </td>
+                      </tr>]
+                      <B_tags>
+                      <tr>
+                        <td><strong style="text-transform:uppercase"><:mots_clefs:></strong></td>
+                        <td>
+                            <BOUCLE_tags (MOTS) {id_article}{id_groupe IN 3,4,5}{par titre}>
+                                <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                                <i class="icon-tag"></i> #TITRE
+                                </a>
+                            </BOUCLE_tags>
+                        </div>
+                        </td>
+                      </tr>
+                      </B_tags>
+                    <tbody>
+                  </table>
+
+
+            <!-- Table des matières de la publication --> 
+            <B_contenu>
+            <BOUCLE_contenu (ARTICLES) {id_rubrique IN 223,226,227}>
+            [(#ID_PUBLICATION|=={#ENV{id_article}}|?{[(#ONGLETS_TITRE{<i class="fa fa-list"></i> <:contenu:>}|unique)] [(#MODELE{tabledesmatieres} {env} {ajax} {id_article})],''})]
+            </BOUCLE_contenu>
+           </B_contenu>
+
+
+            <!-- Documents joints de la publication -->
+            <B_docs>
+            [(#ONGLETS_TITRE{<i class="fa fa-download"></i> <:download:>})]
+            <BOUCLE_docs (DOCUMENTS) {id_article} {extension !IN gif,jpg,png}>
+            [(#INCLURE{fond=inclure/documents,id_article, env})]
+            </BOUCLE_docs>
+            </B_docs>
+            
+            #ONGLETS_FIN
+  </div>
+
+
+</div><!--/  EN ROW-->       
+</B_modele_publications>
+
+<//B_actualites>
+
+
+  </div><!--/row-->        
+</div><!--/container--> 
+<!--=== End Content Part ===-->
+
+
+ [(#REM) Footer ]
+    <INCLURE{fond=inclure/inc-footer-unify} {ajax}>
+
+
+</div><!--/wrapper-->
+
+
+<!-- JS Global Compulsory -->  
+
+<script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script>   
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+<!-- JS Customization -->
+<script src="unify/assets/js/custom.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="unify/assets/js/app.js"></script>
+<script type="text/javascript" src="unify/assets/js/plugins/owl-carousel.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        OwlCarousel.initOwlCarousel();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="assets/plugins/respond.js"></script>
+<![endif]-->
+
+<!-- Modal correction 
+    http://stackoverflow.com/questions/21126617/bootstrap-3-modal-disappearing-below-backdrop-when-using-a-fixed-sidebar/21127348#21127348 -->
+<script type="text/javascript">
+   var checkeventcount = 1,prevTarget;
+    $('.modal').on('show.bs.modal', function (e) {
+        if(typeof prevTarget == 'undefined' || (checkeventcount==1 && e.target!=prevTarget))
+        {  
+          prevTarget = e.target;
+          checkeventcount++;
+          e.preventDefault();
+          $(e.target).appendTo('body').modal('show');
+        }
+        else if(e.target==prevTarget && checkeventcount==2)
+        {
+          checkeventcount--;
+        }
+     });
+    </script>
+</body>
+</html>
+</BOUCLE_principale>
+

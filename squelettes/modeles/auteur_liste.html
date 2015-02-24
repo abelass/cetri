@@ -1,0 +1,32 @@
+
+<B_auteur_fiche>
+<div class="magazine-news">
+    <div class="news-v1">
+    <BOUCLE_auteur_fiche(AUTEURS){id_auteur IN (#ENV{id}|explode{','})}>
+    [(#COMPTEUR_BOUCLE|alterner{<div class="row margin-bottom-30">,''})]
+     <div class="col-md-6 md-margin-bottom-40">
+        <div class="news-v1-in">
+                [(#LOGO_AUTEUR|?{
+                    [<div class="magazine-news-img">
+                             <a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM">
+                                    (#LOGO_AUTEUR_NORMAL
+                                        |image_reduire{800,600}
+                                        |vider_attribut{class,spip_logos}
+                                        |inserer_attribut{class,img-responsive}
+                                        |inserer_attribut{alt,#NOM})
+                            </a>
+                      </div>],
+                    <div class="magazine-news-img">
+                            <a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM">
+                        <img src="/squelettes/img/icons/no-photo.png" class="img-responsive" alt="#NOM" />
+                            </a>
+                        </div>})]                        
+                  [<h3><a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM">(#NOM)</a></h3>]
+                    [<p>(#BIO)</p>]
+        </div>
+    </div>
+    [(#COMPTEUR_BOUCLE|alterner{'',</div>})]
+    </BOUCLE_auteur_fiche>
+    </div>
+</div>
+</B_auteur_fiche>

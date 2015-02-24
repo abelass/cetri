@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+[(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
+<head>
+<script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+<title><:resultats_recherche:> - [(#NOM_SITE_SPIP|textebrut)]</title>
+[(#INCLURE{fond=inclure/head-unify})]
+<meta name="robots" content="none" />
+
+<link rel="stylesheet" href="assets/css/pages/page_search_inner.css">
+
+<link rel="stylesheet" href="assets/css/perso.css">
+
+</head>
+
+<body class="pas_surlignable page_recherche">
+<div class="wrapper">
+
+	 <!--=== Header ===-->    
+    <div class="header header-v1">
+        
+
+[(#INCLURE{fond=inclure/topbar-unify} {env} {ajax})]
+[(#INCLURE{fond=inclure/header-unify} {env} {ajax})]
+
+  </div><!--/header-->
+
+
+<!--=== Breadcrumbs v3 ===-->
+    <div class="breadcrumbs-v3">
+        <div class="container">
+            <h1 class="pull-left"><:resultats_recherche:></h1>
+            <small>
+        <ul class="pull-right breadcrumb" style="color:#FFFFFF">
+            <li><a href="index.html">Home</a></li>
+            <BOUCLE_ariane(HIERARCHIE){id_rubrique}> 
+            [<li> <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" style="color:#FFFFFF">(#TITRE|couper{80})</a>]
+            </BOUCLE_ariane>
+           [<li> (#TITRE|couper{80})</li>]
+        </ul>
+        </small>
+
+
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Page</a></li>
+                <li class="active">Search results</li>
+            </ul>
+        </div>
+    </div>
+    <!--=== End Breadcrumbs v3 ===-->
+
+
+   <!--=== Search Block ===-->
+    <div class="search-block parallaxBg margin-bottom-30" style="background:#EFEFEF; padding: 30px 0px">
+        <div class="container">
+        
+            <div class="col-md-6 col-md-offset-3" style="text-align:center">
+                <h1><:recherche:> <small>dans les archives</small></h1>
+
+                 <p><form action="[(#ENV{action})]" method="get" role="search">
+                  <div class="input-group">
+                    [(#ENV{action}|form_hidden)]
+                    <input name="page" value="recherche-unify" type="hidden">
+                    <input type="[(#HTML5|?{search,text})]" class="form-control" placeholder="<:mot_cle:>" name="recherche" id="#ENV{_id_champ}"[ value="(#ENV{recherche})"] onfocus="this.value='';" accesskey="4" autocapitalize="off" autocorrect="off">
+                      <span class="input-group-btn">
+                       <input type="submit" value="OK" title="OK" class="btn-u" />
+                      </span>
+                    </div>
+                   </form></p>
+
+       <p>                   
+      <button type="button" class="btn btn-default btn-sm">
+        <a href="#URL_PAGE{index-unify,id_groupe=4&lettre=A}" title="<:pays:>"><i class="fa fa-tags"></i> <:pays:></a>
+      </button>
+      <button type="button" class="btn btn-default btn-sm">
+        <a href="#URL_PAGE{index-unify,id_groupe=5&lettre=A}" title="<:themes:>"><i class="fa fa-tags"></i> <:themes:></a>
+      </button>
+      <button type="button" class="btn btn-default btn-sm">
+        <a href="#URL_PAGE{index-unify,id_groupe=3&lettre=A}" title="<:sources:>"><i class="fa fa-tags"></i> <:sources:></a>
+      </button>
+      <button type="button" class="btn btn-default btn-sm">
+        <a href="#URL_PAGE{index-auteurs-unify}&lettre=A" title="<:auteurs:>"><i class="fa fa-users"></i> <:auteurs:></a>
+      </button>
+      </p>
+                
+            </div>
+        </div>    
+    </div><!--/container-->     
+    <!--=== End Search Block ===-->
+
+
+
+
+
+
+    <!--=== Search Results ===-->
+    <div class="container s-results margin-bottom-50">
+        <div class="row">
+            <div class="col-md-2 hidden-xs related-search">
+                <div class="row">
+
+                   	<div class="col-md-12 col-sm-4">
+                    [(#REM) Rubriques trouvees ]
+                    	<B_rubriques>
+                        <h3><:rubriques:> (#GRAND_TOTAL)</h3>
+                        <ul class="list-unstyled">
+                        #ANCRE_PAGINATION
+                        <BOUCLE_rubriques(RUBRIQUES) {recherche} {!par points} {pagination 5}>
+						<li><a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE"><i class="fa fa-folder-o"></i> #TITRE</a></li>
+                        </BOUCLE_rubriques>
+                        [<p class="pagination">(#PAGINATION)</p>]
+                        </ul>
+                        <hr>
+                        </B_rubriques>
+                        
+                        <B_motscles>
+                        <h3><:mots_clefs:> (#GRAND_TOTAL)</h3>
+                        <ul class="list-unstyled">
+                        #ANCRE_PAGINATION
+                        <BOUCLE_motscles(MOTS) {recherche} {id_groupe IN 3,4,5} {!par points} {pagination 10}>
+						<li><a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE"><i class="icon-tag"></i> #TITRE</a></li>
+                        </BOUCLE_motscles>
+                        [<p class="pagination">(#PAGINATION)</p>]
+                        </ul>
+                        
+                        <hr>
+                        </B_motscles>
+
+
+                        <B_auteurs>
+                        <h3><:auteurs:> (#GRAND_TOTAL)</h3>
+                        <ul class="list-unstyled">
+                         <BOUCLE_auteurs(AUTEURS) {recherche} {!par points} {pagination 10}>
+                        <li><a href="#URL_AUTEUR{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM"><i class="icon-user"></i> #NOM</a></li>
+                        </BOUCLE_auteurs>
+                        [<p class="pagination">(#PAGINATION)</p>]
+                        </ul>
+                        
+                        
+                        </B_auteurs>
+
+
+
+
+                    </div>   
+                </div>        
+            </div><!--/col-md-2-->
+
+            <div class="col-md-10">
+
+            	<B_articles>
+            	#ANCRE_PAGINATION
+                <h3 style="color: #999;display: block;font-size: 14px;margin: 0 0 10px;line-height: 20px;text-transform: uppercase;"><:articles:> (#GRAND_TOTAL)</h3>
+                <!-- Begin Inner Results -->
+                <div class="inner-results">
+                	<BOUCLE_articles(ARTICLES) {recherche} {!par points} {pagination}>
+                    <h3><a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">#TITRE</a></h3>
+                    <ul class="list-inline up-ul">
+                        [<li><i class="icon-user"></i> (#LESAUTEURS|textebrut)</li>]
+                        <li><i class="fa fa-calendar-o"></i> [(#DATE|affdate)]</li>
+                    </ul>
+                     [<p>(#INTRODUCTION|couper{300})</p>]
+                    <B_tags>
+                    <ul class="list-inline up-ul">
+                    <BOUCLE_tags (MOTS) {id_article} {par titre} {id_groupe IN 3,4,5}>
+                    <li>
+                    <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE"><i class="icon-tag"></i> #TITRE</a>
+                </li>
+                    </BOUCLE_tags>
+                    </ul>
+                    </B_tags>
+                    <hr>
+                    </BOUCLE_articles>
+                </div>
+                <!-- Begin Inner Results -->
+
+                
+                #PAGINATION{precedent_suivant}
+
+                </B_articles>
+
+                <div class="margin-bottom-30"></div>
+
+                
+            </div><!--/col-md-10-->
+        </div> </div> </div>        
+    </div><!--/container-->     
+    <!--=== End Search Results ===-->
+			
+			
+	
+   [(#REM) Footer ]
+    <INCLURE{fond=inclure/inc-footer-unify} {ajax}>
+    [(#REM) Copyright ]
+    <INCLURE{fond=inclure/inc-copyright-unify} {ajax}>
+
+
+</div><!--/wrapper-->
+
+
+<!-- JS Global Compulsory -->  
+<script type="text/javascript" src="assets/plugins/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>   
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+
+
+<!-- JS Page Level -->           
+<script type="text/javascript" src="assets/js/app.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="assets/plugins/respond.js"></script>
+<![endif]-->
+
+
+
+</body>
+</html>
+</body>
+</html>

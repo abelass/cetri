@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="container content" >
+    <BOUCLE_rubrique (RUBRIQUES) {id_rubrique}>
+
+
+      <div class="col-md-3">
+       <!-- Sidebar menu -->
+       <div class="headline"><h2><:menu:></h2></div>
+          <ul class="list-group">
+            <BOUCLE_rubriques_soeurs (RUBRIQUES) {meme_parent} {par num titre}> 
+              <li class="list-group-item">
+                <#EXPOSE{span,a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}"} 
+                [ class="(#EXPOSE)"]>
+                #EXPOSE{<i class="fa fa-folder-open-o"></i> ,<i class="fa fa-folder-o"></i> }
+                #TITRE
+                </#EXPOSE{span,a}>
+                <i class="fa fa-angle-right"></i>
+              </li>
+            </BOUCLE_rubriques_soeurs>
+          </ul>
+        </div><!--End Sidebar Menu-->
+      </div><!--End col-md-3-->
+
+
+
+
+
+      <div class="col-md-9">
+        [<div class="blog-img">
+          <div class="shadow-wrapper">
+            <dl class="box-shadow shadow-effect-2">
+              <dt>(#LOGO_RUBRIQUE_NORMAL
+                |image_reduire{1000,0}
+                |vider_attribut{class,spip_logos}
+                |inserer_attribut{class,img-responsive}
+                |inserer_attribut{alt,#TITRE})
+              </dt> 
+            </dl>
+          </div>
+        </div>]
+    [<p align="justify">(#TEXTE|justifier)</p>]
+    [<p><hr /><h3 class="spip"><:info_notes:></h3>
+    <small>(#NOTES)</small></p>]
+            
+     
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents,id_rubrique, env})]
+
+      </div><!--/ End col-md-9 -->
+      
+
+    </BOUCLE_rubrique>
+  </div><!--End Container Content-->
+</div><!--End Row-->

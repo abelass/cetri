@@ -1,0 +1,79 @@
+<!--=== Footer ===-->
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 md-margin-bottom-40">
+                <!-- About -->
+		        <div class="headline"><h2>About</h2></div>	
+				<p class="margin-bottom-25 md-margin-bottom-40">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>	
+
+	            <!-- Monthly Newsletter -->
+                    <div class="headline"><h2><:newsletter:></h2></div> 
+                    <p><:newsletterinscription:></p>
+                    <form name="form1" method="post" action="NLprocess.php" class="footer-subsribe">
+    <div class="input-group">
+    <input name="email" type="text" class="form-control">
+    <span class="input-group-btn">
+    <input type="submit" name="Submit" value="<:abonner:>" class="btn-u">
+    </span>
+    </div>
+</form>                   
+                    <!-- End Monthly Newsletter -->
+                
+				
+                
+			</div><!--/col-md-4-->	
+			
+			<div class="col-md-4 md-margin-bottom-40">
+                <div class="posts">
+                    <div class="headline"><h2><:actualites:></h2></div>
+                    <BOUCLE_actualites (ARTICLES) {id_rubrique IN 38,165,166,167,168,169} {par date} {inverse} {0,3}>
+                    <dl class="dl-horizontal">
+
+                        [ <dt>(#LOGO_ARTICLE_NORMAL
+                            |#URL_PAGE{article-unify,id_article=#ID_ARTICLE}
+                            |image_reduire{90,0}
+                            |image_reduire{0,90}
+                            |image_recadre{60,60,center}
+                            |vider_attribut{class,spip_logos}
+                            |inserer_attribut{alt,#TITRE})</dt>] 
+
+                       
+                        <dd>
+                            <p>[<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" titre="#TITRE">(#TITRE|couper{60})</a><br />]
+                                <small>[<i class="icon-user"></i> (#LESAUTEURS|textebrut) ]
+                                [<i class="icon-calendar"></i> (#DATE|affdate{'d-m-y'})]</small>
+                            </p> 
+                        </dd>
+                    </dl>
+                    </BOUCLE_actualites>
+                </div>
+			</div><!--/col-md-4-->
+
+			<div class="col-md-4">
+	            <!-- Monthly Newsletter -->
+		        <div class="headline"><h2><:contactus:></h2></div>	
+                <address class="md-margin-bottom-40">
+					Av. Sainte Gertrude, 5<br />
+					1348 Louvain-La-Neuve<br />
+                    <:belgium:><br />
+					<:phone:> +(32.10) 48 95 60 <br />
+					Fax: +(32.10) 48 95 69<br />
+					Email: <a href="mailto:cetri@cetri.be" class="">cetri@cetri.be</a>
+                </address>
+
+                <!-- Stay Connected -->
+		        <div class="headline"><h2>Stay Connected</h2></div>	
+                <ul class="list-inline">
+                    <li><a href="https://www.facebook.com/centre.tricontinental" title="Facebook" target="_blank"><i class="fa fa-facebook fa-lg"></i></a></li>
+                    <li><a href="#URL_PAGE{plan}" title="<:sitemap:>"><i class="fa fa-sitemap fa-lg"></i></a></li> 
+                    <li><a href=""><i class="fa fa-shopping-cart fa-lg"></i></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
+
+                   
+                </ul>
+			</div><!--/col-md-4-->
+		</div><!--/row-->	
+	</div><!--/container-->	
+</div><!--/footer-->	
+<!--=== End Footer ===-->

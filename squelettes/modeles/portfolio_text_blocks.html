@@ -1,0 +1,55 @@
+    <!--=== Container Part ===-->
+    <div class="container">
+        <div class="content">
+            <div class="fusion-portfolio wrapper-portfolio-grid cbp-3-col">
+                <div id="filters-container" class="cbp-l-filters-alignCenter">
+                    <div data-filter=".category_all" class="cbp-filter-item-active cbp-filter-item"><:editions_tout:></div>
+                    <div data-filter=".category_french" class="cbp-filter-item"><:editions_francais:></div>
+                    <div data-filter=".category_otherslanguages" class="cbp-filter-item"><:editions_langues:></div>
+                </div>
+
+            <div id="grid-container" class="cbp-l-grid-gallery">
+                <ul>
+                    <BOUCLE_publications (ARTICLES) {id_mot} {par date} {inverse} {doublons}>
+                        <li class="cbp-item [(#LANG|=={fr}|?{category_french,category_otherslanguages})] category_all">
+                            <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                <div class="easy-block-v2">
+                                <div class="shadow-wrapper">
+                                <dl class="box-shadow shadow-effect-2">
+                                <dt>
+                                <B_contenuenligne><BOUCLE_contenuenligne (MOTS) {id_mot=1056} {id_article}>
+                                <div class="easy-bg-v2 rgba-red"><:enligne:></div>
+                                </BOUCLE_contenuenligne> </B_contenuenligne>
+                                [(#LOGO_ARTICLE|?{
+                                [(#LOGO_ARTICLE_NORMAL
+                                    |vider_attribut{class,spip_logos}
+                                    |inserer_attribut{class,img-bordered}
+                                    |inserer_attribut{alt,#TITRE}
+                                    |image_reduire{0,640}
+                                    |image_recadre{429,640,center})]
+                                    ,'<img src="/squelettes/img/logo_nocover.jpg" width="429" height="640" alt="#TITRE" class="img-responsive img-bordered" />'})]
+                                </dt> 
+                                </dl>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <div class="cbp-l-caption-text">#TITRE</div>
+                                            <p class="cbp-l-caption-desc">#TITRE_PARENT</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </BOUCLE_publications>
+                </ul>
+            </div>
+        </div>
+    </div><!--/End Wrapper Portfolio-->
+</div>
+                
+               
+                    

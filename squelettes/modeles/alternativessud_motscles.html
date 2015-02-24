@@ -1,0 +1,5 @@
+							<B_tags>
+							<i class="icon-tags"></i>
+                            <BOUCLE_tags (MOTS) {id_article} {par titre} {id_groupe IN 3,4,5}>
+                            [(#TITRE_GROUPE|unique) :] <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE"><i class="icon-tag"></i> #TITRE</a>
+                            </BOUCLE_tags>

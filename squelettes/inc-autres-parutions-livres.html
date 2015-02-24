@@ -1,0 +1,17 @@
+
+
+<!-- Dernières publications -->
+<div class="bloc">
+<div class="bloc-titre">-<:livres_revues:>-</div>
+
+
+<ul id="mycarousel" class="jcarousel jcarousel-skin-tango">
+<BOUCLE_autres_parutions_livres_1(ARTICLES){id_mot=82} {par date}{inverse}{tout}  {doublons}{lang_select=non}>
+<li>[(#LOGO_ARTICLE_NORMAL|#URL_ARTICLE||image_reduire{110,180}||inserer_attribut{alt,#TITRE})]
+<p>[(#TITRE|couper{50})]<p>
+</li>
+</BOUCLE_autres_parutions_livres_1>
+</ul>
+</div>
+
+

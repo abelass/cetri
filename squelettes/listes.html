@@ -1,0 +1,79 @@
+#CACHE{86400}
+<BOUCLE_mot_principal(MOTS) {id_mot} {doublons}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+[(#REM) Lien vers le flux RSS du mot cle ]
+<link rel="alternate" type="application/rss+xml" title="[(#TITRE|supprimer_numero|textebrut|texte_backend)]" href="[(#URL_PAGE{backend}|parametre_url{id_mot,#ID_MOT})]" />
+
+
+
+<style>
+
+.iframe_content  { background:none; margin-top: 20px } 
+
+
+</style>
+
+
+</head>
+
+<body class="page_mot">
+<div id="page">
+<INCLURE{fond=inc/inc-entete, env} />
+
+
+
+
+	<div id="conteneur">
+
+		[(#REM) Contenu principal : contenu du mot-cle ]
+		<div id="contenu">
+
+			<div class="cartouche">
+				[(#LOGO_MOT||image_reduire{200,200})]
+				<h1 class="#EDIT{titre} titre">[(#TITRE|supprimer_numero)]</h1>
+			</div>
+
+
+[<div class="#EDIT{texte} texte">(#DESCRIPTIF|justifier)</div>]
+<div class="#EDIT{texte} texte">
+				
+<multi>
+[fr]Bulletin d'information du Centre Tricontinental (CETRI) sur l'actualité des mouvements sociaux dans le Sud
+[en] Newsletter from the Tri-continental Centre (CETRI) on the Southern social movements newswire 
+[es]Boletín informativo del Centre Tricontinental (CETRI) sobre las noticias de los movimientos sociales del Sur
+</multi>
+
+</div> 
+
+<div class="iframe_content clearfix">
+<iframe name="newsletter" SRC="http://cetri.greenpig.be/diffusion" scrolling="no" height="300" width="600" FRAMEBORDER="no"></iframe>
+</div>
+
+
+
+[<div class="#EDIT{texte} texte">(#TEXTE|justifier)</div>]
+
+
+		</div><!-- fin contenu -->
+
+[(#REM) Menu de navigation laterale ]
+<div id="navigation">
+<INCLURE{fond=inc-logo-cetri}>
+<INCLURE{fond=inc-agenda} >
+</div><!-- fin navigation -->
+
+
+	</div><!-- fin conteneur -->
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!-- fin page -->
+</body>
+</html>
+</BOUCLE_mot_principal>

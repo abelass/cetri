@@ -1,0 +1,69 @@
+ 
+ <div class="row">
+ <div class="headline margin-bottom-40">
+    <h2>#ENV{titre}
+        <a href="#ENV{url}" title="#TITRE">
+            <i class="fa fa-link"></i>
+        </a>              
+        <a href="#URL_PAGE{backend}" target="_blank" title="RSS">
+            <i class="fa fa-rss"></i>
+        </a>
+    </h2>   
+</div>
+
+<!-- Focus sur un article de lla langue d'env. selon mot cle 1182 -->
+<div class="row magazine-page"> 
+             
+                <div class="magazine-news news-v1">
+                    <div class="row">
+                    <BOUCLE_une (ARTICLES) {id_mot=1182} {0,1} {par date} {inverse} {lang} {doublons}>
+                    <div class="news-v1-in dark">
+                       <div class="magazine-news-img">
+                                [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>">
+                                             (#LOGO_ARTICLE_NORMAL
+                                                |vider_attribut{class,spip_logos}
+                                                |inserer_attribut{class,img-responsive}
+                                                |inserer_attribut{alt,#TITRE}) 
+                                           </a>]
+
+                                [<span class="magazine-badge label-u">(#SURTITRE)</span>]
+                        </div>
+
+                            <h3><a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>">#TITRE</a></h3>
+
+                            [<p>(#INTRODUCTION|couper{500})</p>]
+                            <ul class="list-inline news-v1-info">
+                            [<li><i class="icon-user"></i> (#LESAUTEURS)</li>
+                            <li>|</li>]
+                            <li><i class="icon-calendar"></i> [(#DATE|affdate)]</li>
+                            </ul>
+                        </div>
+                   </BOUCLE_une>
+                         
+                    </div>
+                </div>
+                <!-- End Magazine News -->
+
+ <div class="row">
+
+  <div class="onglets_bloc_initial">
+   <div class="onglets_contenu">
+    <BOUCLE_mot8 (MOTS) {id_mot=8}>
+        <h2 class="cs_onglet"><a href="#">#TITRE</a></h2>
+         <INCLURE{fond=inclure/inc-homepage-news-tabs,env,id_mot,doublons} />
+    </BOUCLE_mot8>
+   </div>
+    <div class="onglets_contenu">
+        <BOUCLE_mot4 (MOTS) {id_mot=4}>
+        <h2 class="cs_onglet"><a href="#">#TITRE</a></h2>
+          <INCLURE{fond=inclure/inc-homepage-news-tabs,env,id_mot,doublons} />
+        </BOUCLE_mot4>
+   </div>
+</div>
+
+
+</div> 
+
+
+</div><!-- End Row Magazine-page -->
+</div>

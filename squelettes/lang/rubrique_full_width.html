@@ -1,0 +1,84 @@
+<BOUCLE_rubrique (RUBRIQUES) {id_rubrique}>
+
+
+[(#REM) Contenu principal : contenu de la rubrique ]
+<div id="wrapper" style="clear: both; width: 95%; overflow: hidden;" >
+
+			
+<BOUCLE_type_publication (MOTS) {id_rubrique} {id_groupe=2}>
+
+
+<div class="button-container">
+		<p class="grid"><a href="#" id="grid-btn" class="active"><!-- <img src="images/grid.png" alt="grid"> -->Grid</a></p>
+		<p class="list"><a href="#" id="list-btn"><!-- <img src="images/list.png" alt="list"> -->List</a></p>
+	</div>
+    
+    
+    
+    <BOUCLE_sous_rubriques (RUBRIQUES) {id_mot} {par date}{inverse}>
+	<div class="grid-container">
+		<div class="thumb-container">
+			<a href="#URL_RUBRIQUE">
+          [(#LOGO_RUBRIQUE_NORMAL
+                             |image_reduire{187,280}
+                             |extraire_balise{img, http://www.cetri.be/cetri_new/IMG/}
+                             |inserer_attribut{class,grid-img}
+                             |vider_attribut{class,spip_logos}
+                             )]
+            </a>
+			<p class="short-desc">
+				<span class="desc-title">
+					#TITRE
+				</span><br />
+				<span class="desc-text">
+					#DESCRIPTIF
+				</span>
+			</p>
+			<p class="long-desc">
+			 	<span class="desc-title">
+					#TITRE
+			 	</span><br />
+			 	<span class="desc-text">
+			 		[(#TEXTE|couper{250})]
+			 	</span>
+			</p>
+		</div>
+        </BOUCLE_sous_rubriques>
+	</div>
+
+
+
+
+
+<B_sous_rubriques>
+<table>
+[
+(#COMPTEUR_BOUCLE|alterner{'<tr>','',''})]
+	<td width="33%">
+	 <a href="#URL_RUBRIQUE">
+							[(#LOGO_RUBRIQUE_NORMAL
+                             |image_reduire{200,0}
+                        )]
+						</a>
+	</td>[
+(#COMPTEUR_BOUCLE|alterner{'','','</tr>'})
+]</BOUCLE_sous_rubriques>
+[(#TOTAL_BOUCLE|alterner{
+    '<td></td><td></td></tr>','<td></td></tr>', ''})]
+</table>
+
+
+</B_sous_rubriques>
+    
+
+
+
+
+
+</BOUCLE_type_publication>
+
+
+</div> <!-- END #content -->
+</div><!-- END #wrapper -->
+
+</BOUCLE_rubrique>

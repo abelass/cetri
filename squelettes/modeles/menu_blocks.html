@@ -1,0 +1,17 @@
+<!--=== Block ===-->
+<div class="row margin-bottom-20">
+    <div class="container">
+      <BOUCLE_rubrique (RUBRIQUES) {id_rubrique}>
+      <BOUCLE_sous_rubriques (RUBRIQUES) {id_parent} {par num titre}>
+        <div class="col-md-4 col-sm-6">
+            <div class="service-block service-block-blue">
+              <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="<:voir:>">
+                <div class="icon-cetri-white"></div>
+                    <h2 class="heading-md">#TITRE</h2>
+              </a>
+            </div>
+        </div>
+      </BOUCLE_sous_rubriques>
+    </BOUCLE_rubrique>
+    </div><!--/container-->
+</div><!--/row-->

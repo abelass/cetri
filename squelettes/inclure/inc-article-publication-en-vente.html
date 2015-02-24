@@ -1,0 +1,42 @@
+<BOUCLE_article (ARTICLES){id_article}>
+
+
+<div class="margin-bottom-40">
+<a class="ajax nocache nohistory btn btn-u" href="[(#URL_ACTION_AUTEUR{remplir_panier,articles-#ID_ARTICLE,#SELF|parametre_url{retour,ok}})]" role="button"><:paniers:action_ajouter:></a>    
+        [(#ENV{retour}|=={ok}|oui)
+        <script type="text/javascript">
+            $(function(){
+                ajaxReload(
+                  'mon_panier',{
+                    callback:function(){$('.panier .panier_detail');},
+                args:{voir:'oui',action:''},history:false });
+                });  
+        </script>]
+        
+<BOUCLE_abonnement (ARTICLES) {id_mot=1183} {lang}>
+<a href="#myModal#ID_ARTICLE" data-toggle="modal" data-target="#myModal#ID_ARTICLE" title="#TITRE" class="btn btn-link"><:abonner:></a>
+
+<div class="modal fade" style="z-index:10000" id="myModal#ID_ARTICLE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">#TITRE</h4></div>
+						<div class="modal-body">
+							<p>#TEXTE</p>
+                            <p><a class="ajax nocache nohistory btn btn-u" href="[(#URL_ACTION_AUTEUR{remplir_panier,articles-#ID_ARTICLE,#SELF|parametre_url{retour,ok}})]" role="button"><:paniers:action_ajouter:></a></p>
+</div></div></div></div>                          
+                            
+</BOUCLE_abonnement>
+
+</div>
+
+<ul class="list-inline add-to-wishlist add-to-wishlist-brd">
+       [<li class="wishlist-in">
+        <i class="fa fa-euro"></i> (#PRIX) 
+        ([<small>(#FRAISDEPORT|sinon{<:fraisdeport_compris:>})</small>])
+       </li>]
+</ul>
+ <p class="wishlist-category"><:contact:> : <i class="fa fa-envelope-o"></i><a href="mailto:cetri@cetri.be"> cetri[at]cetri.be</a> <i class="fa fa-phone"></i> +32 (0)10 48 95 60</p>
+
+ </BOUCLE_article>

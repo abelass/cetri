@@ -1,0 +1,124 @@
+<BOUCLE_rubrique (RUBRIQUES) {id_rubrique}>
+
+<!--=== Block ===-->
+<div class="row margin-bottom-20">
+  <B_sous_rubriques>
+    <div class="container">
+      <BOUCLE_sous_rubriques (RUBRIQUES) {id_parent} {par num titre} {0,3}>
+        <div class="col-md-4 col-sm-6">
+            <div class="service-block service-block-alternativessud">
+              <a href="#myModal#ID_RUBRIQUE" data-toggle="modal" data-target="#myModal#ID_RUBRIQUE">
+                [(#COMPTEUR_BOUCLE|alterner{<i class="icon-custom icon-color-light rounded-x fa fa-info"></i>,<i class="icon-custom icon-color-light rounded-x fa fa-users"></i>,<i class="icon-custom icon-color-light rounded-x fa fa-book"></i>})]
+                    <h2 class="heading-md">#TITRE</h2>
+              </a>
+            </div>
+        </div>
+
+                        <div class="modal fade" style="z-index:10000" id="myModal#ID_RUBRIQUE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                                <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                                          </button>
+                                          <h4 class="modal-title" id="myModalLabel">[(#TITRE|couper{90})]
+                                          </h4>
+                                      </div>
+                                      <div class="modal-body">
+                                          <p>#TEXTE</p>
+                                      </div>                      
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn-u" data-dismiss="modal"><:close:>
+                                          </button>
+                                      </div>
+                                </div>
+                          </div>
+                        </div>
+
+
+      </BOUCLE_sous_rubriques>     
+    </div><!--/container-->
+  </B_sous_rubriques>
+</div><!--/row-->
+
+
+
+<div class="row">
+  <div class="container content">
+    <div class="headline-center-v2 headline-center-v2-dark margin-bottom-10">
+                <h2>Alternatives Sud</h2>
+      <div class="icon-cetri"></div>
+    </div>
+    <B_publications_fr>
+      #ANCRE_PAGINATION
+        <BOUCLE_publications_fr (ARTICLES) {id_mot} {par date} {inverse} {doublons} {pagination 8} {lang=fr}>
+          <div class="col-md-3 shadow-wrapper">
+            <dl class="box-shadow shadow-effect-2">
+               <dt>
+                <div class="magazine-news-img">
+                  <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:voir:>"> 
+                                <B_contenuenligne_fr><BOUCLE_contenuenligne_fr (MOTS) {id_mot=1056} {id_article}>
+                                <div class="easy-bg-v2 rgba-yellow"><:enligne:></div>
+                                </BOUCLE_contenuenligne_fr> </B_contenuenligne_fr>
+                                [(#LOGO_ARTICLE|?{
+                                [(#LOGO_ARTICLE_NORMAL
+                                    |vider_attribut{class,spip_logos}
+                                    |inserer_attribut{class,img-responsive}
+                                    |inserer_attribut{alt,#TITRE}
+                                    |image_reduire{0,800}
+                                    |image_recadre{536,800,center})]
+                                    ,'<img src="/squelettes/img/logo_nocover.jpg" width="429" height="640" alt="#TITRE" class="img-responsive img-bordered" />'})]           
+                   </a>
+                </div>
+              </dt>
+            </dl>
+          </div>
+        </BOUCLE_publications_fr>
+                <div class="bloc-pagination">
+             [(#PAGINATION{page_precedent_suivant} {ajax})]
+             <!--End Pegination Centered-->
+        </div>
+    </B_publications_fr>
+  </div><!--End Container Content-->
+</div><!--End Row-->
+
+
+
+
+
+
+<div class="row" style="border-top:1px #CCCCCC solid">
+  <div class="container content">
+    <div class="headline-center-v2 headline-center-v2-dark margin-bottom-10">
+                <h2><:editions_langues:></h2>
+      <div class="icon-cetri"></div>
+    </div>
+    <B_publications>
+      #ANCRE_PAGINATION
+        <BOUCLE_publications (ARTICLES) {id_mot} {par date} {inverse} {doublons} {pagination 8} {lang!=fr}>
+          <div class="col-md-3 shadow-wrapper">
+            <dl class="box-shadow shadow-effect-2">
+               <dt>
+                  <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>"> 
+                                <B_contenuenligne><BOUCLE_contenuenligne (MOTS) {id_mot=1056} {id_article}>
+                                <div class="easy-bg-v2 rgba-red"><:enligne:></div>
+                                </BOUCLE_contenuenligne> </B_contenuenligne>
+                                [(#LOGO_ARTICLE|?{
+                                [(#LOGO_ARTICLE_NORMAL
+                                    |vider_attribut{class,spip_logos}
+                                    |inserer_attribut{class,img-responsive}
+                                    |inserer_attribut{alt,#TITRE}
+                                    |image_reduire{0,1000}
+                                    |image_recadre{670,1000,center})]
+                                    ,'<img src="/squelettes/img/logo_nocover.jpg" width="536" height="536" alt="#TITRE" class="img-responsive img-bordered" />'})]
+                                    [(#LOGO_ARTICLE|?{'',#TITRE})]          
+                   </a>
+                 </dt>
+            </dl>
+          </div>
+        </BOUCLE_publications>
+        [<p class="pagination">(#PAGINATION{precedent_suivant} {ajax} {env})</p>]
+    </B_publications>
+  </div><!--End Container Content-->
+</div><!--End Row-->
+
+</BOUCLE_rubrique>

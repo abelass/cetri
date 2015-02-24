@@ -1,0 +1,35 @@
+
+
+[(#REM) Listes des articles des Alternatives Sud ]
+<B_alternativessud>
+
+	[<h3 class="spip">(#ENV{titre})</h3>]
+    
+	<ul>
+		<BOUCLE_alternativessud(ARTICLES) {id_article IN (#ENV{id}|explode{','})} {doublons}>
+		<li style="margin: 15px 0px; padding: 8px">
+        <strong>#TITRE</strong><br />
+        <small>[<:par_auteur:> (#LESAUTEURS)]</small>
+        <small><div align="right">
+[(#TEXTE|?{ | <a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><:lire_article:></a>," "})]
+<B_document><BOUCLE_document(DOCUMENTS){id_article}{mode=document} {extension==pdf|doc|rtf} {lang_select=non}>[(#FICHIER|?{ | <a href="#URL_DOCUMENT" title="<:telecharger_article:>"><:telecharger_article:></a> [((#TYPE_DOCUMENT)]-[(#TAILLE|taille_en_octets))]," "})]</BOUCLE_document></B_document>
+[(#INTRODUCTION|?{ | <a href="javascript:swap_couche('#ID_ARTICLE')" title="<:introduction_article:>"><:introduction_article:></a>," "})]
+|</div></small>
+
+<script language='JavaScript'>	<!--	vis['#INTRODUCTION'] = 'hide';	//-->	</script>
+<div id='Layer#ID_ARTICLE' style='display: none; margin-top: 1;'>[(#INTRODUCTION|justifier)]<br>
+</div>
+        
+       
+      
+</li>
+</BOUCLE_alternativessud>
+</ul>
+
+</B_alternativessud>
+
+        
+        
+        
+
+

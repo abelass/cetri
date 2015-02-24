@@ -1,0 +1,85 @@
+<div id="formulaire_ecrire_auteur#ENV{id}">
+
+[<p class="bg-danger"><i class="glyphicon glyphicon-ok"></i> (#ENV*{message_ok})</p>]
+[<p class="reponse_formulaire state-error">(#ENV*{message_erreur})</p>]
+[(#ENV{editable})
+<form action='#ENV{action}#formulaire_ecrire_auteur#ENV{id}' enctype='multipart/form-data' method="post" id="sky-form3" class="sky-form">
+	[(#REM) declarer les hidden qui declencheront le service du formulaire parametre : url d'action ]
+	#ACTION_FORMULAIRE{#ENV{action}}
+
+	[(#REM) Previsualisation... ]
+	[(#ENV*{erreurs}|table_valeur{previsu}|oui)
+	
+	<div class="headline">
+     	<h2><:previsualisation:></h2>
+     </div>
+
+		<div class="alert alert-danger fade in">
+	<fieldset class="previsu" style="background:none">
+
+			<section><strong>#ENV{sujet_message_auteur}</strong><br /><em>#ENV{email_message_auteur}</em></section>
+			<section>[(#ENV{texte_message_auteur}|nl2br)]</section>
+	</fieldset>
+</div>
+		<footer>
+			<button type="submit" class="btn-u" name="confirmer" value="<:form_prop_confirmer_envoi:>" /><i class="glyphicon glyphicon-send"></i> <:form_prop_confirmer_envoi:>
+			</button>
+		</footer>
+	
+	]
+
+
+
+	[(#REM) Sinon, formulaire normal ]
+	
+	
+	<div class="headline">
+     <h2><:envoyer_message:></h2>
+     </div>
+	<fieldset>
+		<section class='editer saisie_email_message_auteur obligatoire[ (#ENV*{erreurs}|table_valeur{email_message_auteur}|oui)erreur]'>
+				
+				<label class='input [ (#ENV*{erreurs}|table_valeur{email_message_auteur}|oui)state-error]'>
+				<i class="icon-append fa fa-envelope-o"></i>
+				<input [ (#HTML5|?{required="required" type="email" class="form-control",type="email" class="form-control"})] name="email_message_auteur" id="email_message_auteur#ENV{id}" value="#ENV{email_message_auteur}" placeholder="<:entree_adresse_email:>*"/>		
+				</label>
+				[<em for="email_message_auteur#ENV{id}" class="invalid">(#ENV*{erreurs}|table_valeur{email_message_auteur})</em>]
+		</section>
+
+			<section class='editer saisie_sujet_message_auteur obligatoire[ (#ENV*{erreurs}|table_valeur{sujet_message_auteur}|oui)erreur]'>
+				
+				<label class='input [ (#ENV*{erreurs}|table_valeur{sujet_message_auteur}|oui)state-error]'>
+					<i class="icon-append fa fa-user"></i>
+					<input type="text" class="form-control" name="sujet_message_auteur" id="sujet_message_auteur#ENV{id}" value="#ENV{sujet_message_auteur}" [(#HTML5) required="required"] placeholder="<:form_prop_sujet:>*" />
+				</label>
+				[<em for="sujet_message_auteur#ENV{id}" class="invalid">(#ENV*{erreurs}|table_valeur{sujet_message_auteur})</em>]
+			</section>
+
+
+			<section class='editer saisie_texte_message_auteur obligatoire[ (#ENV*{erreurs}|table_valeur{texte_message_auteur}|oui)erreur]'>
+				
+				<label class='textarea [ (#ENV*{erreurs}|table_valeur{texte_message_auteur}|oui)state-error]'>
+					<i class="icon-append fa fa-comment"></i>
+					<textarea name="texte_message_auteur" id="texte_message_auteur#ENV{id}" [(#HTML5) required="required"] class="form-control" rows="10" placeholder="<:message_formulaire:>*">#ENV{texte_message_auteur}</textarea>
+				</label>
+				[<em for="texte_message_auteur#ENV{id}" class="invalid">(#ENV*{erreurs}|table_valeur{texte_message_auteur})</em>]
+			</section>
+	</fieldset>
+
+
+
+	[(#REM) Piege a robots spammeurs ]
+	<p style="display: none;">
+		<label for="nobot"><:antispam_champ_vide:></label>
+		<input type="text" class="text" name="nobot" id="nobot" value="#ENV{nobot}" size="10" />
+	</p>
+	 <footer>
+	 	<button type="submit" class="btn-u" name="valide" value="<:form_prop_envoyer:>" /><i class="glyphicon glyphicon-send"></i> <:form_prop_envoyer:>
+	 	</button>
+	  </footer>
+</form>
+]
+
+<small class="pull-right">* <:info_obligatoire_02:></small>
+</div>
+

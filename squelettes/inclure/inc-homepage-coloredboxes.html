@@ -1,0 +1,24 @@
+<div class="row margin-bottom-30">
+         <B_decouvrez>
+            <div class="headline">
+                <h2><:decouvrez:></h2>
+            </div>
+
+            <div class="list-group ">
+            <BOUCLE_decouvrez (RUBRIQUES){id_mot=1167} {lang}>
+                <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE" class="list-group-item">
+                    <h5 class="list-group-item-heading">
+                    [(#ID_RUBRIQUE|match{^(151|152|153)$}|?{<i class="fa fa-book" style="color:[#(#ID_RUBRIQUE|couleur_rubrique)]"></i>,' '})] 
+                    [(#ID_RUBRIQUE|match{^(214|215|216)$}|?{<i class="fa fa-graduation-cap" style="color:[#(#ID_RUBRIQUE|couleur_rubrique)]"></i>,' '})] 
+                    [(#ID_RUBRIQUE|match{^(170|171|172)$}|?{<i class="fa fa-newspaper-o" style="color:[#(#ID_RUBRIQUE|couleur_rubrique)]"></i>,' '})]
+                    #TITRE</h5>
+                    [<p class="list-group-item-text" style="line-height:1.5em; border-left: 1px solid [#(#ID_RUBRIQUE|couleur_rubrique)]; margin-left:15px; padding-left: 10px">(#DESCRIPTIF|textebrut)</p>]
+                </a>
+            </BOUCLE_decouvrez>
+        </div>
+        </B_decouvrez>
+</div>
+
+
+
+

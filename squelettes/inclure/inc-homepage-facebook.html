@@ -1,0 +1,35 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+$(window).bind("load resize", function(){
+var container_width = $('#container').width();
+$('#container').html('<div class="fb-like-box" ' +
+'data-href="https://www.facebook.com/centre.tricontinental"' +
+' data-width="' + container_width + '" data-height="730" data-show-faces="true" ' +
+'data-stream="true" data-header="false" data-show-border="false"></div>');
+FB.XFBML.parse( );
+});
+</script> 
+
+<!-- Widget Facebook responsive https://gist.github.com/dineshcooper/2111366 -->
+
+
+         <div class="headline">
+            <h2>
+            	<:joinus:>
+             	<a href="https://www.facebook.com/centre.tricontinental" title="<:facebook:>" target="_blank">
+                    <i class="fa fa-facebook"></i> 
+                </a>
+            </h2>
+        </div>
+        <div class="list-group">
+        <div id="container" style="width:100%;">
+           <div class="fb-like-box" style="border:none"data-href="https://www.facebook.com/centre.tricontinental" data-width="300" data-height="730" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
+           </div>
+        </div>
+        

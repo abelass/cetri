@@ -1,0 +1,291 @@
+#CACHE{86400}
+<BOUCLE_mot_principal(MOTS) {id_mot} {doublons}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+
+
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF|couper{150}|textebrut)" />]
+<meta name="Generator" content="SPIP[ (#SPIP_VERSION)]" />
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+<meta name="revisit-after" content="7 days">
+<meta name="robots" content="ALL">
+[<meta name="Reply-to" content="(#EMAIL_WEBMASTER|textebrut)" />]
+<INCLURE{fond=inc-head}>
+
+[(#REM) Lien vers le flux RSS du mot cle ]
+<link rel="alternate" type="application/rss+xml" title="[(#TITRE|supprimer_numero|textebrut|texte_backend)]" href="spip.php?mot239&lang=#LANG" />
+
+
+
+
+<link rel="stylesheet" href="squelettes/css/tabs.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="squelettes/css/ddaccordion.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="squelettes/css/jcarousel.css" type="text/css" media="screen" />
+
+<script src="squelettes/js/jquery.quickpaginate.packed.js" type="text/javascript" charset="utf-8"></script>
+<script src="squelettes/js/jquery.jcarousel.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+ 
+ 
+[(#REM) JQUERY : Pagination ]
+	<script type="text/javascript" charset="utf-8">
+			$(function(){
+				$("#shopping_list1 li").quickpaginate({ perpage: 5, pager : $("#shopping_list_counter1") });
+				$("#shopping_list2 li").quickpaginate({ perpage: 5, pager : $("#shopping_list_counter2") });
+				$("#shopping_list3 li").quickpaginate({ perpage: 5, pager : $("#shopping_list_counter3") });
+				$("#shopping_list4 li").quickpaginate({ perpage: 5, pager : $("#shopping_list_counter4") });
+
+	
+			});
+	</script>
+    
+
+
+<script type="text/javascript" src="squelettes/js/ddaccordion.js">
+
+/***********************************************
+* Accordion Content script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* Visit http://www.dynamicDrive.com for hundreds of DHTML scripts
+* This notice must stay intact for legal use
+***********************************************/
+
+</script>
+
+
+<script type="text/javascript">
+
+//Initialize first demo:
+ddaccordion.init({
+	headerclass: "mypets", //Shared CSS class name of headers group
+	contentclass: "thepet", //Shared CSS class name of contents group
+	revealtype: "mouseover", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
+	mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+	collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
+	defaultexpanded: [0], //index of content(s) open by default [index1, index2, etc]. [] denotes no content.
+	onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+	animatedefault: false, //Should contents open by default be animated into view?
+	persiststate: true, //persist state of opened contents within browser session?
+	toggleclass: ["", "openpet"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+	togglehtml: ["none", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+	animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+	oninit:function(expandedindices){ //custom code to run when headers have initalized
+		//do nothing
+	},
+	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+		//do nothing
+	}
+	
+	
+})</script>
+
+
+<script type="text/javascript">
+
+jQuery(document).ready(function() {
+    jQuery('#mycarousel').jcarousel({
+        vertical: true,
+        scroll: 2
+    });
+});
+
+</script>
+</head>
+
+
+<body class="page_mot">
+<div id="page">
+
+
+<INCLURE{fond=inc/inc-entete} {id_mot}>
+
+
+<div id="conteneur">
+
+[(#REM) Contenu principal : contenu du mot-cle ]
+<div id="contenu">
+
+<!-- cartouche-->
+<div class="cartouche">
+[(#LOGO_MOT||image_reduire{200,200})]
+<h1 class="#EDIT{titre} titre">[-(#TITRE|supprimer_numero)-]</h1>
+</div>
+
+
+[<div class="#EDIT{texte} texte">(#TEXTE|justifier)</div>]
+
+
+
+[(#ID_MOT|=={4}|?{[(#MODELE{tabs-langues} {env})],''})]
+[(#ID_MOT|=={8}|?{[(#MODELE{tabs-langues} {env})],''})]
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	//Default Action
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+	
+	//On Click Event
+	$("ul.tabs li").click(function() {
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+		var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active content
+		return false;
+	});
+
+});
+</script>
+
+[(#ID_GROUPE|=={4}|?{[(#MODELE{tabs-langues} {env})],''})]
+[(#ID_GROUPE|=={5}|?{[(#MODELE{tabs-langues} {env})],''})]
+[(#ID_GROUPE|=={3}|?{[(#MODELE{tabs-langues} {env})],''})]
+[(#ID_MOT|=={4}|?{[(#MODELE{accordion-analyses} {env})],''})]
+
+[(#ID_MOT|=={1040}|?{[(#MODELE{liste-as} {env})],''})]
+[(#ID_MOT|=={1041}|?{[(#MODELE{liste-as} {env})],''})]
+
+
+</div><!-- fin contenu -->
+
+
+
+
+
+
+[(#REM) Menu de navigation laterale ]
+<div id="navigation">
+
+
+<!-- Cadre Abonnement pour page de commande des livres-->
+<BOUCLE_abonnement-1 (GROUPES_MOTS) {id_groupe=14} >
+<BOUCLE_abonnement-2 (MOTS){id_mot}{id_mot!=8} {id_groupe!=2}{id_groupe!=9} {id_mot!=239}{id_groupe!=5}{id_groupe!=4} {id_mot!=681}{id_groupe!=3}{id_mot!=4} {id_mot!=82}>
+<BOUCLE_paiement(MOTS){id_mot=142}>
+<div class="bloc">
+<div class="sous-bloc-blanc-special-livres">
+#TEXTE
+</div>
+</div>
+</BOUCLE_paiement>
+</BOUCLE_abonnement-2>
+</BOUCLE_abonnement-1>
+
+
+
+
+<!-- Cadre menu pour page des publications AS et Eds -->
+<BOUCLE_menu-mots-1 (GROUPES_MOTS) {id_groupe=2} >
+<BOUCLE_menu-mots-2 (MOTS){id_mot}{id_groupe!=14}{id_mot!=8} {id_groupe!=9} {id_mot!=239}{id_groupe!=5}{id_groupe!=4} {id_groupe!=3}{id_mot!=4}{id_mot!=681} {id_mot!=82}>
+
+<div class="bloc">
+<div class="sous-bloc-blanc-sans-border" style="background:none">
+[(#REM) commande et abonnement]
+<img src="../IMG/icones/carre-nav.gif">
+<a href="spip.php?mot141&lang=#LANG" title="<:commande_abonnement:>"><:commande_abonnement:></a>
+<div class="liste-articles-ligne"></div>
+<img src="../IMG/icones/carre-nav.gif">
+<a href="spip.php?page=groupe&id_groupe=18&lang=#LANG" title="<:editions_langues:>"><:editions_langues:></a>
+</div>
+</div>
+</BOUCLE_menu-mots-2>
+</BOUCLE_menu-mots-1>
+
+
+
+
+
+<!-- Présentation du mot-clé -->
+[<div class="bloc">
+<div class="bloc-titre">-<:web:>-</div>
+<div class="sous-bloc-blanc">(#MOT_FICHE_WEB)</div>
+</div>]
+
+[(#REM) Liste des Autres parutions - livres ]
+<BOUCLE_livres1 (GROUPES_MOTS) {id_groupe=2} >
+<BOUCLE_livres2 (MOTS){id_mot} {id_mot!=8} {id_groupe!=14}{id_groupe!=9} {id_mot!=239}{id_groupe!=5}{id_groupe!=4} {id_groupe!=3} {id_mot!=82} {id_mot!=2}{id_mot!=3}>				
+<INCLURE{fond=inc-derniers-livres} {id_mot}>
+</BOUCLE_livres2>
+</BOUCLE_livres1>
+
+
+
+<!-- liens mot-clé-livres-thèmes -->
+
+<BOUCLE_livres_2 (MOTS){id_mot}{id_groupe=5}>
+<B_livres_3_2>
+<div class="bloc">
+<div class="bloc-titre">-<:livres_revues:>-</div>
+<div class="sous-bloc-jaune">
+
+
+
+<BOUCLE_livres_3_2(RUBRIQUES){id_mot} {par date} {inverse}>
+
+<div class="sous-bloc-conteneur-pour-colonnes">
+<div class="colonne-1">
+[<a href="#URL_RUBRIQUE&lang=#LANG" title="[(#TITRE)]">(#LOGO_RUBRIQUE_NORMAL||image_reduire{70,0}||inserer_attribut{alt,#TITRE})</a>]
+</div>
+<div class="colonne-2">
+[<img src="../IMG/icones/fleche-rouge-8x8.gif"> <b>(#TITRE)</b>]
+</div>
+</div>
+</BOUCLE_livres_3_2>
+
+
+<BOUCLE_livres_4_2(ARTICLES){id_mot} {id_rubrique=101} {par date} {inverse}>
+<div class="sous-bloc-conteneur-pour-colonnes">
+<div class="colonne-1">
+[<a href="#URL_ARTICLE&lang=#LANG" title="[(#TITRE)]">(#LOGO_ARTICLE_NORMAL||image_reduire{70,0}||inserer_attribut{alt,#TITRE})</a>]
+</div>
+<div class="colonne-2">
+[<img src="../IMG/icones/fleche-rouge-8x8.gif"> <b>(#TITRE)</b>]
+</div>
+</div>
+</BOUCLE_livres_4_2>
+
+</div></div>
+</B_livres_3_2>
+</BOUCLE_livres_2>
+
+
+<!-- Site liés au mot-clé -->
+<B_sites>
+<div class="bloc"><!-- début encart -->
+[(#REM) Sites web lies au mot-cle ]
+<div class="bloc-titre">-<:sites_web:>-</div>
+<div class="sous-bloc-blanc">
+<BOUCLE_sites(SITES) {id_mot} {par nom_site}>
+[<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_SITE" class="spip_out" title="#NOM_SITE">(#NOM_SITE)</a>]
+<div class="liste-articles-ligne"></div>
+</BOUCLE_sites>
+</div>
+</div><!-- fin encart -->
+</B_sites>
+
+
+
+<INCLURE{fond=inc-multimedia} {id_mot}>
+
+
+
+
+
+</div><!-- fin navigation -->
+
+</div><!-- fin conteneur -->
+
+[(#REM) Pied de page ]
+<INCLURE{fond=inc-pied}>
+	
+</div><!-- fin page -->
+	
+</body>
+</html>
+</BOUCLE_mot_principal>
+<//BOUCLE_menu-langues-des-articles-1>
+

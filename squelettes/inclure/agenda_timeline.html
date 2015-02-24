@@ -1,0 +1,66 @@
+
+<div class="row">
+<div class="container content">  
+
+           <!-- Left SideBar -->
+            <div class="col-md-8 md-margin-bottom-60">
+                <B_agenda>
+                <ul class="timeline-v2 news-v1">
+                   <BOUCLE_agenda(EVENEMENTS){tout} {age_fin<=0}{par date_debut}{statut=publie}> 
+                    [<div class="mois">(#DATE_DEBUT|nom_mois|unique)</div>]
+                    <li>
+                        <time class="cbp_tmtime" datetime="">
+                        <span>
+                          <span class="fa-stack fa-3x">
+                          <i class="fa fa-calendar-o fa-stack-2x"></i> <div class="fa-stack-1x calendar-text">[(#DATE_DEBUT|affdate{'d'})]</div>
+                        </span>
+                        </time>
+                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                        
+                        <div class="cbp_tmlabel news-v1-in" style="padding: 0px;">
+                            
+                            <h2><a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="[(#TITRE|textebrut)]"> #TITRE</a></h2>
+                            
+                            <div class="row" [(#LOGO_EVENEMENT|?{style="padding: 10px;",''})]>
+                                [<div class="col-md-4">
+                                <a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" [ title="(#TITRE|attribut_html|couper{80})"]> 
+                                    (#LOGO_EVENEMENT
+                                    |vider_attribut{class,spip_logos}
+                                    |inserer_attribut{class,img-responsive img-thumbnail}
+                                    |inserer_attribut{alt,#TITRE})  
+                                  </a>
+                                </div>]
+                                [(#LOGO_EVENEMENT|?{<div class="col-md-8">,''})]     
+                                    <p>#DESCRIPTIF</p> 
+                                [(#LOGO_EVENEMENT|?{</div>,''})] 
+                            </div><!-- End row -->
+
+                            <ul class="list-inline news-v1-info" style="padding: 10px">
+                                <li><i class="fa fa-calendar-o" style="color:red"></i> [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })]</li>
+                                <li>|</li>
+                                [<li><i class="fa fa-map-marker" style="color:orange"></i> (#LIEU)</li>]
+                            </ul>
+
+                        </div>                    
+                    </li>
+                   </BOUCLE_agenda>                 
+                </ul>
+            </B_agenda>
+            </div>
+            <!-- End Left SideBar -->
+
+<!-- Begin Right Sidebar -->
+        <div class="col-md-4">
+      
+
+
+            <INCLURE{fond=inclure/inc-homepage-annonces}/>
+   
+
+    </div>
+        <!-- End Right Sidebar -->
+
+
+        </div>          
+    </div><!--/container-->     
+    <!--=== End Content Part ===-->

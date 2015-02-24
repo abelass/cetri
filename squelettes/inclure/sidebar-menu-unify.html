@@ -1,0 +1,38 @@
+<B_sidebar_menu_rubriques>
+  <!-- Sidebar menu -->
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bars"></i><:about_alternativessud:></h3>
+    </div>
+      <!-- List group -->
+			  <ul class="list-group">
+			  	<BOUCLE_sidebar_menu_rubriques (RUBRIQUES) {id_mot=1039} {id_rubrique}{par num titre}>
+			    <li class="list-group-item">
+			    <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_ARTICLE}" title="#TITRE"><i class="fa fa-ellipsis-h"></i> #TITRE</a>
+				</li>
+				</BOUCLE_sidebar_menu_rubriques>
+			  </ul> 
+</B_sidebar_menu_rubriques>
+
+
+
+
+
+<B_sidebar_menu_articles>
+  <!-- Sidebar menu -->
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bars"></i><:about_alternativessud:></h3>
+    </div>
+      <!-- List group -->
+			  <ul class="list-group">
+			  	<BOUCLE_sidebar_menu_articles (ARTICLES) {id_mot=1039} {id_rubrique}{par num titre}>
+			    <li class="list-group-item">
+			    <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE"><i class="fa fa-ellipsis-h"></i> #TITRE</a>
+				</li>
+				</BOUCLE_sidebar_menu_articles>
+			  </ul> 
+</B_sidebar_menu_articles>
+<//B_sidebar_menu_rubriques>

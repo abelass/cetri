@@ -1,0 +1,211 @@
+<div class="row">
+  <div class="container content">
+    <!--Begin col-md-8-->
+    <div class="col-md-8" >
+      <B_shop>
+      #ANCRE_PAGINATION
+      <BOUCLE_shop (ARTICLES) {id_mot=1036} {par date} {inverse} {pagination 10}>
+        <div class="list-product-description product-description-brd margin-bottom-30">
+          <div class="row">
+            <div class="col-sm-4">
+              [<a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]>
+                    <span class="overlay-zoom">
+                      (#LOGO_ARTICLE_NORMAL
+                          |vider_attribut{class,spip_logos}
+                          |inserer_attribut{class,img-responsive img-bordered sm-margin-bottom-20}
+                          |inserer_attribut{alt,#TITRE})
+                     <span class="zoom-icon"></span>                   
+                    </span>  
+              </a>]
+            </div> 
+            <div class="col-sm-8 product-description">
+              <div class="overflow-h margin-bottom-5">
+                <ul class="list-inline overflow-h">
+                  <li><h3 class="title-price">[<a href="#myModal#ID_ARTICLE" data-toggle="modal" data-target="#myModal#ID_ARTICLE" title="#TITRE">(#TITRE|textebrut|couper{60})</a>]</h3>
+                 
+
+                 <div class="modal fade" style="z-index:10000" id="myModal#ID_ARTICLE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                                <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                          <h4 class="modal-title" id="myModalLabel">#TITRE</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                          <p>
+
+                                            #TEXTE
+
+          <table class="table">
+                    <tbody>
+                      <tr>
+                        <td width="25%"><strong style="text-transform:uppercase"><:titre:></strong></td>
+                        <td class="#EDIT{titre}">[(#TITRE|textebrut)]</td>
+                      </tr>
+                      <B_collection>
+                      <tr>
+                        <td><strong style="text-transform:uppercase"><:collection:></strong></td>
+                        <td>
+                          <BOUCLE_collection (MOTS) {id_article} {id_groupe=2}{par num titre}{" - "}>
+                          #TITRE
+                          </BOUCLE_collection>
+                        </td>
+                      </tr>
+                      </B_collection>
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:volume:></strong></td>
+                        <td class="#EDIT{volume}">(#VOLUME)</td>
+                      </tr>]
+                      <tr>
+                        <td><strong style="text-transform:uppercase"><:date:></strong></td>
+                        <td>[(#DATE|affdate{'m/Y'})]</td>
+                      </tr>
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:coordination_auteur:></strong></td>
+                        <td><i class="icon-user"></i> (#LESAUTEURS)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:edition:></strong></td>
+                        <td class="#EDIT{editeurs}">(#EDITEURS)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:format:></strong></td>
+                        <td class="#EDIT{format_livre}">(#FORMAT_LIVRE)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:pages:></strong></td>
+                        <td class="#EDIT{pages}">(#PAGES)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:isbn:></strong></td>
+                        <td class="#EDIT{ibsn}">(#ISBN)</td>
+                      </tr>]
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:prix:></strong></td>
+                        <td class="#EDIT{prix_livre}"><i class="fa fa-euro"></i> (#PRIX_LIVRE) 
+                          ([<small>(#FRAISDEPORT|sinon{<:fraisdeport_compris:>})</small>])</td>
+                      </tr>]
+                      <B_traductions>
+                      <tr>
+                        <td><strong style="text-transform:uppercase"><:traduction:></strong></td>
+                        <td>
+                        <BOUCLE_traductions(ARTICLES) {traduction} {par lang} {doublons}>
+                        [(#TOTAL_BOUCLE|>{1}|?{' '})
+                        <span lang="#LANG" xml:lang="#LANG" dir="#LANG_DIR"[ class="(#EXPOSE)"]> [(#EXPOSE{'',[<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" rel="alternate" hreflang="#LANG"[ title="(#TITRE|attribut_html|couper{80})"]><i class="fa fa-globe"></i> (#LANG|traduire_nom_langue)</a>]})]</span>
+                        ]</BOUCLE_traductions>
+                      </B_traductions>
+                        </td>
+                      </tr>
+                      </B_traductions>
+                      [<tr>
+                        <td><strong style="text-transform:uppercase"><:voir_en_ligne:></strong>
+                        </td>
+                        <td>
+                          <a href="(#URL_SITE)" title="#NOM_SITE">(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})</a>
+                        </td>
+                      </tr>]
+                      <B_tags>
+                      <tr>
+                        <td><strong style="text-transform:uppercase"><:mots_clefs:></strong></td>
+                        <td>
+                            <BOUCLE_tags (MOTS) {id_article}{id_groupe IN 3,4,5}{par titre}>
+                                <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                                <i class="icon-tag"></i> #TITRE
+                                </a>
+                            </BOUCLE_tags>
+                        </div>
+                        </td>
+                      </tr>
+                      </B_tags>
+                    <tbody>
+                  </table>
+ </p>
+                                         
+                                      </div>                      
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn-u" data-dismiss="modal"><:close:></button>
+                                      </div>
+                                </div>
+                          </div>
+                        </div>
+                  
+
+                  </li>
+                  <li><span class="gender text-uppercase">
+                  <B_collection_1> <BOUCLE_collection_1 (MOTS) {id_article} {id_groupe=2}{par num titre}{" - "}>#TITRE</BOUCLE_collection_1></B_collection_1>[ | (#DATE|affdate{'m/Y'})]</span></li>
+                </ul>    
+              <div class="margin-bottom-10">
+                <span class="title-price margin-right-10">#PRIX</span>
+                <span><small>([(#FRAISDEPORT|sinon{<:fraisdeport_compris:>})])</small></span>
+              </div>    
+              [<p class="margin-bottom-20">(#DESCRIPTIF|couper{250})</p>]
+               <a class="ajax nocache nohistory btn btn-u" href="[(#URL_ACTION_AUTEUR{remplir_panier,articles-#ID_ARTICLE,#SELF|parametre_url{retour,ok}})]" role="button"><:paniers:action_ajouter:></a>
+
+               
+            </div>    
+          </div>
+        </div>
+      </div> 
+       </BOUCLE_shop> 
+        <div class="bloc-pagination">
+             [(#PAGINATION{page_precedent_suivant} {ajax})]
+             <!--End Pegination Centered-->
+        </div>
+       </B_shop>
+        
+    </div><!--End col-md-8-->
+[(#ENV{retour}|=={ok}|oui)
+<script type="text/javascript">
+        ajaxReload('mon_panier', {args:{action:''},history:false });    
+        $.fn.mediabox({href:'[(#URL_PAGE{panier})]'});
+</script>
+]
+
+<!-- Sidebar menu -->
+        <div class="col-md-4">
+
+ <!-- Panier -->
+        <INCLURE{fond=inclure/mon_panier,affichage=panel,env,ajax}/>
+
+
+
+
+      <!-- Moyens de paiement -->
+        <div class="panel panel-u">
+          <div class="panel-heading">
+            <h3 class="panel-title"><:paiement_modes:></h3>
+          </div>
+          <div class="panel-body">
+                        <ul class="list-inline paiement">
+                            <li>
+                            <a data-placement="top" data-toggle_="tooltip" class="paypal tooltips" data-original-title="<:paiement_paypal:>" target="blank">
+                            <i class="fa fa-paypal"></i></a>
+                            </li>
+                            <li>
+                            <a data-placement="top" data-toggle="tooltip" class="cards tooltips" data-original-title="<:paiement_viapaypal:>" target="_blank">
+                            <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></a>
+                            </li>
+                            <li>
+                            <a data-placement="top" data-toggle="tooltip" class="transfer tooltips" data-original-title="<:paiement_virement:>" target="_blank">
+                            <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span></a>
+                            </li>
+                        </ul>
+          </div>
+        </div><!--End Panel -->
+
+      <!-- Contact -->
+        <div class="panel panel-u">
+          <div class="panel-heading">
+            <h3 class="panel-title"><:contact:></h3>
+          </div>
+          <div class="panel-body">
+            <p>[(#MODELE{auteur_contact} {id_auteur=191})]</p>
+          </div>
+        </div><!--End Panel -->
+
+
+    </div><!--End col-md-3-->
+
+
+  </div><!--End Container Content-->
+</div><!--End Row-->

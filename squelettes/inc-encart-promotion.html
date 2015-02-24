@@ -1,0 +1,43 @@
+
+
+<!-- Promotion -->
+<div class="container" style="overflow:hidden;padding:50px 0;">
+	
+        <div class="row">
+        <div class="cycle-slideshow"
+    		data-cycle-pause-on-hover="true"
+            data-cycle-fx="fadeout"
+    		data-cycle-speed="1500"
+    		data-cycle-timeout="1000">
+      <BOUCLE_banner_evenement (EVENEMENTS) {id_mot=1179}>
+            [(#LOGO_EVENEMENT_SURVOL
+
+            |image_reduire{1110,200}
+            |vider_attribut{class,spip_logos}
+            |inserer_attribut{class,img-responsive}
+            |inserer_attribut{alt,#TITRE})
+            ] 
+      </BOUCLE_banner_evenement>
+			<BOUCLE_banner_articles (ARTICLES) {id_mot=1179} {par date} {inverse} >
+            [(#LOGO_ARTICLE_SURVOL
+
+            |image_reduire{1110,200}
+			      |vider_attribut{class,spip_logos}
+			      |inserer_attribut{class,img-responsive}
+            |inserer_attribut{alt,#TITRE})
+            ]    
+			</BOUCLE_banner_articles>
+      <BOUCLE_banner_rubriques (RUBRIQUES) {id_mot=1179} {par date} {inverse} >
+            [(#LOGO_RUBRIQUE_SURVOL
+
+            |image_reduire{1110,200}
+            |vider_attribut{class,spip_logos}
+            |inserer_attribut{class,img-responsive}
+            |inserer_attribut{alt,#TITRE})
+            ]    
+      </BOUCLE_banner_rubriques>
+			
+         </div> </div> 
+     </div> 
+
+

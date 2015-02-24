@@ -1,0 +1,27 @@
+ <B_parallax_slider>
+<!--=== Slider ===-->
+<div class="slider-inner">
+    <div id="da-slider" class="da-slider" style"background: transparent url(#URL_SITE_SPIP/IMG/artoff#ID_ARTICLE.jpg) repeat 0% 0%;">
+        <BOUCLE_parallax_slider (ARTICLES) {id_mot=1025} {par date} {inverse}>
+        <div class="da-slide">
+            <h2><i>Alternatives Sud</i></h2>
+            <p><i>#TITRE</i></p>
+
+            [<div class="da-img">
+            (#LOGO_ARTICLE_NORMAL
+                    |image_reduire{0,300}
+                    |vider_attribut{class,spip_logos}
+                    |inserer_attribut{alt,#TITRE}) 
+            </div>]
+        </div>
+        </BOUCLE_parallax_slider>
+        
+       
+        <div class="da-arrows">
+            <span class="da-arrows-prev"></span>
+            <span class="da-arrows-next"></span>        
+        </div>
+    </div><!--/da-slider-->
+</div><!--/slider-->
+ </B_parallax_slider>
+<!--=== End Slider ===-->

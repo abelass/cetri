@@ -1,0 +1,29 @@
+
+
+
+<B_articles>
+#ANCRE_PAGINATION
+<ul class="media-list">
+<BOUCLE_articles (ARTICLES) {id_rubrique} {par date} {inverse} {pagination 5}>
+<li class="media">
+  <a class="pull-left" href="#URL_PAGE{article-bootstrap,id_article=#ID_ARTICLE}">
+  	[(#LOGO_ARTICLE
+        |image_reduire{220,220}
+        |image_recadre{150,150,center}
+        |inserer_attribut{class,img-thumbnail}
+        |inserer_attribut{alt,#TITRE})]
+
+       
+   
+  </a>
+  <div class="media-body">
+    <h3 class="media-heading">#TITRE</h3>
+    <small>#LESAUTEURS - [(#DATE|affdate)]</small>
+    [<p>(#INTRODUCTION|couper{200})</p>]
+   
+   </div> 
+</li>
+  </BOUCLE_articles>
+</ul>
+#PAGINATION{page_precedent_suivant}
+</B_articles>

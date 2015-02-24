@@ -1,0 +1,47 @@
+<div class="bloc">
+
+
+
+[(#SET{alphabet, [(#VAL{ABCDEFGHIJKLMNOPQRSTUVWXYZ}|str_split)]})]
+
+<BOUCLE_listalpha(AUTEURS){par nom_site}{tout}>
+[(#SET_PUSH{commence_par[(#NOM_SITE|lastfirstletter)],#ID_AUTEUR})]
+[(#SET_PUSH{auteurs_alpha,#NOM_SITE|lastfirstletter})]
+</BOUCLE_listalpha>
+#SET{mondebut,#GET{auteurs_alpha}|array_sort|table_valeur{0} }
+
+
+
+
+<B_alphabet>
+<div class="alphabet">
+<ul>
+<BOUCLE_alphabet(POUR){tableau #GET{alphabet}}>
+<li class='[(#VALEUR|=={[(#ENV{lettre,#GET{mondebut} })]}|?{on})] [(#VALEUR|in_array{#GET{auteurs_alpha}}|oui)plein]'>[(#VALEUR|in_array{#GET{auteurs_alpha}}|oui)<a href="[(#SELF|parametre_url{lettre,#VALEUR})]">]#VALEUR</li>[(#VALEUR|in_array{#GET{auteurs_alpha}}|oui)</a>]
+</BOUCLE_alphabet>
+</ul>
+</div>
+</B_alphabet>
+
+[(#REM) Traitement des listes d'auteurs
+- on peut aussi utiliser un modele d'affichage ]
+
+[(#REM) Traitement des listes d'auteurs
+- on peut aussi utiliser un modele d'affichage ]
+
+<B_artlettre>
+<div class="liste">
+<ul>
+<BOUCLE_artlettre(AUTEURS){id_auteur IN #GET{commence_par#ENV{lettre,#GET{mondebut} }}}{tout}>
+<li><a href="#URL_AUTEUR&lang=#LANG">#NOM_SITE</a> <BOUCLE_nombre_articles_1(ARTICLES) {id_auteur} {par nom_site} ></BOUCLE_nombre_articles_1>
+[ - (#TOTAL_BOUCLE)][ (#TOTAL_BOUCLE|=={1}|?{<:document:>,<:documents:>})]
+<//B_nombre_articles_1> </li>
+</BOUCLE_artlettre>
+</ul>
+</div>
+</B_artlettre>
+</div>
+
+
+
+

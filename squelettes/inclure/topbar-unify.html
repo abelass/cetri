@@ -1,0 +1,22 @@
+<!--=== Topbar ===--> 
+<div class="topbar">
+  <div class="container"> 
+    <!-- Topbar Navigation -->
+        <ul class="loginbar">
+ 	    [<li class="panier">
+            	(#INCLURE{fond=inclure/mon_panier,affichage=banner,env,ajax=mon_panier})
+            </li>]
+            <li class="languagesSelector">
+                <i class="fa fa-globe"></i>
+                <a><:langues:></a>                
+                    [(#INCLURE{fond=formulaires/menu_lang_unify,env})]
+            </li>
+            <li><a href="#URL_PAGE{backend}" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></li>
+            <li><a href="https://www.facebook.com/centre.tricontinental" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#LANG-contact" title="<:contact:>"><i class="fa fa-envelope-o"></i></a></li>
+        </ul>
+    <!-- End Topbar Navigation -->
+  </div> <!--/Container-->     
+</div><!--/top-->
+<!--=== End Top ===-->    
+

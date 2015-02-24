@@ -1,0 +1,38 @@
+  <!-- Search Panel -->
+<div class="panel panel-default">
+  
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-search"></i> <:recherche:></h3>
+    </div>
+
+    <div class="panel-body">   
+        <form action="spip.php?page=recherche-unify" method="get" role="search">
+          <div class="input-group">
+            <input name="page" value="recherche-unify" type="hidden">
+            <input type="text" class="form-control" placeholder="<:mot_cle:>" name="recherche" id="recherche" value="" onfocus="this.value='';" accesskey="4">
+            <span class="input-group-btn">
+            <input type="submit" value="OK" title="OK" class="btn-u" />
+            </span>
+          </div>
+        </form>
+    </div>
+    
+    <div class="panel-footer">
+      <button type="button" class="btn btn-default btn-xs">
+        <a href="#URL_PAGE{index-unify,id_groupe=4&lettre=A}" title="<:pays:>"><i class="fa fa-tags"></i> <:pays:></a>
+      </button>
+      <button type="button" class="btn btn-default btn-xs">
+        <a href="#URL_PAGE{index-unify,id_groupe=5&lettre=A}" title="<:themes:>"><i class="fa fa-tags"></i> <:themes:></a>
+      </button>
+      <button type="button" class="btn btn-default btn-xs">
+        <a href="#URL_PAGE{index-unify,id_groupe=3&lettre=A}" title="<:sources:>"><i class="fa fa-tags"></i> <:sources:></a>
+      </button>
+      <button type="button" class="btn btn-default btn-xs">
+        <a href="#URL_PAGE{index-auteurs-unify}&lettre=A" title="<:auteurs:>"><i class="fa fa-users"></i> <:auteurs:></a>
+      </button>
+    </div>
+</div>
+
+
+  
+<!-- End Search Panel -->

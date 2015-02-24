@@ -1,0 +1,10 @@
+<div class="accueil">
+	[<a rel="start home" href="#URL_SITE_SPIP/" title="<:accueil_site:>">(#LOGO_SITE_SPIP||image_reduire{300,100})</a>]
+	
+	
+</div>
+[(#CONFIG{multilingue/menu_langue}|oui)
+	#SET{select,_select}
+]
+<INCLURE{fond=inclure/menu_langues#GET{select},env}/>
+

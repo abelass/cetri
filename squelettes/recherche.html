@@ -1,0 +1,124 @@
+#CACHE{0}
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title><:resultats_recherche:> - [(#NOM_SITE_SPIP|textebrut)]</title>
+<INCLURE{fond=inc-head}>
+<meta name="robots" content="none" />
+</head>
+
+<body class="page_recherche">
+<div id="page">
+<INCLURE{fond=inc/inc-entete, env} />
+
+<div id="conteneur">
+
+<div id="contenu">
+		
+<div class="cartouche">
+[(#LOGO_RUBRIQUE||image_reduire{200,200})]
+<h1 class="#EDIT{titre} titre"><:resultats_recherche:></h1>
+</div>
+<p>
+
+
+[(#REM) Résultats ]
+
+[(#REM) Articles trouvés par la recherche ]
+
+<B_articles>
+<div class="bloc">
+#ANCRE_PAGINATION
+
+<div class="cartouche">
+<h1 class="surtitre"><span class="titre">&#171;&nbsp;#RECHERCHE&nbsp;&#187;</span> : #GRAND_TOTAL [(#GRAND_TOTAL|=={1}|?{<:resultats_recherche:>.,<:resultats_recherche:>.})]</h1>
+<div class="liste-articles-ligne"></div>
+</div>
+
+<div class="sous-bloc-blanc-sans-border">
+<BOUCLE_articles(ARTICLES) {recherche} {par #ENV{tri,points}} {inverse} {id_mot?} {branche?} {id_article!=179}{pagination 10} {tout} {lang_select=non} >
+
+
+
+[(#REM) Titre de l'article]
+[<img src="../IMG/icones/carre-nav.gif"><b> (#TITRE|supprimer_numero)</b><br>]
+
+[(#REM) Auteur de l'article]
+<B_auteur><:par_auteur:>
+<BOUCLE_auteur(AUTEURS) {id_article} {", "}>
+ [(#NOM)]
+</BOUCLE_auteur><br>
+</B_auteur>
+
+
+[(#REM) Source et date de l'article]
+<font color="#999999">
+(<B_source><BOUCLE_source(MOTS) {id_article} {id_groupe=3} {doublons}>[(#TITRE) - ]</BOUCLE_source></B_source>[(#DATE|affdate)])</font>
+<p>
+
+<div align="right">
+
+[(#REM) lien vers l'article si publié en html ]
+[(#TEXTE|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><:lire_article:></a>," "})]
+
+<B_document><BOUCLE_document(DOCUMENTS){id_article}{mode=document} {extension==pdf|doc|rtf} {lang_select=non}>[(#FICHIER|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_DOCUMENT" title="<:telecharger_article:>"><:telecharger_article:></a> [((#TYPE_DOCUMENT)]-[(#TAILLE|taille_en_octets))]," "})]</BOUCLE_document></B_document>
+
+[(#REM) Menu dépliant descriptif de l'article]
+[(#INTRODUCTION|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="javascript:swap_couche('#ID_ARTICLE')" title="<:introduction_article:>"><:introduction_article:></a>," "})]
+
+</div>
+
+<script language='JavaScript'>
+	<!--
+	vis['#INTRODUCTION'] = 'hide';
+	//-->
+	</script><div id='Layer#ID_ARTICLE' style='display: none; margin-top: 1;'>
+[(#INTRODUCTION|justifier)]<br>
+
+
+[(#REM) Hiérachie - numéro de la revue]
+<B_ariane>
+<:article_disponible:>:
+<BOUCLE_ariane(HIERARCHIE){id_article} {1,1}>
+<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+</BOUCLE_ariane>
+</B_ariane>
+</div>
+
+<div class="liste-articles-ligne"></div>
+
+</BOUCLE_articles>
+[<p><div align="center">(#PAGINATION)</div></p>]
+</div>
+
+
+</div>
+</B_articles>
+     				[<div class="cartouche">
+<h1 class="surtitre"><:pas_resultats_recherche:>
+<span class="titre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</span></h1>
+</div>]
+
+<div class="#EDIT{texte} texte">
+<:fouiller_archives:>
+</div>
+
+<//B_articles>
+
+		</div><!-- fin contenu -->
+
+		[(#REM) Menu de navigation laterale ]
+		<div id="navigation">
+
+<INCLURE{fond=inc-multimedia}>
+			
+</div><!-- fin navigation -->
+
+</div><!-- fin conteneur -->
+	
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}>
+
+</div><!-- fin page -->
+</body>
+</html>

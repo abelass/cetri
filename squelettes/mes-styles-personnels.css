@@ -1,0 +1,488 @@
+/*  ----------------------------------------------------------- */
+/*  Feuilles de styles personnelles des squelettes de www.Cetri.be  */
+/*  ----------------------------------------------------------- */
+
+/* taille typo
+ * Base				100%
+ * -------------------------------------
+ * 20px				1.27em
+ * 19px				1.21em
+ * 18px				1.15em
+ * 17px				1.09em
+ * 16px				1.03em
+ * 15px				0.96em
+ * 14px				0.88em
+ * 13px				0.82em
+ * 12px				0.77em
+ * 11px				0.71em
+ * 10px				0.65em
+ *  9px				0.59em
+ * Attention : en dessous de 0.71em le texte devient illisible en text smallest sur MSIE
+ */
+
+/*  ------------------------------------------
+/*  Correction des styles HTML par defaut
+/*  ------------------------------------------ */
+body, html { background: none; margin: 0; color: #000; padding:0; height: 100% }
+img, table { margin: 0; padding: 0; border: none; }
+
+/*  ------------------------------------------
+/*  Couleurs des liens
+/*  ------------------------------------------ */
+
+
+
+a:link { color: #666666; border: 0; text-decoration: none; font-weight: bold;   }
+a:visited { color: #666666; border: 0; text-decoration: none; font-weight: bold; }
+a:hover { color: #999999; border: 0; text-decoration: none; font-weight: bold; }
+
+
+/* Couleurs des liens de Spip */
+a.spip_note {} /* liens vers notes de bas de page */
+a.spip_in { } /* liens internes */
+a.spip_out {  } /* liens sortants */
+a.spip_url {font-family: verdana, arial, sans-serif; } /* liens url sortants */
+a.spip_glossaire { } /* liens vers encyclopedie */
+.on { color: #333333; font-family: Verdana, Arial, Helvetica, sans-serif; font-variant: normal; text-decoration: none; font-weight: bold; }
+
+a.lire-suite { font-family: verdana, arial, sans-serif;  }
+a.lire-suite span { padding-left:0.5ex; color: #999933; }
+
+
+
+/*  ------------------------------------------
+/*  Blocs secondaires
+/*  ------------------------------------------ */
+
+/* Bloc et sous-bloc */
+
+.bloc { line-height: 16px; border: none; margin: 0em 0.33em 1em 0.33em; padding: 4px 3px 4px 3px; width: 100%; background: none; overflow:hidden }
+.bloc .spip_logos { padding:O; margin: 5px 5px 5px 5px}
+
+.sous-bloc-gris {font-family: verdana, arial, sans-serif; font-size: 0.71em; background: #E3E3E3;  margin: 0px 0px 0px 0px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; border-top: 4px solid #CCCCCC; padding: 5px 2px 5px 5px; }
+.sous-bloc-blanc {font-family: verdana, arial, sans-serif; font-size: 0.71em; background: white;  margin: 0px 0px 0px 0px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; border-top: 4px solid #CCCCCC; padding: 5px 2px 5px 5px; }
+.sous-bloc-jaune {font-family: verdana, arial, sans-serif; font-size: 0.71em; background: #FFE9D2;  margin: 0px 0px 0px 0px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; border-top: 4px solid #CCCCCC; padding: 5px 2px 5px 5px; }
+.sous-bloc-vert {font-family: verdana, arial, sans-serif; font-size: 0.71em; background: #E4E4C9;  margin: 0px 0px 0px 0px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; border-top: 4px solid #CCCCCC; padding: 5px 2px 5px 5px; }
+.sous-bloc-blanc-sans-border {font-family: verdana, arial, sans-serif; font-size: 0.71em; background: white;  margin: 0px 0px 0px 0px; border: 0px #999999 solid; padding: 5px 2px 5px 5px; }
+.sous-bloc-blanc-special-livres {font-family: verdana, arial, sans-serif; font-size: 0.71em; background: white;  margin: 0px 0px 0px 0px; border-right: 1px solid #CCCCCC; border-bottom: 4px solid #CCCCCC; border-left: 1px solid #CCCCCC; border-top: 4px solid #CCCCCC; padding: 5px 2px 5px 5px; }
+.sous-bloc-grisatre {background: #F0F0F0;  margin: 0px 0px 0px 0px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; border-top: 4px solid #CCCCCC; padding: 5px 2px 5px 5px; }
+
+/* Bloc et sous-bloc : titre */
+
+.bloc-titre { padding: 0px 0px 0px 0px; font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 1.3em; font-weight: bold; background: none; color: #666666; margin: 0px 0px 0px 0px; border: none; font-variant: small-caps;  }
+
+/* Bloc et sous-bloc : Logo spip */
+.sous-bloc-gris .spip_logos { float: left; clear: none; margin: 0px 15px 2px 2px; border: 1px solid #CCCCCC; }
+.sous-bloc-blanc .spip_logos { float: left; clear: none; margin: 0px 4px 2px 2px; border: 0px solid #CCCCCC; }
+.sous-bloc-jaune .spip_logos { float: left; clear: none; margin: 0px 4px 2px 2px; border: 1px solid #CCCCCC; }
+.sous-bloc-jaune .colonne-1 .spip_logos { float: left; clear: none; border-right: 3px solid #CCCCCC; border-bottom: 3px solid #CCCCCC; border-left: 2px solid #CCCCCC; border-top: 2px solid #CCCCCC; }
+.sous-bloc-blanc-special-livres .colonne-1 .spip_logos { float: left; clear: none; border: 1px #CCCCCC solid; }
+.sous-bloc-blanc .colonne-1 .spip_logos { float: left; clear: none; border-right: 3px solid #CCCCCC; border-bottom: 3px solid #CCCCCC; border-left: 2px solid #CCCCCC; border-top: 2px solid #CCCCCC; } 
+.sous-bloc-grisatre .colonne-1 .spip_logos { float: left; clear: none; border: 1px #CCCCCC solid; }
+
+/* Bloc et sous-bloc : colonnes */
+
+.sous-bloc-conteneur-pour-colonnes  { display: block; width: 100%; height: 118px; border-bottom: 1px solid #CCCCCC; padding: 5px 0px 5px 0px; } 
+.sous-bloc-blanc-special-livres .colonne-1 { float: left; width: 20%; border: none; margin: none, padding: none }
+.sous-bloc-blanc-special-livres .colonne-2 { float: right; width: 80%; border: none; margin: none, padding: none }
+.sous-bloc-jaune .colonne-1 { float: left; width: 40%; border: none; margin: none, padding: none }
+.sous-bloc-jaune .colonne-2 { float: right; width: 60%; border: none; margin: none, padding: none }
+.sous-bloc-blanc .colonne-1 { float: left; width: 40%; border: none; margin: none, padding: none }
+.sous-bloc-blanc .colonne-2 { float: right; width: 60%; border: none; margin: none, padding: none }
+.sous-bloc-grisatre .colonne-1 { float: left; width: 20%; border: none; margin: none, padding: none }
+.sous-bloc-grisatre .colonne-2 { float: right; width: 80%; border: none; margin: none, padding: none }
+
+
+#logo-sommet { width: 100%; text-align: center; height: 35px; border-bottom: solid #CCCCCC 0px; margin: 10px auto 0px auto; background: none; padding: 0px 0px 0px 0px }
+
+
+
+
+/*  ------------------------------------------
+/*  Typographie generale du site
+/*  ------------------------------------------ */
+
+/* Titre principal encart / contre-encart / rubrique / Article / auteur / Mot */
+h1 { margin: 0; padding: 0; font-weight: bold; font-family: "Trebuchet MS", Helvetica, sans-serif; }
+h2 { margin: 0; padding: 0; font-weight: bold; font-size: "Trebuchet MS", Helvetica, sans-serif;}
+h3 { margin: 0; padding: 0; font-weight: bold; font-family: "Trebuchet MS", Helvetica, sans-serif; }
+h5 { margin: 0; padding: 0; font-weight: bold; font-family: verdana, arial, sans-serif; }
+
+
+/*  ------------------------------------------
+/*  Typographie generale du site
+/*  ------------------------------------------ */
+
+/* Ligne de séparation dans las listes */
+.liste-articles-ligne {	border-bottom: #CCCCCC solid 1px; margin: 5px 0px 5px 0px; }
+
+
+.ps, .notes, .opinions, .autorisation-reproduction { margin-top: 1.4em; padding-top: 2px; border-top: 1px solid #CCC; padding-left: 5px; }
+.ps { font-size: 0.71em; font-family: verdana, arial, sans-serif; }
+.notes { clear: both; font-size: 0.71em; font-family: verdana, arial, sans-serif; }
+.opinions { clear: both; font-size: 0.71em; margin-bottom: 2em; color: #999999; text-align: justify; font-family: verdana, arial, sans-serif; }
+.autorisation-reproduction { clear: both; font-size: 0.71em; margin-bottom: 2em; color: #999999; text-align: justify; font-family: verdana, arial, sans-serif; }
+
+
+/* Cartouches */
+.cartouche { margin-bottom: 0.3; }
+.cartouche p { margin: 0; padding: 0; clear: left; }
+
+.cartouche-cetri .spip_logos { float: right; margin: 0px 0px 3px 4px; clear: left; }
+.cartouche-cetri .titre { font-size: 1.08em; font-weight: bold; font-variant: small-caps; margin-bottom: 4px; padding-left: 5px; }
+.cartouche-cetri .surtitre { font-size: 0.85em; font-weight: bold; color: #999999; padding-left: 5px; }
+
+.cartouche-multimedia .spip_logos { float: left; margin: 0px 0px 2px 4px; clear: left;  }
+.cartouche-multimedia .titre { font-size: 1.08em; font-weight: bold; font-variant: small-caps; margin-bottom: 4px; padding-left: 5px; }
+.cartouche-multimedia .surtitre { font-size: 0.85em; font-weight: bold; color: #999999; padding-left: 5px; }
+
+.cartouche .spip_logos { float: right; margin: 0px 0px 3px 4px; clear: left; border: 1px solid #CCCCCC; }
+.cartouche .titre { font-size: 1.1em; font-weight: bold; font-variant: small-caps; margin-bottom: 4px; color: black; padding-left: 5px;   }
+.cartouche .surtitre { font-size: 0.85em; font-weight: bold; color: #999999; padding-left: 5px; }
+
+.menu-images .spip_logos { border: 1px solid #CCCCCC; } 
+
+.menu-mot { color: white; font-weight: bold; font-family: verdana, arial, sans-serif; font-size: 0.71em; margin: 0px 0px 0px 0px; padding: 2px 0 2px 0; text-align: center; background: #6C7288; border: 1px #CCCCCC solid  }
+.menu-mot a { color: #CCCCCC }
+.menu-mot a:hover { color: white; }
+.menu-mot on { color: white; }
+
+.lien {font-family: verdana, arial, sans-serif; font-size: 0.71em; font-weight: bold; line-height: 0.8em }
+
+.livres-titre { font-family: verdana, arial, sans-serif; font-size: 0.8em; font-weight: bold; background: none; margin-top: 0.5em; margin-bottom: 0.5em;  }
+.presentation-livre .spip_logos { float: right; margin: 0px 0px 3px 4px; clear: left; border: 1px solid #CCCCCC; }
+
+.hierarchie { margin-top: 1.4em; padding-top: 5px; border-top: 1px solid #CCC; font: 0.71em verdana, arial, sans-serif; }
+
+.titre-agenda {font-family: verdana, arial, sans-serif; font-size: 0.77em; font-weight: bold; font-variant: small-caps; line-height: 0.9em }
+.titre-agenda-date {background: #D9D8D7; padding-left: 10px; font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 0.9em; font-weight: bold; color: black; margin-bottom: 0em; text-align: left;  border: 1px solid #666666  }
+.titre-date {font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 1em; font-weight: bold; color: #6C7288; margin-bottom: 0.33em;  }
+.chapo  { text-align: justify; font-family: verdana, arial, sans-serif; font-size: 0.77em; font-weight: bold; padding-left: 8px;  }
+.texte { text-align: justify; font-family: verdana, arial, sans-serif; font-size: 0.77em; padding-left: 8px; line-height: 1.6em; }
+.intro { clear: none; text-align: justify; margin: 4px 2px 4px 2px; font-family: Georgia, Times New Roman, Times, serif; font-size: 0.71em; }
+small { font-size: 0.71em; font-family: verdana, arial, sans-serif; }
+
+
+.ps h2, .notes h2 { font-size: 1.19em; font-weight: bold; padding-left: 5px; }
+h3.spip {text-align: left; font-size: 1.2em; }
+
+
+
+/* Espaceur de blocs */
+.nettoyeur { clear: both; margin: 0; padding: 0; border: none; height: 0; line-height: 1px; margin-bottom: 0em; font-size: 1px; text-align: left; }
+
+
+
+/*  Portfolio
+---------------------------------------------- */
+#documents_portfolio {
+	clear: both;
+	margin-top: 1.4em;
+	padding-top: 2px;
+	border-top: 1px solid #CCC; }
+#documents_portfolio h2 {  font-weight: bold; }
+
+#document_actif { margin-top: 1em; }
+
+/*  Listes de documents joints (a un article ou une rubrique)
+---------------------------------------------- */
+#documents_joints { background: none; margin-top: 1.4em; margin-bottom: 1.4em; padding-top: 2px; border-top: 2px solid #CCC; }
+#documents_joints h2 { margin-bottom: 0.4em; font-size: 0.77em; font-variant: small-caps; font-weight: bold; font-family: verdana, arial, sans-serif; }
+
+
+/*  Pagination
+---------------------------------------------- */
+.pagination { font-family: verdana, arial, sans-serif; font-size: 0.77em; font-weight: bold; text-align: center; }
+
+
+/*  ------------------------------------------
+/*  Habillage des formulaires
+/*  ------------------------------------------ */
+
+.formulaire_spip { text-align: left; font-family: verdana, arial, sans-serif;   }
+.formulaire_spip p { margin: 0.5em 0; padding: 0; }
+
+.formulaire_spip fieldset { border: none}
+.formulaire_spip legend {  }
+
+.formulaire_spip label { font-size: 0.71em }
+.formulaire_spip .forml { width: 99%; font-family: verdana, arial, sans-serif; font-size: 0.71em; }
+
+/* Boutons */
+.spip_bouton { text-align: right; }
+.spip_bouton input { float: right; }
+
+/* Reponse du formulaire */
+.reponse_formulaire { margin: 1em; padding: 1em; font-family: verdana, arial, sans-serif; font-size: 0.71em; background: white; border: 1px solid #CCCCCC  }
+fieldset.reponse_formulaire { border: none; font-size: 0.77em; }
+
+/* Previsualisation du message */
+fieldset.previsu { margin: 1em; padding: 1em; font-family: verdana, arial, sans-serif; font-size: 0.71em; background: white; border: 1px solid #CCCCCC  }
+.previsu fieldset { border: none; font-size: 0.77em; }
+.previsu legend {color:red; font-weight: bold; }
+
+/*  ------------------------------------------
+/*  Tableaux internes aux articles
+/*  ------------------------------------------ */
+
+table.spip { text-align: left; border-top: 1px #CCCCCC solid; border-left: 1px #CCCCCC solid; border-right: 1px #999999 solid; border-bottom: 1px #999999 solid; margin: 5px auto 10px auto; width: 100%; padding: 3px 3px 3px 3px; }
+table.spip tr.row_first { background-color: white; border-bottom: 1px #CCCCCC solid; }
+table.spip tr.row_odd { background-color: white;  }
+table.spip tr.row_even { background-color: white;  }
+table.spip td { padding: 2px 2px 2px 2px;  }
+table.spip caption {margin: 0 auto 0 auto; width: 100%; font-weight: bold; text-align: center; padding: 3px 3px 3px 3px; background : #6C7288; color: white; border-color: #CCCCCC; border-style: solid; border-width: 1px 1px 3px 1px; }
+
+
+/*  ------------------------------------------
+/*  Logos, documents et images
+/*  ------------------------------------------ */
+
+.spip_documents { text-align: center; }
+.spip_documents img { border: 1px solid #666;  }
+.spip_documents_center { clear: both; width: 100%; margin: auto; }
+span.spip_documents_center { display: block; margin-top:1em; }
+.spip_documents_left { float: left; margin-right: 7px; margin-bottom: 5px;   }
+.spip_documents_right { float: right; margin-left: 7px; margin-bottom: 5px; }
+.spip_doc_titre { font-weight: bold; font-size: 0.9em; margin-left: auto; margin-right: auto; }
+.spip_doc_descriptif { clear: both; font-size: 0.9em; margin-left: auto; margin-right: auto; }
+
+
+
+/*  ------------------------------------------
+/*  Index - Classement alphabétique
+/*  ------------------------------------------ */
+
+#expose {text-decoration:none; color: #990000; width: 10px;   }
+.laliste a{ font-weight: bold; }
+.laliste a span{  }
+
+#alphabetique{ color:#555; margin-top: 15px;  } 
+#alphabetique li { display:inline; background: white; width: 10px; text-align: center; margin: 0px 1px 0px 1px; padding: 1px 1px 1px 1px; border-right: 1px solid #999999; border-bottom: 1px solid #999999; border-left: 1px solid #CCCCCC; border-top: 1px solid #CCCCCC }
+#alphabetique a span { display: block; background: none; } /*couleur des blocs du texte*/
+#alphabetique a span {float:none;  }
+#alphabetique a:hover span { color: #999999;  }/*couleur du lien au survol seulement*/
+#alphabetique a:hover { background: none;  } /*couleur du bloc au passage de la souris*/
+#alphabetique a:hover span { background: none; color: #999999  } /*couleur du bloc du texte au passage de la souris*/
+
+
+
+	
+	/* Formulaires de recherche */
+
+.formulaire_recherche { float:right; width: 210px; height: 28px; 
+						background:none; margin: 0px 20px 0px 0px; padding:0px; 
+						font-size: 12px; font-family:Verdana, Arial, Helvetica, sans-serif }
+		
+.formulaire_recherche * { display: inline; vertical-align: middle; }
+.formulaire_recherche form {   } 
+.formulaire_recherche label {}
+.formulaire_recherche input.text { width: 170px; height: 10px; 
+									border: 1px #EEE solid;
+									margin: 4px 0px ; padding: 5px 3px ;
+									background: #FFFFFF; color:#444;
+									 }
+
+.formulaire_recherche .bouton { width: 24px; height:24px;
+	border: none;
+	background:url("/squelettes/images/icones/search.png") no-repeat 0px center;
+	padding: 0px; margin : 0px ;
+	
+	 } 
+
+.formulaire_recherche .bouton img {width: 10px; height:10px; margin: 0; padding: 0}
+
+
+/*  ------------------------------------------
+/* Liste alphabétique des auteurs
+/*  ------------------------------------------ */
+
+div.alphabet{
+	width: 100%; padding:none; margin:none; font-family:Verdana, Arial, Helvetica, sans-serif
+	}
+
+div.alphabet ul{
+	margin:0px 0px 20px 0px; padding:0px;
+	}
+
+div.alphabet ul li
+{display:inline-block;
+	font-size: 12px;
+	margin:0px; padding:0px;
+	color: #CCCCCC;
+	
+}
+
+div.alphabet ul li a { text-align:center; width: 14px; padding : 4px 0px; margin:0px auto;
+	}
+
+div.alphabet ul li a:link, div.alphabet ul li a:visited {
+	
+	 
+	display:inline-block;
+	text-align:center;	
+	border:none;color:#EEE; background-color: #444;
+}
+
+div.alphabet ul li a:hover, div.alphabet ul li.on a {
+	
+	margin:0px; 
+	display:inline-block;
+	text-align:center;	
+	border:none;color:#FFFFFF; background-color:#990000; }
+
+
+/* Listes articles ou rubriques ou liens */
+
+.liste {clear:both; display: block; margin: 10px 0px; padding: 0px;color:#666666; background:none; font-family:Verdana, Arial, Helvetica, sans-serif  }
+
+.liste ul {clear:both; margin: 5px; padding: 5px;background:none;  }
+
+.liste li {clear:both; margin: 2px; padding:2px 0px 2px 18px; border-top:1px #CCCCCC dotted; list-style:none;background: url("/squelettes/images/puces/arrow_state_grey_right.jpg") no-repeat; background-position: 0px 3px; font-size: 11px}
+.liste .surtitre, .liste .soustitre {padding: none; margin:none }
+.liste .titre {margin: 4px 0px; padding: 0px;  }
+.liste .date { }
+.liste .introduction {}
+.liste .auteur { }
+.liste .spip_logos {float:left; margin: 0px 5px 5px 0px; padding:none; border: none;}
+
+/* Pagination  JQUERY des listes Scrollto*/
+ul#shopping_list, ul#shopping_list1, ul#shopping_list2, ul#shopping_list3, ul#shopping_list4  {clear:both; margin: 4px; padding: 3px; background:none}
+
+#shopping_list_counter1, #shopping_list_counter2, #shopping_list_counter3, #shopping_list_counter4
+{border-top: 1px dotted #e8e8e8; padding: 15px 0px 5px 0px; text-align:center;font-size:11px; o  }
+
+.qp_counter {padding: 0px 20px; }
+a.qp_disabled {	}
+
+
+
+.liste {clear:both; display: block; margin: 10px 0px; padding: 0px;color:#666666; background:none; font-family:Verdana, Geneva, sans-serif }
+.liste ul {clear:both; margin: 5px; padding: 5px;background:none;  }
+
+.liste li {clear:both; margin: 2px; padding:2px 0px 2px 0px; border-top:1px #CCCCCC dotted; list-style:none;background: none ; }
+.liste .surtitre, .liste .soustitre {padding: none; margin:none; font-size:11px;}
+.liste .titre {margin: 0px 0px; padding:2px 0px 2px 18px;font-size:12px; background: url("http://www.cetri.be/IMG/icones/carre-nav.gif") no-repeat ;background-position: 1px 6px;  }
+.liste .date { }
+.liste .descriptif {margin : 8px 5px 8px 68px; padding: none; }
+.liste .lieu, .liste .date-agenda {text-align:right;margin: 0px 5px; padding: none; }
+.liste .auteur { font-size:11px}
+.liste .spip_logos {float:left; margin: 0px 5px 5px 0px; padding:none; border: none;}
+
+.liste .lieu, .liste .date-agenda {color: #999999 }
+
+
+
+body {background: #999999; padding:0; margin:0;}
+
+#page {	width:980px; 
+		background:#FFFFFF url("/squelettes/images/bg/background-entete.jpg") top right no-repeat; 
+		text-align: left; 
+		margin: 10px auto 10px auto; padding:0px; 
+		border: 4px solid #FFFFFF}
+		
+#conteneur { width: 948px; margin: 40px auto 10px auto; padding: 0px 15px; background-color: white; }
+#conteneur #contenu { float: left; width: 70%; margin: 0; }
+#conteneur #navigation { float: right; width: 20%; margin: 0; line-height: 0.8em;}		
+		
+		
+		
+#entete { width:972px; height:120px; background:none; 
+			margin: 0px; padding:0px; 
+			border: none }
+#entete .colonne1 {float:left; width:300px; padding:none;margin:none;}
+#entete .colonne2 {float:right; width:600px; padding:none;margin:none;}
+
+			
+ul#tabnav {float:right;width:550px; height: 26px;padding: 0px 50px 0px 0px; font: 10px  verdana, arial, sans-serif; margin:none; border:none; background-color:none; overflow:hidden;text-transform:uppercase }
+ul#tabnav li {float:left; height: 21px; background-color:none; margin: 0px 2px; padding: 0px 10px 0px 10px; border-left: 1px solid #444; list-style:none;  }
+ul#tabnav li a {float:left; color: #444; padding: 4px; margin: 0; liste-style:none; font-weight:normal }
+ul#tabnav li a:link {}
+ul#tabnav li a a:visited {}
+ul#tabnav li a:hover { float: left;  color: #444; padding: 4px; margin: 0;text-decoration:underline  }
+ul#tabnav li a.on { float:left; color: #444; padding: 4px; margin: 0; text-decoration:underline }
+.formulaire_menu_lang{ float:right  }
+.formulaire_menu_lang label{font-size: 11px;}
+
+
+#menu-2 { width: 978px;margin: 0px auto 0px auto; background : #444;border: none; overflow:hidden   }
+#menu-2 ul#publi { font: bold 12px verdana, arial, sans-serif; list-style-type: none; padding: 0px 0px 21px 0px; border: none; margin: 0 0 0 0;background : none }
+#menu-2 ul#publi li { float: left; height: 30px; margin: 0px 0px 0px 0px; padding: 5px 2px 4px 2px;background : none; border:none; border-right: 1px solid #999999;border-left: 1px solid #666666; } 
+#menu-2 ul#publi li.active { border-top: none;background : none  ;background : none}
+#menu-2 #publi a { float: left; text-decoration: none; padding: 5px 9px 4px 10px; background:none;font-weight: normal; border: none;}
+#menu-2 #publi a:link {color: #E3E3E3 }
+#menu-2 #publi a:visited{ color: #E3E3E3}
+#menu-2 #publi a.on { float: left; display: block; color:#C00; text-decoration: none; padding: 4px; }
+#menu-2 #publi a:hover { color : #C00;border:none }
+#menu-2 #publi img {  }
+/* Formulaires de recherche */
+
+.formulaire_recherche { float:right; width: 250px; height: 50px; 
+						background:none; margin: 20px 20px 0px 0px; padding:0px; 
+						font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif }
+		
+.formulaire_recherche * { display: inline; vertical-align: middle; }
+.formulaire_recherche form {  width: 240px; } 
+.formulaire_recherche label {}
+.formulaire_recherche input.text { width: 210px; height: 10px; 
+									border: 1px #EEE solid;
+									margin: 4px 0px ; padding: 5px 3px ;
+									background: #FFFFFF; color:#444;
+									 }
+
+.formulaire_recherche .bouton { width: 24px; height:24px;
+	border: none;
+	background:url("/squelettes/images/icones/search.png") no-repeat 0px center;
+	padding: 0px; margin : 0px ;
+	
+	 } 
+
+.formulaire_recherche .bouton img {width: 10px; height:10px; margin: 0; padding: 0}
+
+.formulaire_recherche a{font-weight:normal; font-size: 11px; text-transform:lowercase; padding: 5px 6px;}
+
+
+
+/*  ------------------------------------------
+/*  Pied de page
+/*  ------------------------------------------ */
+
+#pied  { 
+
+width:100%; height: 100%;
+clear: both; 
+font-family: verdana, arial, sans-serif; font-size: 11px;
+padding: 15px 0px 0px 0px; margin: 20px 0 0 0;
+text-align: center;font-size: 12px; 
+border:none;
+overflow:hidden;
+background: #FFFFFF url("/squelettes/images/bg/background-footer.jpg") no-repeat left bottom; }
+
+#pied a { color: #666666; }
+#pied img { vertical-align: bottom; }
+
+
+/* Réseaux sociaux */
+#addthis {width: 100%; clear:both; margin: 2px; padding: 2px;border:none;background:none;font-family: Verdana, Arial, Helvetica, sans-serif; font-size:12px; overflow:hidden }
+#addthis ul {clear:both; display: inline; margin:0px; float:right  }
+#addthis ul li { background: none; display: inline; list-style-type: none; margin: 1px 3px 1px 3px; padding: 1px;}
+#addthis a {font-weight:normal}
+
+/* liens */
+
+a:link, a:visited, a.spip_note  {color:#3d6473; text-decoration: none;  } 
+a:hover, a.on {color:#11779d; text-decoration: none;    }
+a.spip_note {color:#003399; text-decoration: none;  } 
+a:hover .spip_note {text-decoration:overline underline }
+
+#hierarchie a {color: #999999; font-weight:normal}
+#hierarchie a:hover {text-decoration: underline}
+
+a.spip_in { } /* liens internes */
+a.spip_out {  } /* liens sortants */
+a.spip_url { } /* liens url sortants */
+a.spip_glossaire {  } /* liens vers encyclopedie */
+
+.chapo a, .texte a, .note a, .ps a {border-bottom:1px dotted #333333; font-weight:normal}
+.texte .spip_documents a{border-bottom:none}
+
+.chapo img a, .texte img a, #addthis a {border: none}

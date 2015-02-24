@@ -1,0 +1,20 @@
+
+[(#REM)	Annonces ]
+<B_annonces_articles>
+<div class="bloc">
+<div class="bloc-titre">-<:annonces:>-</div>
+<div class="sous-bloc-blanc">
+<BOUCLE_annonces_articles(ARTICLES){page IN emploi, formations} {age_redac<0}>
+
+<p><br>
+[<img src="../IMG/icones/carre-nav.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="#TITRE">(#TITRE)</a>]<br><i>#DESCRIPTIF</i>
+#LIEU<br>
+</BOUCLE_annonces_articles>
+</div>
+</div>
+</B_annonces_articles>
+
+<//B_annonces_articles>
+
+
+

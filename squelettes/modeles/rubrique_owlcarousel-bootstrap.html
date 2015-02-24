@@ -1,0 +1,18 @@
+<div class="span12">
+
+              <div id="owl-demo" class="owl-carousel">
+                <BOUCLE_publications (ARTICLES) {id_rubrique IN (#ENV{id}|explode{','})}  {par num titre} {inverse}>
+                <div class="item">
+
+[(#LOGO_ARTICLE
+        |#URL_ARTICLE
+        |image_reduire{250,373}
+        |inserer_attribut{class,img-responsive}
+        |inserer_attribut{alt,#TITRE})]
+
+                </div>
+                 </BOUCLE_publications>
+               
+              </div>
+              
+            </div>

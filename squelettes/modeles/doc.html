@@ -1,0 +1,60 @@
+<BOUCLE_doc (DOCUMENTS) {id_document} {tout}>
+[<!--(#REM)
+
+	Modele pour <doc> en dl/dt/dd
+	cf. http://pompage.net/pompe/listesdefinitions/
+
+	La largeur de la legende est egale a la largeur de l'image
+	avec un minimum de 120px, et un maximum de 350px.
+
+	Dans le cas d'une simple image (mode=image), on affiche
+	le document lui-meme, sans lien de telechargement
+-->]
+[(#ENV{mode_force,#MODE}|=={image}|oui)
+	#SET{fichier,#URL_DOCUMENT}
+	#SET{width,#LARGEUR}
+	#SET{height,#HAUTEUR}
+	#SET{url,#ENV{lien}}
+]
+[(#ENV{mode_force,#MODE}|=={image}|non)
+	[(#SET{fichier,[(#LOGO_DOCUMENT|extraire_attribut{src})]})]
+	[(#SET{width,[(#LOGO_DOCUMENT|extraire_attribut{width})]})]
+	[(#SET{height,[(#LOGO_DOCUMENT|extraire_attribut{height})]})]
+	#SET{url,#ENV{lien,#URL_DOCUMENT}}
+][<!--(#REM)
+
+
+	Si largeur ou hauteur fournit en parametre, redimensionner
+
+-->][
+(#ENV{largeur,0}|ou{#ENV{hauteur,0}})
+	#SET{fichier,#GET{fichier}|image_reduire{#ENV{largeur,0},#ENV{hauteur,0}}}
+	#SET{width,#GET{fichier}|largeur}
+	#SET{height,#GET{fichier}|hauteur}
+	#SET{fichier,#GET{fichier}|extraire_attribut{src}}
+]
+
+
+
+
+<div class="shadow-wrapper">
+	<div class="[pull-(#ENV{align})]" style="width:#GET{width}px">
+<dl class="box-shadow shadow-effect-2" >
+<dt> [<a href="(#GET{url})"	class="[(#ENV{lien_class})] fancybox-button zoomer mediabox" data-rel="fancybox-button" type="#MIME_TYPE" title='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)]'[
+	(#ENV{lien}|?{'',type="#MIME_TYPE"})]>]
+
+
+
+	
+	<span class="overlay-zoom">
+	<img src='#GET{fichier}' width='#GET{width}' height='#GET{height}' alt='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)]' class="img-responsive" />
+	<span class="zoom-icon"></span></span>[(#GET{url}|?{</a>})]
+</dt>
+[<dt class='#EDIT{titre} spip_doc_titre'[ style='width:(#GET{width}|min{350}|max{120})px;']>(#TITRE)</dt>][
+<dd class='#EDIT{descriptif} spip_doc_descriptif'[ style='width:(#GET{width}|min{350}|max{120})px;']>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</dd>]
+</dl>
+</div>
+</div>
+
+</BOUCLE_doc>
+#FILTRE{trim}

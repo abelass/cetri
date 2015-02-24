@@ -1,0 +1,45 @@
+<div class="formulaire_recherche">
+<form action="[(#ENV{action})]" method="get"><div>
+	[(#ENV{action}|form_hidden)]
+	[<input type="hidden" name="lang" value="(#ENV{lang})" />]
+		<input type="text" class="text" size="10" name="recherche" id="recherche" value="[(#ENV{recherche}|sinon{Recherche" onfocus="this.value='';})]" accesskey="4" />
+	<input type="submit" class="bouton" value="" title="<:info_rechercher:>" />
+</div></form>
+
+
+<BOUCLE_index_pays_regions (GROUPES_MOTS) {par num titre, titre} {id_groupe=4}>
+
+<#EXPOSE{span,a href="spip.php?page=index&id_groupe=#ID_GROUPE&lettre=A&lang=#LANG"}[ class="(#EXPOSE)"] title="[(#TITRE|supprimer_numero)]">
+<:pays:>
+</#EXPOSE{span,a}> |
+</BOUCLE_index_pays_regions>
+
+[(#REM)	Index des auteurs]
+
+<a href="spip.php?page=auteurs&lettre=A&lang=#LANG" title="Index des auteurs">
+<:auteurs_index:></a> | 
+
+
+[(#REM)	Index des thèmes]
+
+
+<BOUCLE_index_themes (GROUPES_MOTS) {par num titre, titre} {id_groupe=5}>
+[ 
+<#EXPOSE{span,a href="spip.php?page=index&id_groupe=#ID_GROUPE&lettre=A&lang=#LANG"}[ class="(#EXPOSE)"] title="[(#TITRE|supprimer_numero)]">
+(#TITRE|supprimer_numero)
+</#EXPOSE{span,a}> | ]
+</BOUCLE_index_themes>
+
+
+[(#REM)	Index des sources]
+
+
+<BOUCLE_index_sources (GROUPES_MOTS) {par num titre, titre} {id_groupe=3}>
+[
+<#EXPOSE{span,a href="spip.php?page=index&id_groupe=#ID_GROUPE&lettre=A&lang=#LANG"}[ class="(#EXPOSE)"] title="[(#TITRE|supprimer_numero)]">
+(#TITRE|supprimer_numero)
+</#EXPOSE{span,a}>]
+</BOUCLE_index_sources>
+
+
+</div>

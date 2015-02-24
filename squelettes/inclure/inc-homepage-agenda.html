@@ -1,0 +1,28 @@
+<div class="row margin-bottom-30">
+         <B_evenements>
+            <div class="headline">
+                <h2>#ENV{titre}
+                    <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">
+                       <i class="fa fa-link"></i>
+                    </a>
+                    <a href="#URL_PAGE{backend-evenements}" target="_blank" title="RSS">
+                       <i class="fa fa-rss"></i>
+                    </a>
+               </h2>
+            </div>
+
+            <div class="list-group">
+            <BOUCLE_evenements (EVENEMENTS){tout} {age_fin<=0}{par date_debut}{statut=publie}{0,5}{doublons}>
+                <a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="#TITRE" class="list-group-item">
+                    <h5 class="list-group-item-heading">#TITRE</h5>
+                    <p class="list-group-item-text" style="line-height:1.5em">
+                     
+                            <i class="fa fa-calendar"></i>  [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })]
+                             <i class="fa fa-map-marker"></i> #LIEU
+                    
+                     </p>
+                </a>
+            </BOUCLE_evenements>
+        </div>
+        </B_evenements>
+</div>

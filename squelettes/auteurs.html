@@ -1,0 +1,61 @@
+#CACHE{7200}
+
+
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+<B_keywords><meta name="Keywords" content="<BOUCLE_keywords(MOTS) {id_rubrique} {","}>[(#TITRE|supprimer_numero|textebrut)]</BOUCLE_keywords>" /></B_keywords>
+<meta name="generator" content="Bluefish 1.0.7"/>
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+<meta name="revisit-after" content="7 days">
+<meta name="robots" content="ALL">
+[<meta name="Reply-to" content="(#EMAIL_WEBMASTER|textebrut)" />]
+<INCLURE{fond=inc-head}>
+
+
+
+</head>
+<body class="page_rubrique">
+<div id="page">
+<INCLURE{fond=inc/inc-entete, env} />
+
+
+<div id="conteneur">
+
+[(#REM) Contenu principal : contenu de la rubrique ]
+<div id="contenu">
+
+<div class="cartouche">
+
+<h1 class="#EDIT{titre} titre"><:auteurs:></h1>
+</div>
+
+
+[(#MODELE{annuaire}{lettre=#ENV{lettre}})]
+
+
+						
+
+
+</div><!-- fin contenu-rubrique -->
+
+[(#REM) Menu de navigation laterale ]
+
+<!-- début navigation -->
+<div id="navigation">
+<INCLURE{fond=inc/inc-agenda-sommaire}>
+
+</div>
+<!-- fin navigatio -->
+
+</div><!-- fin conteneur -->
+
+[(#REM) Pied de page ]
+<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!-- fin page -->
+</body>
+</html>
+

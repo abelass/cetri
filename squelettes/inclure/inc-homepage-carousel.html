@@ -1,0 +1,21 @@
+<BOUCLE_bg (ARTICLES) {id_mot=1040} {par date}{inverse} {0,1}>
+    <div class="contacts-section margin-bottom-60" style="background: #333 url('/IMG/[(#LOGO_ARTICLE_SURVOL|fichier)]');background-repeat:no;background-position:center center">
+</BOUCLE_bg>                 
+
+<div class="flipster" style="padding: 0px 0px 80px 0px; z-index:500">
+    <ul class="flip-items" >
+        <BOUCLE_carousel_nav (ARTICLES) {id_mot=1025} {par date}{inverse} {0,8}>
+          <li id="Item-#COMPTEUR_BOUCLE" title="#TITRE" style=" width: 250px">
+           [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="[(#TITRE|textebrut)]">
+           (#LOGO_ARTICLE_NORMAL
+              |image_reduire{*,300}
+              |vider_attribut{class,spip_logos}
+              |inserer_attribut{class,img-responsive}
+              |inserer_attribut{alt,[(#TITRE|textebrut)]}
+            )</a>]
+          </li>
+        </BOUCLE_carousel_nav>
+    </ul>
+</div>
+
+</div> <!--=== End contacts-section ===-->   

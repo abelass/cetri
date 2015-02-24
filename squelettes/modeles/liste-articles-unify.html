@@ -1,0 +1,60 @@
+<div class="row" style="background:#EFEFEF">
+            <div class="container content">
+
+
+
+<B_articles>
+ #ANCRE_PAGINATION
+<BOUCLE_articles (ARTICLES) {id_mot} {par date} {inverse} {pagination 21}>
+<div class="col-md-4">
+<div class="thumbnails thumbnail-style thumbnail-kenburn" style="height:350px;background:#FFFFFF">
+                    <div class="thumbnail-img">
+                        <div class="overflow-hidden">
+
+
+      [(#LOGO_ARTICLE_NORMAL
+                    |image_reduire{430,0}
+                    |image_reduire{0,270}
+                     |image_recadre{400,250,center}
+                    |vider_attribut{class,spip_logos}
+                    |inserer_attribut{class,img-responsive}
+                    |inserer_attribut{alt,#TITRE})] 
+                            </div>
+                                               
+                    </div>
+
+      <div class="caption">
+         <h3><a class="hover-effect" href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">[(#TITRE|couper{70})]</a></h3>
+                        <p>[(#LESAUTEURS|textebrut) - ] [(#DATE|affdate)]</p>
+                        
+          <div class="pull-right">
+           <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:readmore:>">
+            <i class="fa fa-plus"></i>
+          </a>
+          </div>
+                                
+                
+        
+      </div> </div>
+   
+
+</div>
+
+   </BOUCLE_articles>
+ </div>
+
+ <hr>
+
+
+
+                    
+                      #PAGINATION{precedent_suivant}
+                
+                <!--End Pegination Centered-->
+
+
+</B_articles>
+
+</div></div>
+        
+        

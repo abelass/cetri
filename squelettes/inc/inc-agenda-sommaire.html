@@ -1,0 +1,33 @@
+
+[(#REM)	Agenda ]
+<B_agenda_articles>
+<div class="bloc">
+<div class="bloc-titre">-Agenda-</div>
+<div class="sous-bloc-blanc">
+<BOUCLE_agenda_articles(EVENEMENTS){tout} {age_fin<=0}{par date_debut}{statut=publie} {0,4}>
+
+<p><i>
+
+[(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{
+ [(#DATE_DEBUT|affdate{'d/m/Y'})]
+,
+ Du [(#DATE_DEBUT|affdate{'d/m/Y'})]
+ au
+ [(#DATE_FIN||affdate{'d/m/Y'})],''})]
+
+
+
+</i><br>
+[<img src="../IMG/icones/carre-nav.gif"> <a href="#URL_EVENEMENT&lang=#LANG" title="#TITRE">(#TITRE)</a>]<br>
+#LIEU<br>
+<div class="liste-articles-ligne"></div>
+</BOUCLE_agenda_articles>
+<div align="right"><a href="spip.php?page=agenda&id_mot=116&lang=#LANG" title="<:suite:>">[<:suite:>]</a></div>
+</div>
+</div>
+</B_agenda_articles>
+
+<//B_agenda_articles>
+
+
+

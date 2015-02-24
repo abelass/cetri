@@ -1,0 +1,455 @@
+/*Shopping Cart cf.shop-style.css
+------------------------------------*/
+/*Coupon Code*/
+.shopping-cart .coupon-code {
+	margin-top: 35px;
+	padding-top: 35px;
+	border-top: 1px solid #eee;
+}
+
+.shopping-cart .coupon-code h3 {
+	margin: 0;
+	color: #687074;
+	font-size: 18px;
+}
+
+.shopping-cart .coupon-code input {
+	width: 60%;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+/*Total Result*/
+.shopping-cart .total-result li {
+	display: block;
+}
+
+.shopping-cart .total-result li:after,
+.shopping-cart .total-result li:before {
+	content: " ";
+	display: table;
+}
+
+.shopping-cart .total-result li:after {
+	clear: both;
+}
+
+.shopping-cart .total-result li.divider {
+	height: 1px;
+  	margin: 9px 0;
+  	overflow: hidden;
+  	background: #eee;
+}
+
+.shopping-cart .total-result h4 {
+	float: left;
+	margin-right: 15px;
+}
+
+.shopping-cart .total-result-in {
+	overflow: hidden;
+	text-align: right;
+}
+
+.shopping-cart .total-result-in h4,
+.shopping-cart .total-result-in span {
+	color: #687074;
+	font-size: 18px;
+}
+
+.shopping-cart .total-result .total-price h4,
+.shopping-cart .total-result .total-price span {
+	font-weight: 600;
+}
+
+.shopping-cart .total-result .total-price h4 {
+	margin: 0 auto;
+}
+
+.shopping-cart .total-result .total-price span {
+	color: #c9253c;
+}
+
+/*Table*/
+.shopping-cart .table > thead > tr > th,
+.shopping-cart .table > tbody > tr > th,
+.shopping-cart .table > tfoot > tr > th,
+.shopping-cart .table > thead > tr > td,
+.shopping-cart .table > tbody > tr > td,
+.shopping-cart .table > tfoot > tr > td {
+	border-top: none;
+	vertical-align: middle;
+}
+
+.shopping-cart .table > thead > tr > th,
+.shopping-cart .table > tbody > tr > td {
+	padding: 15px;
+	text-align: center;
+}
+
+.shopping-cart .table > thead > tr > th {
+	color: #687074;
+	font-size: 16px;
+	font-weight: 400;
+	padding-bottom: 20px;
+	text-transform: uppercase;
+}
+
+.shopping-cart .table > tbody > tr > td {
+	color: #888;
+}
+
+.shopping-cart .table > tbody > tr > td.shop-red {
+	color: #c9253c;
+}
+
+/*Product In Table*/
+.shopping-cart .product-in-table {
+	text-align: left !important;
+}
+
+.shopping-cart .product-it-in {
+	overflow: hidden;
+}
+
+@media (min-width: 991px) {
+	.shopping-cart .product-it-in {
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 992px) {
+	.shopping-cart .product-it-in {
+		clear: both;
+	}
+}
+
+.shopping-cart .product-in-table img {
+	float: left;
+	width: 120px;
+	height: auto;
+	padding: 10px;
+	background: #fff;
+	margin-right: 15px;
+	border: 1px solid #eee;
+}
+
+.shopping-cart .product-in-table h3 {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+/*Quantity Field Form*/
+.shopping-cart .quantity-button {
+	color: #888;
+	width: 45px;
+	height: 40px;
+	padding: 5px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 18px;
+	background: #eee;
+	text-align: center;
+	font-weight: normal;
+	white-space: nowrap;
+	display: inline-block;
+  	background-image: none;
+}
+
+.shopping-cart .quantity-field {
+	width: 45px;
+	height: 40px;
+	outline: none;
+	margin: 0 -4px;
+	font-size: 18px;
+	text-align: center;
+	display: inline-block;
+	border: 1px solid #eee;
+}
+
+/*Close*/
+.shopping-cart .close {
+	opacity: 1;
+	color: #888;
+	font-size: 18px;
+	padding-right: 10px;
+}
+
+.shopping-cart .close:hover {
+	color: #555;
+}
+
+/*Billing Info*/
+.shopping-cart h2.title-type {
+	font-size: 16px;
+	margin-left: 20px;
+	text-transform: uppercase;
+}
+
+.shopping-cart .billing-info-inputs {
+	padding: 20px;
+	background: #f8f8f8;
+	border: 1px solid #eee;
+}
+
+.shopping-cart .billing-info-inputs label {
+	color: #555;
+	margin-bottom: 0;
+	vertical-align: middle;
+}
+
+.shopping-cart .billing-info-inputs input {
+	min-height: 40px;
+	border-color: #eee;
+	margin-bottom: 10px;
+}
+
+.shopping-cart .billing-info-inputs .form-control {
+	color: #888;
+	box-shadow: none;
+}
+
+.shopping-cart .billing-info-inputs .form-control::-moz-placeholder {
+	color: #888;
+}
+.shopping-cart .billing-info-inputs .form-control:-ms-input-placeholder {
+	color: #888;
+}
+.shopping-cart .billing-info-inputs .form-control::-webkit-input-placeholder {
+	color: #888;
+}
+
+
+/*Steps cf.custom-jquery-steps.css
+------------------------------------*/
+
+/* numero de chaque step*/
+.wizard > .steps .disabled .number {
+	color: #3498dc
+}
+
+/* step en cours*/
+.wizard > .steps .current a,
+.wizard > .steps .current a:hover,
+.wizard > .steps .current a:active {
+    background: #3498dc;
+}
+
+/* step terminé*/
+.wizard > .steps .done a,
+.wizard > .steps .done a:hover,
+.wizard > .steps .done a:active {
+    background: #2980b9;
+}
+.wizard > .steps .done .number,
+.wizard > .steps .done p {
+	color: #CCCCCC;
+}
+.wizard > .steps .done h2 {
+	color: #CCCCCC;
+}
+
+/*Erreur dans un step*/
+.wizard > .content > .body em.invalid {
+   color: #8a1f11;}
+.wizard > .content > .body input.invalid {
+	border: 1px solid #8a1f11 !important;}
+.wizard > .content > .body input.invalid.form-control::-moz-placeholder {
+	color: #8a1f11;}
+.wizard > .content > .body input.invalid.form-control:-ms-input-placeholder {
+	color: #8a1f11;}
+.wizard > .content > .body input.invalid.form-control::-webkit-input-placeholder {
+	color:#8a1f11;}
+
+/*Bouton de navigation */
+.wizard > .actions a {
+    background: #3498dc;}
+
+/*Bouton de navigation au passage de la souris */
+.wizard > .actions a:hover {
+	background: #2980b9;}
+
+/*Bouton de navigation désactivé*/
+.wizard > .actions .disabled a,
+.wizard > .actions .disabled a:hover,
+.wizard > .actions .disabled a:active {
+    color: #999999;
+    background: none;}
+
+
+
+/*Checkbox List */
+
+.checkbox-list .checkbox i {
+	border-color: #3498dc;}
+
+.checkbox-list .checkbox:hover i {
+	border-color: #2980b9;
+}
+
+.checkbox-list .checkbox input:focus + i {
+	border-color: #2980b9;
+}
+
+.checkbox-list .checkbox input + i:after {
+	color: #2980b9;
+}
+.checkbox-list .checkbox input:checked + i {
+	border-color: #2980b9;	
+}
+
+
+
+/*Filter Results*/
+.filter-results {
+	padding: 40px 0;
+	margin-bottom: 30px;
+	border-top: 1px solid #dedede;
+	border-bottom: 1px solid #dedede;
+}
+
+
+/*List Product Description*/
+.list-product-description {
+	padding: 20px 10px;
+}
+
+.list-product-description img {
+	padding-right: 15px;
+	border-right: 1px solid #dedede;
+}
+
+@media (max-width: 768px) {
+	.list-product-description img {
+		padding-right: 0;
+		border-right: none;
+	}
+}
+
+/*Product Description*/
+.product-description {
+	padding: 10px;
+	overflow: hidden;
+}
+
+.product-description-brd {
+	box-shadow: 0 0 2px #ccc;
+}
+
+.product-description .title-price {
+	color: #687074;
+	font-size: 18px;
+}
+
+.product-description h4.title-price {
+	margin: 2px 0 0;
+}
+
+.product-description h4.title-price a {
+	color: #687074;
+}
+
+.product-description h4.title-price a:hover {
+	color: #18ba9b;
+}
+
+.product-description .product-price {
+	text-align: right;
+	padding-left: 10px;
+}
+
+.product-description .product-price span {
+	display: block;
+}
+
+.product-description .line-through {
+	color: #c9253c;
+	text-decoration: line-through;
+}
+
+.product-description .gender {
+	color: #999;
+	display: block;
+	font-size: 14px;
+}
+
+.product-description .product-ratings {
+	overflow: hidden;
+}
+
+/*Product Description v2*/
+.product-description-v2 .title-price {
+	color: #687074;
+	font-size: 18px;
+}
+
+.product-description-v2 span.title-price {
+	margin-right: 15px;
+}
+
+.product-description-v2 .title-price a {
+	color: #687074;
+}
+
+.product-description-v2 h4.title-price a:hover {
+	color: #18ba9b;
+}
+
+.product-description-v2 .title-price.line-through {
+	color: #c9253c;
+	text-decoration: line-through;
+}
+
+/*Rating*/
+.product-ratings li {
+	padding: 0;
+}
+
+.product-ratings li .rating {
+	color: #8bdccd;
+	font-size: 14px;
+}
+
+.product-ratings li .rating-selected {
+	color: #18ba9b;
+	font-size: 14px;
+}
+
+/*Like Icon*/
+.product-ratings li.like-icon  {
+	float: right;
+}
+
+.product-ratings li.like-icon a {
+	color: #8bdccd;
+}
+
+.product-ratings li.like-icon .tooltip {
+	font-size: 12px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.product-ratings li.like-icon a:hover {
+	color: #18ba9b;
+	text-decoration: none;
+}
+
+/*Reply*/
+.product-ratings li.reply a {
+	color: #18ba9b;
+}
+
+
+
+/*List Product Description*/
+.list-product-description {
+	padding: 20px 10px;
+	background-color:#fcfcfc;
+  background-repeat:repeat;
+}
+
+
+
+

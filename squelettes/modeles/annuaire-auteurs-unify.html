@@ -1,0 +1,68 @@
+[(#SET{alphabet, [(#VAL{ABCDEFGHIJKLMNOPQRSTUVWXYZ}|str_split)]})]
+
+<BOUCLE_listalpha(AUTEURS){par nom_site}{tout}>
+	[(#SET_PUSH{commence_par[(#NOM_SITE|lastfirstletter)],#ID_AUTEUR})]
+	[(#SET_PUSH{auteurs_alpha,#NOM_SITE|lastfirstletter})]
+</BOUCLE_listalpha>
+
+#SET{mondebut,#GET{auteurs_alpha}|array_sort|table_valeur{0} }
+
+<div class="row margin-bottom-20">
+	<B_alphabet>
+		<p>
+			<BOUCLE_alphabet(POUR){tableau #GET{alphabet}}>
+				[(#VALEUR|in_array{#GET{auteurs_alpha}}|oui)<a href="[(#SELF|parametre_url{lettre,#VALEUR})]" class="btn btn-u [(#VALEUR|=={[(#ENV{lettre,#GET{mondebut} })]}|?{active})]" style="margin-bottom:10px">]
+				[(#VALEUR|in_array{#GET{auteurs_alpha}}|non)<button class="btn btn-default">]
+				#VALEUR 
+				[(#VALEUR|in_array{#GET{auteurs_alpha}}|non)</button>]
+				[(#VALEUR|in_array{#GET{auteurs_alpha}}|oui)</a>]
+			</BOUCLE_alphabet>
+		</p>
+	</B_alphabet>
+</div>
+
+
+[(#REM) Traitement des listes d'auteurs]
+
+<BOUCLE_artlettre(AUTEURS){id_auteur IN #GET{commence_par#ENV{lettre,#GET{mondebut} }}}{tout}>
+ [ (#COMPTEUR_BOUCLE|alterner{' 
+          <div class="row">','',''})]
+<div class="col-md-4">
+<ul class="list-inline badge-lists badge-icons margin-bottom-30">
+	<li style="margin-bottom: 10px">
+		<i class="icon-user"></i> <a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}">#NOM_SITE</a>
+	</li>
+	<li>
+		<BOUCLE_nombre_articles_actualites_1(ARTICLES) {id_auteur} {id_rubrique IN 38,165, 166,167,168,169,223,226,227}></BOUCLE_nombre_articles_actualites_1>
+		[(#TOTAL_BOUCLE|=={0}|?{'',<i class="fa fa-file-text-o"></i><span class="badge badge-red rounded-x">#TOTAL_BOUCLE</span>})]
+		<//B_nombre_articles_actualites_1>
+	</li>
+	<li>
+		<BOUCLE_nombre_articles_publications_1(ARTICLES) {id_auteur} {id_rubrique IN 151,152,153,158,159,160}></BOUCLE_nombre_articles_publications_1>
+		[(#TOTAL_BOUCLE|=={0}|?{'',<i class="fa fa-book"></i><span class="badge badge-yellow rounded-x">#TOTAL_BOUCLE</span>})]
+		<//B_nombre_articles_publications_1>
+	</li>
+	<li>
+		<BOUCLE_nombre_articles_agenda_1(EVENEMENTS auteurs_liens){id_auteur}{par date_debut} {age_fin<=0}></BOUCLE_nombre_articles_agenda_1>
+		[(#TOTAL_BOUCLE|=={0}|?{'',<i class="fa fa-calendar-o"></i><span class="badge badge-green rounded-x">[(#TOTAL_BOUCLE)]})]
+		<//B_nombre_articles_agenda_1>
+	</li>
+</ul>
+</div>[
+(#COMPTEUR_BOUCLE|alterner{'','',</div>})
+]</BOUCLE_artlettre>
+[(#TOTAL_BOUCLE|alterner{
+       '<div class="col-md-4"></div><div class="col-md-4"></div><div class="col-md-4"></div></div>',''})]
+
+</B_artlettre>
+
+
+
+
+
+
+
+
+
+
+

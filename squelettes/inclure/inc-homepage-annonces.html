@@ -1,0 +1,25 @@
+<!-- Encart pour des annonces basé sur le Plugin Spip 'Pages Uniques'
+Pour la homepage mais aussi la page agenda  -->
+<B_annonces>
+    <div class="row margin-bottom-30">
+        <div class="headline">
+            <h2>
+            <:annonces:>          
+            </h2>
+        </div>
+        <div class="list-group">
+            <BOUCLE_annonces (ARTICLES){page IN emploi, formations, enquete} {age_redac<0}>
+                <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE" class="list-group-item">
+                    <h5 class="list-group-item-heading">
+                        [(#PAGE|=={emploi}|oui)<i class="fa fa-suitcase"></i>]
+                        [(#PAGE|=={formations}|oui)<i class="fa fa-graduation-cap"></i>]
+                        [(#PAGE|=={enquete}|oui)<i class="<i class="fa fa-bar-chart"></i>"></i>]
+                        #TITRE</h5>
+                    [<p class="list-group-item-text" style="line-height:1.5em">
+                     (#DESCRIPTIF|couper{60})                    
+                     </p>]
+                </a>
+            </BOUCLE_annonces>
+        </div>
+    </div>
+</B_annonces>

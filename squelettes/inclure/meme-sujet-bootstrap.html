@@ -1,0 +1,69 @@
+
+
+[(#REM) Lire aussi ou le articles sur le même sujet selon plusieurs mots-clés
+Utilistaion du plugin Critère {mots} - http://www.spip-contrib.net/Critere-mots 
+et des boucles suivantes
+http://forum.spip.org/fr_234064.html ]  
+
+
+
+
+
+<!-- enregistrement des mots clés de l'article dans un tableau -->
+#SET{mots,#ARRAY}
+<BOUCLE_selectionmots(MOTS) {id_article} {id_groupe IN 3,4,5}>
+ #SET{mots, #GET{mots}|push{#ID_MOT}}
+</BOUCLE_selectionmots>
+
+<B_lireaussi>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><:lireaussi:></h3>
+  </div>
+  <div class="panel-body">
+    
+<!-- boucle avec comme critères les mots clés de l'article -->    
+<BOUCLE_lireaussi(ARTICLES){mots 1% #GET{mots}} {par date}{inverse}{0,10}{doublons}>
+<div class="media">
+  
+   [(#LOGO_ARTICLE|?{[<a class="pull-left" href="#URL_PAGE{article-bootstrap,id_article=#ID_ARTICLE}" title="#TITRE">(#LOGO_ARTICLE_NORMAL
+	|image_reduire{100,100}
+	|vider_attribut{class,spip_logos}
+	|inserer_attribut{alt,#TITRE}
+	|inserer_attribut{class,media-object}
+	|image_recadre{80,80,center}
+	)</a>],''})]
+  
+  
+  <div class="media-body">
+    <h5 class="media-heading"><a href="#URL_PAGE{article-bootstrap,id_article=#ID_ARTICLE}" title="#TITRE">#TITRE</a></h5>
+    <small>[(#LESAUTEURS|textebrut) | ]
+[(#DATE|affdate{'d-m-y'})]</small>
+  </div>
+</div>
+
+</BOUCLE_lireaussi>
+
+
+</div>
+
+            <div class="panel-footer">
+                <B_tags_article>
+                <BOUCLE_tags_article (MOTS) {id_article} {id_groupe IN 3,4,5}>
+                  <button type="button" class="btn btn-default btn-sm">
+                    <a href="#URL_PAGE{mot-bootstrap,id_mot=#ID_MOT}" title="#TITRE"><span class="glyphicon glyphicon-tags"></span> #TITRE</a>
+                  </button>
+                </BOUCLE_tags_article> 
+                </B_tags_article>
+            </div>
+
+
+
+
+
+</div>
+
+</B_lireaussi>
+
+
+

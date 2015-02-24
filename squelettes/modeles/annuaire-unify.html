@@ -1,0 +1,76 @@
+
+<ul class="list-inline" style="float:right; margin-bottom: 40px">
+<li><i class="fa fa-file-text-o"></i> <small>= <:articles:></small></li>
+<li><i class="fa fa-book"></i> <small>= <:publications:></small></li>
+<li><i class="fa fa-calendar-o"></i> <small>= <:evenements:></small></li>
+</ul>
+
+
+
+
+[(#SET{alphabet, [(#VAL{ABCDEFGHIJKLMNOPQRSTUVWXYZ}|str_split)]})]
+
+<BOUCLE_listalpha(MOTS){id_groupe}{par titre}{tout}>
+[(#SET_PUSH{commence_par[(#TITRE|lastfirstletter)],#ID_MOT})]
+[(#SET_PUSH{mots_alpha,#TITRE|lastfirstletter})]
+</BOUCLE_listalpha>
+#SET{mondebut,#GET{mots__alpha}|array_sort|table_valeur{0} }
+
+<div class="row margin-bottom-20">
+<B_alphabet>
+<p><BOUCLE_alphabet(POUR){tableau #GET{alphabet}}>
+[(#VALEUR|in_array{#GET{mots_alpha}}|oui)<a href="[(#SELF|parametre_url{lettre,#VALEUR})]" class="btn btn-u [(#VALEUR|=={[(#ENV{lettre,#GET{mondebut} })]}|?{active})]" style="margin-bottom:10px">]
+[(#VALEUR|in_array{#GET{mots_alpha}}|non)<button class="btn btn-default">]
+#VALEUR 
+[(#VALEUR|in_array{#GET{mots_alpha}}|non)</button>]
+[(#VALEUR|in_array{#GET{mots_alpha}}|oui)</a>]
+</BOUCLE_alphabet></p>
+
+</div>
+
+
+</B_alphabet>
+[(#REM) Traitement des listes d'auteurs]
+
+<BOUCLE_artlettre (MOTS){id_mot IN #GET{commence_par#ENV{lettre,#GET{mondebut} }}}{id_groupe}>
+ [ (#COMPTEUR_BOUCLE|alterner{' 
+          <div class="row">','',''})]
+<div class="col-md-4">
+<ul class="list-inline badge-lists badge-icons margin-bottom-30">
+	<li style="margin-bottom: 10px">
+		<i class="icon-tag"></i> <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}">#TITRE</a>
+	</li>
+	<li>
+		<BOUCLE_nombre_articles_actualites_1(ARTICLES) {id_mot} {id_rubrique IN 38,165, 166,167,168,169,223,226,227}></BOUCLE_nombre_articles_actualites_1>
+		[(#TOTAL_BOUCLE|=={0}|?{'',<i class="fa fa-file-text-o"></i><span class="badge badge-red rounded-x">#TOTAL_BOUCLE</span>})]
+		<//B_nombre_articles_actualites_1>
+	</li>
+	<li>
+		<BOUCLE_nombre_articles_publications_1(ARTICLES) {id_mot} {id_rubrique IN 151,152,153,158,159,160}></BOUCLE_nombre_articles_publications_1>
+		[(#TOTAL_BOUCLE|=={0}|?{'',<i class="fa fa-book"></i><span class="badge badge-yellow rounded-x">#TOTAL_BOUCLE</span>})]
+		<//B_nombre_articles_publications_1>
+	</li>
+	<li>
+		<BOUCLE_nombre_articles_agenda_1(EVENEMENTS){id_mot}{par date_debut} {age_fin<=0}></BOUCLE_nombre_articles_agenda_1>
+		[(#TOTAL_BOUCLE|=={0}|?{'',<i class="fa fa-calendar-o"></i><span class="badge badge-green rounded-x">[(#TOTAL_BOUCLE)]})]
+		<//B_nombre_articles_agenda_1>
+	</li>
+</ul>
+</div>[
+(#COMPTEUR_BOUCLE|alterner{'','',</div>})
+]</BOUCLE_artlettre>
+[(#TOTAL_BOUCLE|alterner{
+       '<div class="col-md-4"></div><div class="col-md-4"></div><div class="col-md-4"></div></div>',''})]
+
+</B_artlettre>
+
+
+
+
+
+
+
+
+
+
+

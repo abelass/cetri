@@ -1,0 +1,23 @@
+<div id="demo">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+
+              <div id="owl-demo" class="owl-carousel">
+                <BOUCLE_publications (RUBRIQUES) {id_parent} {pagination 8} {par num titre} {inverse}>
+                <div class="item">
+
+[(#LOGO_RUBRIQUE
+        |#URL_RUBRIQUE
+        |image_reduire{250,373}
+        |inserer_attribut{class,img-responsive}
+        |inserer_attribut{alt,#TITRE})]
+
+                </div>
+                 </BOUCLE_publications>
+               
+              </div>
+              
+            </div>
+          </div>
+        </div>

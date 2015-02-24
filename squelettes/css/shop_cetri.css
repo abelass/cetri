@@ -1,0 +1,13 @@
+li.panier a,li.panier a:hover{
+}
+
+li.panier > div {display:inline-block}
+
+li.panier .panier_detail{
+	display:none;
+	position:absolute;
+	background:#EEE;
+	padding: 15px;
+	}
+
+

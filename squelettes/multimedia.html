@@ -1,0 +1,98 @@
+#CACHE{86400}
+<BOUCLE_mot_principal(MOTS) {id_mot} {doublons}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+[(#REM) Lien vers le flux RSS du mot cle ]
+<link rel="alternate" type="application/rss+xml" title="[(#TITRE|supprimer_numero|textebrut|texte_backend)]" href="spip.php?mot139&lang=#LANG" />
+</head>
+
+<body class="page_mot">
+<div id="page">
+<INCLURE{fond=inc/inc-entete} {id_mot}>
+
+
+
+	<div id="conteneur">
+
+		[(#REM) Contenu principal : contenu du mot-cle ]
+		<div id="contenu">
+
+			<div class="cartouche-multimedia">
+				<h1 class="#EDIT{titre} titre">#LOGO_MOT [(#TITRE|supprimer_numero)]</h1>			
+				
+				
+</div>
+
+			[<div class="#EDIT{texte} texte">(#TEXTE|justifier)</div>]
+
+			<br class="nettoyeur" />
+					
+<B_articles>
+<div class="bloc">
+<B_articles>
+<div class="sous-bloc-blanc-sans-border">
+#ANCRE_PAGINATION
+<BOUCLE_articles(ARTICLES) {id_mot} {id_rubrique!=101} {par date}{inverse} {pagination 20} {lang_select=non}>
+
+[<font color="#999999">(#SURTITRE)</font><br>]
+[<img src="../IMG/icones/carre-nav.gif"> <b>(#TITRE|supprimer_numero)</b><br>]
+
+<!-- auteur de l'article-->
+<B_auteur><:par_auteur:>
+<BOUCLE_auteur(AUTEURS) {id_article} {", "}>
+ [(#NOM)]
+</BOUCLE_auteur>
+</B_auteur>
+
+<!-- source et date de l'article-->
+<font color="#999999">
+(<B_source><BOUCLE_source(MOTS) {id_article} {id_groupe=3}>[(#TITRE) - ]</BOUCLE_source></B_source>[(#DATE|affdate)])</font>
+<p>
+
+
+<div align="right">
+<!-- lien vers l'article si publié en html-->
+[(#TEXTE|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><:lire_article:></a>," "})]
+</div>
+<div class="liste-articles-ligne"></div>
+</BOUCLE_articles>
+
+
+[<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_articles>
+
+
+<:aucun_documents:>
+<//B_articles>
+</div>
+
+
+
+</div><!-- fin contenu -->
+
+[(#REM) Menu de navigation laterale ]
+<div id="navigation">
+
+<INCLURE{fond=inc-index} >
+<INCLURE{fond=inc-multimedia} >
+
+</div><!-- fin navigation -->
+
+
+	</div><!-- fin conteneur -->
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}>
+	
+</div><!-- fin page -->
+	
+</body>
+</html>
+</BOUCLE_mot_principal>
+<//BOUCLE_menu-langues-des-articles-1>
+

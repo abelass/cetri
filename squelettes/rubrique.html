@@ -1,0 +1,102 @@
+#CACHE{7200}
+<BOUCLE_rubrique_principal(RUBRIQUES) {id_rubrique}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+
+
+ [<meta name="title" content="(#TITRE|textebrut)" />]
+     [<meta name="author" content="(#LESAUTEURS|attribut_html)" />]
+     [<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+     <B_keywords><meta name="keywords" content="<BOUCLE_keywords(MOTS) {id_article} {","}>[(#TITRE|attribut_html)]</BOUCLE_keywords>" /></B_keywords>
+     <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+    [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+    <meta name="ROBOTS" content="INDEX,FOLLOW">
+    <meta name="revisit-after" content="7 days">
+    <meta name="robots" content="ALL">
+    
+    [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+     <meta property="og:type" content="article" />
+     <meta property="og:url" content="#URL_ARTICLE" />
+     <meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" />
+
+<INCLURE{fond=inc-head}>
+
+
+
+</head>
+<body class="page_rubrique">
+<div id="page">
+<INCLURE{fond=inc/inc-entete, env} />
+
+
+<div id="conteneur">
+
+[(#REM) Contenu principal : contenu de la rubrique ]
+<div id="contenu">
+
+<div class="cartouche">
+
+[(#LOGO_RUBRIQUE||image_reduire{200,200})]
+[<h1 class="#EDIT{titre} titre">(#TITRE|supprimer_numero)</h1>]
+</div>
+
+
+<B_articles>
+<div class="bloc">
+<div class="sous-bloc-blanc-sans-border">
+#ANCRE_PAGINATION
+<BOUCLE_articles(ARTICLES) {id_rubrique} {lang_select=non}{par date}{inverse}{pagination 20} {doublons}>
+[<font color="#999999">(#SURTITRE)</font><br>]
+[<a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><img src="../IMG/icones/carre-nav.gif"> (#TITRE|supprimer_numero)</a><br>]
+<font color="#999999">
+(<B_source><BOUCLE_source(MOTS) {id_article} {id_groupe=3}>[(#TITRE) - ]</BOUCLE_source></B_source>[(#DATE|affdate)])</font>
+<p>
+
+
+<div class="liste-articles-ligne"></div>
+</BOUCLE_articles>
+
+
+[<p><div align="center">(#PAGINATION)</div></p>]
+</div></div>
+
+</B_articles>
+<//B_articles>
+
+
+						
+
+	
+[(#REM) Documents joints a la rubrique ]
+<B_documents_joints>
+<div id="documents_joints">
+<h2><:titre_documents_joints:></h2>
+<small><BOUCLE_documents_joints(DOCUMENTS) {id_rubrique} {mode=document} {par num titre, date} {doublons}>
+<img src="../IMG/img-perso/carre-nav.gif"> <a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a> (#TYPE_DOCUMENT[ - (#TAILLE|taille_en_octets)])<br>
+[(#DESCRIPTIF)]
+</BOUCLE_documents_joints></small></div>
+</B_documents_joints>
+
+
+
+</div><!-- fin contenu-rubrique -->
+
+[(#REM) Menu de navigation laterale ]
+
+<!-- début navigation -->
+<div id="navigation">
+	
+</div>
+<!-- fin navigatio -->
+
+</div><!-- fin conteneur -->
+
+[(#REM) Pied de page ]
+<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!-- fin page -->
+</body>
+</html>
+</BOUCLE_rubrique_principal>

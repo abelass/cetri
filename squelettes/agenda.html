@@ -1,0 +1,98 @@
+#CACHE{86400}
+<BOUCLE_mot_principal(MOTS) {id_mot} {doublons}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+
+[(#REM) Lien vers le flux RSS du mot cle ]
+<link rel="alternate" type="application/rss+xml" title="[(#TITRE|supprimer_numero|textebrut|texte_backend)]" href="spip.php?mot139&lang=#LANG" />
+</head>
+
+<body class="page_mot">
+<div id="page">
+<INCLURE{fond=inc/inc-entete}>
+
+
+
+<div id="conteneur">
+
+[(#REM) Contenu principal : contenu du mot-cle ]
+<div id="contenu">
+
+<div class="cartouche">
+
+<h1 class="#EDIT{titre} titre">[(#TITRE|supprimer_numero)]</h1>
+</div>
+
+
+[<div class="#EDIT{texte} texte">(#TEXTE|justifier)</div>]
+
+
+
+<B_agenda>
+<BOUCLE_agenda(EVENEMENTS){tout} {age_fin<=0}{par date_debut}{statut=publie}> 
+
+<div class="bloc">
+	
+[<div class="titre-agenda" style="font-size:12px; text-transform:uppercase"><img src="../IMG/icones/carre-nav.gif">
+<a href="#URL_EVENEMENT&lang=#LANG" title="#TITRE">(#TITRE)</a>]</div>
+
+
+
+<div class="sous-bloc-blanc-sans-border">
+<font color="#666666"> [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{
+ [(#DATE_DEBUT|affdate{'d/m/Y'})]
+[(#HORAIRE|=={oui}|?{
+  [(#REM) memes heures ?]
+    [(#DATE_DEBUT|=={#DATE_FIN}|?{&agrave
+[(#DATE_DEBUT|heures)]h[(#DATE_DEBUT|minutes)],''})]
+  [(#REM) pas memes heures ?]
+    [(#DATE_DEBUT|!={#DATE_FIN}|?{de
+[(#DATE_DEBUT|heures)]:[(#DATE_DEBUT|minutes)] &agrave;
+[(#DATE_FIN|heures)]:[(#DATE_FIN|minutes)],''})]
+,''})]
+,
+ Du [(#DATE_DEBUT|affdate{'d/m/Y'})]
+[(#HORAIRE|=={oui}|?{&agrave; partir de
+ [(#DATE_DEBUT|heures)]H[(#DATE_DEBUT|minutes)],''})] au
+ [(#DATE_FIN||affdate{'d/m/Y'})] [(#HORAIRE|=={oui}|?{jusqu'&agrave;
+ [(#DATE_FIN|heures)]H[(#DATE_FIN|minutes)],''})]  })]
+
+ | #LIEU
+
+</font>
+
+[(#DESCRIPTIF|justifier)]
+
+</div>
+</div>
+</BOUCLE_agenda>
+</B_agenda>
+<br><:agenda_evenements:> 
+<//B_agenda>
+
+
+		</div><!-- fin contenu -->
+
+[(#REM) Menu de navigation laterale ]
+<div id="navigation">
+
+[<div class="bloc">
+<div class="bloc-titre">-<:agenda_information:>-</div>
+<div class="sous-bloc-blanc">(#DESCRIPTIF|justifier)</div>
+</div>]
+
+
+</div><!-- fin navigation -->
+
+
+	</div><!-- fin conteneur -->
+[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}>
+	</div><!-- fin page -->
+</body>
+</html>
+</BOUCLE_mot_principal>

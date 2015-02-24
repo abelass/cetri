@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="container content" >
+    <BOUCLE_rubrique (RUBRIQUES) {id_rubrique}>
+
+      <!-- Begin Sidebar menu -->
+      <div class="col-md-3">
+        <B_rubriques_soeurs>
+          <ul class="list-group sidebar-nav-v1 fa-fixed" id="sidebar-nav">
+            <BOUCLE_rubriques_soeurs (RUBRIQUES) {meme_parent} {par num titre}> 
+              <B_sous_rubriques> 
+              <li class="list-group-item list-toggle [(#EXPOSE{active})]">
+                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-#ID_RUBRIQUE"><i class="fa fa-list"></i> [(#TITRE|textebrut)]</a>
+                  <ul id="collapse-#ID_RUBRIQUE" class="collapse">
+                    <BOUCLE_sous_rubriques (RUBRIQUES) {id_parent} {par num titre}>
+                      <li class="list-group-item list-toggle-2 [(#EXPOSE{active})]">
+                        <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="[(#TITRE|textebrut)]"> [(#TITRE|textebrut)]</a></li>
+                    </BOUCLE_sous_rubriques>
+                  </ul>
+              </li>
+              </B_sous_rubriques>
+              <li class="list-group-item list-toggle-2 [(#EXPOSE{active})]"><a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}">[(#TITRE|textebrut)]</a></li>
+              <//B_sous_rubriques>
+            </BOUCLE_rubriques_soeurs>
+          </ul>
+        </B_rubriques_soeurs>
+      </div><!--End col-md-3--> 
+
+
+
+
+
+      <!-- Begin Main content-->
+      <div class="col-md-9">
+        [<div class="blog-img">
+          <dl>
+              <dt>(#LOGO_RUBRIQUE_NORMAL
+                |image_reduire{1000,0}
+                |vider_attribut{class,spip_logos}
+                |inserer_attribut{class,img-responsive}
+                |inserer_attribut{alt,#TITRE})
+              </dt> 
+            </dl>
+        </div>]
+  <div class="headline">
+    [<h2 class="#EDIT{titre}">(#TITRE|textebrut)</h2>]
+  </div>
+    [<p align="justify">(#TEXTE|justifier)</p>]
+    [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_notes:></h3>
+    <small>(#NOTES)</small></p>]
+            
+     
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents,id_rubrique, env})]
+
+      </div><!--/ End col-md-9 -->
+      
+     
+    </BOUCLE_rubrique>
+  </div><!--End Container Content-->
+</div><!--End Row-->

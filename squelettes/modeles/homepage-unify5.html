@@ -1,0 +1,199 @@
+    
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+<!--=== Main Block : news, agenda, facebook ===-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="headline margin-bottom-40">
+                <h2>#TITRE
+                    <BOUCLE_rub_actualites (RUBRIQUES) {id_secteur} {par num titre} {1,1}>
+                <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">
+                #TITRE
+                </a>
+                </BOUCLE_rub_actualites>                    
+                <a href="#URL_PAGE{backend}" target="_blank" title="RSS">
+                    <i class="fa fa-rss"></i>
+                </a>
+             </h2>   
+            </div>
+            <div class="row blog blog-medium margin-bottom-40">
+                <div class="col-md-6">
+                    <div class="list-group">
+                    <BOUCLE_actualites_lesudeenmouvement (ARTICLES) {id_mot=8} {par date} {inverse} {0,4} {doublons}>
+                        <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE" class="list-group-item">
+                        [(#LOGO_ARTICLE_NORMAL
+                        |vider_attribut{class,spip_logos}
+                        |inserer_attribut{alt,#TITRE}
+                        |inserer_attribut{class,img-responsive img-bordered})]
+                        <h5 class="list-group-item-heading" style="margin-top: 15px">
+                        #TITRE<br />
+                        
+                    </h5>
+                    [<p class="list-group-item-text" style="line-height:1.5em">(#INTRODUCTION|couper{250})<hr></p>]
+                    
+                    <small>[<i class="icon-user"></i> (#LESAUTEURS|textebrut) ]
+                        [<i class="icon-calendar"></i> (#DATE|affdate{'d-m-y'})]</small>
+                    </a>
+                    </BOUCLE_actualites_lesudeenmouvement>
+                </div>
+                </div><!-- END .col-md-6 -->
+
+                <div class="col-md-6">
+                    <div class="list-group">
+                    <BOUCLE_actualites_cetri (ARTICLES) {id_mot=4} {par date} {inverse} {0,4} {doublons}>
+                    <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE" class="list-group-item">
+                        [(#LOGO_ARTICLE|?{[(#LOGO_ARTICLE_NORMAL
+                        |vider_attribut{class,spip_logos}
+                        |inserer_attribut{alt,#TITRE}
+                        |inserer_attribut{class,img-responsive img-bordered}
+                        )],''})]
+                        <h5 class="list-group-item-heading" style="margin-top: 15px">
+                        #TITRE<br />
+                        <small>[<i class="icon-user"></i> (#LESAUTEURS|textebrut) ]
+                        [<i class="icon-calendar"></i> (#DATE|affdate{'d-m-y'})]</small>
+                        </h5>
+                        [<p class="list-group-item-text">(#INTRODUCTION|couper{250})</p>]
+                    </a>
+                    </BOUCLE_actualites_cetri>
+                </div>
+                </div><!-- END .col-md-6 -->
+            </div><!-- END .row blog blog-medium margin-bottom-40 -->
+
+            
+            <p align="center"><a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="<:actualites:>" class="btn btn-u" role="button"><:articles_plus:></a></p>
+            
+
+        </div><!-- END .col-md-8 -->
+
+
+        <div class="col-md-4">
+            <B_evenements>
+            <div class="headline">
+                <BOUCLE_rub_agenda (RUBRIQUES) {id_secteur} {par num titre} {4,1}>
+                <h2>
+                    <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">
+                        #TITRE
+                    </a>
+                    <a href="#URL_PAGE{backend-evenements}" target="_blank" title="RSS">
+                       <i class="fa fa-rss"></i>
+                    </a>
+               </h2>
+                </BOUCLE_rub_agenda>
+            </div>
+
+            <div class="list-group" style="border-left:1px dotted #428bca">
+            <BOUCLE_evenements (EVENEMENTS){tout} {age_fin<=0}{par date_debut}{statut=publie}{0,5}>
+                <a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="#TITRE" class="list-group-item">
+                    <h5 class="list-group-item-heading">#TITRE</h5>
+                    <p class="list-group-item-text" style="line-height:1.5em">
+                     
+                            <i class="fa fa-calendar icon-color-red"></i>  [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })]
+                             <i class="fa fa-map-marker icon-bg-dark-blue"></i> #LIEU
+                    
+                     </p>
+                </a>
+            </BOUCLE_evenements>
+        </div>
+        </B_evenements>
+
+         <div class="headline">
+            <h2><i class="fa fa-books"></i> dernière spublciations
+                <a href="#" title="<:facebook:>">
+                    <i class="fa fa-arrow-circle-right fa-1x"></i>
+                </a>
+            </h2>
+        </div>
+        <div class="row blog blog-medium margin-bottom-40">
+            <div class="carousel slide carousel-v1" id="myCarousel">
+                <div class="carousel-inner">
+                    <BOUCLE_dernieres_publications (ARTICLES) {par date} {inverse} {0,10}>
+                        <div class="item">
+                            [(#LOGO_ARTICLE_NORMAL
+                                |vider_attribut{class,spip_logos}
+                                |inserer_attribut{alt,#TITRE}
+                                
+                                )]
+                                                            <div class="carousel-caption">
+                                <p>Facilisis odio, dapibus ac justo acilisis gestinas.</p>
+                            </div>
+                        </div>
+                    </BOUCLE_dernieres_publications>
+                </div>
+            </div>
+        </div>
+
+
+         <div class="headline">
+            <h2><i class="fa fa-facebook"></i> facebook
+                <a href="#" title="<:facebook:>">
+                    <i class="fa fa-arrow-circle-right fa-1x"></i>
+                </a>
+            </h2>
+        </div>
+        <div class="row blog blog-medium margin-bottom-40">
+        <div class="media">
+            <div class="media-body">   
+                    <div class="fb-like-box" data-href="https://www.facebook.com/centre.tricontinental" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
+             </div><!-- END .media-body -->
+        </div><!-- END .media -->
+    </div>
+
+        </div><!-- END .col-md-4 -->
+
+    </div><!-- END .container -->
+</div><!-- END .row -->
+
+
+    
+
+<div class="row">
+<div class="bg-image-v1 parallaxBg">
+    <div class="container content">
+            <div class="headline margin-bottom-40" style="color:#FFFFFF"><h2><:publicationsrecentes:></h2>
+        </div>
+        <div class="owl-carousel-v4">
+            <B_publicationsrecentes>
+                <div class="owl-slider-v4">
+                    <BOUCLE_publicationsrecentes (ARTICLES) {id_mot IN 82,1040} {par date} {inverse} {doublons} {0,10}>
+                        <div class="shadow-wrapper" style="padding:20px">
+                        <div class="box-shadow shadow-effect-2 item" style="margin-right: 50px">
+
+                        
+                            [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">
+                            (#LOGO_ARTICLE_NORMAL
+                                |vider_attribut{class,spip_logos}
+                                |inserer_attribut{class,img-responsive img-bordered}
+                                |inserer_attribut{alt,#TITRE}
+                                |image_reduire{429,640})
+                            </a>]
+
+              </div>
+                        </div>
+                        </BOUCLE_publicationsrecentes>
+                    </div>
+                    </B_publicationsrecentes>
+                </div>    
+
+
+
+
+
+
+</div>
+</div> <!-- End Row -->
+
+
+
+</div>
+

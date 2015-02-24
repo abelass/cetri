@@ -1,0 +1,59 @@
+#CACHE{86400}
+<BOUCLE_breve_principal(BREVES) {id_breve} >
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+
+</head>
+
+<body class="page_mot">
+<div id="page">
+<INCLURE{fond=inc/inc-entete, env} />
+
+<!-- début conteneur -->
+<div id="conteneur">
+
+[(#REM) Contenu : corps de la breve ]
+<div id="contenu">
+<div class="cartouche">
+[(#LOGO_BREVE||image_reduire{200,200})]
+<h1 class="#EDIT{titre} titre">[(#TITRE|supprimer_numero)]</h1>
+</div>
+			
+[<div class="#EDIT{texte} texte">(#TEXTE|justifier)</div>]
+
+
+</div><!-- fin contenu -->
+
+		[(#REM) Menu de navigation laterale ]
+		<div id="navigation">
+
+			[(#REM) Menu de navigation par rubriques ]
+			
+<BOUCLE_menu_groupe(GROUPES_MOTS) {id_groupe=16}>
+<B_menu>
+<div class="bloc">
+<div class="bloc-titre"><:menu_navigation:></div>
+<div class="sous-bloc-gris">
+<BOUCLE_menu (MOTS) {id_groupe} {par num titre, titre} >
+[<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <#EXPOSE{span,a href="spip.php?page=cetri&id_mot=#ID_MOT&lang=#LANG"} [ class="(#EXPOSE)"] title="[(#TITRE|supprimer_numero)]">(#TITRE|supprimer_numero)</#EXPOSE{span,a}>]
+<div class="liste-articles-ligne"></div>
+</BOUCLE_menu>
+</div></div>
+</B_menu>
+</BOUCLE_menu_groupe>
+
+		</div><!-- fin navigation -->
+
+	</div><!-- fin conteneur -->
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}>
+
+</div><!-- fin page -->
+</body>
+</html>
+</BOUCLE_breve_principal>

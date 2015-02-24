@@ -1,0 +1,70 @@
+
+
+[(#REM) Lire aussi ou le articles sur le même sujet selon plusieurs mots-clés
+Utilistaion du plugin Critère {mots} - http://www.spip-contrib.net/Critere-mots 
+et des boucles suivantes
+http://forum.spip.org/fr_234064.html ]  
+
+
+
+
+
+<!-- enregistrement des mots clés de l'article dans un tableau -->
+#SET{mots,#ARRAY}
+<BOUCLE_selectionmots(MOTS) {id_article} {id_groupe IN 30}>
+ #SET{mots, #GET{mots}|push{#ID_MOT}}
+</BOUCLE_selectionmots>
+
+<B_lireaussi>
+<div class="liste">
+<h3><a href="#URL_PARENT" title="#TITRE_PARENT"><:meme_sujet:></a></h3>
+<ul>
+
+         
+<!-- boucle avec comme critères les mots clés de l'article -->    
+<BOUCLE_lireaussi(ARTICLES){mots 1% #GET{mots}} {par date}{inverse}{0,10}{doublons} {id_secteur=2}>
+<li>
+[(#LOGO_ARTICLE|?{[(#LOGO_ARTICLE_NORMAL|#URL_ARTICLE|image_reduire{60,0}||inserer_attribut{alt,#TITRE}||image_recadre{50,36,center})],''})]
+
+[<h4><a href="#URL_ARTICLE" title="#TITRE">(#TITRE|couper{100})</a></h4>]
+<div class="auteur-date" style="clear:none;margin-top:0px; padding-top:0px">[(#LESAUTEURS|textebrut) | ]
+[(#DATE|affdate{'d-m-y'})]
+</div>
+
+ 
+</li>
+</BOUCLE_lireaussi>
+</ul>
+</div>
+</B_lireaussi>
+
+
+
+[(#REM) Liste des événements de l'agenda à venir en lien avec les mots clés de l'article 
+Utilisation du plugin Critère {mots} - http://www.spip-contrib.net/Critere-mots 
+et des boucles suivantes
+http://forum.spip.org/fr_234064.html ]  
+
+
+
+  
+  
+  [(#REM) Liste des mots-clés]  
+
+
+<B_tags>
+<h3><a href="spip.php?rubrique404" title="Mots-clés"><:tags:></a></h3>
+<div class="liste">
+
+<ul><li style="box-shadow:none"><h4>
+<BOUCLE_tags (MOTS){id_article} {id_groupe IN 30,16} {par titre} {" - "}>
+                  
+                [<a href="#URL_MOT" title="#TITRE">(#TITRE|couper{35})</a>] 
+              
+                </BOUCLE_tags></h4>
+                </li></ul>
+                
+               
+                </div> 
+     </B_tags>
+  <//B_tags>
