@@ -153,7 +153,7 @@
         							<input type='text' class="quantity-field" name='qty' value="1" id='qty'/>
         							<button type='button' class="quantity-button" name='add' onclick='javascript: document.getElementById("qty").value++;' value='+'>+</button>
        							</form>
-       							[(#BOUTON_ACTION{<:paniers:action_ajouter:>,#URL_ACTION_AUTEUR{remplir_panier,prix_objets-#ID_PRIX_OBJET,#SELF|parametre_url{retour,ok},ajax}})]
+       							<button type="button" class="btn-u "><:ajouter_panier:></button>
 						</td>       							
                       </tr>
 					</BOUCLE_shop>

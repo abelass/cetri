@@ -20,7 +20,7 @@
 	class='sep'>(#GET*{sep})</span>]</span>]<span
 	class="pages">[<a
 	href='[(#ENV{url}|parametre_url{#ENV{debut},''})]##ENV{ancre}'
-	class='lien_pagination'
+	class='lien_pagination noajax'
 	rel='nofollow'>(#GET{premiere}|>{1}|?{1})</a><span
 	class="tbc">[<span
 	class='sep'>(#GET*{sep})</span>]...[<span
@@ -39,7 +39,7 @@
 	class='sep'>(#GET*{sep})</span>]...[<span
 	class='sep'>(#GET*{sep})</span>]</span><a
 	href='[(#ENV{url}|parametre_url{#ENV{debut},#ENV{nombre_pages}|moins{1}|mult{#ENV{pas}}})]##ENV{ancre}'
-	class='lien_pagination'
+	class='lien_pagination noajax'
 	rel='nofollow'>(#GET{derniere}|<{#ENV{nombre_pages}}|?{#ENV{nombre_pages}})</a>]</span>[
 	(#SET{item, #ENV{page_courante}|mult{#ENV{pas}} })
 	][<span

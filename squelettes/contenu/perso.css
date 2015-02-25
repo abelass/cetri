@@ -18,13 +18,14 @@ body {
   }
 
 
-a, a:link, a:visited {
-   color: #3498dc;}
+a, a:visited {
+   color: #3498dc;
+}
 
 a:focus, 
 a:hover, 
 a:active {
-  color: #2980b9; text-decoration:none;
+  color: #3498dc; text-decoration:none;
 }
 
 .texte, .row {margin-left:0; margin-right:0;}
@@ -264,20 +265,17 @@ background:#272727}
 
 /*Footer
 ------------------------------------*/
-.footer{background-color:#272727; color:#FFFFFF}
-
-.footer-v1 address a:link, a:visited {color: #3498dc; }
-.footer-v1 address a:hover {color: #428bca; }
+.footer{background-color:272727; color:#FFFFFF}
 
 /*Copyright
 ------------------------------------*/
 
-.copyright p a,
-.copyright p a:link,
-.copyright p a:visited
+ul.list-inline li a,
+ul.list-inline li a:link,
+ul.list-inline li a:visited
 {color: #3498dc; }
 
-.copyright  p a:hover
+ul.list-inline li a:hover
 {color: #428bca; }
 
 
@@ -402,20 +400,16 @@ Adapté à news-v1 One-Page/assets/css/block.css
 ------------------------------------------------------------------*/
 .timeline-v2 .mois {clear:both; width:100%; margin:0px 0px 20px 0px; padding:0px 0px 0px 10px; background:#272727;color:#FFFFFF; font-size: 20px;text-transform:uppercase;  font-weight:400 }
 
-.timeline-v2 > li .cbp_tmtime, .timeline-v2 > .news-v1 > li .cbp_tmtime {
+.timeline-v2 > li .cbp_tmtime {
   padding-right: 60px;
 }
 
-.timeline-v2 > li .cbp_tmtime span, .timeline-v2 > .news-v1 > li .cbp_tmtime span  {
+.timeline-v2 > li .cbp_tmtime span {
   top: 0px;
   text-align: left; }
 
-
-
 .timeline-v2 > li .cbp_tmtime span i  {color:red;}
 .calendar-text {padding-top: 3px;}
-
-.timeline-v2 > li .cbp_tmtime span p {text-align:center;padding:3px 0px 0px 0px;}
 
 
 /* Right content */
@@ -1166,9 +1160,4 @@ h4.blocs_titre a, h4.blocs_titre a:hover {text-decoration:none;color:#555}
 {text-decoration:none; color:#555}
 
 .blocs_destination, .blocs_resume   {padding: 6px; margin : 5px;}
-
-
-/* Réseaux sociaux - boutons share*/
-
-.g-plus {text-transform: uppercase; border:red 2px solid;}
 

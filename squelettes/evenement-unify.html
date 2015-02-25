@@ -46,7 +46,6 @@
 <div class="breadcrumbs-v3">
     <div class="container">
         [<h1 class="pull-left">(#TITRE_PARENT)</h1>]
-            <small>
               <ul class="pull-right breadcrumb">
                 <BOUCLE_ariane(HIERARCHIE){id_article} {id_rubrique !IN 223,226,227}> 
                   [<li> <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">(#TITRE|couper{40})</a>]
@@ -57,7 +56,7 @@
                 </BOUCLE_numero_publication>
                  <//B_extraits>
               [<li style="color:"> (#TITRE|couper{50})</li>]
-              </ul></small>
+              </ul>
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->

@@ -12,14 +12,15 @@
                         <time class="cbp_tmtime" datetime="">
                         <span>
                           <span class="fa-stack fa-3x">
-                          <i class="fa fa-calendar-o fa-stack-2x"></i> <div class="fa-stack-1x calendar-text">[(#DATE_DEBUT|affdate{'d'})]</div>
+                          <i class="fa fa-calendar-o fa-stack-2x"></i> 
+                          <p class="fa-stack-1x calendar-text">[(#DATE_DEBUT|affdate{'d'})]</p>
                         </span>
                         </time>
                         <i class="cbp_tmicon rounded-x hidden-xs"></i>
                         
                         <div class="cbp_tmlabel news-v1-in" style="padding: 0px;">
                             
-                            <h2><a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="[(#TITRE|textebrut)]"> #TITRE</a></h2>
+                            <h3><a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="[(#TITRE|textebrut)]"> #TITRE</a></h3>
                             
                             <div class="row" [(#LOGO_EVENEMENT|?{style="padding: 10px;",''})]>
                                 [<div class="col-md-4">

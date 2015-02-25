@@ -45,6 +45,20 @@
 </head>
 
 <body class="pas_surlignable page_article">
+
+<!--=== Facebook Plugin Code : SDK JavaScript / html5 ===-->   
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
   <div class="wrapper">
 
 <!--=== Header ===-->    
@@ -100,18 +114,6 @@
                    [<li><i class="icon-user"></i> (#LESAUTEURS)</li>]
                     <li><i class="icon-calendar"></i> [(#DATE|affdate)]</li>
                     [<li class="pull-right">(#MODELE{article_traductions_unify})</li>]
-                    <li class="pull-right"><a class="twitter-share-button"
-   href="https://twitter.com/share"
-  data-url="#URL_SITE_SPIP/#URL_ARTICLE"
-  Tweet text="#TITRE"
-  data-counturl="#URL_SITE_SPIP/#URL_ARTICLE"
-  data-count="vertical"
-   data-via="cncd111111">
-Tweet
-</a>
-<script>
-window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-</script></li>
                  </ul>
                  <ul class="list-unstyled list-inline blog-tags">
                     <li>
@@ -142,6 +144,45 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 
 
             [<p align="justify"><strong style="font-size:14px;">(#CHAPO|justifier|image_reduire{853,*})</strong> </p>]
+
+            <div class="panel" style="width:15%;float:left; margin: 15px 15px 15px -10px; padding: 6px;background:#eee; border: 1px solid #ddd; border-left:none">
+                <div class="panel-body">
+                                <p><div class="fb-share-button" data-href="http://www.cetri.be/spip.php?page=article-unify&amp;id_article=3769" data-layout="box_count"></div></p>
+                                <p><a class="twitter-share-button"
+                                    href="https://twitter.com/share"
+                                    data-url="#URL_SITE_SPIP/#URL_ARTICLE"
+                                    Tweet text="#TITRE"
+                                    data-count="none">
+                                  Tweet</a>
+                                  <script>
+                                  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+                                  </script>
+                                </p>
+                                <p>
+                                 <div class="g-plus" data-action="share" data-annotation="none"></div>
+
+                                <!-- Placez cette ballise après la dernière balise Partager. -->
+                                <script type="text/javascript">
+                                  window.___gcfg = {lang: 'fr'};
+
+                                  (function() {
+                                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                    po.src = 'https://apis.google.com/js/platform.js';
+                                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                                  })();
+                                </script>
+                              </p>
+                              <p>
+                                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: #LANG_#LANG</script>
+                                <script type="IN/Share"></script>
+                              </p>
+                              <p><script>var pfHeaderImgUrl = 'http://www.cetri.be/squelettes/img/logos/CETRI_logo_web_for_printfriendly.jpg';var pfHeaderTagline = 'CETRI%2C%20Centre%20Tricontinental';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = 'http://www.cetri.be/squelettes/css/print-friendly.css';var pfBtVersion='1';(function(){var js, pf;pf = document.createElement('script');pf.type = 'text/javascript';if('https:' == document.location.protocol){js='https://pf-cdn.printfriendly.com/ssl/main.js'}else{js='http://cdn.printfriendly.com/printfriendly.js'}pf.src=js;document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="http://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="http://cdn.printfriendly.com/button-print-grnw20.png" alt="Print Friendly and PDF"/></a>
+                                <p><script> (function(){var js, pf;pf = document.createElement('script');pf.type = 'text/javascript';if('https:' == document.location.protocol){js='https://pf-cdn.printfriendly.com/javascripts/email/app.js'}else{js='http://cdn.instaemail.net/js/app.js'}pf.src=js;document.getElementsByTagName('head')[0].appendChild(pf)})(); </script> <a href='#' onclick='pfEmail.init()' title='Email this page' data-button-img='email-button-white' id='instaemail-button'>Email this page</a>
+                                </p>
+                            </div>
+                        </div>
+
+
             [<p align="justify">(#TEXTE|justifier|image_reduire{853,*})</p>]
 
 
@@ -426,7 +467,7 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
     });
 </script>
 <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.js"></script>
+    <script src="unify/assets/plugins/respond.js"></script>
 <![endif]-->
 
 <script type="text/javascript">

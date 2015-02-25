@@ -19,13 +19,17 @@
 	[(#BOUTON_ACTION{<:shop:passer_la_commande:>,[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees})],continuer})]
 	<//B_article_suitepanier>
 </div>
-[(#ENV{affichage}|=={banner}|oui)
+
 <script type="text/javascript">
-		$('.panier_title').click(function(){
+[(#ENV{affichage}|=={banner}|oui)
+	$('.panier_title').click(function(){
 			$('li.panier .panier_detail').slideToggle(800);
 		return false;
-	});   
-</script>]
+	}); 
+	]  
+	ajaxReload('mon_panier', {args:{action:''},history:false });   
+	
+</script>
 </BOUCLE_ispanier>
 <div class="hidden"> </div>
 <//B_ispanier>
