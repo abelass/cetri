@@ -32,9 +32,8 @@
 		[(#ENV{affichage}|=={banner}|oui)
 			ajaxReload('mon_panier_panel', {args:{action:''},history:false }); 
 		]
-		[(#ENV{affichage}|=={pannel}|oui)
-		alert('panel');
-			ajaxReload('mon_panier_banner', {args:{action:''ner'},history:false }); 
+		[(#ENV{affichage}|=={panel}|oui)
+			ajaxReload('mon_panier_banner', {args:{action:''},history:false }); 
 		]
 		[(#ENV{affichage}|=={modal}|oui)
 			ajaxReload('mon_panier_banner', {args:{action:''},history:false }); 
@@ -43,4 +42,3 @@
 	]   
 	
 </script>
-
