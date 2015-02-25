@@ -156,7 +156,7 @@
     </div><!--End col-md-8-->
 [(#ENV{retour}|=={ok}|oui)
 <script type="text/javascript">
-        ajaxReload('mon_panier', {args:{action:''},history:false });    
+        ajaxReload('mon_panier_banner', {args:{action:''},history:false });    
         $.fn.mediabox({href:'[(#URL_PAGE{panier})]'});
 </script>
 ]
@@ -165,7 +165,7 @@
         <div class="col-md-4">
 
  <!-- Panier -->
-        <INCLURE{fond=inclure/mon_panier,affichage=panel,env,ajax}/>
+        <INCLURE{fond=inclure/mon_panier,affichage=panel,env,ajax=mon_panier_panel}/>
 
 
 
