@@ -54,7 +54,10 @@
         <div class="col-md-4">
       
 
-
+            [(#CALENDRIER_MINI{#ENV{date},
+  date, 
+  #URL_PAGE{jour},
+  #URL_PAGE{calendrier_mini_event.json}})]
             <INCLURE{fond=inclure/inc-homepage-annonces}/>
    
 
