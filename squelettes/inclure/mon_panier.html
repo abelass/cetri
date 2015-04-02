@@ -1,14 +1,5 @@
-#SET{quantites,#ARRAY}
-<BOUCLE_panier_items(PANIERS_LIENS){id_panier=#SESSION{id_panier}} {si #ENV{affichage}|=={banner}|oui}>
-    #SET{quantites,#GET{quantites}|push{#QUANTITE}}
-</BOUCLE_panier_items>
-
-
 <B_ispanier>
-	[(#ENV{affichage}|=={banner}|?{
-		<a class="panier_title"><i class="fa fa-shopping-cart"> </i> <:paniers:mon_panier:></a> [<span class="badge rounded-x badge-red">(#GET{quantites}|array_sum)</span>],
-		<h2><:paniers:mon_panier:></h2>
-	})]
+	<h2><:paniers:mon_panier:></h2>
 <div class="panier_detail"[(#ENV{voir}|oui) style="display:block;"]>
 	<div class="ajax">
 		#FORMULAIRE_PANIER
@@ -34,12 +25,6 @@
 </BOUCLE_ispanier>
 
 <script type="text/javascript">
-[(#ENV{affichage}|=={banner}|oui)
-	$('.panier_title').click(function(){
-			$('li.panier .panier_detail').slideToggle(800);
-		return false;
-	}); 
-	]
 	[(#ENV{retour}|=={ok}|oui)
 		[(#ENV{affichage}|=={banner}|oui)
 			ajaxReload('mon_panier_panel', {args:{action:''},history:false }); 

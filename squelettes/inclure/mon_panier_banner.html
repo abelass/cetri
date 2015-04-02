@@ -1,0 +1,6 @@
+#SET{quantites,#ARRAY}
+<BOUCLE_panier_items(PANIERS_LIENS){id_panier=#SESSION{id_panier}} {si #ENV{affichage}|=={banner}|oui}>
+    #SET{quantites,#GET{quantites}|push{#QUANTITE}}
+</BOUCLE_panier_items>
+<a class="panier_title" href="[(#URL_PAGE{shop}|parametre_url{appel,mon_panier})]"><i class="fa fa-shopping-cart"> </i> <:paniers:mon_panier:></a> [<span class="badge rounded-x badge-red">(#GET{quantites}|array_sum)</span>]
+</B_panier_items>
