@@ -252,6 +252,7 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'repondre_breve' => 'R&eacute;pondre &agrave; cette br&egrave;ve',
 'repondre_message' => 'R&eacute;pondre &agrave; ce message',
 'resultats_recherche' => 'R&eacute;sultats de la recherche',
+'retour_boutique' => 'Retour à la boutique',
 'retour_debut_forums' => 'Retour au d&eacute;but des forums',
 'rubrique' => 'Rubrique',
 'rubriques' => 'Rubriques',
