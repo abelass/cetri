@@ -8,8 +8,8 @@
     <B_publications_fr>
       #ANCRE_PAGINATION
         <BOUCLE_publications_fr (ARTICLES) {id_mot} {par date} {inverse} {doublons} {pagination 8}>
-          <div class="col-md-3 shadow-wrapper">
-            <dl class="box-shadow shadow-effect-2">
+          <div class="col-md-3">
+            <dl>
                <dt>
                 <div class="magazine-news-img">
                   <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:voir:>"> 
@@ -19,7 +19,7 @@
                                 [(#LOGO_ARTICLE|?{
                                 [(#LOGO_ARTICLE_NORMAL
                                     |vider_attribut{class,spip_logos}
-                                    |inserer_attribut{class,img-responsive}
+                                    |inserer_attribut{class,img-responsive img-bordered}
                                     |inserer_attribut{alt,#TITRE}
                                     |image_reduire{0,800}
                                     |image_recadre{536,800,center})]
@@ -30,7 +30,9 @@
             </dl>
           </div>
         </BOUCLE_publications_fr>
-        [<p class="pagination">(#PAGINATION{precedent_suivant} {ajax} {env})</p>]
+          <div class="bloc-pagination">
+             [(#PAGINATION{page_precedent_suivant} {ajax})]
+        </div>
     </B_publications_fr>
   </div><!--End Container Content-->
 </div><!--End Row-->

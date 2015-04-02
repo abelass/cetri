@@ -1,19 +1,10 @@
-
 #CACHE{0}
-		[<script type="text/javascript">
-		(#ENV{message_ok}|oui)
-			ajaxReload('mon_panier_banner', {args:{action:'',date:[(#DATE|time)]},history:true }); 
-			ajaxReload('mon_panier_panel', {args:{action:'',date:[(#DATE|time)]},history:true });
-
-		</script>]
-
 <div class="formulaire_spip formulaire_#ENV{form}[ formulaire_#ENV{form}-(#ENV{id,nouveau})]">
 	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
 	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
 	
 	<B_contenu_panier>
-      <form method="post" action="#ENV{action}" enctype="multipart/form-data">
-      	<div>
+      <form method="post" action="#ENV{action}" enctype="multipart/form-data"><div>
          [(#REM) declarer les hidden qui declencheront le service du formulaire 
          parametre : url d'action ]
          #ACTION_FORMULAIRE{#ENV{action}}
@@ -52,8 +43,9 @@
          </table>
 
       <p class="boutons">
-      <button type="submit" class="btn btn-link" value="<:paniers:panier_recalculer:>" /><i class="fa fa-refresh"></i> <:paniers:panier_recalculer:>
+      <button type="submit" class="submit" value="<:paniers:panier_recalculer:>" /><i class="fa fa-refresh"></i> <:paniers:panier_recalculer:>
       </button>
+     </footer>
       </p>   
          
          

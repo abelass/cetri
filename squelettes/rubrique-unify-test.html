@@ -2,7 +2,7 @@
     Un cache plus court, pour la boucle syndic_articles
 ]#CACHE{3600}
 
-<BOUCLE_principale(RUBRIQUES) {id_rubrique} {tout}>
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
@@ -37,12 +37,27 @@
     <link rel="stylesheet" href="unify/Shop-UI/assets/plugins/jquery-steps/css/custom-jquery.steps.css">
     <link rel="stylesheet" href="#CHEMIN{css/perso-shop.css}">
 
+    <style>  
+
+
+
+.black {background:#272727;}
+.black h3 a,
+.black p,
+.black .news-v1-info,
+.black .news-v1-in,
+.black .news-v1-info li
+{color:#eee;}
+
+
+
+</style>
 
 </head>	
 
 <body>
 <div class="wrapper">
-<!--=== Header ===-->
+<!--=== Header ===-->    
 <div class="header">
     [(#INCLURE{fond=inclure/topbar-unify} {env} {ajax})]
     [(#INCLURE{fond=inclure/header-unify} {env} {ajax})]
@@ -51,42 +66,136 @@
 <B_breadcrumbs>
 <BOUCLE_breadcrumbs (RUBRIQUES) {id_rubrique}  {id_rubrique IN 145,146,147}>
 <INCLURE{fond=inclure/inc-homepage-carousel,env}/>
+<!--=== Parallax Counter ===-->
+    <div style="background-position: 50% 124px;" class="parallax-counter-v2 parallaxBg1">
+        <div class="container">
+            <ul class="row list-row">
+                <li class="col-md-3 col-sm-6 col-xs-12 md-margin-bottom-30">
+                    <div class="counters rounded">
+                        <span class="counter">18298</span>   
+                        <h4>Web Developers</h4>
+                    </div>    
+                </li>
+                <li class="col-md-3 col-sm-6 col-xs-12 md-margin-bottom-30">
+                    <div class="counters rounded">
+                       <div class="service-block service-block-alternativessud">
+                <a href="#URL_PAGE{rubrique-unify,id_rubrique=151}" title="#TITRE">
+                    <i class="icon-custom icon-color-light rounded-x fa fa-book"></i>
+                    <h2 class="heading-md">Alternatives Sud</h2>
+                </a>
+                     <p>
+                        <multi>
+                            [fr]Des points de vue du Sud sur des dimensions cruciales de la mondialisation, du développement et des rapports Nord-Sud.
+                            [en]Perspectives from the South on the essential aspects of globalisation, development and North-South relations: critical analysis and alternatives – quarterly publication. 50€/ 4n°
+                            [es]Puntos de vista del Sur sobre dimensiones cruciales de la globalización, del desarrollo y de las relaciones Norte-Sur: análisis críticos y alternativas - Publicación trimestral. 50€/ 4n°
+                        </multi>
+                    </p>
+            </div>
+                    </div>    
+                </li>
+                <li class="col-md-3 col-sm-6 col-xs-12 sm-margin-bottom-30">
+                    <div class="counters rounded">
+                        <span class="counter">37904</span>
+                        <h4>Open Contests</h4>
+                    </div>    
+                </li>
+                <li class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="counters rounded">
+                        <span class="counter">50892</span>
+                        <h4>Happy Customors</h4>
+                    </div>    
+                </li>
+            </ul>            
+        </div>
+    </div>    
+    <!--=== End Parallax Counter ===-->
+
+<INCLURE{fond=inclure/inc-homepage-coloredboxes,env}/>
+
+
 <div class="row">
     <div class="container">
         <div class="col-md-8">
             <BOUCLE_rub_actualites (RUBRIQUES) {id_parent} {par num titre} {1,1}>
-            <INCLURE{fond=inclure/inc-homepage-news, env, titre=#TITRE, url=#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}} />
+            <INCLURE{fond=inclure/inc-homepage-news, env, titre=#TITRE} />
             </BOUCLE_rub_actualites>
         </div>
         <div class="col-md-4">
-            <INCLURE{fond=inclure/inc-homepage-annonces, env} />
         	<BOUCLE_rub_agenda (RUBRIQUES) {id_parent} {par num titre} {4,1}>
             <INCLURE{fond=inclure/inc-homepage-agenda, env, titre=#TITRE}/>
             </BOUCLE_rub_agenda>
-            <INCLURE{fond=inclure/inc-homepage-coloredboxes}/>
+            <div class="service-block service-block-alternativessud">
+                <a href="#URL_PAGE{rubrique-unify,id_rubrique=151}" title="#TITRE">
+                    <i class="icon-custom icon-color-light rounded-x fa fa-book"></i>
+                    <h2 class="heading-md">Alternatives Sud</h2>
+                </a>
+                     <p>
+                        <multi>
+                            [fr]Des points de vue du Sud sur des dimensions cruciales de la mondialisation, du développement et des rapports Nord-Sud.
+                            [en]Perspectives from the South on the essential aspects of globalisation, development and North-South relations: critical analysis and alternatives – quarterly publication. 50€/ 4n°
+                            [es]Puntos de vista del Sur sobre dimensiones cruciales de la globalización, del desarrollo y de las relaciones Norte-Sur: análisis críticos y alternativas - Publicación trimestral. 50€/ 4n°
+                        </multi>
+                    </p>
+            </div>
             <INCLURE{fond=inclure/inc-homepage-facebook}/>
-
-
-            
         </div>
     </div>
 </div>
+
+		
+        
+
+        
+        
+        
+        
+        
+        
+
+
+
+</div>
+
+</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 </BOUCLE_breadcrumbs>
 </B_breadcrumbs>
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs-v3 margin-bottom-20">
     <div class="container">
-        <h1 class="pull-left">
-        [(#PROFONDEUR|match{^(2|3)$}|?{[(#TITRE_PARENT)],[(#TITRE)]})]
+        [<h1 class="pull-left">(#TITRE)</h1>]
         
-        </h1>      
+        <small>
         <ul class="pull-right breadcrumb">
+
             <BOUCLE_ariane(HIERARCHIE){id_rubrique}> 
-            [<li><a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">(#TITRE|couper{80})</a></li>]
+            [<li> <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}">(#TITRE|couper{80})</a>]
             </BOUCLE_ariane>
            [<li> (#TITRE|couper{80})</li>]
         </ul>
-        
+        </small>
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
@@ -96,18 +205,14 @@
 [(#ID_RUBRIQUE|match{^(161|162|163)$}|?{[(#MODELE{rubrique_masonry-unify} {ajax})],' '})] 
 [(#ID_RUBRIQUE|match{^(38|165|166)$}|?{[(#MODELE{rubrique_masonry-unify}  {ajax})],' '})]
 [(#ID_RUBRIQUE|match{^(167|168|169)$}|?{[(#MODELE{rubrique_masonry-unify}  {ajax})],' '})]
-[(#ID_RUBRIQUE|match{^(170|171|172|181|182|183|184|185|186|187|188|189|190|191|192|193|211|212|214|215|216|228|229|230|231|232|233|234|235|236)$}|?{[(#MODELE{layout_leftsidebar} {id_rubrique} {ajax})],' '})]
+[(#ID_RUBRIQUE|match{^(170|171|172|181|182|183|184|185|186|187|188|189|190|191|192|193|211|212|214|215|216|230|231|232)$}|?{[(#MODELE{rubrique_2columns-unify} {id_rubrique} {ajax})],' '})]
 [(#ID_RUBRIQUE|match{^(176|177|210)$}|?{[(#INCLURE{fond=inclure/agenda_timeline} {ajax}{id_rubrique})],' '})]
 [(#ID_RUBRIQUE|match{^(217|218|219)$}|oui)<INCLURE{fond=inclure/les_articles_precieux,env,ajax}/>)]
-[(#ID_RUBRIQUE|match{^(173|174|175|178|179|180)$}|?{[(#MODELE{modele-menu-blocks} {env} {ajax})],' '})]
-
-
-
 
 <!--=== Rubrique Publications ===-->
-[(#ID_RUBRIQUE|match{^(148|149|150)$}|?{[(#MODELE{modele-publications} {env} {ajax})],' '})]
-[(#ID_RUBRIQUE|match{^(151|152|153)$}|?{[(#MODELE{modele-liste-alternativessud} {env} {ajax} {id_mot=1040})],' '})]
-[(#ID_RUBRIQUE|match{^(158|159|160)$}|?{[(#MODELE{modele-liste-autrespublications} {env} {ajax} {id_mot=82})],' '})]
+[(#ID_RUBRIQUE|match{^(148|149|150)$}|?{[(#MODELE{publications-unify} {env} {ajax})],' '})]
+[(#ID_RUBRIQUE|match{^(151|152|153)$}|?{[(#MODELE{alternativessud-unify} {env} {ajax} {id_mot=1040})],' '})]
+[(#ID_RUBRIQUE|match{^(158|159|160)$}|?{[(#MODELE{autrespublications-unify} {env} {ajax} {id_mot=82})],' '})]
 
 
 

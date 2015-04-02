@@ -369,7 +369,7 @@ border-top: solid 2px #3498dc;
 /*Buttons
 ------------------------------------*/
 .btn-u {
-	background: #3498dc;
+	background: #3498dc; color:#FFFFFF;
 }
 
 .btn-u:hover, 
@@ -377,7 +377,7 @@ border-top: solid 2px #3498dc;
 .btn-u:active, 
 .btn-u.active, 
 .open .dropdown-toggle.btn-u {
-	background: #2980b9;
+	background: #2980b9;color:#FFFFFF
 }
 
 /*Buttons Color*/
@@ -719,7 +719,11 @@ ul.blog-tags a:hover {
 
 /*Navigation
 ------------------------------------*/
-/*Pagination*/
+
+
+/* Pagination 
+
+-----
 .pagination > .active > a, 
 .pagination > .active > span, 
 .pagination > .active > a:hover, 
@@ -735,12 +739,21 @@ ul.blog-tags a:hover {
    border-color: #2980b9;   
 }
 
-/*Pager*/
 .pager li > a:hover, 
 .pager li > a:focus {
    background: #2980b9;
    border-color: #2980b9;   
-}
+} */
+
+
+/* Pagination SPIP  */
+.bloc-pagination a { border-color: #E3E3E3; }
+.bloc-pagination .on, .bloc-pagination a:hover { background-color: #3498dc }
+
+
+
+
+
 
 /*Registration and Login Page v2
 ------------------------------------*/

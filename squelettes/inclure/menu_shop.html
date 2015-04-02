@@ -1,0 +1,38 @@
+<div id="steps-uid-0" class="wizard clearfix" role="application">
+	<div class="steps">
+	    <ul role="tablist">
+	    	<li[ class="first (#ENV{appel}|=={mon_panier}|?{current,disabled})"]> 	
+	    		<a href="[(#URL_PAGE{shop}|parametre_url{appel,mon_panier})]">
+	    			<span class="number">1.</span> 
+	    			<span class="overflow-h">
+	    				<h2><:shop:panier:></h2>
+	    				<p><:panier_controle:></p>
+	    				<i class="rounded-x fa fa-check"></i>
+	    			</span>
+	    			</a>
+	    	</li>
+	    	
+	    	<li[ class="(#ENV{appel}|=={mes_coordonnees}|?{current,disabled})"]> 
+	    		<a href="[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees})]">
+	    			<span class="number">2.</span> 
+	    			<span class="overflow-h">
+	    				<h2><:shop:coordonnees:></h2>
+	    				<p><:panier_adresses:></p>
+	    				 <i class="rounded-x fa fa-home"></i>
+	    			</span>
+	    			</a>
+	    	</li>
+	    	
+	    	<li[ class="(#ENV{appel}|=={paiement}|?{current,disabled}) last"]> 
+	    		<a href="[(#URL_PAGE{shop}|parametre_url{appel,paiement})]">
+	    			<span class="number">3.</span> 
+	    			<span class="overflow-h">
+	    				<h2><:shop:paiement:></h2>
+	    				<p><:panier_paiementchoix:></p>
+                         <i class="rounded-x fa fa-credit-card"></i>
+	    			</span>	    			
+	    			</a>
+	    	</li>
+	    </ul>
+	</div>
+</div>

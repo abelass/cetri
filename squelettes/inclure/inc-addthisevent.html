@@ -1,0 +1,19 @@
+ <BOUCLE_evenement (EVENEMENTS){id_evenement=#ID_EVENEMENT}>
+ <li class="pull-right">
+      <a href="#URL_EVENEMENT" title="<:calendar_add:>" class="addthisevent">
+          <i class="fa fa-plus"></i> <:calendar_add:>
+          <span class="_start">
+          [(#DATE_DEBUT|affdate{'d/m/Y'})] [(#DATE_DEBUT|heures)]:[(#DATE_DEBUT|minutes)]</span>
+          <span class="_end">[(#DATE_FIN|affdate{'d/m/Y'} )] [(#DATE_FIN|heures)]:[(#DATE_FIN|minutes)]</span>
+          <span class="_zonecode">40</span>
+          [<span class="_summary">(#TITRE|textebrut)</span>]
+          [<span class="_description">(#DESCRIPTIF|textebrut)</span>]
+          <span class="_location">[(#ADRESSE|sinon{#LIEU|textebrut})]</span>
+          [<span class="_organizer">(#EVENEMENT_ORGANISATION|textebrut)</span>]
+          [<span class="_organizer_email">(#EVENEMENT_CONTACT_EMAIL)</span>]
+          [<span class="_facebook_event">(#EVENEMENT_FACEBOOK)</span>]
+          <span class="_date_format">DD/MM/YYYY</span>
+
+      </a>
+</li>
+</BOUCLE_evenement>

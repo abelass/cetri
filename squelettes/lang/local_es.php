@@ -8,6 +8,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 // A
 'abonnement' => 'me suscribo',
 'abonnement_commande' => 'Pedido y suscripci&oacute;n',
+'abonnement_ligne' => 'Suscr&iacute;base',
 'abonnement_newsletter' => 'Suscripci&oacute;n',
 'abonner' => 'Suscribir',
 'about_alternativessud' => 'Acerca de Alternatives Sud',
@@ -66,6 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 // B
 'bonjour' => 'Hola',
+'boutique' => 'Bodega',
 'breves' => 'Breves',
 
 

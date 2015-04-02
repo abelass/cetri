@@ -1,5 +1,7 @@
-<BOUCLE_principale(ARTICLES) {id_article} {doublons}>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<BOUCLE_principale(ARTICLES) {id_article} {doublons}>
+
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
@@ -10,24 +12,30 @@
 
 
 <title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
-[<link rel="canonical" href="(#URL_ARTICLE|url_absolue)" />]
-[<meta name="Author" content="(#LESAUTEURS|textebrut)" />]
-<meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
-[<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
-<meta name="ROBOTS" content="none">
-<meta name="revisit-after" content="7 days">
-[<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
-<meta property="og:url" content="#URL_ARTICLE" />
-[(#LOGO_ARTICLE_NORMAL|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    [<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+    [<link rel="canonical" href="(#URL_ARTICLE|url_absolue)" />]
+    [<meta name="Author" content="(#LESAUTEURS|textebrut)" />]
+    <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+    [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+    <meta name="ROBOTS" content="none">
+    <meta name="revisit-after" content="7 days">
 
-<!-- Twitter Card -->
 
+    <!-- Open Graph Data -->
+    [<meta property="og:title" content="(#TITRE|textebrut)" />]
+    [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+    [<meta name="og:description" content="(#INTRODUCTION|couper{200}|textebrut)">]
+     <meta property="og:type" content="article" />
+     <meta property="og:url" content="#URL_ARTICLE" />
+    [(#LOGO_ARTICLE_NORMAL|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+    <meta property="og:locale" content="#LANG" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     [<meta name="twitter:title" content="(#TITRE|textebrut|couper{70})">]
     [<meta name="twitter:description" content="(#INTRODUCTION|couper{200}|textebrut)">]
-    <meta name="twitter:site" content="@cncd111111" />
+    <meta name="twitter:site" content="@cetri" />
     [<meta name="twitter:creator" content="(#LESAUTEURS|attribut_html)" />]
     <meta name="twitter:site:id" content="239219305" />
     <meta name="twitter:url" content="#URL_SITE_SPIP">
@@ -41,35 +49,24 @@
 
 <link rel="stylesheet" href="squelettes/css/jquery-cycle/cycle-slideshow.css">
 
-
 </head>
 
 <body class="pas_surlignable page_article">
 
-<!--=== Facebook Plugin Code : SDK JavaScript / html5 ===-->   
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-550d0a3740eef74e" async="async"></script>
 
 
-
-
-  <div class="wrapper">
+<div class="wrapper">
 
 <!--=== Header ===-->    
     <div class="header">
           <INCLURE{fond=inclure/topbar-unify} {env} {ajax}{lang_select=non} />
           <INCLURE{fond=inclure/header-unify} {env} {ajax} {lang_select=non}  />
     </div>
-  <!--=== End Header ===--> 
-  
+<!--=== End Header ===--> 
 
-	<!--=== Breadcrumbs ===-->
+<!--=== Breadcrumbs ===-->
 <div class="breadcrumbs-v3">
     <div class="container">
       <!-- BOUCLE 1 pour ne pas afficher la rubrique des extraits d'Alternatives Sud -->
@@ -79,25 +76,23 @@
       </B_extraits_1>
         [<h1 class="pull-left">(#TITRE_PARENT)</h1>]
       <//B_extraits_1>
-            <small>
-              <ul class="pull-right breadcrumb">
-                <BOUCLE_ariane(HIERARCHIE){id_article} {id_rubrique !IN 223,226,227}> 
-                  [<li> <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">(#TITRE|couper{35})</a>]
-                </BOUCLE_ariane>
-                <!-- BOUCLE 2 pour ne pas afficher la rubrique des extraits d'Alternatives Sud -->
-                <BOUCLE_extraits_2 (RUBRIQUES) {id_rubrique IN 223,226,227} {id_rubrique}></BOUCLE_extraits_2>
-                <BOUCLE_numero_publication (ARTICLES) {id_article=#ID_PUBLICATION}>
-                [<li> <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">(#TITRE|couper{35})</a></li>]
-                </BOUCLE_numero_publication>
-                 <//B_extraits_2>
+        <ul class="pull-right breadcrumb">
+          <BOUCLE_ariane(HIERARCHIE){id_article} {id_rubrique !IN 223,226,227}> 
+            [<li> <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">(#TITRE|couper{35})</a>]
+          </BOUCLE_ariane>
+          <!-- BOUCLE 2 pour ne pas afficher la rubrique des extraits d'Alternatives Sud -->
+      <BOUCLE_extraits_2 (RUBRIQUES) {id_rubrique IN 223,226,227} {id_rubrique}>
+      </BOUCLE_extraits_2>
+        <BOUCLE_numero_publication (ARTICLES) {id_article=#ID_PUBLICATION}>
+          [<li> <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">(#TITRE|couper{35})</a></li>]
+        </BOUCLE_numero_publication>
+      <//B_extraits_2>
               [<li> (#TITRE|couper{35})</li>]
-              </ul>
-            </small>
+        </ul>
     </div><!--/container-->
 </div><!--/breadcrumbs-->
 <!--=== End Breadcrumbs ===-->
 
-<INCLURE{fond=inclure/inc-encart-promotion} {env} {lang=fr} />
 
 <!--=== Content Part ===-->
 <div class="container content" >
@@ -115,7 +110,7 @@
                     <li><i class="icon-calendar"></i> [(#DATE|affdate)]</li>
                     [<li class="pull-right">(#MODELE{article_traductions_unify})</li>]
                  </ul>
-                 <ul class="list-unstyled list-inline blog-tags">
+                 <ul class="list-unstyled list-inline blog-tags" style="margin-bottom:20px">
                     <li>
                         <B_tags_1>
                          <BOUCLE_combien_tags_1(MOTS) {id_article}  {plat} {id_groupe=4}></BOUCLE_combien_tags_1>[(#TOTAL_BOUCLE|=={1}|?{<:pays:> : ,<:pays_pluriel:> : })]<//B_combien_tags_1>
@@ -140,53 +135,15 @@
                          </B_tags_3>
                     </li>
                   </ul>
+
+                  <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_ARTICLE}{id_article} />
+
+                 
             </div><!-- End list-unstyled list-inline blog-info -->
 
 
             [<p align="justify"><strong style="font-size:14px;">(#CHAPO|justifier|image_reduire{853,*})</strong> </p>]
-
-            <div class="panel" style="width:15%;float:left; margin: 15px 15px 15px -10px; padding: 6px;background:#eee; border: 1px solid #ddd; border-left:none">
-                <div class="panel-body">
-                                <p><div class="fb-share-button" data-href="http://www.cetri.be/spip.php?page=article-unify&amp;id_article=3769" data-layout="box_count"></div></p>
-                                <p><a class="twitter-share-button"
-                                    href="https://twitter.com/share"
-                                    data-url="#URL_SITE_SPIP/#URL_ARTICLE"
-                                    Tweet text="#TITRE"
-                                    data-count="none">
-                                  Tweet</a>
-                                  <script>
-                                  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-                                  </script>
-                                </p>
-                                <p>
-                                 <div class="g-plus" data-action="share" data-annotation="none"></div>
-
-                                <!-- Placez cette ballise après la dernière balise Partager. -->
-                                <script type="text/javascript">
-                                  window.___gcfg = {lang: 'fr'};
-
-                                  (function() {
-                                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                                    po.src = 'https://apis.google.com/js/platform.js';
-                                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                                  })();
-                                </script>
-                              </p>
-                              <p>
-                                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: #LANG_#LANG</script>
-                                <script type="IN/Share"></script>
-                              </p>
-                              <p><script>var pfHeaderImgUrl = 'http://www.cetri.be/squelettes/img/logos/CETRI_logo_web_for_printfriendly.jpg';var pfHeaderTagline = 'CETRI%2C%20Centre%20Tricontinental';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = 'http://www.cetri.be/squelettes/css/print-friendly.css';var pfBtVersion='1';(function(){var js, pf;pf = document.createElement('script');pf.type = 'text/javascript';if('https:' == document.location.protocol){js='https://pf-cdn.printfriendly.com/ssl/main.js'}else{js='http://cdn.printfriendly.com/printfriendly.js'}pf.src=js;document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="http://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="http://cdn.printfriendly.com/button-print-grnw20.png" alt="Print Friendly and PDF"/></a>
-                                <p><script> (function(){var js, pf;pf = document.createElement('script');pf.type = 'text/javascript';if('https:' == document.location.protocol){js='https://pf-cdn.printfriendly.com/javascripts/email/app.js'}else{js='http://cdn.instaemail.net/js/app.js'}pf.src=js;document.getElementsByTagName('head')[0].appendChild(pf)})(); </script> <a href='#' onclick='pfEmail.init()' title='Email this page' data-button-img='email-button-white' id='instaemail-button'>Email this page</a>
-                                </p>
-                            </div>
-                        </div>
-
-
             [<p align="justify">(#TEXTE|justifier|image_reduire{853,*})</p>]
-
-
-
 
               <table class="table">
                     <tbody>
@@ -215,8 +172,11 @@
               [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_notes:></h3><small>(#NOTES|image_reduire{640,*})</small></p>]
               [<hr class="devider devider-dotted"><p><h3 class="spip"><:bibliographie:></h3><small>(#ARTICLE_BIBLIOGRAPHIE|image_reduire{640,*})</small></p>]
               [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_ps:></h3><small>(#PS|image_reduire{500,*})</small></p>]
-             <hr class="devider devider-dotted"><p><small><:article_opinion:></small></p>
+              <hr class="devider devider-dotted"><p><small><:article_opinion:></small></p>
     </div><!-- End col-md-8 -->
+
+
+
 
     <!-- Right Sidebar -->
     <div class="col-md-4">
@@ -224,8 +184,7 @@
 
       <!-- Article d'alternatives sud : affichage logo de la publication -->
             <BOUCLE_as_couverture (ARTICLES) {id_article=#ID_PUBLICATION}>
-            [
-              <dl>
+            [<dl>
                <dt>
                   <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>"> 
                             (#LOGO_ARTICLE_NORMAL
@@ -243,6 +202,8 @@
             ]
             </BOUCLE_as_couverture>
             </B_as_couverture>
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_recommended_vertical"></div>
 
             [<dl>
                <dt>
@@ -257,7 +218,7 @@
                          </span>   
                    </a>
                  </dt>
-              [<dt class="spip_doc_titre">(#TITRE_LOGO) [<br />(#DESCRIPTIF_LOGO)]</dt>]
+              <dt class="spip_doc_titre">[(#TITRE_LOGO)] [<br />(#DESCRIPTIF_LOGO)]</dt>
             </dl>]
 
             <//B_as_couverture>
@@ -301,6 +262,7 @@
         </BOUCLE_mot1036></B_mot1036>
         <i class="fa fa-times fa-u"></i> <:outofstock:>
         <//B_mot1036>
+      <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_ARTICLE}{id_article} />
     
 
   </div> <!-- End left Sidebar -->
@@ -426,6 +388,8 @@
 </B_modele_publications>
 
  <BOUCLE_annonces(ARTICLES){page=annonces}>#TEXTE</BOUCLE_annonces>
+ <BOUCLE_emploi(ARTICLES){page=emploi}>#TEXTE</BOUCLE_emploi>
+  <BOUCLE_newsletter(ARTICLES){page=newsletter}>#TEXTE</BOUCLE_newsletter>
 
 <//B_actualites>
 
@@ -435,14 +399,13 @@
 <!--=== End Content Part ===-->
 
 
+
  [(#REM) Footer ]
     <INCLURE{fond=inclure/inc-footer-unify} {ajax}>
-
 
 </div><!--/wrapper-->
 
 
-<script src="http://malsup.github.io/jquery.cycle2.js"></script>
 
 <!-- JS Global Compulsory -->  
 
@@ -498,6 +461,11 @@ $('.carousel').carousel({
         }
      });
     </script>
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-550d0a3740eef74e" async="async"></script>
+
 </body>
 </html>
 </BOUCLE_principale>

@@ -1,0 +1,8 @@
+<ul class="list-unstyled list-inline">
+
+ <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <div class="addthis_sharing_toolbox"></div>
+
+    [(#ENV{id_evenement}|?{' ',''})
+    <INCLURE{fond=inclure/inc-addthisevent} {env} {lang=#LANG} {id_evenement} />]
+</ul>

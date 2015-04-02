@@ -7,7 +7,7 @@
       <BOUCLE_shop (ARTICLES) {id_mot=1036} {par date} {inverse} {pagination 10}>
         <div class="list-product-description product-description-brd margin-bottom-30">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               [<a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]>
                     <span class="overlay-zoom">
                       (#LOGO_ARTICLE_NORMAL
@@ -18,7 +18,7 @@
                     </span>  
               </a>]
             </div> 
-            <div class="col-sm-8 product-description">
+            <div class="col-sm-9 product-description">
               <div class="overflow-h margin-bottom-5">
                 <ul class="list-inline overflow-h">
                   <li><h3 class="title-price">[<a href="#myModal#ID_ARTICLE" data-toggle="modal" data-target="#myModal#ID_ARTICLE" title="#TITRE">(#TITRE|textebrut|couper{60})</a>]</h3>
@@ -164,8 +164,7 @@
 <!-- Sidebar menu -->
         <div class="col-md-4">
 
- <!-- Panier -->
-        <INCLURE{fond=inclure/mon_panier,affichage=panel,env,ajax=mon_panier_panel}/>
+    
 
 
 

@@ -17,13 +17,23 @@ body {
     background-repeat: repeat-x, repeat-x;
   }
 
+
+a, a:link, a:visited {
+   color: #3498dc;}
+
+a:focus, 
+a:hover, 
+a:active {
+  color: #2980b9; text-decoration:none;
+}
+
 .texte, .row {margin-left:0; margin-right:0;}
 
-h1, h2, h3, h4, h5, h6 { font-family:'PT Sans', sans-serif, Arial; font-weight: 700; text-transform:uppercase; }
+h1, h2, h3, h4, h5, h6 { font-family:'PT Sans', sans-serif, Arial; text-transform:uppercase; }
 h1, h2 {text-transform:uppercase;}
 h2 {line-height: 20px;}
-h3.spip {text-transform:uppercase; font-size:98%;}
-
+h3.spip {text-transform:uppercase; font-size:98%;font-weight: 700; }
+h2 {text-transform:uppercase; font-weight:400;}
 
 /* HEADER */
 
@@ -204,12 +214,15 @@ border-bottom: solid 1px #3498dc;;}
   border: 1px solid #eee;
 }
 
+
 .news-v1 h3 {
   margin-bottom: 0;
   font-weight: 200;
   line-height: 28px;
   padding: 10px;
 }
+.news-v1 h3 a:link, a:visited {color:#555}
+.news-v1 h3 a:hover, a:focus {color:#3498dc; text-decoration:none;}
 
 .news-v1 p {
   color: #555;
@@ -226,12 +239,12 @@ border-bottom: solid 1px #3498dc;;}
 }
 
 .news-v1 .news-v1-info li {
-  font-size: 12px;
+  font-size: 13px;
 }
 .news-v1 .news-v1-info a:link, .news-v1 .news-v1-info a:visited {color:#555}
 .news-v1 .news-v1-info li a:hover, .news-v1 .news-v1-info li a:focus {color:#3498dc;}
 
-.magazine-news-img img {border:none;}
+
 
 /*Homepage - Actualites / La une
 ------------------------------------------*/
@@ -251,17 +264,20 @@ background:#272727}
 
 /*Footer
 ------------------------------------*/
-.footer{background-color:272727; color:#FFFFFF}
+.footer{background-color:#272727; color:#FFFFFF}
+
+.footer-v1 address a:link, a:visited {color: #3498dc; }
+.footer-v1 address a:hover {color: #428bca; }
 
 /*Copyright
 ------------------------------------*/
 
-ul.list-inline li a,
-ul.list-inline li a:link,
-ul.list-inline li a:visited
+.copyright p a,
+.copyright p a:link,
+.copyright p a:visited
 {color: #3498dc; }
 
-ul.list-inline li a:hover
+.copyright  p a:hover
 {color: #428bca; }
 
 
@@ -277,13 +293,13 @@ ul.list-inline li a:hover
 ----------------*/
 
 .panel-title
-{text-transform :uppercase;font-family:'Lato', Arial, Verdana; font-weight: 600;}
+{text-transform :uppercase;}
 
 /* Buttons */
 
 .btn, .btn-lg, .btn-u, .btn-sm, .btn-xs, .submit
  {text-transform :uppercase;
-  font-family:'PT Sans', Arial, Verdana; font-weight: 600; 
+  font-family:'PT Sans', Arial, Verdana; font-weight: 500; 
 }/* cf. bootstrap.css */
 
 .btn-sm {font-size:11px;}
@@ -297,23 +313,23 @@ ul.list-inline li a:hover
 	padding: 5px 0;
 	background: rgba(0,0,0,0.1);
   background-repeat:repeat;
-  border-bottom:solid 1px #CCCCCC;
-}
+  border-bottom:solid 1px #CCCCCC;}
+
 	
-.breadcrumbs-v3 ul.breadcrumb > li 
-{
+.breadcrumbs-v3 ul.breadcrumb > li {
 text-transform: uppercase;
 color:#555;
-font-weight: 500;}
+font-weight: 400;
+font-size: 75%;}
+
 .breadcrumbs-v3 ul.breadcrumb > li > a:hover, .breadcrumbs-v3 ul.breadcrumb > li > a.on {text-transform: uppercase;color:#555; text-decoration: underline;}
 .breadcrumbs-v3 ul.breadcrumb > li > a:link, .breadcrumbs-v3 ul.breadcrumb > li > a:visited {text-transform: uppercase;color:#555}
 .breadcrumbs-v3 .breadcrumbs h1 {text-transform:uppercase; }
 
 
 .breadcrumbs-v3 h1 {
-	font-size: 17px;
-	font-weight: 600;
-  color: #000000;
+	font-weight: 400;
+  color: #555;
 }
 /*Responsive Navbar*/
 @media (max-width: 767px) {
@@ -321,6 +337,46 @@ font-weight: 500;}
 }
 
 
+/*Sidebar Menu cf. app.css
+------------------------------------*/
+/*Sidebar Menu v1*/
+
+.sidebar-nav-v1 > li.active,
+.sidebar-nav-v1 > li.active:hover {
+  color: #3498dc; background:none;
+} 
+.sidebar-nav-v1 > li.active > a {
+  color: #3498dc;
+}
+
+.sidebar-nav-v1 > li.active, 
+.sidebar-nav-v1 > li.active:hover, 
+.sidebar-nav-v1 > li.active:focus {
+  border-color:#eee;
+}
+.sidebar-nav-v1 li ul a {border-top: solid 1px #eee;}
+
+/*Sidebar List Toggle */
+.list-toggle.active:after {
+  color: #3498dc;
+  content: "\f105";
+}
+
+/*Sidebar List Toggle 2*/
+.list-toggle-2:after {
+    top: 7px;
+    right: 10px;
+    color: #777;
+    content: "\f105";
+    position: absolute;
+    font-weight: normal;
+    display: inline-block;
+    font-family: FontAwesome;
+}
+.list-toggle-2.active:after {
+  color: #3498dc;
+  content: "\f105";
+}
 
 
 
@@ -331,11 +387,7 @@ font-weight: 500;}
           text-align:center}
 
 
-.shadow-wrapper .pull-left {margin-left:0px;margin-right:15px;margin-top:10px;margin-bottom:10px;}
-.shadow-wrapper .pull-right {margin-right:0px;margin-left:15px;margin-top:10px;margin-bottom:10px;}
-.shadow-wrapper .pull-center {margin-right:auto;margin-left:auto;margin-top:10px;margin-bottom:10px;}
 
-.img-bordered {border-bottom:0px}
 
 /* AGENDA Stacking Text and Icons http://blog.fontawesome.io/2014/05/19/stacking-text-and-icons/
 ------------------------------------*/
@@ -345,35 +397,49 @@ font-weight: 500;}
 
 
 
-/* AGENDA Feature Timeline 2
-------------------------------------*/
+/* AGENDA Feature Timeline 2 assets/css/pages/feature_timeline2.css
+Adapté à news-v1 One-Page/assets/css/block.css
+------------------------------------------------------------------*/
 .timeline-v2 .mois {clear:both; width:100%; margin:0px 0px 20px 0px; padding:0px 0px 0px 10px; background:#272727;color:#FFFFFF; font-size: 20px;text-transform:uppercase;  font-weight:400 }
 
-.timeline-v2 > li .cbp_tmtime span {
-  text-align: left; margin-left: 10px;}
-.timeline-v2 > li .cbp_tmtime span, .timeline-v2 > li .cbp_tmtime span i  {color:red;}
+.timeline-v2 > li .cbp_tmtime, .timeline-v2 > .news-v1 > li .cbp_tmtime {
+  padding-right: 60px;
+}
+
+
+
+.timeline-v2 > li .cbp_tmtime span, .timeline-v2 > .news-v1 > li .cbp_tmtime span  {
+  top: 0px;
+  text-align: left; }
+
+
+
+.timeline-v2 > li .cbp_tmtime span i  {color:red;}
 .calendar-text {padding-top: 3px;}
 
+.timeline-v2 > li .cbp_tmtime span p {text-align:center;padding:3px 0px 0px 0px;}
 
+
+
+
+/* Right content */
 .timeline-v2 > li .cbp_tmlabel h2 { 
   text-transform: uppercase;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 0px solid #ddd;
   font-size: 18px;
+  padding: 10px;
+}
+.timeline-v2 > li .cbp_tmlabel {
+  background: #fafafa;}
+
+.timeline-v2 > li .cbp_tmicon {
+  background: #272727
 }
 
-
-.timeline-v2 > li .cbp_tmtime span:first-child {
-text-transform:uppercase;
-font-weight:400;}
-
-.timeline-v2 > li .cbp_tmtime span:last-child {
-text-transform:uppercase;
-font-weight:400;
+.timeline-v2 > li .cbp_tmlabel li {
+    padding-right: 5px;
+  padding-left: 5px;
 }
-
-
-
-
 
 
 /* Modèle publications */
@@ -401,6 +467,28 @@ font-weight:400;
 }
 
 
+/* #BOUTON_ACTION et autres: class submit; */
+
+.button-custom .submit {background:#3498dc; color:#FFFFFF; border:none;box-shadow: none; font-size: 14px;
+cursor: pointer;padding: 6px 13px;white-space: nowrap; display: inline-block;} 
+.submit:hover, 
+.submit:focus, 
+.submit:active, 
+.submit.active
+{ background-color: #2980b9; color:#FFFFFF; 
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;}
+
+
+
+.button-link .submit {background:none;color:#3498dc;border:none;box-shadow: none; font-size: 14px;
+cursor: pointer;padding: 6px 13px;white-space: nowrap; display: inline-block;}
+
+
+
+
 .list-group-item {
   border: 0px solid #EFEFEF;border-top :1px solid #EFEFEF;
 }
@@ -408,7 +496,7 @@ font-weight:400;
 .list-group-item:last-child {border-bottom :1px solid #EFEFEF;}
 
 
-.panel ul.list-group li.list-group-item {font-family:'Lato', Arial, Verdana; font-weight: 600;text-transform:uppercase;}
+.panel ul.list-group li.list-group-item {font-weight: 600;text-transform:uppercase;}
 
 .panel ul.list-group li.list-group-item a {
   color: #4765a0;
@@ -447,34 +535,13 @@ font-weight:400;
   letter-spacing: 1px;
 }
 
-/*Page de recherche - Modification de page_search_inner.css
-------------------------------------------------------------------------*/
 
-
-.s-results .inner-results h3 {
-  text-transform: uppercase;}
-
-.s-results .inner-results h3 a {
-  color: #4765a0;
-}
-.s-results .inner-results h3 a:hover {
-  color: #324c80;
-}
-
-
-/*up-ul*/
-.s-results .up-ul {
-  font-size:11px;}
-
-.s-results .inner-results p {
-  margin-bottom: 5px;
-}
 
 /* Table ----*/
 
 table.spip td,
 table.spip th {
-    background-color: #000000 !important;
+    background-color: #FFFFFF !important;
   }
 
 table.spip {
@@ -483,12 +550,12 @@ table.spip {
 table.spip {
   width: 100%;
   margin-bottom: 20px;
-  background-color: #000000; color:#FFFFFF;
+  background-color: #FFFFFF; color:#555;
 }
 
 table.table {color:#333333;}
 
-table.spip > caption {font-size: 99%;color:#FFFFFF; background-color: #000000; padding:8px; text-transform:uppercase;text-align:left;}
+table.spip, table.table > caption, table > thead  {font-size: 99%;color:#555; background-color: #eee; padding:8px; text-transform:uppercase; text-align:left; border:1px solid #ddd;}
 
 table.spip > thead > tr > th,
 table.spip > tbody > tr > th,
@@ -499,11 +566,15 @@ table.spip > tfoot > tr > td {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 0px solid #ddd;
 }
+
+table.spip > tbody > tr > td {border-bottom: 1px solid #ddd;}
+
+
 table.spip > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 0px solid #ddd;
 }
 table.spip > caption + thead > tr:first-child > th,
 table.spip > colgroup + thead > tr:first-child > th,
@@ -514,7 +585,7 @@ table.spip > thead:first-child > tr:first-child > td {
   border-top: 0;
 }
 table.spip > tbody + tbody {
-  border-top: 2px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 table.spip {
   background-color: #fff; 
@@ -547,24 +618,6 @@ table.spip a:hover, table.table a:hover
 
  {text-decoration:underline;}
 
-
-
-
- /* BLOCS PLIABLE & DEPLIABLES */
-
-.cs_blocs {clear:both; margin: 15px 0px; padding: 10px 5px;overflow:hidden;}
-
-h4.blocs_titre  {margin-top:4px; padding:8px 25px 8px 5px; margin-bottom:0.1em;
-  cursor:pointer; clear: none; background:  url("/squelettes/images/puces/1282912295_130.png") no-repeat right center;letter-spacing: 1px;
-  font-family:'Lato', Calibri, Arial, sans-serif;font-size:13px;letter-spacing: 1px;text-transform:uppercase;outline:0;font-weight:900;text-decoration:none; }
-h3.blocs_replie  {background:  url("/squelettes/images/puces/1282912284_129.png") no-repeat right center;}
-h3.blocs_titre a {border-bottom:none;background:none; font-weight:900; color:#000000}
-h3.blocs_titre a:hover {border-bottom:none; background:none;}
-.blocs_destination {padding: 10px; margin : 5px 5px;color: #333333;}
-.blocs_resume {margin: 3px 0px; padding: 0px 0px 0px 15px; }
-
-
-.blocs_destination hr.spip {clear:both; height:2px; margin: 15px 0px;padding: 0px 0px;border:none; background:none;}
 
 
 /*Accordion v1 cf. app.css*/
@@ -692,15 +745,14 @@ div.onglets_bloc .onglets_contenu {
 
 /*Audio-video responsive iframes */
 
-
-
-
 iframe {
    top: 0;
    left: 0;
    width: 100%;
    position: relative;
 }
+
+
 
 /*Devider
 ------------------------------------*/
@@ -718,9 +770,10 @@ hr.spip {
   overflow:hidden;
   border: none;
   background:none; 
-  margin: 40px auto;
-  padding: 10px;
+  margin: 50px auto;
+  padding: 50px;
   text-align:center;
+  font-size: 95%
 }
 
 .bloc-pagination a, .bloc-pagination .on  { padding: 10px 15px; margin: 3px;}
@@ -850,10 +903,13 @@ a.list-group-item:focus p
 
 
 .icon-cetri {
-    background-image: url("http://www.cetri.be/squelettes/img/icon/icon_cetri50.png");
+    background-image: url("http://www.cetri.be/squelettes/img/icons/icon_cetri50.png");
     background-position: center center; width: 50px; height:50px;background-repeat:no-repeat;
-    margin: 0px auto;
-}
+    margin: 0px auto;}
+.icon-cetri-white {
+    background-image: url("http://www.cetri.be/squelettes/img/icons/icon_cetri50_white.png");
+    background-position: center center; width: 50px; height:50px;background-repeat:no-repeat;
+    margin: 0px auto;}
 
 
 /*Tag Boxes*/
@@ -891,10 +947,14 @@ a.list-group-item:focus p
 }
 
 
+
+
+
 /*Page auteur - inner-team / cf. style.css */
 .team-v2 .inner-team {
   text-align: left;
-  padding: 5px;}
+  padding: 5px; background:#ffffff;
+}
 
 .team-v2 .inner-team p {font-size: 13px;}
 
@@ -930,46 +990,238 @@ a.list-group-item:focus p
 .team-social li a.ml i {color: #999999;}
 .team-social li a.ml:hover {background: #999999;}
 
+.paiement {font-size: 40px;}
+.paiement li .paypal i {color: #052072;}
+.paiement li .cards span.glyphicon {color: #f8a126;}
+.paiement li .transfer span.glyphicon {color: #e50020;}
+
 .team-social li a:hover i {color: #fff}
 
 /*Footer-social - Footer */
 
-.footer-social {  margin-bottom: 0;}
+.team-social-2 {  margin-bottom: 0;}
 
-.footer-social li {padding: 0 2px;}
+.team-social-2 li {padding: 0 2px;}
 
-.footer-social li a {font-size: 14px;
+.team-social-2 li a {font-size: 14px;
   padding: 6px 4px;
   text-align: center;
   border-radius: 50% !important;}
 
-.footer-social li i { min-width: 20px;}
+.team-social-2 li i { min-width: 20px;}
 
-.footer-social li a.fb {border: 1px solid #4862a3; background: #4862a3;}
-.footer-social li a.fb:hover {border: 1px solid #ffffff;}
+.team-social-2 li a.fb {border: 1px solid #4862a3; background: #4862a3;}
+.team-social-2 li a.fb:hover {background:none;}
+.team-social-2 li a.fb:hover i {color:#4862a3;}
 
-.footer-social li a.tw {border: 1px solid #159ceb;}
-.footer-social li a.tw i {color: #159ceb;}
-.footer-social li a.tw:hover {background: #159ceb;}
+.team-social-2 li a.tw {border: 1px solid #159ceb;background: #159ceb;}
+.team-social-2 li a.tw:hover {background: none}
+.team-social-2 li a.tw:hover i {color: #159ceb;}
 
-.footer-social li a.lk {border: 1px solid #CC9933;}
-.footer-social li a.lk i {color: #CC9933;}
-.footer-social li a.lk:hover {background: #CC9933;}
+.team-social-2 li a.lk {border: 1px solid #CC9933;background: #CC9933;}
+.team-social-2 li a.lk:hover {background: none;}
+.team-social-2 li a.lk:hover i {color: #CC9933;}
 
-.footer-social li a.ldin {border: 1px solid #007BB6;}
-.footer-social li a.ldin i {color: #007BB6;}
-.footer-social li a.ldin:hover {background: #007BB6;}
+.team-social-2 li a.ldin {border: 1px solid #007BB6;background: #007BB6;}
+.team-social-2 li a.ldin:hover {background: none;}
+.team-social-2 li a.ldin:hover i {color: #007BB6;}
 
-.footer-social li a.gp {border: 1px solid #dc4a38;}
-.footer-social li a.gp i {color: #dc4a38;}
-.footer-social li a.gp:hover {background: #dc4a38;}
+.team-social-2 li a.gp {border: 1px solid #dc4a38;background:#dc4a38;}
+.team-social-2 li a.gp:hover {background: none;}
+.team-social-2 li a.gp:hover i {color:#dc4a38;}
 
-.footer-social li a.ml {border: 1px solid #999999;}
-.footer-social li a.ml i {color: #999999;}
-.footer-social li a.ml:hover {background: #999999;}
+.team-social-2 li a.ml {border: 1px solid #999999;background: #999999;}
+.team-social-2 li a.ml:hover {background: none; }
+.team-social-2 li a.ml:hover i {color:#999999;}
 
-.footer-social li a.rss {border: 1px solid orange;}
-.footer-social li a.rss i {color: orange;}
-.footer-social li a.rss:hover {background: orange;}
+.team-social-2 li a.rss {border: 1px solid #ff9300;background: #ff9300;}
+.team-social-2 li a.rss:hover {background: none;}
+.team-social-2 li a.rss:hover i {color:#ff9300;}
 
-.footer-social li a i {color: #fff}
+.team-social-2 li a.sm {border: 1px solid #85a64a;background: #85a64a;}
+.team-social-2 li a.sm:hover {background: none;}
+.team-social-2 li a.sm:hover i {color:#85a64a;}
+
+.team-social-2 li a i {color: #fff}
+
+
+
+/*Bouton de partage cf. style.css*/
+
+
+ul.blog-tags a {
+  font-size :14px;
+  background: none;
+}
+
+ul.blog-tags a i {
+  color: #666;
+}
+
+ul.blog-tags a:hover {
+  background: #72c02c;
+}
+
+ul.blog-tags a:hover,
+ul.blog-tags a:hover i {
+  color: #fff !important;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+
+/* Listes Spip - Modification de spip.css 
+cf. mes_fonctions.php // Personnalisation de la puce par défaut avec $GLOBALS['puce'] = '<P class="tiret">'; */
+
+ul.spip,
+ol.spip { margin-left: 0px; padding-left:0px;}
+@media (max-width: 640px) {
+  ul.spip,
+  ol.spip { margin-left: 0em; } }
+
+
+ul.spip { list-style-type: none; }
+li ul.spip { list-style-type: none; }
+li li ul.spip { list-style-type: none; }
+ol.spip { list-style-type: decimal;list-style-position:outside; margin-left:15px;}
+
+
+ol.spip > li {position:relative; padding-left: 20px; margin: 20px auto; }
+ 
+ul.spip > li, p.tiret {position:relative; padding-left: 20px; margin: 20px auto; list-style-type: none;}
+
+ul.spip > li:before, p.tiret:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: FontAwesome;
+  content: "\f105";
+  color:#555;
+}
+
+ol.spip > li:before {
+  position: absolute;
+  top: 0;
+  left: 20; 
+  color:#555;
+}
+
+/* Liens de SPIP */
+
+a.spip_note { font-weight: bold;  } /* liens vers notes de bas de page */
+a.spip_in:after, a.spip_out:after, a.spip_url:after {font-family: FontAwesome;content:"\f08e";padding-left:4px;color:#CCCCCC;} 
+.author a.spip_in:after{content:none;}
+a.spip_mail:after {font-family: FontAwesome;content:"\f003";padding-left:4px;color:#CCCCCC;}
+a.spip_in:visited, a.spip_out:visited, a.spip_url:visited {color: #3498dc;}
+a.spip_out:hover, a.spip_url:hover, a.spip_in:hover, a.spip_out:focus, a.spip_url:focus, a.spip_in:focus {color:#2980b9; text-decoration:none;}
+
+/* Gloccaire cf. Le couteau suisse /outils */
+
+
+a.cs_glossaire, a.cs_glossaire:hover, #glossOverDiv {
+  text-decoration:none;
+  z-index:998;}
+
+/* Mode JS : des span discrets */
+a.cs_glossaire span.gl_js,
+a.cs_glossaire span.gl_jst,
+/* Mode CSS : l'effet de survol est obtenu grace aux proprietes display */
+a.cs_glossaire span.gl_dl,
+a.cs_glossaire span.gl_dt,
+a.cs_glossaire span.gl_dd {
+  display:none;
+  visibility:hidden;
+  z-index:999;
+  font-style:normal;
+color:#666666;border-bottom: dotted 1px #666666;
+}
+
+a.cs_glossaire span.gl_mot:after {font-family: FontAwesome;content:"\f128";padding-left:4px;color:#CCCCCC;}
+
+
+a.cs_glossaire:hover span.gl_dl, #glossOverDiv span.gl_dl {
+  width:250px;
+  border:1px solid #3498dc;
+  background-color:#FFFFFF;
+  font-size:95%;
+}
+a.cs_glossaire:hover span.gl_dt, #glossOverDiv span.gl_dt {
+  padding:3px;
+  background-color:#3498dc;color:#FFFFFF;
+  font-weight:400;
+  text-align:left;
+}
+
+/* Citations, code et poesie */
+
+blockquote.spip p, blockquote.spip_poesie {
+  font-size: 15px;
+  font-weight: 400; 
+  color:#555  
+}
+
+/* BLOCS PLIABLE & DEPLIABLES */
+
+.cs_blocs {margin: 10px 0px; padding: 5px 5px;overflow:hidden; border: #ddd 1px solid; background:#fafafa;}
+h4.blocs_titre {text-transform:uppercase; font-weight:700; color:#555; background:none; font-size:12px;padding: 6px;}
+h4.blocs_titre:after {font-family: FontAwesome;content:"\f070";float:right; font-weight:400;font-size:16px;}
+h4.blocs_replie:after {font-family: FontAwesome;content:"\f06e";float:right;font-weight:400; font-size:16px;}
+h4.blocs_titre a, h4.blocs_titre a:hover {text-decoration:none;color:#555}
+{text-decoration:none; color:#555}
+
+.blocs_destination, .blocs_resume   {padding: 6px; margin : 5px;}
+
+
+/* Formulaires SPIP */
+
+
+.formulaire_spip  {border:1px solid #ddd; padding: 6px; margin : 20px 0px; }
+.formulaire_spip  ul {background:none;}
+.formulaire_spip ul li {list-style:none; margin:10px 10px; font-weight:400; width: 80%;  }
+
+.boutons {margin: 20px 0px}
+form   {border:none; background:none;}
+form button {font-size: 15px;  background:#3498dc;color: #FFFFFF; border:none;padding: 5px;}
+
+form p.boutons {background:red; clear:both}
+
+a.btn-u {color:#FFFFFF;background:#3498dc;}
+
+
+
+.steps-forms form {margin: 20px auto;}
+
+/* Page de recherche cf. modification de page_search_inner.css */
+
+.search-block {background:#E3E3E3; padding: 30px 0px;border-bottom: 1px solid rgba(0,0,0,0.1);}
+.s-results  h3 {
+  color: #999;
+  display: block;
+  font-size: 14px;
+  margin: 0 0 10px;
+  line-height: 20px;
+  text-transform: uppercase;}
+.s-results h3 a {text-transform:uppercase;}
+
+.s-results .inner-results h3 a:link, .s-results .inner-results h3 a:visited {color: #3498dc;}
+.s-results .inner-results h3 a:focus, .s-results .inner-results h3 a:hover, .s-results .inner-results h3 a:active {
+  color: #2980b9; text-decoration:none;}
+
+.s-results .inner-results   {
+  border-left: 1px solid #eee;padding-left: 15px;
+}
+
+.s-results .related-search  {
+  border-right: 0px ;
+}
+.s-results .related-search a:hover {
+  color: #2980b9;
+}
+
+/*up-ul*/
+.s-results .up-ul {
+  font-size:11px;}
+

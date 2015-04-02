@@ -1,6 +1,6 @@
 <BOUCLE_principale(EVENEMENTS) {id_evenement} {doublons}>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
@@ -26,6 +26,12 @@
 [(#INCLURE{fond=inclure/head-unify})]
 
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+
+<!-- CSS Page Style -->
+    <link rel="stylesheet" href="squelettes/css/addthisevent.css">
+
+
+
 
 </head>
 
@@ -55,7 +61,7 @@
                 [<li> <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">(#TITRE|couper{40})</a></li>]
                 </BOUCLE_numero_publication>
                  <//B_extraits>
-              [<li style="color:"> (#TITRE|couper{50})</li>]
+              [<li> (#TITRE|couper{50})</li>]
               </ul>
     </div><!--/container-->
 </div><!--/breadcrumbs-->
@@ -71,18 +77,18 @@
     <!-- Left SideBar -->
     <div class="col-md-8 md-margin-bottom-60">
       <h2>#TITRE</h2>
+      <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_EVENEMENT} />
+      
       <ul class="timeline-v2">
         <li>
-            <time class="cbp_tmtime" datetime="">
-                       
+          <time class="cbp_tmtime" datetime="">
                         <span>
                           <span class="fa-stack fa-3x">
                           <i class="fa fa-calendar-o fa-stack-2x"></i>
                           <p class="fa-stack-1x calendar-text">[(#DATE_DEBUT|affdate{'d'})]</p>
                         </p>
                       </span>
-
-                    </time>
+          </time>
 
             <i class="cbp_tmicon rounded-x hidden-xs"></i>
 
@@ -90,23 +96,33 @@
             <div class="cbp_tmlabel">
             <p>#DESCRIPTIF</p>
             <div class="md-margin-bottom-20"></div>
+
+            [<dl>
+              <dt>
+              <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]>
+                <span class="overlay-zoom">
+                       (#LOGO_EVENEMENT
+                                |vider_attribut{class,spip_logos}
+                                |inserer_attribut{class,img-responsive img-bordered}
+                                |inserer_attribut{alt,#TITRE}) 
+                <span class="zoom-icon"></span>                   
+                </span>  
+               </a>
+              </dt>
+            </dl>]
+
             
             
             [<p>(#EVENEMENT_TEXTE)</p>]
             <BOUCLE_auteur_evenement (AUTEURS) {id_evenement}>
              #AUTEURS_EVENEMENT #AUTEUR_EVENEMENT
             </BOUCLE_auteur_evenement>
-
-             </div>
-             <div class="cbp_tmlabel" style="background:#FFFFFF">
-
-                           
             <!-- Fiche de présentation d'un événement  --> 
              <table class="table">
               <tbody>
                 <tr>
                   <td width="35%">
-                    <i class="fa fa-calendar"></i> <:evenement_quand:>
+                    <i class="fa fa-calendar-o"></i> <:evenement_quand:>
                   </td>
                   <td> [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'} )]}|?{
                                            [(#DATE_DEBUT|affdate{'d/m/Y'})]
@@ -189,7 +205,7 @@
                     </B_documents>
               </tbody>
             </table>
-          </div>
+             </div>
           </li>
         </ul>
 
@@ -199,20 +215,6 @@
 
     <!-- Begin Right Sidebar -->
       <div class="col-md-4">
-
-        [<dl>
-          <dt>
-          <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]>
-            <span class="overlay-zoom">
-                   (#LOGO_EVENEMENT
-                            |vider_attribut{class,spip_logos}
-                            |inserer_attribut{class,img-responsive img-bordered}
-                            |inserer_attribut{alt,#TITRE}) 
-            <span class="zoom-icon"></span>                   
-            </span>  
-           </a>
-          </dt>
-        </dl>]
 
         <INCLURE{fond=inclure/inc-homepage-agenda, env, titre=<:agenda:>,doublons}/>
         
@@ -235,6 +237,25 @@
 
 
 </div><!--/wrapper-->
+
+
+<!-- AddThisEvent -->
+<script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
+<!-- AddThisEvent Settings -->
+<script type="text/javascript">
+addthisevent.settings({
+    mouse     : false,
+    css       : false,
+    outlook   : {show:true, text:"Outlook"},
+    google    : {show:true, text:"Google"},
+    yahoo     : {show:true, text:"Yahoo"},
+    hotmail   : {show:true, text:"Hotmail"},
+    ical      : {show:true, text:"iCal"},
+    facebook  : {show:true, text:"Facebook"},
+    dropdown  : {order:"outlook,google,ical,facebook,hotmail,yahoo"},
+    callback  : ""
+});
+</script>
 
 
 <!-- JS Global Compulsory -->  
