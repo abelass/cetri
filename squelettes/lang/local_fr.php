@@ -146,6 +146,7 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'jours' => 'jours',
 
 // L
+'label_inscrire_newsletter' => 'S\'inscrire à la newsletter',
 'le' => 'Le ',
 'liens_utiles' => 'Liens utiles',
 'lireaussi' => 'Lire aussi',
