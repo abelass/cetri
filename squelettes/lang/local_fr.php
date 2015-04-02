@@ -223,6 +223,7 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'par_auteur' => 'par ',
 'participer_site' => 'Vous pouvez participer &agrave; la vie de ce site et proposer vos propres articles en vous inscrivant ci-dessous. Vous recevrez imm&eacute;diatement un email vous indiquant vos codes d\'acc&egrave;s &agrave; l\'espace priv&eacute; du site.',
 'pas_resultats_recherche' => 'Pas de r&eacute;sultats pour votre recherche',
+'passer_paiement' => 'Passer au paiement',
 'pays' => 'Pays',
 'pays_pluriel' => 'Pays',
 'pied_texte_gnu' => 'sous',

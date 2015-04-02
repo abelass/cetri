@@ -18,7 +18,7 @@
 		[(#ENV{appel}|=={mon_panier}|?{
 			[(#BOUTON_ACTION{<i class="fa fa-sign-in"></i> <:shop:passer_la_commande:>,[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees})],continuer})]
 			,
-			[(#BOUTON_ACTION{<:shop:passer_la_commande:>,[(#URL_PAGE{shop}|parametre_url{appel,mon_panier})],continuer})]
+			[(#BOUTON_ACTION{<i class="fa fa-sign-in"></i> <:shop:passer_la_commande:>,[(#URL_PAGE{shop}|parametre_url{appel,mon_panier})],continuer})]
 		})]
 		</div>
 	</div>
