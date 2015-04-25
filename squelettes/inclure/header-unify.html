@@ -62,7 +62,8 @@
                             <div class="search-open">
                                 <form action="spip.php?page=recherche-unify" method="get" role="search">
                                 <div class="input-group animated fadeInDown">
-                                    <input name="page" value="recherche-unify" type="hidden">
+                                    <input name="page" value="recherche-unify" type="hidden" >
+                                    <input type='hidden' name='lang' value='#LANG'><!-- pour le contexte de la langue cf. http://contrib.spip.net/FAQ-Multilinguisme-->
                                     <input type="text" class="form-control" placeholder="<:mot_cle:>" name="recherche" id="recherche" value="" onfocus="this.value='';" accesskey="4">
                                     <span class="input-group-btn">
                                         <input type="submit" value="OK" title="OK" class="btn-u" />

@@ -74,6 +74,7 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 
 
 // C
+'calendar_add' => 'Ajouter à votre agenda',
 'close' => 'Fermer',
 'collection' => 'La collection',
 'commande_abonnement' => 'Commande ou abonnement',
@@ -146,7 +147,6 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'jours' => 'jours',
 
 // L
-'label_inscrire_newsletter' => 'S\'inscrire à la newsletter',
 'le' => 'Le ',
 'liens_utiles' => 'Liens utiles',
 'lireaussi' => 'Lire aussi',
@@ -224,7 +224,6 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'par_auteur' => 'par ',
 'participer_site' => 'Vous pouvez participer &agrave; la vie de ce site et proposer vos propres articles en vous inscrivant ci-dessous. Vous recevrez imm&eacute;diatement un email vous indiquant vos codes d\'acc&egrave;s &agrave; l\'espace priv&eacute; du site.',
 'pas_resultats_recherche' => 'Pas de r&eacute;sultats pour votre recherche',
-'passer_paiement' => 'Passer au paiement',
 'pays' => 'Pays',
 'pays_pluriel' => 'Pays',
 'pied_texte_gnu' => 'sous',
@@ -254,7 +253,6 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'repondre_breve' => 'R&eacute;pondre &agrave; cette br&egrave;ve',
 'repondre_message' => 'R&eacute;pondre &agrave; ce message',
 'resultats_recherche' => 'R&eacute;sultats de la recherche',
-'retour_boutique' => 'Retour à la boutique',
 'retour_debut_forums' => 'Retour au d&eacute;but des forums',
 'rubrique' => 'Rubrique',
 'rubriques' => 'Rubriques',

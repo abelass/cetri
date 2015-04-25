@@ -11,21 +11,27 @@
 
 
 <title>[(#NOM|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-[<meta name="description" content="(#BIO{150}|attribut_html)" />]
-[<link rel="canonical" href="(#URL_AUTEUR|url_absolue)" />]
-<meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
-[<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
-<meta name="ROBOTS" content="none">
-<meta name="revisit-after" content="7 days">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    [<meta name="description" content="(#BIO{150}|attribut_html)" />]
+    [<link rel="canonical" href="(#URL_AUTEUR|url_absolue)" />]
+    <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+    [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+    <meta name="ROBOTS" content="none">
+    <meta name="revisit-after" content="7 days">
 
 
-[<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
-<meta property="og:url" content="#URL_AUTEUR" />
-[(#LOGO_AUTEUR|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_AUTEUR|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+    <!-- Open Graph Data -->
+    [<meta property="og:title" content="(#NOM|textebrut)" />]
+    [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+    [<meta name="og:description" content="(#BIO|couper{200}|textebrut)">]
+     <meta property="og:type" content="website" />
+     <meta property="og:url" content="#URL_AUTEUR" />
+    [(#LOGO_AUTEUR|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_AUTEUR|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+    <meta property="og:locale" content="#LANG" />
 
 
-[(#INCLURE{fond=inclure/head-unify})]
+<INCLURE{fond=inclure/head-unify} />
 
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
 
@@ -36,8 +42,8 @@
   <!--=== Header ===-->    
     
     <div class="header">
-          [(#INCLURE{fond=inclure/topbar-unify} {env} {ajax})]
-          [(#INCLURE{fond=inclure/header-unify} {env} {ajax})]
+          <INCLURE{fond=inclure/topbar-unify} {env} {ajax}{lang_select=non} />
+          <INCLURE{fond=inclure/header-unify} {env} {ajax} {lang_select=non}  />
     </div><!--/header-->
   
   <!--=== End Header ===--> 
@@ -129,11 +135,11 @@
                     </div>
 
                 <div class="col-md-8 md-margin-bottom-40">
-                    [(#FORMULAIRE_ECRIRE_AUTEUR)]
+                    [(#FORMULAIRE_ECRIRE_AUTEUR) <hr class="devider"> ]
 
 
        <B_onglets>
-       [(#TOTAL_BOUCLE|=={0}|?{'',<hr class="devider"> <div class="headline">
+       [(#TOTAL_BOUCLE|=={0}|?{'',<div class="headline">
                 <h2><:decetauteur:></h2>
                 </div>
                 [(#MODELE{onglets-unify} {id_auteur} {env} {ajax})]})]

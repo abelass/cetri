@@ -9,11 +9,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 'abonnement' => 'I subscribe',
 'abonnement_commande' => 'Order and subscription',
+'abonnement_ligne' => 'Subscribe Now',
 'abonnement_newsletter' => 'Subscription',
 'abonner' => 'Subscribe',
 'about_alternativessud' => 'About Alternatives Sud',
 'abouthissite' => 'About this site',
-'accueil_site' => 'Home page',
+'accueil' => 'Home',
+'accueil_site' => 'Home',
 'actu_mss' => 'Southern social movements newswire',
 'actualites' => 'News',
 'agenda' => 'Agenda',
@@ -22,6 +24,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'ajouter_panier' => 'Add to cart',
 'allrightsreserved' => 'All Rights Reserved',
 'alternatives_sud' => 'Alternatives Sud',
+'annonces' => 'Advertisements',
 'article_auteurs' => 'Author(s)',
 'article_disponible' => 'This article is not available',
 'article_imprimer' => 'print',
@@ -66,11 +69,14 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 // B
 'bonjour' => 'Hello',
+'boutique' => 'Shop',
 'breves' => 'News items',
 
 
 // C
+'calendar_add' => 'Add to your calendar',
 'close' => 'Close',
+'collection' => 'issues',
 'commande_abonnement' => 'Order or subscription',
 'commenter_site' => 'Comment on this site',
 'contenu' => 'Content',
@@ -82,6 +88,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'danslesarchives' => 'the archives',
 'date' => 'Date',
 'decetauteur' => 'From this author',
+'decouvrez' => 'Check out',
 'dernier_ajout' => 'Latest addition',
 'dernieres_breves' => 'Latest news',
 'dernieres_publications' => 'Latest publications',
@@ -136,6 +143,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'isbn' => 'ISBN',
 
 // J
+'joinus' => 'Join us on',
 'jours' => 'days',
 
 
@@ -161,6 +169,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'messages_forum' => 'Forum messages',
 'messages_recents' => 'Most recent forum messages',
 'moncompte' => 'My account',
+'mon_panier' => 'My cart',
 'mot_cle' => 'Keyword',
 'mots_clefs' => 'Tags',
 'mots_clefs_meme_groupe' => 'Keywords in the same group',
@@ -169,6 +178,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 // N
 'navigation' => 'Navigation',
 'newsletter' => 'Newsletter',
+'newsletter_subscribe' => 'Subscribe to our newsletter',
 'newsletterinscription' => 'Subscribe to our newsletter and stay up to date with the latest news!',
 'nom' => 'Name',
 'nombre_articles' => 'article(s)',
@@ -178,11 +188,18 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'nouveaux_articles' => 'New articles',
 'nouvelles_breves' => 'New news items',
 
+// O
+'outofstock' => 'Not for sale on this website',
+
 
 // P
 'pages' => 'Pages',
 'page_precedente' => 'previous page',
 'page_suivante' => 'next page',
+'paiement_modes' => 'FModes of payment',
+'paiement_paypal' => 'By Paypal',
+'paiement_viapaypal' => 'By Visa, Mastercard et Maestro via Paypal',
+'paiement_virement' => 'By bank transfer',
 'par_auteur' => 'by ',
 'participer_site' => 'You can take an active part in this website and write your own articles by registering below. You will then receive immediately an email giving you an access code to the private area of the site.',
 'pas_resultats_recherche' => 'No results found',

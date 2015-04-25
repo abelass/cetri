@@ -1,0 +1,39 @@
+<B_evenements>
+<div class="panel panel-default" style="border:none">
+  <div class="panel-heading">
+    <h3 class="panel-title"> #ENV{titre}
+       <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">
+          <i class="fa fa-link"></i>
+        </a>
+        <a href="#URL_PAGE{backend-evenements}" target="_blank" title="RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+    </h3>
+  </div>
+  <div class="panel-body">   
+    <!-- boucle avec comme critères les mots clés de l'article -->    
+    <BOUCLE_evenements(EVENEMENTS){tout} {age_fin<=0}{par date_debut}{statut=publie}{0,5}{doublons}>
+      <div class="media">
+        [(#LOGO_EVENEMENT|?{[<a class="pull-left" href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="#TITRE">(#LOGO_EVENEMENT
+      	|image_reduire{150,*}
+        |image_recadre{150,150,center}
+      	|vider_attribut{class,spip_logos}
+      	|inserer_attribut{alt,#TITRE}
+      	|inserer_attribut{class,media-object img-bordered}
+      	|image_recadre{80,80,center}
+      	)</a>],''})]
+  <div class="media-body">
+    <h5 class="media-heading"><a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="#TITRE">#TITRE</a></h5>
+      <small>
+        <i class="fa fa-calendar-o" style="color:red"></i>  [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })]
+        [<i class="fa fa-map-marker" style="color:orange"></i> (#LIEU)]
+      </small>
+  </div>
+</div>
+</BOUCLE_evenements>
+</div>
+</div>
+</B_evenements>
+
+
+

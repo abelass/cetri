@@ -11,8 +11,8 @@
                             [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>">
                             [<span class="magazine-badge label-u">(#SURTITRE)</span>]
                             (#LOGO_ARTICLE_NORMAL
-                                |image_recadre{[(#LOGO_ARTICLE||extraire_attribut{width})],*}
-                                |image_recadre{*,[(#LOGO_ARTICLE||extraire_attribut{height})]}
+                                |image_reduire{550,*}
+                                |image_recadre{400,200,center}
                                 |vider_attribut{class,spip_logos}
                                 |inserer_attribut{class,img-responsive}
                                 |inserer_attribut{alt,#TITRE}) 
@@ -26,7 +26,7 @@
                             <ul class="list-inline news-v1-info">
                                 [<li><i class="icon-user"></i> (#LESAUTEURS)</li>
                                 <li>|</li>]
-                                [<li><i class="icon-calendar"></i> (#DATE|affdate)</li>]
+                                [<li><i class="fa fa-calendar-o"></i> (#DATE|affdate)</li>]
                             </ul>
                     </div>
                 </div>

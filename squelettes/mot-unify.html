@@ -2,9 +2,11 @@
     Un cache plus court, pour la boucle syndic_articles
 ]#CACHE{3600}
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <BOUCLE_principale(MOTS) {id_mot}>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
@@ -21,24 +23,32 @@
 [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
 <meta name="ROBOTS" content="none">
 <meta name="revisit-after" content="7 days">
-[<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
-<meta property="og:url" content="#URL_MOT" />
-[(#LOGO_MOT_NORMAL|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_MOT_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+
+
+    <!-- Open Graph Data -->
+    [<meta property="og:title" content="(#TITRE|textebrut)" />]
+    [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+    [<meta name="og:description" content="(#INTRODUCTION|couper{200}|textebrut)">]
+     <meta property="og:type" content="website" />
+     <meta property="og:url" content="#URL_MOT" />
+    [(#LOGO_MOT_NORMAL|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_MOT_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+    <meta property="og:locale" content="#LANG" />
 
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
 
 
-[(#INCLURE{fond=inclure/head-unify})]
+<INCLURE{fond=inclure/head-unify} />
+
 
 </head>	
 
 <body class="page_rubrique">
 <div class="wrapper">
 <!--=== Header ===-->    
-<div class="header">
-[(#INCLURE{fond=inclure/topbar-unify} {env} {ajax})]
-[(#INCLURE{fond=inclure/header-unify} {id_mot} {env} {ajax})]
-</div>
+    <div class="header">
+          <INCLURE{fond=inclure/topbar-unify} {env} {ajax} {lang_select=non} />
+          <INCLURE{fond=inclure/header-unify} {env} {ajax} {lang_select=non}  />
+    </div>
 <!--=== End Header ===-->   
 
 
@@ -46,7 +56,6 @@
 <div class="breadcrumbs-v3">
     <div class="container">
         [<h1 class="pull-left">(#TITRE)</h1>]
-            <small>
               <ul class="pull-right breadcrumb">
                     <li> 
                       <a href="#URL_PAGE{sommaire-unify}"><:accueil:></a>
@@ -58,7 +67,6 @@
                 </BOUCLE_ariane>
                   [<li> (#TITRE|couper{60})</li>]
               </ul>
-            </small>
     </div><!--/container-->
 </div><!--=== End Breadcrumbs ===-->
 
@@ -69,31 +77,19 @@
     <!-- Main Content -->
     <div class="col-md-8 md-margin-bottom-60">
 
-
       [(#TEXTE|?{<p>#TEXTE</p>,[<p>www :  <a href="[(#MOT_FICHE_WEB|textebrut)]" target="_blank" title="#TITRE"><i class="fa fa-link"></i> (#MOT_FICHE_WEB|textebrut|couper{40})</a></p>]})]
 
-
-        <B_onglets>
+      <B_onglets>
        [(#TOTAL_BOUCLE|=={0}|?{'',[(#MODELE{onglets-unify} {id_mot} {env} {ajax})]})]
       <BOUCLE_onglets (ARTICLES) {id_mot}>
       </BOUCLE_onglets></B_onglets>
       
-             
-                  
-
-               
-
-
-
     </div><!-- End col-md-8 -->
-
-
 
 <!-- Right Sidebar -->
 <div class="col-md-4 md-margin-bottom-60">
 
-            [(#INCLURE{fond=inclure/inc-searchpanel-unify} {ajax})]
-            [(#INCLURE{fond=inclure/inc-newsletter-unify} {ajax})]
+
 
   </div><!-- End Right Sidebar -->
   </div><!--/row-->        
@@ -102,92 +98,31 @@
 
    [(#REM) Footer ]
     <INCLURE{fond=inclure/inc-footer-unify} {ajax}>
-    [(#REM) Copyright ]
-    <INCLURE{fond=inclure/inc-copyright-unify} {ajax}>
+
 
 
 </div><!--/wrapper-->
 
 
-
 <!-- JS Global Compulsory -->  
-  
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script> 
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
 
 <!-- JS Implementing Plugins -->           
-<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-<script type="text/javascript" src="assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-<script type="text/javascript" src="assets/plugins/hover-dropdown.min.js"></script> 
-<!-- JS Implementing Plugins -->           
-<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-<script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
-<script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
-<!-- Layer Slider -->           
-<script src="assets/plugins/layer_slider/jQuery/jquery-easing-1.3.js" type="text/javascript"></script>
-<script src="assets/plugins/layer_slider/jQuery/jquery-transit-modified.js" type="text/javascript"></script>
-<script src="assets/plugins/layer_slider/js/layerslider.transitions.js" type="text/javascript"></script>
-<script src="assets/plugins/layer_slider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
-<!-- End Layer Slider -->           
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+        
 <!-- JS Page Level -->           
-<script type="text/javascript" src="assets/js/app.js"></script>
-<script type="text/javascript" src="assets/js/pages/index.js"></script>
+<script type="text/javascript" src="unify/assets/js/app.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
-        App.initSliders();
-        Index.initLayerSlider();                       
+                  
     });    
 </script>
 <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.js"></script>
+    <script src="unify/assets/plugins/respond.js"></script>
 <![endif]-->
 
-
-<script type="text/javascript" src="assets/js/plugins/owl-carousel.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        OwlCarousel.initOwlCarousel();
-    });
-</script>
-
-
-<!-- JavaScript jQuery code from Bootply.com editor -->
-        
-        <script type='text/javascript'>
-        
-        $(document).ready(function() {
-        
-            $.getScript('//cdn.jsdelivr.net/isotope/1.5.25/jquery.isotope.min.js',function(){
-
-  /* activate jquery isotope */
-  $('#posts').imagesLoaded( function(){
-    $('#posts').isotope({
-      itemSelector : '.item'
-    });
-  });
-  
-});
-        
-        });
-        
-        </script>
-
-  <script type="text/javascript" src="assets/js/pages/feature_btn_effects.js"></script>
-
-<script type="text/javascript" src="assets/plugins/jquery.mixitup.min.js"></script>  
-     <script type="text/javascript" src="assets/js/pages/page_portfolio.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        PortfolioPage.init();                             
-    });
-</script>
-<!--[if lt IE 9]>
-    <script src="assets/plugins/respond.js"></script>
-<![endif]-->
 </body>
 </html>
 </BOUCLE_principale>

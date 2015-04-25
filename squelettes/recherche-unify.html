@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
@@ -11,7 +12,7 @@
 [(#INCLURE{fond=inclure/head-unify})]
 <meta name="robots" content="none" />
 
-[(#INCLURE{fond=inclure/head-unify})]
+<INCLURE{fond=inclure/head-unify} />
 
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
 
@@ -21,15 +22,12 @@
     <div class="wrapper">
 
 <!--=== Header ===-->    
-    <div class="header">
-          <INCLURE{fond=inclure/topbar-unify} {env} {ajax} />
-          <INCLURE{fond=inclure/header-unify} {env} {ajax}  />
-    </div>
+          <INCLURE{fond=inclure/header-unify} {env} {ajax} {lang_select=non}  />
   <!--=== End Header ===--> 
 
 
 <!--=== Breadcrumbs v3 ===-->
-    <div class="breadcrumbs-v3">
+    <div class="breadcrumbs">
         <div class="container">
             <h1 class="pull-left"><:resultats_recherche:></h1>
             <ul class="pull-right breadcrumb">
@@ -65,16 +63,16 @@
 
                <p>                   
                   <button type="button" class="btn btn-link btn-sm">
-                    <a href="#URL_PAGE{index-unify,id_groupe=4&lettre=A}" title="<:pays:>"><i class="fa fa-tags"></i> <:pays:></a>
+                    <a href="#URL_PAGE{index-unify,id_groupe=4&lettre=A}&lang=#LANG" title="<:pays:>"><i class="fa fa-tags"></i> <:pays:></a>
                   </button>
                   <button type="button" class="btn btn-link btn-sm">
-                    <a href="#URL_PAGE{index-unify,id_groupe=5&lettre=A}" title="<:themes:>"><i class="fa fa-tags"></i> <:themes:></a>
+                    <a href="#URL_PAGE{index-unify,id_groupe=5&lettre=A}&lang=#LANG" title="<:themes:>"><i class="fa fa-tags"></i> <:themes:></a>
                   </button>
                   <button type="button" class="btn btn-link btn-sm">
-                    <a href="#URL_PAGE{index-unify,id_groupe=3&lettre=A}" title="<:sources:>"><i class="fa fa-tags"></i> <:sources:></a>
+                    <a href="#URL_PAGE{index-unify,id_groupe=3&lettre=A}&lang=#LANG" title="<:sources:>"><i class="fa fa-tags"></i> <:sources:></a>
                   </button>
                   <button type="button" class="btn btn-link btn-sm">
-                    <a href="#URL_PAGE{index-auteurs-unify}&lettre=A" title="<:auteurs:>"><i class="fa fa-users"></i> <:auteurs:></a>
+                    <a href="#URL_PAGE{index-auteurs-unify}&lettre=A&lang=#LANG" title="<:auteurs:>"><i class="fa fa-users"></i> <:auteurs:></a>
                   </button>
               </p>
                 
@@ -94,7 +92,7 @@
                     	<B_rubriques>
                         <h3><:rubriques:> (#GRAND_TOTAL)</h3>
                         <ul class="list-unstyled">
-                        <BOUCLE_rubriques(RUBRIQUES) {recherche} {!par points} {0,20}>
+                        <BOUCLE_rubriques(RUBRIQUES) {recherche} {!par points} {0,20} {id_rubrique!=7}>
 						<li><a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE"><i class="fa fa-folder-o"></i> #TITRE</a></li>
                         </BOUCLE_rubriques>
                         </ul>
@@ -123,7 +121,7 @@
                         <h3><:auteurs:> (#GRAND_TOTAL)</h3>
                         <ul class="list-unstyled">
                          <BOUCLE_auteurs(AUTEURS) {recherche} {!par points} {0,20}>
-                        <li><a href="#URL_AUTEUR{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM"><i class="icon-user"></i> #NOM</a></li>
+                        <li><a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM"><i class="icon-user"></i> #NOM</a></li>
                         </BOUCLE_auteurs>
                         </ul>
                         </B_auteurs>
@@ -144,7 +142,7 @@
                 <h3><:articles:> & <:publications:> (#GRAND_TOTAL)</h3>
                 <!-- Begin Inner Results -->
                 <div class="inner-results">
-                	<BOUCLE_articles(ARTICLES) {recherche} {!par points} {pagination}>
+                	<BOUCLE_articles(ARTICLES) {recherche} {!par points} {pagination} {id_rubrique!=7}>
                     <h3><a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">#TITRE</a></h3>
                     <ul class="list-inline up-ul">
                         [<li><i class="icon-user"></i> (#LESAUTEURS)</li>]
@@ -169,7 +167,7 @@
                 <!-- End Inner Results -->
                 </B_articles>
                 <h3><:articles:> & <:publications:> (0)</h3>
-            <//B_articles   
+                <//B_articles>   
             </div><!--/col-md-10-->
         </div> </div> </div>        
     </div><!--/container-->     
@@ -209,24 +207,6 @@
 
 
 
-<!-- Modal correction 
-    http://stackoverflow.com/questions/21126617/bootstrap-3-modal-disappearing-below-backdrop-when-using-a-fixed-sidebar/21127348#21127348 -->
-<script type="text/javascript">
-   var checkeventcount = 1,prevTarget;
-    $('.modal').on('show.bs.modal', function (e) {
-        if(typeof prevTarget == 'undefined' || (checkeventcount==1 && e.target!=prevTarget))
-        {  
-          prevTarget = e.target;
-          checkeventcount++;
-          e.preventDefault();
-          $(e.target).appendTo('body').modal('show');
-        }
-        else if(e.target==prevTarget && checkeventcount==2)
-        {
-          checkeventcount--;
-        }
-     });
-    </script>
 
 
 </body>

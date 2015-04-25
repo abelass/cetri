@@ -27,27 +27,16 @@
     [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
     [<meta name="og:description" content="(#INTRODUCTION|couper{200}|textebrut)">]
      <meta property="og:type" content="article" />
-     <meta property="og:url" content="#URL_ARTICLE" />
+     <meta property="og:url" content="#URL_SITE_SPIP/#URL_ARTICLE" />
     [(#LOGO_ARTICLE_NORMAL|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
     <meta property="og:locale" content="#LANG" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
-    [<meta name="twitter:title" content="(#TITRE|textebrut|couper{70})">]
-    [<meta name="twitter:description" content="(#INTRODUCTION|couper{200}|textebrut)">]
-    <meta name="twitter:site" content="@cetri" />
-    [<meta name="twitter:creator" content="(#LESAUTEURS|attribut_html)" />]
-    <meta name="twitter:site:id" content="239219305" />
-    <meta name="twitter:url" content="#URL_SITE_SPIP">
-    [(#LOGO_ARTICLE_NORMAL|?{<meta property="twitter:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" />,<meta property="twitter:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP_SURVOL|fichier)]" />})]
 
 
-[(#INCLURE{fond=inclure/head-unify})]
+
+<INCLURE{fond=inclure/head-unify} />
 
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
-
-
-<link rel="stylesheet" href="squelettes/css/jquery-cycle/cycle-slideshow.css">
 
 </head>
 
@@ -55,6 +44,7 @@
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-550d0a3740eef74e" async="async"></script>
+
 
 
 <div class="wrapper">
@@ -76,10 +66,20 @@
       </B_extraits_1>
         [<h1 class="pull-left">(#TITRE_PARENT)</h1>]
       <//B_extraits_1>
+        <BOUCLE_pagesuniques(ARTICLES){page}>
+        <h1 class="pull-left">#PAGE</h1>
+        </BOUCLE_pagesuniques>
         <ul class="pull-right breadcrumb">
           <BOUCLE_ariane(HIERARCHIE){id_article} {id_rubrique !IN 223,226,227}> 
             [<li> <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">(#TITRE|couper{35})</a>]
-          </BOUCLE_ariane>
+          </BOUCLE_ariane></B_ariane>
+
+          <!-- Boucle secteur pour pages uniques -->
+          <BOUCLE_secteur (RUBRIQUES) {racine}{lang}>
+          [<li><a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="#TITRE">(#TITRE|couper{35})</a></li>]
+          </BOUCLE_secteur>
+
+          <//B_ariane>
           <!-- BOUCLE 2 pour ne pas afficher la rubrique des extraits d'Alternatives Sud -->
       <BOUCLE_extraits_2 (RUBRIQUES) {id_rubrique IN 223,226,227} {id_rubrique}>
       </BOUCLE_extraits_2>
@@ -94,143 +94,12 @@
 <!--=== End Breadcrumbs ===-->
 
 
+
+
 <!--=== Content Part ===-->
 <div class="container content" >
   <!--=== Main Row ===--> 
   <div class="row">    
-
-  <BOUCLE_actualites (ARTICLES) {id_article} {id_rubrique IN 38,165,166,167,168,169,223,226,227}>
-    <!-- Main Content -->
-    <div class="col-md-8 md-margin-bottom-60">
-        [<h4>(#SURTITRE)</h4>]
-        <h2 class="#EDIT{titre}"> #TITRE </h2>
-            <div class="blog-post-tags">
-                <ul class="list-unstyled list-inline blog-info">
-                   [<li><i class="icon-user"></i> (#LESAUTEURS)</li>]
-                    <li><i class="icon-calendar"></i> [(#DATE|affdate)]</li>
-                    [<li class="pull-right">(#MODELE{article_traductions_unify})</li>]
-                 </ul>
-                 <ul class="list-unstyled list-inline blog-tags" style="margin-bottom:20px">
-                    <li>
-                        <B_tags_1>
-                         <BOUCLE_combien_tags_1(MOTS) {id_article}  {plat} {id_groupe=4}></BOUCLE_combien_tags_1>[(#TOTAL_BOUCLE|=={1}|?{<:pays:> : ,<:pays_pluriel:> : })]<//B_combien_tags_1>
-                         <BOUCLE_tags_1 (MOTS) {id_article} {id_groupe=4} {par titre}>
-                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
-                         <i class="icon-tag"></i> #TITRE</a>
-                         </BOUCLE_tags_1>
-                         </B_tags_1>
-                          <B_tags_2>
-                         <BOUCLE_combien_tags_2(MOTS) {id_article}  {plat} {id_groupe=5}></BOUCLE_combien_tags_2>[(#TOTAL_BOUCLE|=={1}|?{<:theme:> : ,<:themes:> : })]<//B_combien_tags_2>
-                         <BOUCLE_tags_2 (MOTS) {id_article} {id_groupe=5} {par titre}>
-                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
-                         <i class="icon-tag"></i> #TITRE</a>
-                         </BOUCLE_tags_2>
-                         </B_tags_2>
-                         <B_tags_3>
-                         <BOUCLE_combien_tags_3(MOTS) {id_article}  {plat} {id_groupe=3}></BOUCLE_combien_tags_3>[(#TOTAL_BOUCLE|=={1}|?{<:source:> : ,<:sources:> : })]<//B_combien_tags_3>
-                         <BOUCLE_tags_3 (MOTS) {id_article} {id_groupe=3}>
-                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
-                         <i class="icon-tag"></i> #TITRE</a>
-                         </BOUCLE_tags_3>
-                         </B_tags_3>
-                    </li>
-                  </ul>
-
-                  <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_ARTICLE}{id_article} />
-
-                 
-            </div><!-- End list-unstyled list-inline blog-info -->
-
-
-            [<p align="justify"><strong style="font-size:14px;">(#CHAPO|justifier|image_reduire{853,*})</strong> </p>]
-            [<p align="justify">(#TEXTE|justifier|image_reduire{853,*})</p>]
-
-              <table class="table">
-                    <tbody>
-                      <BOUCLE_documents_joints(DOCUMENTS) {id_article} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>
-                      <tr>
-                        <td width="5%"><i class="fa fa-download"></i></td>
-                        <td width="15%"><strong style="text-transform:uppercase"><:download:></strong></td>
-                        <td width="65%"class="#EDIT{titre}">
-                          <a href="#URL_DOCUMENT" type="#MIME_TYPE" class="spip_doc [(#EXTENSION|attribut_html)]">
-                          [(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</a>
-                          [<br /><small>(#CREDITS)</small>]
-                          [<br /><small>(#DESCRIPTIF)</small>]
-                        </td>
-                        <td width="15%"><span class="badge badge-u rounded">[(#EXTENSION|strtoupper) - ]  [(#TAILLE|taille_en_octets)]</span></td>
-                      </tr>
-                      </BOUCLE_documents_joints>
-                      [<tr>
-                        <td width="5%"><i class="icon-link"></i></td>
-                        <td width="10%"><strong style="text-transform:uppercase"><:voir_en_ligne:></strong></td>
-                        <td class="#EDIT{titre}"><a href="#URL_SITE" title="#TITRE">(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})</a></td>
-                        <td></td>
-                      </tr>]
-                    </tbody>
-              </table>
-
-              [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_notes:></h3><small>(#NOTES|image_reduire{640,*})</small></p>]
-              [<hr class="devider devider-dotted"><p><h3 class="spip"><:bibliographie:></h3><small>(#ARTICLE_BIBLIOGRAPHIE|image_reduire{640,*})</small></p>]
-              [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_ps:></h3><small>(#PS|image_reduire{500,*})</small></p>]
-              <hr class="devider devider-dotted"><p><small><:article_opinion:></small></p>
-    </div><!-- End col-md-8 -->
-
-
-
-
-    <!-- Right Sidebar -->
-    <div class="col-md-4">
-
-
-      <!-- Article d'alternatives sud : affichage logo de la publication -->
-            <BOUCLE_as_couverture (ARTICLES) {id_article=#ID_PUBLICATION}>
-            [<dl>
-               <dt>
-                  <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>"> 
-                            (#LOGO_ARTICLE_NORMAL
-                            |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
-                            |vider_attribut{class,spip_logos}
-                            |inserer_attribut{class,img-responsive img-bordered}
-                            |inserer_attribut{alt,#TITRE_LOGO})                  
-                   </a>
-                 </dt>
-            </dl>
-
-
-            <p><a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>" class="btn btn-u" role="button"><:lire_article:></a></p>
-
-            ]
-            </BOUCLE_as_couverture>
-            </B_as_couverture>
-            <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_recommended_vertical"></div>
-
-            [<dl>
-               <dt>
-                  <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]> 
-                        <span class="overlay-zoom"> 
-                            (#LOGO_ARTICLE_NORMAL
-                            |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
-                            |vider_attribut{class,spip_logos}
-                            |inserer_attribut{class,img-responsive img-bordered}
-                            |inserer_attribut{alt,#TITRE_LOGO}) 
-                            <span class="zoom-icon"></span>                   
-                         </span>   
-                   </a>
-                 </dt>
-              <dt class="spip_doc_titre">[(#TITRE_LOGO)] [<br />(#DESCRIPTIF_LOGO)]</dt>
-            </dl>]
-
-            <//B_as_couverture>
-
-        [(#ID_RUBRIQUE|match{^(38|165|166|167|168|169)$}|?{[(#INCLURE{fond=inclure/meme-sujet-unify} {env}{ajax} {doublons})],' '})]
-    </div><!-- End Right Sidebar -->
-
-  </BOUCLE_actualites>
-  </B_actualites>
-
-
-
 
 
   <B_modele_publications>
@@ -387,11 +256,136 @@
 </div><!--/  EN ROW-->       
 </B_modele_publications>
 
- <BOUCLE_annonces(ARTICLES){page=annonces}>#TEXTE</BOUCLE_annonces>
- <BOUCLE_emploi(ARTICLES){page=emploi}>#TEXTE</BOUCLE_emploi>
-  <BOUCLE_newsletter(ARTICLES){page=newsletter}>#TEXTE</BOUCLE_newsletter>
 
-<//B_actualites>
+
+    <!-- Main Content -->
+    <div class="col-md-8 md-margin-bottom-60">
+        [<h4>(#SURTITRE)</h4>]
+        <h2 class="#EDIT{titre}"> #TITRE </h2>
+            <div class="blog-post-tags">
+                <ul class="list-unstyled list-inline blog-info">
+                   [<li><i class="icon-user"></i> (#LESAUTEURS)</li>]
+                    <li><i class="fa fa-calendar-o"></i> [(#DATE|affdate)]</li>
+                    [<li class="pull-right">(#MODELE{article_traductions_unify})</li>]
+                 </ul>
+                 <ul class="list-unstyled list-inline blog-tags" style="margin-bottom:20px">
+                    <li>
+                        <B_tags_1>
+                         <BOUCLE_combien_tags_1(MOTS) {id_article}  {plat} {id_groupe=4}></BOUCLE_combien_tags_1>[(#TOTAL_BOUCLE|=={1}|?{<:pays:> : ,<:pays_pluriel:> : })]<//B_combien_tags_1>
+                         <BOUCLE_tags_1 (MOTS) {id_article} {id_groupe=4} {par titre}>
+                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                         <i class="icon-tag"></i> #TITRE</a>
+                         </BOUCLE_tags_1>
+                         </B_tags_1>
+                          <B_tags_2>
+                         <BOUCLE_combien_tags_2(MOTS) {id_article}  {plat} {id_groupe=5}></BOUCLE_combien_tags_2>[(#TOTAL_BOUCLE|=={1}|?{<:theme:> : ,<:themes:> : })]<//B_combien_tags_2>
+                         <BOUCLE_tags_2 (MOTS) {id_article} {id_groupe=5} {par titre}>
+                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                         <i class="icon-tag"></i> #TITRE</a>
+                         </BOUCLE_tags_2>
+                         </B_tags_2>
+                         <B_tags_3>
+                         <BOUCLE_combien_tags_3(MOTS) {id_article}  {plat} {id_groupe=3}></BOUCLE_combien_tags_3>[(#TOTAL_BOUCLE|=={1}|?{<:source:> : ,<:sources:> : })]<//B_combien_tags_3>
+                         <BOUCLE_tags_3 (MOTS) {id_article} {id_groupe=3}>
+                         <a href="#URL_PAGE{mot-unify,id_mot=#ID_MOT}" title="#TITRE">
+                         <i class="icon-tag"></i> #TITRE</a>
+                         </BOUCLE_tags_3>
+                         </B_tags_3>
+                    </li>
+                  </ul>
+
+                  <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_ARTICLE}{id_article} />
+
+                 
+            </div><!-- End list-unstyled list-inline blog-info -->
+
+
+            [<p align="justify"><strong style="font-size:14px;">(#CHAPO|justifier|image_reduire{853,*})</strong> </p>]
+            [<p align="justify">(#TEXTE|justifier|image_reduire{853,*})</p>]
+
+              <table class="table">
+                    <tbody>
+                      <BOUCLE_documents_joints(DOCUMENTS) {id_article} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>
+                      <tr>
+                        <td width="5%"><i class="fa fa-download"></i></td>
+                        <td width="15%"><strong style="text-transform:uppercase"><:download:></strong></td>
+                        <td width="65%"class="#EDIT{titre}">
+                          <a href="#URL_DOCUMENT" type="#MIME_TYPE" class="spip_doc [(#EXTENSION|attribut_html)]">
+                          [(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</a>
+                          [<br /><small>(#CREDITS)</small>]
+                          [<br /><small>(#DESCRIPTIF)</small>]
+                        </td>
+                        <td width="15%"><span class="badge badge-u rounded">[(#EXTENSION|strtoupper) - ]  [(#TAILLE|taille_en_octets)]</span></td>
+                      </tr>
+                      </BOUCLE_documents_joints>
+                      [<tr>
+                        <td width="5%"><i class="icon-link"></i></td>
+                        <td width="10%"><strong style="text-transform:uppercase"><:voir_en_ligne:></strong></td>
+                        <td class="#EDIT{titre}"><a href="#URL_SITE" title="#TITRE">(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})</a></td>
+                        <td></td>
+                      </tr>]
+                    </tbody>
+              </table>
+
+              [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_notes:></h3><small>(#NOTES|image_reduire{640,*})</small></p>]
+              [<hr class="devider devider-dotted"><p><h3 class="spip"><:bibliographie:></h3><small>(#ARTICLE_BIBLIOGRAPHIE|image_reduire{640,*})</small></p>]
+              [<hr class="devider devider-dotted"><p><h3 class="spip"><:info_ps:></h3><small>(#PS|image_reduire{500,*})</small></p>]
+              <hr class="devider devider-dotted"><p><small><:article_opinion:></small></p>
+    </div><!-- End col-md-8 -->
+
+
+
+
+    <!-- Right Sidebar -->
+    <div class="col-md-4">
+
+
+      <!-- Article d'alternatives sud : affichage logo de la publication -->
+            <BOUCLE_as_couverture (ARTICLES) {id_article=#ID_PUBLICATION}>
+            [<dl>
+               <dt>
+                  <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>"> 
+                            (#LOGO_ARTICLE_NORMAL
+                            |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
+                            |vider_attribut{class,spip_logos}
+                            |inserer_attribut{class,img-responsive img-bordered}
+                            |inserer_attribut{alt,#TITRE_LOGO})                  
+                   </a>
+                 </dt>
+            </dl>
+
+
+            <p><a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>" class="btn btn-u" role="button"><:lire_article:></a></p>
+
+            ]
+            </BOUCLE_as_couverture>
+            </B_as_couverture>
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_recommended_vertical"></div>
+
+            [<dl>
+               <dt>
+                  <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]> 
+                        <span class="overlay-zoom"> 
+                            (#LOGO_ARTICLE_NORMAL
+                            |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
+                            |vider_attribut{class,spip_logos}
+                            |inserer_attribut{class,img-responsive img-bordered}
+                            |inserer_attribut{alt,#TITRE_LOGO}) 
+                            <span class="zoom-icon"></span>                   
+                         </span>   
+                   </a>
+                 </dt>
+              <dt class="spip_doc_titre">[(#TITRE_LOGO)] [<br />(#DESCRIPTIF_LOGO)]</dt>
+            </dl>]
+
+            <//B_as_couverture>
+
+        [(#ID_RUBRIQUE|match{^(38|165|166|167|168|169)$}|?{[(#INCLURE{fond=inclure/meme-sujet-unify} {env}{ajax} {doublons})],' '})]
+    </div><!-- End Right Sidebar -->
+
+
+<//B_modele_publications>
 
 
   </div><!--/row-->        

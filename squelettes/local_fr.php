@@ -9,11 +9,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'abonnement' => 'je m\'abonne',
 'abonnement_alternativessud' => 'Abonnement : 50€/ 4n°',
 'abonnement_commande' => 'Commande & abonnement',
+'abonnement_ligne' => 'Abonnez-vous en ligne',
 'abonnement_newsletter' => 'Abonnement',
 'abonner' => 'S\'abonner',
 'about_alternativessud' => 'A propos d\'Alternatives Sud',
 'abouthissite' => 'A propos de ce site',
-'accueil_site' => 'Accueil du site',
+'accueil' => 'Accueil',
+'accueil_site' => 'Accueil',
 'actu_mss' => 'Actualit&eacute; des mouvements sociaux du Sud',
 'actualites' => 'Actualit&eacute;s',
 'agenda' => 'Agenda',
@@ -22,6 +24,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'ajouter_panier' => 'Ajouter au panier',
 'allrightsreserved' => 'Tous droits r&eacute;serv&eacute;s',
 'alternatives_sud' => 'Alternatives Sud',
+'annonces' => 'Annonces',
 'article_accessible' => 'Attention ! Pour lire la plupart des articles dans leur int&eacute;gralit&eacute;, procurez-vous la revue en la commandant !',
 'article_auteurs' => 'Auteur-e-s',
 'article_disponible' => 'Cet article n\'est disponible qu\'&agrave; l\'achat de',
@@ -66,11 +69,14 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 
 // B
 'bonjour' => 'Bonjour',
+'boutique' => 'Boutique',
 'breves' => 'Br&egrave;ves',
 
 
 // C
+'calendar_add' => 'Ajouter à votre agenda',
 'close' => 'Fermer',
+'collection' => 'La collection',
 'commande_abonnement' => 'Commande ou abonnement',
 'commenter_site' => 'Commenter ce site',
 'contenu' => 'Contenu',
@@ -82,6 +88,7 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'danslesarchives' => 'dans les archives',
 'date' => 'Date',
 'decetauteur' => 'De cet auteur',
+'decouvrez' => 'D&eacute;couvrez',
 'dernier_ajout' => 'Dernier ajout',
 'dernieres_breves' => 'Derni&egrave;res br&egrave;ves',
 'dernieres_publications' => 'Derni&egrave;res publications',
@@ -136,6 +143,7 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'isbn' => 'ISBN',
 
 // J
+'joinus' => 'Rejoignez-nous sur',
 'jours' => 'jours',
 
 // L
@@ -160,6 +168,7 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'messages_forum' => 'Messages de forum',
 'messages_recents' => 'Messages de forums les plus r&eacute;cents',
 'moncompte' => 'Mon compte',
+'mon_panier' => 'Mon panier',
 'mot_cle' => 'Mot cl&eacute;',
 'mots_clefs' => 'Mots-cl&eacute;s',
 'mots_clefs_meme_groupe' => 'Mots-cl&eacute;s dans le m&ecirc;me groupe',
@@ -178,11 +187,18 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'nouveaux_articles' => 'Nouveaux articles',
 'nouvelles_breves' => 'Nouvelles br&egrave;ves',
 
+// O
+'outofstock' => 'Cette publication n\'est pas en vente sur ce site',
+
 
 // P
 'pages' => 'Pages',
 'page_precedente' => 'page pr&eacute;c&eacute;dente',
 'page_suivante' => 'page suivante',
+'paiement_modes' => 'Modes de paiement',
+'paiement_paypal' => 'Paiement par Paypal',
+'paiement_viapaypal' => 'Paiement par Visa, Mastercard et Maestro via Paypal',
+'paiement_virement' => 'Paiement par virement bancaire',
 'panier' => 'panier',
 'panier_votre' => 'panier_votre',
 'panier_controle' => 'V&eacute;rifiez et adaptez votre panier',

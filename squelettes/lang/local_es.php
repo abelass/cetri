@@ -72,6 +72,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 
 // C
+'calendar_add' => 'Agregar a tu calendario',
 'close' => 'Cerrar',
 'collection' => 'colecci&oacute;n',
 'commande_abonnement' => 'Pedido y suscripci&oacute;n',

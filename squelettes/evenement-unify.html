@@ -1,6 +1,7 @@
+<!DOCTYPE html>
+
 <BOUCLE_principale(EVENEMENTS) {id_evenement} {doublons}>
 
-<!DOCTYPE html>
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
@@ -18,9 +19,12 @@
 [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
 <meta name="ROBOTS" content="none">
 <meta name="revisit-after" content="7 days">
+
+<!-- Open Graph Data -->
 [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
-<meta property="og:url" content="#URL_EVENEMENT" />
-[(#LOGO_EVENEMENT|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
+<meta property="og:type" content="event" />
+<meta property="og:url" href="#URL_EVENEMENT" />
+[(#LOGO_EVENEMENT_NORMAL|?{<meta property="og:image" href="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT_NORMAL|fichier)]" />,<meta property="og:image" href="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />})]
 
 
 [(#INCLURE{fond=inclure/head-unify})]
@@ -28,16 +32,14 @@
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
 
 <!-- CSS Page Style -->
-    <link rel="stylesheet" href="squelettes/css/addthisevent.css">
-
-
-
+  <link rel="stylesheet" href="squelettes/css/addthisevent.css">
 
 </head>
 
 <body class="pas_surlignable page_article">
   
   <div class="wrapper">
+
   <!--=== Header ===-->    
     
     <div class="header">
@@ -77,28 +79,11 @@
     <!-- Left SideBar -->
     <div class="col-md-8 md-margin-bottom-60">
       <h2>#TITRE</h2>
-      <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_EVENEMENT} />
       
-      <ul class="timeline-v2">
-        <li>
-          <time class="cbp_tmtime" datetime="">
-                        <span>
-                          <span class="fa-stack fa-3x">
-                          <i class="fa fa-calendar-o fa-stack-2x"></i>
-                          <p class="fa-stack-1x calendar-text">[(#DATE_DEBUT|affdate{'d'})]</p>
-                        </p>
-                      </span>
-          </time>
-
-            <i class="cbp_tmicon rounded-x hidden-xs"></i>
-
-
-            <div class="cbp_tmlabel">
-            <p>#DESCRIPTIF</p>
-            <div class="md-margin-bottom-20"></div>
-
-            [<dl>
-              <dt>
+      <div class="row">
+        [<div class="col-md-5">
+          <dl>
+            <dt>
               <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]>
                 <span class="overlay-zoom">
                        (#LOGO_EVENEMENT
@@ -107,16 +92,20 @@
                                 |inserer_attribut{alt,#TITRE}) 
                 <span class="zoom-icon"></span>                   
                 </span>  
-               </a>
-              </dt>
-            </dl>]
+              </a>
+            </dt>
+          </dl>
+        </div>
+        <div class="col-md-7">]
 
+            <p>#DESCRIPTIF</p>
+            <div class="md-margin-bottom-20"></div>   
             
-            
-            [<p>(#EVENEMENT_TEXTE)</p>]
+            [<p>(#EVENEMENT_TEXTE|image_reduire{500,0})</p>]
             <BOUCLE_auteur_evenement (AUTEURS) {id_evenement}>
              #AUTEURS_EVENEMENT #AUTEUR_EVENEMENT
             </BOUCLE_auteur_evenement>
+
             <!-- Fiche de présentation d'un événement  --> 
              <table class="table">
               <tbody>
@@ -205,25 +194,31 @@
                     </B_documents>
               </tbody>
             </table>
-             </div>
-          </li>
-        </ul>
+        [(#LOGO_EVENEMENT|?{</div>,''})] 
+      </div><!-- End Row -->
 
-      </div>
-    <!-- End Left SideBar -->
+
+        <div class="row">
+          <div class="col-md-6">
+             <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_EVENEMENT} {id_evenement} />
+          </div>
+          <div class="col-md-6"  style="text-align:right">
+            <INCLURE{fond=inclure/inc-addthisevent} {env} {lang=#LANG} {id_evenement} />
+          </div>
+        </div>
+
+</div><!--End Left SideBar-->
     
 
-    <!-- Begin Right Sidebar -->
-      <div class="col-md-4">
+<!-- Begin Right Sidebar -->
 
-        <INCLURE{fond=inclure/inc-homepage-agenda, env, titre=<:agenda:>,doublons}/>
-        
+    <div class="col-md-4" style="border-left: 1px solid #EFEFEF">
+        <INCLURE{fond=inclure/inc-panel-agenda-unify, env, titre=<:agenda:>,doublons} />
+    </div>
+      <!-- End Right Sidebar -->
 
+  </div><!-- End main row --> 
 
-
-      </div>
-        <!-- End Right Sidebar -->
-  </div><!-- End row --> 
 </div><!--/container--> 
 <!--=== End Content Part ===-->
 
@@ -231,12 +226,11 @@
  [(#REM) Footer ]
     <INCLURE{fond=inclure/inc-footer-unify} {ajax}>
 
-
-
-
-
-
 </div><!--/wrapper-->
+
+
+
+
 
 
 <!-- AddThisEvent -->
@@ -260,20 +254,19 @@ addthisevent.settings({
 
 <!-- JS Global Compulsory -->  
 
-<script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>   
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="unify/assets/plugins/jquery-migrate-1.2.1.min.js"></script>   
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
 
 <!-- JS Implementing Plugins -->           
-<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-<script type="text/javascript" src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
 
 
 <!-- JS Page Level -->           
 <script type="text/javascript" src="assets/js/app.js"></script>
 <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.js"></script>
+    <script src="unify/assets/plugins/respond.js"></script>
 <![endif]-->
-
 
 </body>
 </html>
