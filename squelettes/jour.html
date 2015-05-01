@@ -2,7 +2,8 @@
     Un cache plus court, pour la boucle syndic_articles
 ]#CACHE{3600}
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
@@ -16,35 +17,34 @@
 [<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue)" />]
 <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
 [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
-<meta name="ROBOTS" content="none">
-<meta name="revisit-after" content="7 days">
+    <meta name="ROBOTS" content="INDEX,FOLLOW">
+    <meta name="robots" content="ALL">
+    <meta name="revisit-after" content="7 days">
+
+
+
 [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
-<meta property="og:url" content="#URL_RUBRIQUE" />
-<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP|fichier)]" />
+<meta property="og:url" content="#URL_RUBRIQUE" />qq
+<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP_SURVOL|fichier)]" />
 
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
 
 
-    [(#INCLURE{fond=inclure/head-unify})]
-
-    <!--=== CSS - Homepage ===-->  
-    <link rel="stylesheet" href="http://brokensquare.com/Code/jquery-flipster/src/css/jquery.flipster.css">
-
-    <!--=== CSS Shop ===-->  
-    <link rel="stylesheet" href="unify/Shop-UI/assets/plugins/jquery-steps/css/custom-jquery.steps.css">
-    <link rel="stylesheet" href="#CHEMIN{css/perso-shop.css}">
+   <INCLURE{fond=inclure/head} />
 
 
 </head>	
 
 <body>
 <div class="wrapper">
-<!--=== Header ===-->
-<div class="header">
-    [(#INCLURE{fond=inclure/topbar-unify} {env} {ajax})]
-    [(#INCLURE{fond=inclure/header-unify} {env} {ajax})]
-</div>
-<!--=== End Header ===-->
+  <!--=== Header ===-->    
+    
+    <div class="header">
+          <INCLURE{fond=inclure/topbar} {env} {ajax} />
+          <INCLURE{fond=inclure/header} {env} {ajax}  />
+    </div><!--/header-->
+  
+  <!--=== End Header ===--> 
 
 #SET{date_debut,#ENV{date_debut,#ENV{date}}|affdate{Y-m-d 00:00:00}}
 #SET{date_fin,#ENV{date_debut,#ENV{date}}|affdate{Y-m-d 23:59:59}}
@@ -57,7 +57,7 @@
         </h1>      
         <ul class="pull-right breadcrumb">
             <li><a href="#URL_SITE_SPIP" title="<:accueil:>"><:accueil:></a></li>
-            <li><a href="" title="<:agenda:>"><:agenda:></a></li>
+            <li><a href="#LANG-agenda" title="<:agenda:>"><:agenda:></a></li>
             <li>[(#GET{date_debut}|affdate)]</li>
         </ul>
         
@@ -87,11 +87,11 @@
                         
                         <div class="cbp_tmlabel news-v1-in" style="padding: 0px;">
                             
-                            <h3><a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="[(#TITRE|textebrut)]"> #TITRE</a></h3>
+                            <h3><a href="#URL_EVENEMENT" title="[(#TITRE|textebrut)]"> #TITRE</a></h3>
                             
                             <div class="row" [(#LOGO_EVENEMENT|?{style="padding: 10px;",''})]>
                                 [<div class="col-md-4">
-                                <a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" [ title="(#TITRE|attribut_html|couper{80})"]> 
+                                <a href="#URL_EVENEMENT" [ title="(#TITRE|attribut_html|couper{80})"]> 
                                     (#LOGO_EVENEMENT
                                     |vider_attribut{class,spip_logos}
                                     |inserer_attribut{class,img-responsive img-thumbnail}
@@ -137,7 +137,7 @@
 
 
    [(#REM) Footer ]
-    <INCLURE{fond=inclure/inc-footer-unify} {ajax}>
+    <INCLURE{fond=inclure/footer} {ajax}>
 
 </div><!--/wrapper-->
 
@@ -159,8 +159,7 @@
 <script type="text/javascript" src="unify/assets/js/custom.js"></script>
 <!-- JS Page Level -->           
 <script type="text/javascript" src="unify/assets/js/app.js"></script>
-<script type="text/javascript" src="unify/assets/js/plugins/owl-carousel.js"></script>
-<script type="text/javascript" src="unify/assets/js/pages/blog-masonry.js"></script>
+
 <script type="text/javascript" src="unify/assets/js/plugins/cube-portfolio.js"></script>
 <script type="text/javascript" src="unify/assets/js/app.js"></script>
 <script type="text/javascript">
@@ -177,26 +176,8 @@
 <![endif]-->
 
 <!-- Javascript Flipster - Carousel Homepage -->
-<script src="http://brokensquare.com/Code/jquery-flipster/src/js/jquery.flipster.js"></script>
-<script type="text/javascript">
-$(function(){ 
-    $('.flipster').flipster({
-        itemContainer:      'ul', // Container for the flippin' items.
-        itemSelector:       'li', // Selector for children of itemContainer to flip
-        style:              'coverflow', // Switch between 'coverflow' or 'carousel' display styles
-        start:              '0', // Starting item. Set to 0 to start at the first, 'center' to start in the middle or the index of the item you want to start with.
 
-        enableKeyboard:     true, // Enable left/right arrow navigation
-        enableMousewheel:   true, // Enable scrollwheel navigation (up = left, down = right)
-        enableTouch:        true, // Enable swipe navigation for touch devices
 
-        enableNav:          false, // If true, flipster will insert an unordered list of the slides
-        enableNavButtons:   false, // If true, flipster will insert Previous / Next buttons
-
-        onItemSwitch:       function(){}, // Callback function when items are switches
-    })
-});
-</script>
 
 </body>
 </html>

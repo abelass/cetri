@@ -19,8 +19,10 @@
                     <BOUCLE_une (ARTICLES) {id_mot=1182} {0,1} {par date} {inverse} {lang} {doublons}>
                     <div class="news-v1-in dark">
                        <div class="magazine-news-img">
-                                [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>">
+                                [<a href="#URL_ARTICLE" title="<:lire_article:>">
                                              (#LOGO_ARTICLE_NORMAL
+                                                |image_reduire{1000,*}
+                                                |image_recadre{850,300,center}
                                                 |vider_attribut{class,spip_logos}
                                                 |inserer_attribut{class,img-responsive}
                                                 |inserer_attribut{alt,#TITRE}) 
@@ -29,13 +31,13 @@
                                 [<span class="magazine-badge label-u">(#SURTITRE)</span>]
                         </div>
 
-                            <h3><a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="<:lire_article:>">#TITRE</a></h3>
+                            <h3><a href="#URL_ARTICLE" title="<:lire_article:>">#TITRE</a></h3>
 
                             [<p>(#INTRODUCTION|couper{500})</p>]
                             <ul class="list-inline news-v1-info">
                             [<li><i class="icon-user"></i> (#LESAUTEURS)</li>
                             <li>|</li>]
-                            <li><i class="icon-calendar"></i> [(#DATE|affdate)]</li>
+                            <li><i class="fa fa-calendar-o"></i> [(#DATE|affdate)]</li>
                             </ul>
                         </div>
                    </BOUCLE_une>

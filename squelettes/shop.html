@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+[(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
+<head>
+
+
+<title>Shop [(#NOM_SITE_SPIP|textebrut)]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+[<link rel="canonical" href="(#URL_SITE_SPIP|url_absolue)" />]
+<meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+[<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+<meta name="robots" content="ALL">
+<meta name="revisit-after" content="7 days">
+
+<INCLURE{fond=inclure/head} />  
+
+
+<script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+
+
+<link rel="stylesheet" href="unify/Shop-UI/assets/plugins/jquery-steps/css/custom-jquery.steps.css">
+<link rel="stylesheet" href="#CHEMIN{css/perso-shop.css}">
+
+
+</head>
+
+<body class="pas_surlignable page_article">
+  <div class="wrapper">
+  <!--=== Header ===-->    
+    
+    <div class="header">
+           <INCLURE{fond=inclure/topbar} {env} {ajax}/>
+           <INCLURE{fond=inclure/header} {env} {ajax}/>
+
+    </div><!--/header-->
+  
+  <!--=== End Header ===--> 
+  
+
+	<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs-v3">
+    <div class="container">
+        <h1 class="pull-left"><:panier:></h1>
+            <small>
+              <ul class="pull-right breadcrumb">
+                <li><a href="#"><:accueil:></a></li>
+                <li><a href="#"><:boutique:></a></li>
+              <li><:panier:></li>
+              </ul>
+            </small>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+
+<!--=== Content Medium Part ===-->
+    <div class="content-md margin-bottom-30">
+        <div class="container">
+            <INCLURE{fond=content/shop,env}/>
+        </div><!--/end container-->
+    </div>
+    <!--=== End Content Medium Part ===-->     
+
+
+
+
+ [(#REM) Footer ]
+    <INCLURE{fond=inclure/footer} {ajax}>
+
+
+</div><!--/wrapper-->
+
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script>   
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+
+<!-- JS Customization -->
+<script src="unify/assets/js/custom.js"></script>
+<!-- JS Page Level -->           
+
+
+
+<!--[if lt IE 9]>
+
+    <script src="unify/assets/plugins/respond.js"></script>
+    <script src="unify/assets/plugins/html5shiv.js"></script>
+    <script src="unify/assets/plugins/sky-forms/version-2.0.1/js/sky-forms-ie8.js"></script>
+<!---[endif]-->
+<!--[if lt IE 10]>
+    <script src="unify/assets/plugins/sky-forms/version-2.0.1/js/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+</body>
+</html>

@@ -9,7 +9,7 @@ Pour la homepage mais aussi la page agenda  -->
         </div>
         <div class="list-group">
             <BOUCLE_annonces (ARTICLES){page IN emploi, formations, enquete} {age_redac<0}>
-                <a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE" class="list-group-item">
+                <a href="#URL_ARTICLE" title="#TITRE" class="list-group-item">
                     <h5 class="list-group-item-heading">
                         [(#PAGE|=={emploi}|oui)<i class="fa fa-suitcase"></i>]
                         [(#PAGE|=={formations}|oui)<i class="fa fa-graduation-cap"></i>]

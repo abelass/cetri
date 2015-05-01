@@ -8,25 +8,28 @@
         <div class="news-v1-in">
                 [(#LOGO_AUTEUR|?{
                     [<div class="magazine-news-img">
-                             <a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM">
+                             <a href="#URL_AUTEUR" title="#NOM">
                                     (#LOGO_AUTEUR_NORMAL
-                                        |image_reduire{800,600}
                                         |vider_attribut{class,spip_logos}
                                         |inserer_attribut{class,img-responsive}
                                         |inserer_attribut{alt,#NOM})
                             </a>
                       </div>],
                     <div class="magazine-news-img">
-                            <a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM">
+                            <a href="#URL_AUTEUR" title="#NOM">
                         <img src="/squelettes/img/icons/no-photo.png" class="img-responsive" alt="#NOM" />
                             </a>
                         </div>})]                        
-                  [<h3><a href="#URL_PAGE{auteur-unify,id_auteur=#ID_AUTEUR}" title="#NOM">(#NOM)</a></h3>]
+                  [<h3><a href="#URL_AUTEUR" title="#NOM">(#NOM)</a></h3>]
                     [<p>(#BIO)</p>]
         </div>
     </div>
     [(#COMPTEUR_BOUCLE|alterner{'',</div>})]
     </BOUCLE_auteur_fiche>
+        <!-- fermer la row si nombre impair-->
+    [(#TOTAL_BOUCLE|=={9}|?{</div>,''})] 
+    [(#TOTAL_BOUCLE|=={11}|?{</div>,''})]
+    [(#TOTAL_BOUCLE|=={13}|?{</div>,''})]
     </div>
 </div>
 </B_auteur_fiche>

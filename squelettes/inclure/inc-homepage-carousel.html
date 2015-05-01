@@ -6,7 +6,7 @@
     <ul class="flip-items" >
         <BOUCLE_carousel_nav (ARTICLES) {id_mot=1025} {par date}{inverse} {0,8}>
           <li id="Item-#COMPTEUR_BOUCLE" style="width: 250px">
-           [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="[(#TITRE|textebrut)]">
+           [<a href="#URL_ARTICLE" title="[(#TITRE|textebrut)]">
            (#LOGO_ARTICLE_NORMAL
               |image_reduire{*,300}
               |vider_attribut{class,spip_logos}

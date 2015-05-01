@@ -1,138 +1,194 @@
-#CACHE{86400}
-<BOUCLE_auteur_principal(AUTEURS) {id_auteur} {lang_select}>
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html dir="#LANG_DIR" lang="#LANG">
-<head>
-<title>[(#NOM|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
-[<meta name="description" content="(#BIO|couper{150}|textebrut)" />]
-<B_keywords><meta name="Keywords" content="<BOUCLE_keywords(ARTICLES) {id_auteur} {","}>[(#TITRE|supprimer_numero|textebrut),][(#SURTITRE|textebrut),]</BOUCLE_keywords>" /></B_keywords>
-<meta name="generator" content="Bluefish 1.0.7"/>
-<meta name="ROBOTS" content="INDEX,FOLLOW">
-<meta name="revisit-after" content="7 days">
-<meta name="robots" content="ALL">
-[<meta name="Reply-to" content="(#EMAIL_WEBMASTER|textebrut)" />]
+<BOUCLE_principale(AUTEURS) {id_auteur}>
 
-<INCLURE{fond=inc-head}>
+<!DOCTYPE html>
+
+[(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
+<head>
+
+
+<title>[(#NOM|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    [<meta name="description" content="(#BIO{150}|attribut_html)" />]
+    [<link rel="canonical" href="(#URL_AUTEUR|url_absolue)" />]
+    <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+    [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+    <meta name="ROBOTS" content="INDEX,FOLLOW">
+    <meta name="robots" content="ALL">
+    <meta name="revisit-after" content="7 days">
+
+
+    <!-- Open Graph Data -->
+    [<meta property="og:title" content="(#NOM|textebrut)" />]
+    [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+    [<meta name="og:description" content="(#BIO|couper{200}|textebrut)">]
+     <meta property="og:type" content="website" />
+     <meta property="og:url" content="#URL_AUTEUR" />
+    [(#LOGO_AUTEUR|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_AUTEUR|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP_SURVOL|fichier)]" />})]
+    <meta property="og:locale" content="#LANG" />
+
+
+<INCLURE{fond=inclure/head} />
+
+<script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
 
 </head>
 
-<body class="page_auteur">
-<div id="page">
-<INCLURE{fond=inc/inc-entete, env} />
+<body class="pas_surlignable page_article">
+  <div class="wrapper">
+  <!--=== Header ===-->    
+    
+    <div class="header">
+          <INCLURE{fond=inclure/topbar} {env} {ajax} />
+          <INCLURE{fond=inclure/header} {env} {ajax}  />
+    </div><!--/header-->
+  
+  <!--=== End Header ===--> 
+  
 
-<div id="conteneur">
-
-		[(#REM) Contenu principal : affichage de l'auteur ]
-		<div id="contenu">
-
-			<div class="cartouche">
-
-[(#LOGO_AUTEUR||image_reduire{120,120})]
-<h1 class="#EDIT{qui} titre">#NOM</h1>
-[<div class="#EDIT{texte} texte">(#BIO)</div><br />]
-
-<div class="#EDIT{texte} texte">
-[<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#URL_SITE|sinon{[(#URL_SITE|couper{80})]})]</a>]
-</div>
-
-</div>
-<br class="nettoyeur" />
-
-
-[(#REM) Exclusion des articles fantômes ]
-<BOUCLE_articles_fantomes (ARTICLES) {id_mot=248} {doublons}>
-</BOUCLE_articles_fantomes>
-
-
-[(#REM) Articles de l'auteur ]
-<B_articles>
-<div class="bloc">
-<div class="sous-bloc-blanc-sans-border">
-#ANCRE_PAGINATION
-<BOUCLE_articles(ARTICLES) {id_auteur} {id_rubrique!=101} {lang_select=non}{par date}{inverse}{pagination 20} {doublons}>
-[<font color="#999999">(#SURTITRE)</font><br>]
-[<img src="../IMG/icones/carre-nav.gif"> <b>(#TITRE|supprimer_numero)</b><br>]
-<font color="#999999">
-(<B_source><BOUCLE_source(MOTS) {id_article} {id_groupe=3}>[(#TITRE) - ]</BOUCLE_source></B_source>[(#DATE|affdate)])</font>
-<p>
-
-<div align="right">
-<!-- lien vers l'article si publié en html-->
-[(#TEXTE|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><:lire_article:></a>," "})]
-<B_document><BOUCLE_document(DOCUMENTS){id_article}{mode=document} {extension==pdf|doc|rtf} {lang_select=non}>[(#FICHIER|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_DOCUMENT" title="<:telecharger_article:>"><:telecharger_article:></a> [((#TYPE_DOCUMENT)]-[(#TAILLE|taille_en_octets))]," "})]</BOUCLE_document></B_document>
+	<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs-v3">
+    <div class="container">
+        [<h1 class="pull-left">(#NOM)</h1>]
+              <ul class="pull-right breadcrumb">
+                <li><a href="#URL_PAGE{sommaire}" title="<:accueil:>"><:accueil:></a></li>
+                <li><a href="#URL_PAGE{index-auteurs}&lettre=A"><:index_archives:> <:auteurs:></a></li>
+                [<li> (#NOM|couper{60})</li>]
+              </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
 
 
 
-<!-- Menu dépliant résumé de l'article-->
-<img src="../IMG/icones/carre-blanc-bordgris-9.gif">
-<a href="javascript:swap_couche('#ID_ARTICLE')" title="<:introduction_article:>"><:introduction_article:></a></div>
-<script language='JavaScript'>
-	<!--
-	vis['#INTRODUCTION'] = 'hide';
-	//-->
-	</script>
-<div id='Layer#ID_ARTICLE' style='display: none; margin-top: 1;'>
-[(#INTRODUCTION|justifier)]<br>
+<!--=== Content Part ===-->
+<div class="container content">
+  <!--=== Main Row ===--> 
 
-[(#REM) Hiérachie - numéro de la revue]
-<B_ariane>
-<:article_disponible:>
-<BOUCLE_ariane(HIERARCHIE){id_article} {1,1}>
-<a href="#URL_RUBRIQUE&lang=#LANG">[-(#TITRE)-]</a>
-</BOUCLE_ariane>
-</B_ariane>
+<div class="row team margin-bottom-20">
+                <!-- Team v2 -->
+                <div class="col-md-4 md-margin-bottom-20">
+                   <!-- Team v2 -->
+                    <div class="team-v2">
+                         [(#LOGO_AUTEUR|?{
+                            [<dl>
+                                <dt>
+                                    <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_AUTEUR|fichier)]" [ title="(#NOM|attribut_html|couper{80})"]> 
+                                    <span class="overlay-zoom"> 
+                                    (#LOGO_AUTEUR_NORMAL
+                                        |image_reduire{800,600}
+                                        |vider_attribut{class,spip_logos}
+                                        |inserer_attribut{class,img-responsive}
+                                        |inserer_attribut{alt,#NOM})
+                                    <span class="zoom-icon"></span>                   
+                                    </span>  
+                                    </a>
+                                </dt> 
+                            </dl>
+                        ],'<dl>
+                                <dt>
+                                   <img src="/squelettes/img/icons/no-photo.png" class="img-responsive" alt="#NOM" />
+                                </dt> 
+                            </dl>'})]
 
-</div>
-<div class="liste-articles-ligne"></div>
-</BOUCLE_articles>
+                        
+                        <div class="inner-team">
+                            [<p>(#BIO)</p>]
+                             [<p><i class="fa fa-home"></i> (#AUTEUR_ADRESSEPOSTALE)</p>]
+                            [<p><i class="fa fa-phone"></i> (#AUTEUR_PHONE)</p>]
+                            <hr>
+  
+                            <ul class="list-inline team-social-2">
+                               [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="fb tooltips" data-original-title="Facebook" href="(#AUTEUR_FACEBOOK)" target="_blank">
+                                        <i class="fa fa-facebook"></i></a>
+                                </li>]
+                                [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="tw tooltips" data-original-title="Twitter" href="(#AUTEUR_TWITTER)" target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+
+                                </li>]
+                               [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="gp tooltips" data-original-title="Google plus" href="(#AUTEUR_GOOGLEPLUS)" target="_blank">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>]
+                                [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="ldin tooltips" data-original-title="Linkedin" href="(#AUTEUR_LINKEDIN)" target="_blank">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>]
+                                 [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="lk tooltips" data-original-title="<:website:>" href="(#URL_SITE)" target="_blank">
+                                        <i class="fa fa-external-link"></i>
+                                    </a>
+                                </li>]
+                            </ul>
+
+                            </div>
+                             
+                        </div>
+                    </div>
+
+                <div class="col-md-8 md-margin-bottom-40">
+                    [(#FORMULAIRE_ECRIRE_AUTEUR) <hr class="devider"> ]
 
 
-[<p><div align="center">(#PAGINATION)</div><p>]
-</div></div>
-
-</B_articles>
-<//B_articles>
-
-
-
-		</div><!-- fin contenu -->
-
-		[(#REM) Menu de navigation laterale ]
-<div id="navigation">
-<B_auteur_livre>
-<div class="bloc">
-<div class="bloc-titre">-<:livres_revues:>-</div>
-<div class="sous-bloc-jaune">
-<BOUCLE_auteur_livre (ARTICLES) {id_auteur} {id_rubrique=101} {par date} {inverse} {doublons} {lang_select=non}{0,5}>
-<div class="sous-bloc-conteneur-pour-colonnes">
-<div class="colonne-1">
-[<a href="#URL_ARTICLE&lang=#LANG" title="[(#TITRE)]">(#LOGO_ARTICLE_NORMAL||image_reduire{70,0}||inserer_attribut{alt,#TITRE})</a>]
-</div>
-<div class="colonne-2">
-[<img src="../IMG/icones/fleche-rouge-8x8.gif"> <b>(#TITRE)</b>]
-</div>
-</div>
-</BOUCLE_auteur_livre>
-<BOUCLE_auteur_livre_2(ARTICLES){id_auteur} {id_rubrique=101} {par date} {inverse}{tout}  {doublons} {lang_select=non}>
-[<img src="../IMG/icones/fleche-rouge-8x8.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="[(#TITRE)]">(#TITRE)</a><p>]
-</BOUCLE_auteur_livre_2>
+       <B_onglets>
+       [(#TOTAL_BOUCLE|=={0}|?{'',<div class="headline">
+                <h2><:decetauteur:></h2>
+                </div>
+                [(#MODELE{onglets} {id_auteur} {env} {ajax})]})]
+      <BOUCLE_onglets (ARTICLES) {id_auteur} {id_article!=179}>
+      </BOUCLE_onglets></B_onglets>
 
 
-</div>
-</div>
-</B_auteur_livre>
+</div><!--/End col-md-8-->
+</div><!--/ End row-->        
+</div><!--/container--> 
+<!--=== End Content Part ===-->
 
 
-<INCLURE{fond=inc-index}>
-<INCLURE{fond=inc-multimedia}>
-</div><!-- fin navigation-rubrique -->
-
-	</div><!-- fin conteneur -->
+ [(#REM) Footer ]
+    <INCLURE{fond=inclure/footer} {ajax}>
 
 
-[(#REM) Pied de page ]
-	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
-	</div><!-- fin page -->
-	</body>
+
+</div><!--/wrapper-->
+
+
+
+
+
+
+
+<!-- JS Global Compulsory -->  
+
+<script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script>   
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+
+<!-- JS Page Level -->           
+<script type="text/javascript" src="unify/assets/js/app.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="unify/assets/plugins/respond.js"></script>
+<![endif]-->
+
+
+</body>
 </html>
-</BOUCLE_auteur_principal>
+</BOUCLE_principale>
+

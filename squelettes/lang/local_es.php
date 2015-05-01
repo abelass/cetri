@@ -20,10 +20,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'agenda' => 'Agenda',
 'agenda_noevents' => 'No hay actividades programadas para',
 'agenda_information' => 'Info',
-'ajouter_panier' => 'A&ntilde;adir al carrito',
+'ajouter_panier' => 'A&ntilde;adir a mi cesta',
 'allrightsreserved' => 'Todos Derechos Reservados',
 'alternatives_sud' => 'Alternatives Sud',
+'an' => 'a&ntilde;o',
 'annonces' => 'Anuncios',
+'archives' => 'en los archivos',
 'article_auteurs' => 'Autor-a-s',
 'article_disponible' => 'Este art&iacute;culo no esta disponible',
 'article_imprimer' => 'imprimir',
@@ -143,6 +145,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'jours' => 'd&iacute;as',
 
 // L
+'langues' => 'idiomas',
 'le' => 'El ',
 'liens_utiles' => 'Enlaces utiles',
 'listeas_editionsetrangeres' => 'Lista de los Alternatives Sud en otras idiomas',

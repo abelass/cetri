@@ -24,7 +24,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'ajouter_panier' => 'Add to cart',
 'allrightsreserved' => 'All Rights Reserved',
 'alternatives_sud' => 'Alternatives Sud',
+'an' => 'year',
 'annonces' => 'Advertisements',
+'archives' => 'in the archives',
 'article_auteurs' => 'Author(s)',
 'article_disponible' => 'This article is not available',
 'article_imprimer' => 'print',
@@ -148,6 +150,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 
 // L
+'langues' => 'languages',
 'le' => ' ',
 'liens_utiles' => 'Useful Links',
 'listeas_editionsetrangeres' => 'Alternatives Sud list in others languages',
@@ -196,7 +199,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'pages' => 'Pages',
 'page_precedente' => 'previous page',
 'page_suivante' => 'next page',
-'paiement_modes' => 'FModes of payment',
+'paiement_modes' => 'Modes of payment',
 'paiement_paypal' => 'By Paypal',
 'paiement_viapaypal' => 'By Visa, Mastercard et Maestro via Paypal',
 'paiement_virement' => 'By bank transfer',

@@ -20,11 +20,11 @@
                         
                         <div class="cbp_tmlabel news-v1-in" style="padding: 0px;">
                             
-                            <h3><a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="[(#TITRE|textebrut)]"> #TITRE</a></h3>
+                            <h3><a href="#URL_EVENEMENT" title="[(#TITRE|textebrut)]"> #TITRE</a></h3>
                             
                             <div class="row" [(#LOGO_EVENEMENT|?{style="padding: 10px;",''})]>
                                 [<div class="col-md-4">
-                                <a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" [ title="(#TITRE|attribut_html|couper{80})"]> 
+                                <a href="#URL_EVENEMENT" [ title="(#TITRE|attribut_html|couper{80})"]> 
                                     (#LOGO_EVENEMENT
                                     |vider_attribut{class,spip_logos}
                                     |inserer_attribut{class,img-responsive img-thumbnail}

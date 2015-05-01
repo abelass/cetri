@@ -1,124 +1,218 @@
-#CACHE{0}
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html dir="#LANG_DIR" lang="#LANG">
+<!DOCTYPE html>
+
+[(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
 <head>
-<title><:resultats_recherche:> - [(#NOM_SITE_SPIP|textebrut)]</title>
-<INCLURE{fond=inc-head}>
+
+<title><:resultats_recherche:> : [(#ENV{recherche})] - [(#NOM_SITE_SPIP|textebrut)]</title>
+
+
+
 <meta name="robots" content="none" />
+
+<INCLURE{fond=inclure/head} />
+
+<script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+
 </head>
 
-<body class="page_recherche">
-<div id="page">
-<INCLURE{fond=inc/inc-entete, env} />
+<body class="pas_surlignable page_recherche">
+    <div class="wrapper">
 
-<div id="conteneur">
-
-<div id="contenu">
-		
-<div class="cartouche">
-[(#LOGO_RUBRIQUE||image_reduire{200,200})]
-<h1 class="#EDIT{titre} titre"><:resultats_recherche:></h1>
-</div>
-<p>
+<!--=== Header ===-->    
+    <div class="header">
+          <INCLURE{fond=inclure/topbar} {env} {ajax}{lang_select=non} />
+          <INCLURE{fond=inclure/header} {env} {ajax} {lang_select=non}  />
+    </div>
+<!--=== End Header ===--> 
 
 
-[(#REM) Résultats ]
-
-[(#REM) Articles trouvés par la recherche ]
-
-<B_articles>
-<div class="bloc">
-#ANCRE_PAGINATION
-
-<div class="cartouche">
-<h1 class="surtitre"><span class="titre">&#171;&nbsp;#RECHERCHE&nbsp;&#187;</span> : #GRAND_TOTAL [(#GRAND_TOTAL|=={1}|?{<:resultats_recherche:>.,<:resultats_recherche:>.})]</h1>
-<div class="liste-articles-ligne"></div>
-</div>
-
-<div class="sous-bloc-blanc-sans-border">
-<BOUCLE_articles(ARTICLES) {recherche} {par #ENV{tri,points}} {inverse} {id_mot?} {branche?} {id_article!=179}{pagination 10} {tout} {lang_select=non} >
-
-
-
-[(#REM) Titre de l'article]
-[<img src="../IMG/icones/carre-nav.gif"><b> (#TITRE|supprimer_numero)</b><br>]
-
-[(#REM) Auteur de l'article]
-<B_auteur><:par_auteur:>
-<BOUCLE_auteur(AUTEURS) {id_article} {", "}>
- [(#NOM)]
-</BOUCLE_auteur><br>
-</B_auteur>
+<!--=== Breadcrumbs v3 ===-->
+    <div class="breadcrumbs-v3">
+        <div class="container">
+            <h1 class="pull-left"><:resultats_recherche:></h1>
+            <ul class="pull-right breadcrumb">
+                <li> 
+                    <a href="#URL_PAGE{sommaire}"><:accueil:></a>
+                </li>
+                <li>
+                    <:resultats_recherche:>
+                </li>  
+            </ul>
+        </div>
+    </div>
+<!--=== End Breadcrumbs v3 ===-->
 
 
-[(#REM) Source et date de l'article]
-<font color="#999999">
-(<B_source><BOUCLE_source(MOTS) {id_article} {id_groupe=3} {doublons}>[(#TITRE) - ]</BOUCLE_source></B_source>[(#DATE|affdate)])</font>
-<p>
+<!--=== Search Block ===-->
+    <div class="search-block margin-bottom-30">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3" style="text-align:center">
+                <h1><:recherche:> <:archives:></h1>
 
-<div align="right">
+                <p><form action="[(#ENV{action})]" method="get" role="search">
+                  <div class="input-group">
+                    [(#ENV{action}|form_hidden)]
+                    <input name="page" value="recherche-unify" type="hidden">
+                    <input type="[(#HTML5|?{search,text})]" class="form-control" placeholder="<:mot_cle:>" name="recherche" id="#ENV{_id_champ}"[ value="(#ENV{recherche})"] onfocus="this.value='';" accesskey="4" autocapitalize="off" autocorrect="off">
+                      <span class="input-group-btn">
+                       <input type="submit" value="OK" title="OK" class="btn-u" />
+                      </span>
+                    </div>
+                   </form>
+                </p>
 
-[(#REM) lien vers l'article si publié en html ]
-[(#TEXTE|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><:lire_article:></a>," "})]
-
-<B_document><BOUCLE_document(DOCUMENTS){id_article}{mode=document} {extension==pdf|doc|rtf} {lang_select=non}>[(#FICHIER|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="#URL_DOCUMENT" title="<:telecharger_article:>"><:telecharger_article:></a> [((#TYPE_DOCUMENT)]-[(#TAILLE|taille_en_octets))]," "})]</BOUCLE_document></B_document>
-
-[(#REM) Menu dépliant descriptif de l'article]
-[(#INTRODUCTION|?{<img src="../IMG/icones/carre-blanc-bordgris-9.gif"> <a href="javascript:swap_couche('#ID_ARTICLE')" title="<:introduction_article:>"><:introduction_article:></a>," "})]
-
-</div>
-
-<script language='JavaScript'>
-	<!--
-	vis['#INTRODUCTION'] = 'hide';
-	//-->
-	</script><div id='Layer#ID_ARTICLE' style='display: none; margin-top: 1;'>
-[(#INTRODUCTION|justifier)]<br>
-
-
-[(#REM) Hiérachie - numéro de la revue]
-<B_ariane>
-<:article_disponible:>:
-<BOUCLE_ariane(HIERARCHIE){id_article} {1,1}>
-<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
-</BOUCLE_ariane>
-</B_ariane>
-</div>
-
-<div class="liste-articles-ligne"></div>
-
-</BOUCLE_articles>
-[<p><div align="center">(#PAGINATION)</div></p>]
-</div>
+               <p>                   
+                  <button type="button" class="btn btn-link btn-sm">
+                    <a href="#URL_PAGE{index,id_groupe=4&lettre=A}&lang=#LANG" title="<:pays:>"><i class="fa fa-tags"></i> <:pays:></a>
+                  </button>
+                  <button type="button" class="btn btn-link btn-sm">
+                    <a href="#URL_PAGE{index,id_groupe=5&lettre=A}&lang=#LANG" title="<:themes:>"><i class="fa fa-tags"></i> <:themes:></a>
+                  </button>
+                  <button type="button" class="btn btn-link btn-sm">
+                    <a href="#URL_PAGE{index,id_groupe=3&lettre=A}&lang=#LANG" title="<:sources:>"><i class="fa fa-tags"></i> <:sources:></a>
+                  </button>
+                  <button type="button" class="btn btn-link btn-sm">
+                    <a href="#URL_PAGE{index-auteurs}&lettre=A&lang=#LANG" title="<:auteurs:>"><i class="fa fa-users"></i> <:auteurs:></a>
+                  </button>
+              </p>
+                
+            </div>
+        </div>    
+    </div><!--/container-->     
+<!--=== End Search Block ===-->
 
 
-</div>
-</B_articles>
-     				[<div class="cartouche">
-<h1 class="surtitre"><:pas_resultats_recherche:>
-<span class="titre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</span></h1>
-</div>]
+<!--=== Search Results ===-->
+    <div class="container s-results margin-bottom-50">
+        <div class="row">
+            <div class="col-md-2 hidden-xs related-search">
+                <div class="row">
+                   	<div class="col-md-12 col-sm-4">
+                    [(#REM) Rubriques trouvees ]
+                    	<B_rubriques>
+                        <h3><:rubriques:> (#GRAND_TOTAL)</h3>
+                        <ul class="list-unstyled">
+                        <BOUCLE_rubriques(RUBRIQUES) {recherche} {!par points} {0,20} {id_rubrique!=7}>
+						<li><a href="#URL_RUBRIQUE" title="#TITRE"><i class="fa fa-folder-o"></i> #TITRE</a></li>
+                        </BOUCLE_rubriques>
+                        </ul>
+                        <hr>
+                        </B_rubriques>
+                        <h3><:rubriques:> (0)</h3>
+                        <hr>
+                        <//B_rubriques>
 
-<div class="#EDIT{texte} texte">
-<:fouiller_archives:>
-</div>
+                        
+                        <B_motscles>
+                        <h3><:mots_clefs:> (#GRAND_TOTAL)</h3>
+                        <ul class="list-unstyled">
+                        <BOUCLE_motscles(MOTS) {recherche} {id_groupe IN 3,4,5} {!par points} {0,20}>
+						<li><a href="#URL_MOT" title="#TITRE"><i class="icon-tag"></i> #TITRE</a></li>
+                        </BOUCLE_motscles>
+                        </ul>
+                        <hr>
+                        </B_motscles>
+                        <h3><:mots_clefs:> (0)</h3>
+                        <hr>
+                        <//B_motscles>
 
-<//B_articles>
 
-		</div><!-- fin contenu -->
+                        <B_auteurs>
+                        <h3><:auteurs:> (#GRAND_TOTAL)</h3>
+                        <ul class="list-unstyled">
+                         <BOUCLE_auteurs(AUTEURS) {recherche} {!par points} {0,20}>
+                        <li><a href="#URL_AUTEUR" title="#NOM"><i class="icon-user"></i> #NOM</a></li>
+                        </BOUCLE_auteurs>
+                        </ul>
+                        </B_auteurs>
+                        <h3><:auteurs:> (0)</h3>
+                        <//B_auteurs>
 
-		[(#REM) Menu de navigation laterale ]
-		<div id="navigation">
 
-<INCLURE{fond=inc-multimedia}>
+
+
+                    </div>   
+                </div>        
+            </div><!--/col-md-2-->
+
+            <div class="col-md-10">
+
+            	<B_articles>
+            	#ANCRE_PAGINATION
+                <h3><:articles:> & <:publications:> (#GRAND_TOTAL)</h3>
+                <!-- Begin Inner Results -->
+                <div class="inner-results">
+                	<BOUCLE_articles(ARTICLES) {recherche} {!par points} {pagination} {id_rubrique!=7}>
+                    <h3><a href="#URL_ARTICLE" title="#TITRE">#TITRE</a></h3>
+                    <ul class="list-inline up-ul">
+                        [<li><i class="icon-user"></i> (#LESAUTEURS)</li>]
+                        <li><i class="fa fa-calendar-o"></i> [(#DATE|affdate)]</li>
+                    </ul>
+                     [<p>(#INTRODUCTION|couper{400})</p>]
+                    <B_tags>
+                    <ul class="list-inline up-ul">
+                    <BOUCLE_tags (MOTS) {id_article} {par titre} {id_groupe IN 3,4,5}>
+                    <li>
+                    <i class="icon-tag"></i> <a href="#URL_MOT" title="#TITRE">#TITRE</a>
+                </li>
+                    </BOUCLE_tags>
+                    </ul>
+                    </B_tags>
+                    <hr>
+                    </BOUCLE_articles>
+                        <div class="bloc-pagination">
+                        [(#PAGINATION{precedent_suivant} {ajax})]
+                        </div>  
+                </div>
+                <!-- End Inner Results -->
+                </B_articles>
+                <h3><:articles:> & <:publications:> (0)</h3>
+                <//B_articles>   
+            </div><!--/col-md-10-->
+        </div> </div> </div>        
+    </div><!--/container-->     
+    <!--=== End Search Results ===-->
 			
-</div><!-- fin navigation -->
-
-</div><!-- fin conteneur -->
+			
 	
-	[(#REM) Pied de page ]
-	<INCLURE{fond=inc-pied}>
+ [(#REM) Footer ]
+    <INCLURE{fond=inclure/footer} {ajax}>
 
-</div><!-- fin page -->
+
+</div><!--/wrapper-->
+
+
+<!-- JS Global Compulsory -->  
+
+<script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script>   
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/image-hover/js/modernizr.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/image-hover/js/touch.js"></script>
+
+<!-- JS Customization -->
+<script src="unify/assets/js/custom.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="unify/assets/js/app.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="unify/assets/plugins/respond.js"></script>
+<![endif]-->
+
+
+
+
+
 </body>
 </html>

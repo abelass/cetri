@@ -5,9 +5,9 @@
             <ul class="list-unstyled">
             <BOUCLE_evenements (EVENEMENTS){id_mot} {age_fin<=0}{par date_debut}{statut=publie}>
                 <li>
-                <strong><a href="#URL_PAGE{evenement-unify,id_evenement=#ID_EVENEMENT}" title="#TITRE">#TITRE</a></strong><br />
+                <strong><a href="#URL_EVENEMENT" title="#TITRE">#TITRE</a></strong><br />
                         <small>
-                            <i class="fa fa-calendar"></i>  [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })]
+                            <i class="fa fa-calendar-o"></i>  [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })]
                              <i class="fa fa-map-marker"></i> #LIEU
                          </small>
                 </li>

@@ -1,5 +1,5 @@
  <BOUCLE_evenement (EVENEMENTS){id_evenement=#ID_EVENEMENT}>
-      <a href="#URL_EVENEMENT" title="<:calendar_add:>" class="addthisevent">
+      <a href="#URL_EVENEMENT" title="<:calendar_add:>" class="addthisevent btn btn-u rounded" role="button">
           <i class="fa fa-plus"></i> <:calendar_add:>
           <span class="_start">
           [(#DATE_DEBUT|affdate{'d/m/Y'})] [(#DATE_DEBUT|heures)]:[(#DATE_DEBUT|minutes)]</span>
@@ -14,3 +14,20 @@
           <span class="_date_format">DD/MM/YYYY</span>
       </a>
 </BOUCLE_evenement>
+<!-- AddThisEvent -->
+<script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
+<!-- AddThisEvent Settings -->
+<script type="text/javascript">
+addthisevent.settings({
+    mouse     : false,
+    css       : false,
+    outlook   : {show:true, text:"Outlook"},
+    google    : {show:true, text:"Google"},
+    yahoo     : {show:true, text:"Yahoo"},
+    hotmail   : {show:true, text:"Hotmail"},
+    ical      : {show:true, text:"iCal"},
+    facebook  : {show:true, text:"Facebook"},
+    dropdown  : {order:"outlook,google,ical,facebook,hotmail,yahoo"},
+    callback  : ""
+});
+</script>

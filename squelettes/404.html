@@ -1,7 +1,7 @@
 #HTTP_HEADER{HTTP/1.0  #ENV{code,'404 Not Found'}}
 #HTTP_HEADER{"Cache-Control: no-store, no-cache, must-revalidate"}
 #HTTP_HEADER{Pragma: no-cache}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
@@ -14,7 +14,7 @@
 
 <title><:pass_erreur:> [(#ENV{status, 404}|textebrut)] - [(#NOM_SITE_SPIP|textebrut)]</title>
 
-<INCLURE{fond=inclure/head-unify} />
+<INCLURE{fond=inclure/head} />
 
 <meta name="robots" content="none" />
 
@@ -26,8 +26,8 @@
 <body class="pas_surlignable page_404">
   <div class="wrapper">
     <div class="header">
-           <INCLURE{fond=inclure/topbar-unify} {env} {ajax}/>
-            <INCLURE{fond=inclure/header-unify} {env} {ajax}/>
+        <INCLURE{fond=inclure/topbar} {env} {ajax}/>
+        <INCLURE{fond=inclure/header} {env} {ajax}/>
 	</div>
 
 <!--=== Breadcrumbs ===-->
@@ -71,13 +71,12 @@
 
 
  [(#REM) Footer ]
-    <INCLURE{fond=inclure/inc-footer-unify} {ajax}>
+    <INCLURE{fond=inclure/footer} {ajax}>
 
 
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->           
-<script type="text/javascript" src="unify/assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
 <!-- JS Implementing Plugins -->           

@@ -1,102 +1,190 @@
-#CACHE{7200}
-<BOUCLE_rubrique_principal(RUBRIQUES) {id_rubrique}>
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html dir="#LANG_DIR" lang="#LANG">
+[(#REM)
+    Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
+
+<!DOCTYPE html>
+[(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
 <head>
-<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
 
-
- [<meta name="title" content="(#TITRE|textebrut)" />]
-     [<meta name="author" content="(#LESAUTEURS|attribut_html)" />]
-     [<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
-     <B_keywords><meta name="keywords" content="<BOUCLE_keywords(MOTS) {id_article} {","}>[(#TITRE|attribut_html)]</BOUCLE_keywords>" /></B_keywords>
-     <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
-    [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+<title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        [<meta name="description" content="(#INTRODUCTION{150}|textebrut)" />]
+        [<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue)" />]
+        <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+        [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
     <meta name="ROBOTS" content="INDEX,FOLLOW">
-    <meta name="revisit-after" content="7 days">
     <meta name="robots" content="ALL">
-    
+    <meta name="revisit-after" content="7 days">
+
+
+    <!-- Open Graph Data -->
+    [<meta property="og:title" content="(#TITRE|textebrut)" />]
     [<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+    [<meta name="og:description" content="(#INTRODUCTION|couper{200}|textebrut)">]
      <meta property="og:type" content="article" />
-     <meta property="og:url" content="#URL_ARTICLE" />
-     <meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" />
+     <meta property="og:url" content="#URL_RUBRIQUE" />
+    [(#LOGO_RUBRIQUE_NORMAL|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_RUBRIQUE_NORMAL|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP_SURVOL|fichier)]" />})]
+    <meta property="og:locale" content="#LANG" />
 
-<INCLURE{fond=inc-head}>
-
-
-
-</head>
-<body class="page_rubrique">
-<div id="page">
-<INCLURE{fond=inc/inc-entete, env} />
+    <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
 
 
-<div id="conteneur">
+    <INCLURE{fond=inclure/head} />
 
-[(#REM) Contenu principal : contenu de la rubrique ]
-<div id="contenu">
 
-<div class="cartouche">
+     <!--=== CSS Homepage Books ===-->
+      <link rel="stylesheet" href="#CHEMIN{css/flipster/jquery.flipster.css}">
 
-[(#LOGO_RUBRIQUE||image_reduire{200,200})]
-[<h1 class="#EDIT{titre} titre">(#TITRE|supprimer_numero)</h1>]
+
+</head>	
+
+<body>
+
+
+<div class="wrapper">
+
+ <!--=== Header ===-->    
+    <div class="header">
+          <INCLURE{fond=inclure/topbar} {env} {ajax}{lang_select=non} />
+          <INCLURE{fond=inclure/header} {env} {ajax} {lang_select=non}  />
+    </div>
+<!--=== End Header ===--> 
+
+<B_breadcrumbs>
+<BOUCLE_breadcrumbs (RUBRIQUES) {id_rubrique}  {id_rubrique IN 145,146,147}>
+<INCLURE{fond=inclure/inc-homepage-carousel,env}/>
+<div class="row">
+    <div class="container">
+        <div class="col-md-8">
+            <BOUCLE_rub_actualites (RUBRIQUES) {id_parent} {par num titre} {1,1}>
+            <INCLURE{fond=inclure/inc-homepage-news, env, titre=#TITRE, url=#URL_RUBRIQUE} />
+            </BOUCLE_rub_actualites>
+        </div>
+        <div class="col-md-4">
+            <INCLURE{fond=inclure/inc-homepage-annonces, env} />
+        	<BOUCLE_rub_agenda (RUBRIQUES) {id_parent} {par num titre} {4,1}>
+            <INCLURE{fond=inclure/inc-homepage-agenda, env, titre=#TITRE}/>
+            </BOUCLE_rub_agenda>
+            <INCLURE{fond=inclure/inc-homepage-coloredboxes}/>
+            <INCLURE{fond=inclure/inc-homepage-facebook}/>
+
+
+            
+        </div>
+    </div>
 </div>
+</BOUCLE_breadcrumbs>
+</B_breadcrumbs>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs-v3 margin-bottom-20">
+    <div class="container">
+        <h1 class="pull-left">
+        [(#PROFONDEUR|match{^(2|3)$}|?{[(#TITRE_PARENT)],[(#TITRE)]})]
+        
+        </h1>      
+        <ul class="pull-right breadcrumb">
+            <BOUCLE_ariane(HIERARCHIE){id_rubrique}> 
+            [<li><a href="#URL_RUBRIQUE" title="#TITRE">(#TITRE|couper{80})</a></li>]
+            </BOUCLE_ariane>
+           [<li> (#TITRE|couper{80})</li>]
+        </ul>
+        
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<//B_breadcrumbs>
 
 
-<B_articles>
-<div class="bloc">
-<div class="sous-bloc-blanc-sans-border">
-#ANCRE_PAGINATION
-<BOUCLE_articles(ARTICLES) {id_rubrique} {lang_select=non}{par date}{inverse}{pagination 20} {doublons}>
-[<font color="#999999">(#SURTITRE)</font><br>]
-[<a href="#URL_ARTICLE&lang=#LANG" title="<:lire_article:>"><img src="../IMG/icones/carre-nav.gif"> (#TITRE|supprimer_numero)</a><br>]
-<font color="#999999">
-(<B_source><BOUCLE_source(MOTS) {id_article} {id_groupe=3}>[(#TITRE) - ]</BOUCLE_source></B_source>[(#DATE|affdate)])</font>
-<p>
-
-
-<div class="liste-articles-ligne"></div>
-</BOUCLE_articles>
-
-
-[<p><div align="center">(#PAGINATION)</div></p>]
-</div></div>
-
-</B_articles>
-<//B_articles>
-
-
-						
-
-	
-[(#REM) Documents joints a la rubrique ]
-<B_documents_joints>
-<div id="documents_joints">
-<h2><:titre_documents_joints:></h2>
-<small><BOUCLE_documents_joints(DOCUMENTS) {id_rubrique} {mode=document} {par num titre, date} {doublons}>
-<img src="../IMG/img-perso/carre-nav.gif"> <a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a> (#TYPE_DOCUMENT[ - (#TAILLE|taille_en_octets)])<br>
-[(#DESCRIPTIF)]
-</BOUCLE_documents_joints></small></div>
-</B_documents_joints>
+[(#ID_RUBRIQUE|match{^(161|162|163)$}|?{[(#MODELE{rubrique_masonry} {ajax})],' '})] 
+[(#ID_RUBRIQUE|match{^(38|165|166)$}|?{[(#MODELE{rubrique_masonry}  {ajax})],' '})]
+[(#ID_RUBRIQUE|match{^(167|168|169)$}|?{[(#MODELE{rubrique_masonry}  {ajax})],' '})]
+[(#ID_RUBRIQUE|match{^(170|171|172|181|182|183|184|185|186|187|188|189|190|191|192|193|211|212|214|215|216|228|229|230|231|232|233|234|235|236|238|239|240)$}|?{[(#MODELE{layout_leftsidebar} {id_rubrique} {ajax})],' '})]
+[(#ID_RUBRIQUE|match{^(176|177|210)$}|?{[(#INCLURE{fond=inclure/agenda_timeline} {ajax}{id_rubrique})],' '})]
+[(#ID_RUBRIQUE|match{^(217|218|219)$}|oui)<INCLURE{fond=inclure/les_articles_precieux,env,ajax}/>)]
+[(#ID_RUBRIQUE|match{^(173|174|175|178|179|180)$}|?{[(#MODELE{modele-menu-blocks} {env} {ajax})],' '})]
 
 
 
-</div><!-- fin contenu-rubrique -->
 
-[(#REM) Menu de navigation laterale ]
+<!--=== Rubrique Publications ===-->
+[(#ID_RUBRIQUE|match{^(148|149|150)$}|?{[(#MODELE{modele-publications} {env} {ajax})],' '})]
+[(#ID_RUBRIQUE|match{^(151|152|153)$}|?{[(#MODELE{modele-liste-alternativessud} {env} {ajax} {id_mot=1040})],' '})]
+[(#ID_RUBRIQUE|match{^(158|159|160)$}|?{[(#MODELE{modele-liste-autrespublications} {env} {ajax} {id_mot=82})],' '})]
 
-<!-- début navigation -->
-<div id="navigation">
-	
-</div>
-<!-- fin navigatio -->
 
-</div><!-- fin conteneur -->
 
-[(#REM) Pied de page ]
-<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+[(#REM) Footer ]
+    <INCLURE{fond=inclure/footer} {ajax}>
 
-</div><!-- fin page -->
+</div><!--/wrapper-->
+
+
+
+
+
+<!-- JS Global Compulsory -->  
+<script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script>  
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
+<script type="text/javascript" src="unify/assets/plugins/masonry/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+<script type="text/javascript" src="unify/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- JS Customization -->
+<script type="text/javascript" src="unify/assets/js/custom.js"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="unify/assets/js/app.js"></script>
+<script type="text/javascript" src="unify/assets/js/plugins/owl-carousel.js"></script>
+<script type="text/javascript" src="unify/assets/js/pages/blog-masonry.js"></script>
+<script type="text/javascript" src="unify/assets/js/plugins/cube-portfolio.js"></script>
+<script type="text/javascript" src="unify/assets/js/app.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        OwlCarousel.initOwlCarousel();        
+        App.initSliders();   
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="unify/assets/plugins/respond.js"></script>
+    <script src="unify/assets/plugins/html5shiv.js"></script>
+    <script src="unify/assets/js/plugins/placeholder-IE-fixes.js"></script>
+<![endif]-->
+
+<!-- Javascript Flipster - Carousel Homepage -->
+<script src="#CHEMIN{javascript/flipster/jquery.flipster.js}"></script>
+
+<script type="text/javascript">
+$(function(){ 
+    $('.flipster').flipster({
+        itemContainer:      'ul', // Container for the flippin' items.
+        itemSelector:       'li', // Selector for children of itemContainer to flip
+        style:              'coverflow', // Switch between 'coverflow' or 'carousel' display styles
+        start:              '0', // Starting item. Set to 0 to start at the first, 'center' to start in the middle or the index of the item you want to start with.
+
+        enableKeyboard:     true, // Enable left/right arrow navigation
+        enableMousewheel:   true, // Enable scrollwheel navigation (up = left, down = right)
+        enableTouch:        true, // Enable swipe navigation for touch devices
+
+        enableNav:          false, // If true, flipster will insert an unordered list of the slides
+        enableNavButtons:   false, // If true, flipster will insert Previous / Next buttons
+
+        onItemSwitch:       function(){}, // Callback function when items are switches
+    })
+});
+</script>
+
 </body>
 </html>
-</BOUCLE_rubrique_principal>
+</BOUCLE_principale>
+

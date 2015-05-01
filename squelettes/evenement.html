@@ -1,291 +1,268 @@
+<BOUCLE_principale(EVENEMENTS) {id_evenement} {doublons}>
 
-<BOUCLE_evenement_principal(EVENEMENTS) {id_evenement} {lang_select=non}>
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
 <!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
 <!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
-
 <head>
-    <title>[(#TITRE|textebrut)] | [(#NOM_SITE_SPIP|textebrut)]</title>
-     [<meta name="title" content="(#TITRE|textebrut)" />]
-     [<meta name="author" content="(#LESAUTEURS|attribut_html)" />]
-     [<meta name="description" content="(#DESCRIPTIF|couper{150}|textebrut)" />]
-     [<link rel="canonical" href="(#URL_EVENEMENT|url_absolue)" />]
-     <B_keywords><meta name="keywords" content="<BOUCLE_keywords(MOTS) {id_evenement} {","}>[(#TITRE|attribut_html)]</BOUCLE_keywords>" /></B_keywords>
-     <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
-    [<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
-    <meta name="ROBOTS" content="INDEX,FOLLOW">
-    <meta name="revisit-after" content="7 days">
-    <meta name="robots" content="ALL">
-    
-     <meta property="og:title" content="[(#TITRE|textebrut)]">
-    <meta property="og:site_name" content="[(#NOM_SITE_SPIP|textebrut)]" />
-    <meta property="og:description" content="[(#DESCRIPTIF|couper{150}|textebrut)]" />
-     <meta property="og:type" content="article" />
-    [<meta property="og:url" content="(#URL_EVENEMENT|url_absolue)" />]
-    [(#LOGO_EVENEMENT|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP_SURVOL|fichier)]" />})]
-
-[(#INCLURE{fond=inc-head} {id_evenement})]
 
 
-<style>
-	.cs_blocs {clear:both; margin: 15px 0px; padding: 10px 5px;overflow:hidden;
--webkit-box-shadow: 0 8px 6px -6px grey;
-		 -moz-box-shadow: 0 8px 6px -6px grey;
-		box-shadow: 0 8px 6px -6px grey;
-		background:#E3E3E3  }
-
-h4.blocs_titre  {margin-top:4px; padding:8px 25px 8px 5px; margin-bottom:0.1em;
-	cursor:pointer; clear: none; background:  url("/squelettes/images/puces/1282912295_130.png") no-repeat right center;letter-spacing: 1px;
-	font-size:13px;letter-spacing: 1px;text-transform:uppercase;outline:0;font-weight:900;text-decoration:none; }
-h4.blocs_replie  {background:  url("/squelettes/images/puces/1282912284_129.png") no-repeat right center;}
-h4.blocs_titre a {border-bottom:none;background:none; font-weight:900; color:#000000}
-h4.blocs_titre a:hover {border-bottom:none; background:none;}
-.blocs_destination {padding: 10px; margin : 5px 5px;color: #333333;}
-.blocs_resume {margin: 3px 0px; padding: 0px 0px 0px 15px; }
+<title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="title" content="(#TITRE|textebrut)" />]
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+[<meta name="description" content="(#DESCRIPTIF|couper{300}|attribut_html)" />]
+<B_keywords><meta name="keywords" content="<BOUCLE_keywords(MOTS) {id_evenement} {","}>[(#TITRE|attribut_html)]</BOUCLE_keywords>" /></B_keywords>
+<meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+[<meta name="reply-to" content="(#EMAIL_WEBMASTER|attribut_html)" />]
+  <meta name="ROBOTS" content="INDEX,FOLLOW">
+  <meta name="robots" content="ALL">
+  <meta name="revisit-after" content="7 days">
 
 
-.blocs_destination hr.spip {clear:both; height:2px; margin: 15px 0px;padding: 0px 0px;border:none; background:none;}
+<!-- Open Graph Data -->
+[<meta property="og:title" content="(#TITRE|textebrut)" />]
+[<meta property="og:description" content="(#DESCRIPTIF|textebrut)" />]
+[<meta property="og:site_name" content="(#NOM_SITE_SPIP|textebrut)" />]
+<meta property="og:type" content="article" />
+<meta property="og:url" content="#URL_SITE_SPIP/#URL_EVENEMENT" />
+[(#LOGO_EVENEMENT|?{<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT|fichier)]" />,<meta property="og:image" content="#URL_SITE_SPIP/IMG/[(#LOGO_SITE_SPIP_SURVOL|fichier)]" />})]
 
 
-/* Table SPIP */
-table.spipcetri {width: 100%;padding:0px; margin: 8px 0px 15px 0px;
-			float:left;
-			background:#EFEFEF;
-			border:1px rgba(0.9,0.2,0.2,0.2) solid;
-			border-collapse: collapse;
-			text-align: left }
-        
-    table.spipcetri caption {
-        caption-side: top; /* bottom pas pris en compte par IE */
-       font-weight: 900; text-transform: uppercase}
-        
-    table.spipcetri tr.row_first { border:none; background: none; text-align:center; text-transform: uppercase }
-    table.spipcetri tr.row_odd {  border:none;background:none;text-align:left; padding: 10px; }
-    table.spipcetri tr.row_even { border:none; background:none;text-align:left; padding: 10px;}
-    table.spipcetri th, table.spipcetri td { border:1px solid #FFFFFF;padding: 8px;vertical-align:top;text-align:left ;background:none; }
-	
-	table.spipcetri {font-family:Tahoma, Geneva, sans-serif;letter-spacing: 1px;font-size:12px;text-align:left }
 
-	table.spipcetri  strong {text-transform: uppercase}
-</style>
+
+
+
+
+<INCLURE{fond=inclure/head} />
+
+<script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+
+
+<!-- CSS Page Style -->
+<link rel="stylesheet" href="squelettes/css/addthisevent.css">
+
 </head>
 
+<body class="pas_surlignable page_article">
+  
+  <div class="wrapper">
 
+<!--=== Header ===-->    
+    <div class="header">
+          <INCLURE{fond=inclure/topbar} {env} {ajax}{lang_select=non} />
+          <INCLURE{fond=inclure/header} {env} {ajax} {lang_select=non}  />
+    </div>
+<!--=== End Header ===--> 
+  
+  <!--=== End Header ===--> 
+  
 
-<body class="page_evenement">
-<div id="page">
-<INCLURE{fond=inc/inc-entete, env} />
-	
-
-<div id="conteneur">
-
-[(#REM) Contenu principal : contenu de l'article/  ]
-<div id="contenu">
-
-
-<div class="cartouche">
-
-[<h1 class="#EDIT{titre} titre"> (#TITRE|supprimer_numero)</h1>]
-<small class="texte" style="float:left">
-[(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{
- [(#DATE_DEBUT|affdate{'d/m/Y'})]
-[(#HORAIRE|=={oui}|?{
-  [(#REM) memes heures ?]
-    [(#DATE_DEBUT|=={#DATE_FIN}|?{&agrave
-[(#DATE_DEBUT|heures)]h[(#DATE_DEBUT|minutes)],''})]
-  [(#REM) pas memes heures ?]
-    [(#DATE_DEBUT|!={#DATE_FIN}|?{de
-[(#DATE_DEBUT|heures)]:[(#DATE_DEBUT|minutes)] &agrave;
-[(#DATE_FIN|heures)]:[(#DATE_FIN|minutes)],''})]
-,''})]
-,
- Du [(#DATE_DEBUT|affdate{'d/m/Y'})]
-[(#HORAIRE|=={oui}|?{&agrave; partir de
- [(#DATE_DEBUT|heures)]H[(#DATE_DEBUT|minutes)],''})] au
- [(#DATE_FIN||affdate{'d/m/Y'})] [(#HORAIRE|=={oui}|?{jusqu'&agrave;
- [(#DATE_FIN|heures)]H[(#DATE_FIN|minutes)],''})]  })]
-
-
-| [(#LIEU|textebrut)]</small>
-
-</div>
+	<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs-v3">
+    <div class="container">
+        [<h1 class="pull-left">(#TITRE_PARENT)</h1>]
+              <ul class="pull-right breadcrumb">
+                <BOUCLE_ariane(HIERARCHIE){id_article} {id_rubrique !IN 223,226,227}> 
+                  [<li> <a href="#URL_RUBRIQUE" title="#TITRE">(#TITRE|couper{40})</a>]
+                </BOUCLE_ariane>
+                <BOUCLE_extraits (RUBRIQUES) {id_rubrique IN 223,226,227} {id_rubrique}></BOUCLE_extraits>
+                <BOUCLE_numero_publication (ARTICLES) {id_article=#ID_PUBLICATION}>
+                [<li> <a href="#URL_ARTICLE" title="#TITRE">(#TITRE|couper{40})</a></li>]
+                </BOUCLE_numero_publication>
+                 <//B_extraits>
+                [<li> (#TITRE|couper{50})</li>]
+              </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
 
 
 
 
-<INCLURE{fond=inc/inc-addthis} {lang}{id_evenement}>
+<!--=== Content Part ===-->
+<div class="container content">
+  <!--=== Main Row ===--> 
+  <div class="row">
+    <!-- Left SideBar -->
+    <div class="col-md-8 md-margin-bottom-60">
+      <h2>#TITRE</h2>
+      
+      <div class="row">
+        [<div class="col-md-5">
+          <dl>
+            <dt>
+              <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_EVENEMENT|fichier)]" [ title="(#TITRE_LOGO|attribut_html|couper{80})"]>
+                <span class="overlay-zoom">
+                       (#LOGO_EVENEMENT
+                                |vider_attribut{class,spip_logos}
+                                |inserer_attribut{class,img-responsive img-bordered}
+                                |inserer_attribut{alt,#TITRE}) 
+                <span class="zoom-icon"></span>                   
+                </span>  
+              </a>
+            </dt>
+          </dl>
+        </div>
+        <div class="col-md-7">]
 
-[<div class="chapo" >(#DESCRIPTIF|justifier)</div>]
-[(#LOGO_EVENEMENT||image_reduire{660,0})]
+            <p>#DESCRIPTIF</p>
+            <div class="md-margin-bottom-20"></div>   
+            
+            [<p>(#EVENEMENT_TEXTE|image_reduire{500,0})</p>]
+            <BOUCLE_auteur_evenement (AUTEURS) {id_evenement}>
+             #AUTEURS_EVENEMENT #AUTEUR_EVENEMENT
+            </BOUCLE_auteur_evenement>
 
-[ <div class="texte">(#EVENEMENT_TEXTE|propre)</div>
+            <!-- Fiche de prÃ©sentation d'un Ã©vÃ©nement  --> 
+             <table class="table">
+              <tbody>
+                <tr>
+                  <td width="35%">
+                    <i class="fa fa-calendar-o"></i> <:evenement_quand:>
+                  </td>
+                  <td> [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'} )]}|?{
+                                           [(#DATE_DEBUT|affdate{'d/m/Y'})]
+                                          [(#HORAIRE|=={oui}|?{
+                                            [(#REM) memes heures ?]
+                                              [(#DATE_DEBUT|=={#DATE_FIN}|?{&agrave
+                                          [(#DATE_DEBUT|heures)]h[(#DATE_DEBUT|minutes)],''})]
+                                            [(#REM) pas memes heures ?]
+                                              [(#DATE_DEBUT|!={#DATE_FIN}|?{de
+                                          [(#DATE_DEBUT|heures)]:[(#DATE_DEBUT|minutes)] &agrave;
+                                          [(#DATE_FIN|heures)]:[(#DATE_FIN|minutes)],''})]
+                                          ,''})]
+                                          ,
+                                           [(#DATE_DEBUT|affdate{'d/m/Y'})]
+                                          [(#HORAIRE|=={oui}|?{&agrave; partir de
+                                           [(#DATE_DEBUT|heures)]H[(#DATE_DEBUT|minutes)],''})] au
+                                           [(#DATE_FIN||affdate{'d/m/Y'})] [(#HORAIRE|=={oui}|?{jusqu'&agrave;
+                                           [(#DATE_FIN|heures)]H[(#DATE_FIN|minutes)],''})]  })]
+                  </td>
+                </tr>
+                <!-- LIEU--> 
+                [<tr>
+                  <td>
+                    <i class="fa fa-map-marker"></i> <:evenement_ou:>
+                  </td>
+                  <td>         
+                    (#ADRESSE|sinon{#LIEU|textebrut})
+                  </td>
+                </tr>]
+                [
+                <tr>
+                  <td>
+                    <i class="fa fa-user"></i> <:evenement_contactinscription:>
+                  </td>
+                  <td>
+                  (#EVENEMENT_CONTACT_NOM|textebrut)
+                  [<br /><i class="fa fa-envelope-o"></i> 
+                   <a href="mailto:[(#EVENEMENT_CONTACT_EMAIL|textebrut)]">(#EVENEMENT_CONTACT_EMAIL|textebrut)</a>]
+                   [<br /><i class="fa fa-phone"></i>  (#EVENEMENT_CONTACT_TELEPHONE|textebrut)]
+                  </td>
+                </tr>]
+                <!-- PAF--> 
+               [<tr>
+                  <td>
+                    <i class="fa fa-eur"></i> <:evenement_prix:>
+                  </td>
+                  <td>
+                  (#EVENEMENT_PRIX|textebrut)
+                  </td>
+                </tr>]
+                [<tr>
+                  <td>
+                    <i class="fa fa-users"></i> <:evenement_organisation:>
+                  </td>
+                  <td>
+                  (#EVENEMENT_ORGANISATION) 
+                   </td>
+                </tr>]
+                [<tr>
+                  <td>
+                    <i class="fa fa-link"></i> <:evenement_lien:>
+                  </td>
+                  <td>
+                    <a href="#EVENEMENT_LIEN_1_URL" target="_blank">(#EVENEMENT_LIEN_1_TITRE) </a>
+                    [<br /><a href="#EVENEMENT_LIEN_2_URL" target="_blank">(#EVENEMENT_LIEN2_TITRE) </a>]
+                  </td>
+                </tr>]
+                    <B_documents>
+                <tr>
+                  <td>
+                    <i class="fa fa-download"></i> <:evenement_download:>
+                  </td>
+                  <td>
+                    <BOUCLE_documents (DOCUMENTS) {id_evenement} {par titre} {mode=document}>
+                      <p><a href="#URL_DOCUMENT" type="#MIME_TYPE">[(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</a><br />
+                      <small>([<abbr title="<:info_document:> #TYPE_DOCUMENT" class="ext">(#EXTENSION|strtoupper)</abbr> - ][(#TAILLE|taille_en_octets|textebrut)])[ (#DESCRIPTIF|textebrut)]</small></p>
+                    </BOUCLE_documents>
+                  </td>
+                </tr>
+                    </B_documents>
+              </tbody>
+            </table>
+        [(#LOGO_EVENEMENT|?{</div>,''})] 
+      </div><!-- End Row -->
 
 
+        <div class="row">
+          <div class="col-md-6">
+             <INCLURE{fond=inclure/inc-social-medias} {env} {lang=#LANG} {url=#URL_EVENEMENT} {id_evenement} />
+          </div>
+          <div class="col-md-6"  style="text-align:right">
+            <INCLURE{fond=inclure/inc-addthisevent} {env} {lang=#LANG} {id_evenement} />
+          </div>
+        </div>
 
-]
-
-
-
-
-
-
-<div class="texte"><h3 class="spip"><multi>[fr]Infos pratiques[en]Practical information[es]Información Práctica</multi>
-</h3></div>
-
-
-<!-- Fiche de présentation d'un événement  --> 
-<table class="spipcetri" valign="top">
-<tbody>
-
-
-<tr>
-    <td width="30%" valign="top"><strong><:evenement_quand:></strong></td>
-
-    <td valign="top">[(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{
- [(#DATE_DEBUT|affdate{'d/m/Y'})]
-[(#HORAIRE|=={oui}|?{
-  [(#REM) memes heures ?]
-    [(#DATE_DEBUT|=={#DATE_FIN}|?{&agrave
-[(#DATE_DEBUT|heures)]h[(#DATE_DEBUT|minutes)],''})]
-  [(#REM) pas memes heures ?]
-    [(#DATE_DEBUT|!={#DATE_FIN}|?{de
-[(#DATE_DEBUT|heures)]:[(#DATE_DEBUT|minutes)] &agrave;
-[(#DATE_FIN|heures)]:[(#DATE_FIN|minutes)],''})]
-,''})]
-,
- Du [(#DATE_DEBUT|affdate{'d/m/Y'})]
-[(#HORAIRE|=={oui}|?{&agrave; partir de
- [(#DATE_DEBUT|heures)]H[(#DATE_DEBUT|minutes)],''})] au
- [(#DATE_FIN||affdate{'d/m/Y'})] [(#HORAIRE|=={oui}|?{jusqu'&agrave;
- [(#DATE_FIN|heures)]H[(#DATE_FIN|minutes)],''})]  })]</td>
-  </tr>
-
-
-
-
-
-<!-- LIEU--> 
-
-[<tr>
-    <td valign="top"><strong><:evenement_ou:></strong></td>
-    <td valign="top">         
-       
-(#ADRESSE|textebrut|sinon{#LIEU|textebrut})
-</td>
-  </tr>]
-
-
-
-[
-  <tr>
-    <td valign="top"><strong><:evenement_contactinscription:></strong></td>
-    <td valign="top">
+</div><!--End Left SideBar-->
     
-     (#EVENEMENT_CONTACT_NOM|textebrut)
-     [<br /><a href="mailto:#EVENEMENT_CONTACT_EMAIL">(#EVENEMENT_CONTACT_EMAIL|textebrut)</a>]
-     [<br />(#EVENEMENT_CONTACT_TELEPHONE|textebrut)]
-     
-     </td>
-  </tr>]
+
+<!-- Begin Right Sidebar -->
+
+    <div class="col-md-4" style="border-left: 1px solid #EFEFEF">
+        <INCLURE{fond=inclure/inc-panel-agenda, env, titre=<:agenda:>,doublons} />
+    </div>
+      <!-- End Right Sidebar -->
+
+  </div><!-- End main row --> 
+
+</div><!--/container--> 
+<!--=== End Content Part ===-->
 
 
+ [(#REM) Footer ]
+    <INCLURE{fond=inclure/footer} {ajax}>
 
-  <!-- PAF--> 
-[<tr>
-    <td valign="top"><strong><:evenement_prix:></strong></td>
-    <td valign="top">
-    
-     (#EVENEMENT_PRIX|textebrut)
-     
-     </td>
-  </tr>]
-  
- 
+</div><!--/wrapper-->
 
 
+<!-- JS Global Compulsory -->  
 
+<script type="text/javascript" src="unify/assets/plugins/jquery/jquery-migrate.min.js"></script>  
+<script type="text/javascript" src="unify/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
 
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="unify/assets/plugins/back-to-top.js"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="unify/assets/js/custom.js"></script>
 
-[<tr>
-    <td valign="top"><strong><:evenement_organisation:></strong></td>
-    <td valign="top">
-    
-    (#EVENEMENT_ORGANISATION|textebrut) 
-    
+<script type="text/javascript" src="unify/assets/js/app.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="unify/assets/plugins/respond.js"></script>
+    <script src="unify/assets/plugins/html5shiv.js"></script>
+    <script src="unify/assets/js/plugins/placeholder-IE-fixes.js"></script>
+<![endif]-->
 
-     </td>
-  </tr>]
-
-
-
-
-
-
-
-  [<tr>
-    <td valign="top"><strong><multi><:evenement_lien:></strong></td>
-    <td >
-    
-    <a href="#EVENEMENT_LIEN_1_URL" target="_blank">(#EVENEMENT_LIEN_1_TITRE) </a>
-    [<br /><a href="#EVENEMENT_LIEN_2_URL" target="_blank">(#EVENEMENT_LIEN2_TITRE) </a>]
-
-     </td>
-  </tr>]
-
-  
-
-
-
-
-  
- <B_documents_joints>
-  <tr>
-    <td><strong><:evenement_download:></strong></td>
-    <td>
-
-<BOUCLE_documents_joints(DOCUMENTS) {id_evenement} {mode=document} {par num titre, date} {doublons}>
-<a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a><br> (#TYPE_DOCUMENT[ - (#TAILLE|taille_en_octets)])<br>
-[(#DESCRIPTIF|textebrut)<br>]
-</BOUCLE_documents_joints>
-
-
- 
-    </td>
-  </tr>
- </B_documents_joints> 
-  
-  
-  
-  
-  </tbody>
-</table>
-
-
-
-
-</div><!-- fin contenu -->
-
-
-[(#REM) Menu de navigation laterale ]
-<div id="navigation">
-
-
-<INCLURE{fond=inc/inc-agenda}>
-
-
-</div><!-- fin navigation -->
-
-</div><!-- fin conteneur -->
-
-
-	[(#REM) Pied de page ]
-	<INCLURE{fond=inc-pied}>
-</div><!-- fin page -->
 </body>
 </html>
-</BOUCLE_evenement_principal>
+</BOUCLE_principale>
+

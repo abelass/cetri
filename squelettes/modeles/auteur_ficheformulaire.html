@@ -1,0 +1,73 @@
+<BOUCLE_auteur_fiche(AUTEURS){id_auteur}>
+<div class="row team margin-bottom-20">
+                <!-- Team v2 -->
+                <div class="col-md-4">
+                   <!-- Team v2 -->
+                    <div class="team-v2">
+                         [(#LOGO_AUTEUR|?{
+                            [<dl>
+                                <dt>
+                                    <a class="fancybox-button zoomer mediabox" data-rel="fancybox-button" href="#URL_SITE_SPIP/IMG/[(#LOGO_AUTEUR|fichier)]" [ title="(#NOM|attribut_html|couper{80})"]> 
+                                    <span class="overlay-zoom"> 
+                                    (#LOGO_AUTEUR_NORMAL
+                                        |image_reduire{800,600}
+                                        |vider_attribut{class,spip_logos}
+                                        |inserer_attribut{class,img-responsive}
+                                        |inserer_attribut{alt,#NOM})
+                                    <span class="zoom-icon"></span>                   
+                                    </span>  
+                                    </a>
+                                </dt> 
+                            </dl>
+                        ],'<dl>
+                                <dt>
+                                   <img src="/squelettes/img/icons/no-photo.png" class="img-responsive" alt="#NOM" />
+                                </dt> 
+                            </dl>'})]
+
+                        
+                        <div class="inner-team">
+                            [<p>(#BIO)</p>]
+                             [<p><i class="fa fa-home"></i> (#AUTEUR_ADRESSEPOSTALE)</p>]
+                            [<p><i class="fa fa-phone"></i> (#AUTEUR_PHONE)</p>]
+                            <hr>
+  
+                            <ul class="list-inline team-social-2">
+                               [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="fb tooltips" data-original-title="Facebook" href="(#AUTEUR_FACEBOOK)" target="_blank">
+                                        <i class="fa fa-facebook"></i></a>
+                                </li>]
+                                [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="tw tooltips" data-original-title="Twitter" href="(#AUTEUR_TWITTER)" target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+
+                                </li>]
+                               [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="gp tooltips" data-original-title="Google plus" href="(#AUTEUR_GOOGLEPLUS)" target="_blank">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>]
+                                [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="ldin tooltips" data-original-title="Linkedin" href="(#AUTEUR_LINKEDIN)" target="_blank">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>]
+                                 [<li>
+                                    <a data-placement="top" data-toggle="tooltip" class="lk tooltips" data-original-title="<:website:>" href="(#URL_SITE)" target="_blank">
+                                        <i class="fa fa-external-link"></i>
+                                    </a>
+                                </li>]
+                            </ul>
+
+                            </div>
+                             
+                        </div>
+                    </div>
+
+                <div class="col-md-8">
+                    [(#FORMULAIRE_ECRIRE_AUTEUR) ]
+
+
+</div>
+</BOUCLE_auteur_fiche>

@@ -13,12 +13,12 @@
                   <ul id="collapse-#ID_RUBRIQUE" class="collapse">
                     <BOUCLE_sous_rubriques (RUBRIQUES) {id_parent} {par num titre}>
                       <li class="list-group-item list-toggle-2 [(#EXPOSE{active})]">
-                        <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="[(#TITRE|textebrut)]"> [(#TITRE|textebrut)]</a></li>
+                        <a href="#URL_RUBRIQUE" title="[(#TITRE|textebrut)]"> [(#TITRE|textebrut)]</a></li>
                     </BOUCLE_sous_rubriques>
                   </ul>
               </li>
               </B_sous_rubriques>
-              <li class="list-group-item list-toggle-2 [(#EXPOSE{active})]"><a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}">[(#TITRE|textebrut)]</a></li>
+              <li class="list-group-item list-toggle-2 [(#EXPOSE{active})]"><a href="#URL_RUBRIQUE">[(#TITRE|textebrut)]</a></li>
               <//B_sous_rubriques>
             </BOUCLE_rubriques_soeurs>
           </ul>

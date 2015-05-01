@@ -1,0 +1,31 @@
+<B_evenements>
+<div class="panel panel-cetri" style="border:none">
+  <div class="panel-heading">
+    <h3 class="panel-title"> #ENV{titre}
+       <a href="#URL_RUBRIQUE" title="#TITRE">
+          <i class="fa fa-link"></i>
+        </a>
+        <a href="#URL_PAGE{backend-evenements}" target="_blank" title="RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+    </h3>
+  </div>
+  <div class="panel-body">   
+    <!-- boucle avec comme critères les mots clés de l'article -->    
+    <BOUCLE_evenements(EVENEMENTS){tout} {age_fin<=0}{par date_debut}{statut=publie}{0,5}{doublons}>
+      <div class="media">
+  <div class="media-body">
+    <h5 class="media-heading"><a href="#URL_EVENEMENT" title="#TITRE">#TITRE</a></h5>
+      <small>
+        <i class="fa fa-calendar-o" style="color:red"></i>  [(#DATE_DEBUT|affdate{'d/m/Y'}|=={[(#DATE_FIN|affdate{'d/m/Y'})]}|?{[(#DATE_DEBUT|affdate{'d/m/Y'})], [(#DATE_DEBUT|affdate{'d/m/Y'})] - [(#DATE_FIN||affdate{'d/m/Y'})]  })]
+        [<i class="fa fa-map-marker" style="color:orange"></i> (#LIEU)]
+      </small>
+  </div>
+</div>
+</BOUCLE_evenements>
+</div>
+</div>
+</B_evenements>
+
+
+

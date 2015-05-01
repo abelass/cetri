@@ -5,7 +5,7 @@
       <BOUCLE_sous_rubriques (RUBRIQUES) {id_parent} {par num titre} {0,2}>
         <div class="col-md-4 col-sm-6">
             <div class="service-block service-block-blue">
-              <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="<:voir:>">
+              <a href="#URL_RUBRIQUE" title="<:voir:>">
                 <i class="icon-custom icon-color-light rounded-x fa fa-book"></i>
                     <h2 class="heading-md">#TITRE</h2>
               </a>
@@ -16,7 +16,7 @@
       <BOUCLE_sous_rubriques_shop (RUBRIQUES) {meme_parent} {par num titre} {5,1}>  
         <div class="col-md-4 col-sm-6">
             <div class="service-block service-block-blue">
-              <a href="#URL_PAGE{rubrique-unify,id_rubrique=#ID_RUBRIQUE}" title="<:voir:>">
+              <a href="#URL_RUBRIQUE" title="<:voir:>">
                 <i class="icon-custom icon-color-light rounded-x fa fa-shopping-cart"></i>
                     <h2 class="heading-md">#TITRE</h2>
               </a>
@@ -41,7 +41,7 @@
                     <BOUCLE_publicationsrecentes (ARTICLES) {id_mot IN 82,1040} {par date} {inverse} {doublons} {0,8}>
                         <div style="margin-right: 50px">
 
-                                [<a href="#URL_PAGE{article-unify,id_article=#ID_ARTICLE}" title="#TITRE">
+                                [<a href="#URL_ARTICLE" title="#TITRE">
                                 (#LOGO_ARTICLE_NORMAL
                                     |vider_attribut{class,spip_logos}
                                     |inserer_attribut{class,img-responsive img-bordered}

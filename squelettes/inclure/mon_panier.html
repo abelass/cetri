@@ -1,5 +1,14 @@
+#SET{quantites,#ARRAY}
+<BOUCLE_panier_items(PANIERS_LIENS){id_panier=#SESSION{id_panier}} {si #ENV{affichage}|=={banner}|oui}>
+    #SET{quantites,#GET{quantites}|push{#QUANTITE}}
+</BOUCLE_panier_items>
+
+
 <B_ispanier>
-	<h2><:paniers:mon_panier:></h2>
+	[(#ENV{affichage}|=={banner}|?{
+		<a class="panier_title"><i class="fa fa-shopping-cart"> </i> <:paniers:mon_panier:></a> [<span class="badge rounded-x badge-red">(#GET{quantites}|array_sum)</span>],
+		<h2><:paniers:mon_panier:></h2>
+	})]
 <div class="panier_detail"[(#ENV{voir}|oui) style="display:block;"]>
 	<div class="ajax">
 		#FORMULAIRE_PANIER
@@ -7,34 +16,30 @@
 		
 	<BOUCLE_ispanier(CONDITION){si #SESSION{id_panier}|oui}>
 	<div class="row" style="margin-top:20px">
-		<div class="col-md-4">
+		<div class="col-md-6">
 		[(#BOUTON_ACTION{<i class="fa fa-cart-arrow-down"></i> <:paniers:vider_le_panier:>,[(#URL_ACTION_AUTEUR{supprimer_panier_encours,'',#SELF|parametre_url{retour,ok}})],ajax supprimer_panier, <:paniers:vider_le_panier:>})]
 		</div>
-		<div class="col-md-4">
-		[(#BOUTON_ACTION{<i class="fa fa-reply"></i> <:retour_boutique:>,[(#URL_PAGE{shop}|parametre_url{appel,''})],retour})]	
-		</div>		
-		<div class="col-md-4">
+		<div class="col-md-6">
 		<BOUCLE_article_suitepanier(ARTICLES){id_rubrique=-1}>[(#PAGE|=={suitepanier}|oui)<div class="texte #EDIT{texte}">#TEXTE</div>]</BOUCLE_article_suitepanier>
 		[(#ENV{appel}|=={mon_panier}|?{
 			[(#BOUTON_ACTION{<i class="fa fa-sign-in"></i> <:shop:passer_la_commande:>,[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees})],continuer})]
 			,
-			[(#BOUTON_ACTION{<i class="fa fa-sign-in"></i> <:shop_cetri:passer_panier:>,[(#URL_PAGE{shop}|parametre_url{appel,mon_panier})],continuer})]
+			[(#BOUTON_ACTION{<:shop:passer_la_commande:>,[(#URL_PAGE{shop}|parametre_url{appel,mon_panier})],continuer})]
 		})]
 		</div>
 	</div>
 		
 		<//B_article_suitepanier>
 </div>
-	</BOUCLE_ispanier>
-	<div class="col-md-6">
-[(#BOUTON_ACTION{<i class="fa fa-reply"></i> <:retour_boutique:>,[(#URL_PAGE{shop}|parametre_url{appel,''})],retour})]
-	</div>
-	<div class="col-md-6">	
-[(#ENV{appel}|=={mon_panier}|oui)<span class="label label-danger"><:paniers:panier_vide:></span>]
-	</div>
-<//B_ispanier>
+</BOUCLE_ispanier>
 
 <script type="text/javascript">
+[(#ENV{affichage}|=={banner}|oui)
+	$('.panier_title').click(function(){
+			$('li.panier .panier_detail').slideToggle(800);
+		return false;
+	}); 
+	]
 	[(#ENV{retour}|=={ok}|oui)
 		[(#ENV{affichage}|=={banner}|oui)
 			ajaxReload('mon_panier_panel', {args:{action:''},history:false }); 

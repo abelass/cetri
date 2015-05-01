@@ -1,12 +1,12 @@
 li.panier a,li.panier a:hover{
 }
 
-li.panier > div {display:inline-block}
+li.panier > div{display:inline-block}
 
 li.panier .panier_detail{
 	display:none;
 	position:absolute;
-	background:#EEE;
+	background:#EFEFEF;
 	padding: 15px;
 	}
 
