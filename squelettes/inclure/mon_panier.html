@@ -14,7 +14,7 @@
 		#FORMULAIRE_PANIER
 	</div>
 		
-	<BOUCLE_ispanier(CONDITION){si #SESSION{id_panier}|oui}>
+	<BOUCLE_ispanier(CONDITION){si |oui}>
 	<div class="row" style="margin-top:20px">
 		<div class="col-md-6">
 		[(#BOUTON_ACTION{<i class="fa fa-cart-arrow-down"></i> <:paniers:vider_le_panier:>,[(#URL_ACTION_AUTEUR{supprimer_panier_encours,'',#SELF|parametre_url{retour,ok}})],ajax supprimer_panier, <:paniers:vider_le_panier:>})]
@@ -32,6 +32,8 @@
 		<//B_article_suitepanier>
 </div>
 </BOUCLE_ispanier>
+[(#ENV{appel}|=={mon_panier}|oui)<p><:paniers:panier_vide:></p>]
+<//B_ispanier>
 
 <script type="text/javascript">
 [(#ENV{affichage}|=={banner}|oui)
