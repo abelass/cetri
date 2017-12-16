@@ -50,8 +50,8 @@
 
 <!--=== Header ===-->    
     <div class="header">
-          <INCLURE{fond=inclure/topbar} {env} {ajax} {lang}/>
-          <INCLURE{fond=inclure/header} {env} {ajax} {lang} />
+          <INCLURE{fond=inclure/topbar} {env} {ajax} />
+          <INCLURE{fond=inclure/header} {env} {ajax} />
     </div>
 <!--=== End Header ===--> 
 
@@ -342,6 +342,7 @@
 
       <!-- Article d'alternatives sud : affichage logo de la publication -->
             <BOUCLE_as_couverture (ARTICLES) {id_article=#ID_PUBLICATION}>
+            <div class="alternativessud thumbnail">
             [<dl>
                <dt>
                   <a href="#URL_ARTICLE" title="<:lire_article:>"> 
@@ -349,15 +350,18 @@
                             |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
                             |vider_attribut{class,spip_logos}
                             |inserer_attribut{class,img-responsive img-bordered}
-                            |inserer_attribut{alt,#TITRE_LOGO})                  
+                            |inserer_attribut{alt,#TITRE})                  
                    </a>
                  </dt>
-            </dl>
+            </dl>]
 
-
-            <p><a href="#URL_ARTICLE" title="<:lire_article:>" class="btn btn-u" role="button"><:lire_article:></a></p>
-
-            ]
+            <div class="caption">
+              <h3>#TITRE</h3>
+                  <p><:alternativessud_voir:></p>
+                  <p><a href="#URL_ARTICLE" title="<:lire_article:>" class="btn btn-u" role="button"><:voir:></a></p>                            
+            </div>
+          </div>
+            
             </BOUCLE_as_couverture>
             </B_as_couverture>
 

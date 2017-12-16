@@ -24,6 +24,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'ajouter_panier' => 'Add to cart',
 'allrightsreserved' => 'All Rights Reserved',
 'alternatives_sud' => 'Alternatives Sud',
+'alternativessud_voir' => 'This article was published in our quarterly publication Alternatives Sud',
 'an' => 'year',
 'annonces' => 'Advertisements',
 'archives' => 'in the archives',
@@ -119,9 +120,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'evenement_ou' => 'Where ?',
 'evenement_prix' => ' Price',
 'evenement_contactinscription' => 'Contact - Inscription',
+'evenement_inscription' => 'Inscription',
 'evenement_organisation' => 'Organisation',
 'evenement_lien' => 'Link-s',
 'evenement_download' => 'Download',
+'evenement_pagefacebook' => 'Event\'s Page',
 
 
 // F

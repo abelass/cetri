@@ -1,0 +1,51 @@
+
+/* Surcharge
+cf.  /plugins/auto/forms_et_tables_2_5/spip_forms.css */
+
+.spip_forms {border-left: none;}
+
+.spip_forms .spip_form_label {text-transform:uppercase;}
+
+.spip_forms .spip_form_label_obligatoire {color: red;}
+
+.spip_forms .obligatoire_oublie {color:red;}
+
+.spip_forms ul.choix_mots,.spip_forms ul.spip_form_choix_multiple,.spip_forms ul.spip_form_choix_unique{width:100%;}
+
+.spip_forms .spip_form_erreur {	color:red;}
+
+
+span.label {clear:none;float:left}
+.spip_forms ul.spip_form_choix_unique {clear:both;}
+span.erreur {clear:both;color:red;font-weight:700;}
+
+
+.spip_form_ok {background:#e3e3e3;font-weight:400;border: solid 1px #CCCCCC;}
+
+/* Surcharge
+cf.  /unify/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css */
+
+.sky-form {
+  border: none;
+  background-color:#fff;
+  padding: 15px;
+}
+
+.sky-form fieldset {
+  background: #eee;
+  border: 1px solid #E3E3E3;
+  margin: 15px 0px;
+  padding-top: 5px;
+}
+
+.sky-form header {
+  font-size: 18px;
+  background: none;
+  font-weight: 400;
+  padding: 8px 0px;
+  margin-bottom: 10px;
+  text-transform:uppercase;
+}
+
+
+

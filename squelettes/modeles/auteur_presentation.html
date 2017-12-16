@@ -1,0 +1,21 @@
+<B_auteur_liste>
+	<div class="list-group">
+    	<BOUCLE_auteur_liste(AUTEURS){id_auteur IN (#ENV{id}|explode{','})}>
+    		<a href="#URL_AUTEUR" title="#NOM" class="list-group-item">
+    			<div class="row">
+    				<div class="col-md-3">
+    				[(#LOGO_AUTEUR|?{
+                    [(#LOGO_AUTEUR_NORMAL
+                                        |vider_attribut{class,spip_logos}
+                                        |inserer_attribut{class,img-responsive}
+                                        |inserer_attribut{alt,#NOM})],''})]
+    				</div>
+    				<div class="col-md-9">
+	    			[<h5 class="list-group-item-heading">(#NOM)</h5>]
+	    			[<p class="list-group-item-text"> (#BIO)</p>]
+    				</div>
+    			</div>
+    		</a>
+    	</BOUCLE_auteur_liste>
+    </div>
+</B_auteur_liste>

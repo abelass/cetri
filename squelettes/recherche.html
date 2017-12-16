@@ -57,7 +57,7 @@
                 <p><form action="[(#ENV{action})]" method="get" role="search">
                   <div class="input-group">
                     [(#ENV{action}|form_hidden)]
-                    <input name="page" value="recherche-unify" type="hidden">
+                    <input name="page" value="recherche" type="hidden">
                     <input type="[(#HTML5|?{search,text})]" class="form-control" placeholder="<:mot_cle:>" name="recherche" id="#ENV{_id_champ}"[ value="(#ENV{recherche})"] onfocus="this.value='';" accesskey="4" autocapitalize="off" autocorrect="off">
                       <span class="input-group-btn">
                        <input type="submit" value="OK" title="OK" class="btn-u" />
@@ -144,10 +144,19 @@
 
             	<B_articles>
             	#ANCRE_PAGINATION
-                <h3><:articles:> & <:publications:> (#GRAND_TOTAL)</h3>
+                <h3><:articles:> & <:publications:> (#GRAND_TOTAL)<div style="float:right">
+
+#SET{defaut_tri,#ARRAY{
+date,1,
+points,-1,
+}}
+
+#TRI{date,'Tri par date',ajax} | #TRI{points,'Tri par pertinence',ajax} 
+
+</div></h3>
                 <!-- Begin Inner Results -->
                 <div class="inner-results">
-                	<BOUCLE_articles(ARTICLES) {recherche} {!par points} {pagination} {id_rubrique!=7}>
+                	<BOUCLE_articles(ARTICLES) {recherche} {tri date,#GET{defaut_tri}} {inverse} {pagination} {id_rubrique!=7}>
                     <h3><a href="#URL_ARTICLE" title="#TITRE">#TITRE</a></h3>
                     <ul class="list-inline up-ul">
                         [<li><i class="icon-user"></i> (#LESAUTEURS)</li>]

@@ -50,7 +50,23 @@
             
      
 [(#REM) Gestion du portfolio et des documents ]
-[(#INCLURE{fond=inclure/documents,id_rubrique, env})]
+              <table class="table">
+                    <tbody>
+                      <BOUCLE_documents_joints(DOCUMENTS) {id_rubrique} {extension !IN gif,jpg,png,tif} {vu=non}{par num titre, date}>
+                      <tr>
+                        <td width="5%"><i class="fa fa-download"></i></td>
+                        <td width="20%"><strong style="text-transform:uppercase"><:download:></strong></td>
+                        <td width="60%"class="#EDIT{titre}">
+                          <a href="#URL_DOCUMENT" type="#MIME_TYPE" class="spip_doc [(#EXTENSION|attribut_html)]">
+                          [(#TITRE|sinon{[(#FICHIER|basename|couper{80})]})]</a>
+                          [<br /><small>(#CREDITS)</small>]
+                          [<br /><small>(#DESCRIPTIF)</small>]
+                        </td>
+                        <td width="15%"><span class="badge badge-u rounded">[(#EXTENSION|strtoupper) - ]  [(#TAILLE|taille_en_octets)]</span></td>
+                      </tr>
+                      </BOUCLE_documents_joints>
+                    </tbody>
+              </table>
 
       </div><!--/ End col-md-9 -->
       

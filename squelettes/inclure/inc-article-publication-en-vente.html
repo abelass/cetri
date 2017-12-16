@@ -2,32 +2,58 @@
 
 
 <div class="margin-bottom-40">
-<a class="ajax nocache nohistory btn btn-u" href="[(#URL_ACTION_AUTEUR{remplir_panier,articles-#ID_ARTICLE,#SELF|parametre_url{retour,ok}})]" role="button"><:paniers:action_ajouter:></a>    
-        [(#ENV{retour}|=={ok}|oui)
-        <script type="text/javascript">
-            $(function(){
-                ajaxReload(
-                  'mon_panier',{
-                    callback:function(){$('.panier .panier_detail');},
-                args:{voir:'oui',action:''},history:false });
-                });  
-        </script>]
-        
-<BOUCLE_abonnement (ARTICLES) {id_mot=1183} {lang}>
+<a class="ajax nocache nohistory btn btn-u" href="[(#URL_ACTION_AUTEUR{remplir_panier,articles-#ID_ARTICLE,#SELF|parametre_url{retour,ok}})]" role="button">
+  <i class="fa fa-cart-plus"></i> <:paniers:action_ajouter:></a>
+
+[(#ENV{retour}|=={ok}|oui)
+<script type="text/javascript">
+        ajaxReload('mon_panier_banner', {args:{action:''},history:false });    
+        $.fn.mediabox({href:'[(#URL_PAGE{panier})]'});
+</script>
+]
+
+
+
+<BOUCLE_alternativessud (MOTS) {id_article} {id_mot=1040}>     
+
+<BOUCLE_abonnement (ARTICLES) {id_article=3830}>
 <a href="#myModal#ID_ARTICLE" data-toggle="modal" data-target="#myModal#ID_ARTICLE" title="#TITRE" class="btn btn-link"><:abonner:></a>
 
-<div class="modal fade" style="z-index:10000" id="myModal#ID_ARTICLE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+<div class="modal fade" style="z-index:10000" id="myModal#ID_ARTICLE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">#TITRE</h4></div>
-						<div class="modal-body">
-							<p>#TEXTE</p>
-                            <p><a class="ajax nocache nohistory btn btn-u" href="[(#URL_ACTION_AUTEUR{remplir_panier,articles-#ID_ARTICLE,#SELF|parametre_url{retour,ok}})]" role="button"><:paniers:action_ajouter:></a></p>
-</div></div></div></div>                          
+            <div class="modal-body">
+              [<p>
+                                            <dl>
+                                              <dt>(#LOGO_ARTICLE_NORMAL
+                                                  |image_reduire{[(#LOGO_ARTICLE_NORMAL|largeur)],0}
+                                                  |vider_attribut{class,spip_logos}
+                                                  |inserer_attribut{class,img-responsive img-bordered}
+                                                  |inserer_attribut{alt,#TITRE})
+                                              </dt>
+                                            </dl>
+              </p>]
+              <p>#TEXTE</p>
+            </div>   
+            <div class="modal-footer">
+                                         <div class="row">
+                                            <div class="col-md-6">
+                                              <a href="/#LANG-shop" class="btn-u" style="float:left"><:abonnement_ligne:></a>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <button type="button" class="btn-u" data-dismiss="modal"><:close:>
+                                            </button>
+                                            </div>
+                                          </div>
+            </div>
+
+</div></div></div>                        
                             
 </BOUCLE_abonnement>
+</BOUCLE_alternativessud>
 
 </div>
 

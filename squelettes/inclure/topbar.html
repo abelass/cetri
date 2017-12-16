@@ -1,19 +1,19 @@
 <!--=== Topbar ===--> 
 <div class="topbar">
   <div class="container"> 
-    <!-- Topbar Navigation -->
-        <ul class="loginbar pull-right">
- 	    [<li class="panier">
-            	(#INCLURE{fond=inclure/mon_panier_banner,affichage=banner,env,ajax=mon_panier_banner})
+          <ul class="loginbar pull-right">
+            [
+            <li class="panier">
+                (#INCLURE{fond=inclure/mon_panier_banner,affichage=banner,env,ajax=mon_panier_banner})
+              </li>]
+
+              [<li class="langues">
+              (#INCLURE{fond=formulaires/menu_lang,env})
             </li>]
-            <li class="languagesSelector">
-                <i class="fa fa-globe"></i>
-                <a><:langues:></a>                
-                     [(#INCLURE{fond=formulaires/menu_lang,env})]
-            </li>
-            <li><a href="#LANG-contact" title="<:contact:>"><i class="fa fa-envelope-o"></i> <:contact:></a></li>
-        </ul>
+            <li class="contact"><a href="#LANG-contact" title="<:contact:>"> <i class="fa fa-envelope-o"></i>  <:contact:></a></li>
+          </ul>
     <!-- End Topbar Navigation -->
   </div> <!--/Container-->     
 </div><!--/top-->
 <!--=== End Top ===-->    
+

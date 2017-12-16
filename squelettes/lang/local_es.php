@@ -7,7 +7,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 // A
 'abonnement' => 'me suscribo',
-'abonnement_commande' => 'Pedido y suscripci&oacute;n',
 'abonnement_ligne' => 'Suscr&iacute;base',
 'abonnement_newsletter' => 'Suscripci&oacute;n',
 'abonner' => 'Suscribir',
@@ -23,6 +22,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'ajouter_panier' => 'A&ntilde;adir a mi cesta',
 'allrightsreserved' => 'Todos Derechos Reservados',
 'alternatives_sud' => 'Alternatives Sud',
+'alternativessud_voir' => 'Este articulo fue publicado en nuestra publicaci&oacute;n trimestral Alternatives Sud',
 'an' => 'a&ntilde;o',
 'annonces' => 'Anuncios',
 'archives' => 'en los archivos',
@@ -116,9 +116,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'evenement_ou' => '¿Donde?',
 'evenement_prix' => 'Precio',
 'evenement_contactinscription' => 'Contacto - Inscripci&oacute;n',
+'evenement_inscription' => 'Inscripci&oacute;n',
 'evenement_organisation' => 'Organisaci&oacute;n',
 'evenement_lien' => 'Enlace-s',
 'evenement_download' => 'Descargar',
+'evenement_pagefacebook' => 'P&aacute;gina del Evento',
 
 
 // F

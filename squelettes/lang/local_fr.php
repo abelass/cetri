@@ -7,11 +7,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 // A
 'abonnement_ligne' => 'Abonnez-vous',
+'abonner' => 's\'abonner',
 'accueil' => 'Accueil',
 'accueil_site' => 'Accueil',
 'agenda' => 'Agenda',
 'ajouter_panier' => 'Ajouter au panier',
 'allrightsreserved' => 'Tous droits r&eacute;serv&eacute;s',
+'alternativessud_voir' => 'Cet article a &eacute;t&eacute; publi&eacute; dans notre publication trimestrielle Alternatives Sud',
 'archives' => 'dans les archives',
 'an' => 'an',
 'annonces' => 'Annonces',
@@ -56,9 +58,11 @@ responsabilit&eacute; de l\'auteur-e et ne refl&egrave;tent pas n&eacute;cessair
 'evenement_ou' => 'O&ugrave; ?',
 'evenement_prix' => ' P.A.F.',
 'evenement_contactinscription' => 'Contact - Inscription',
+'evenement_inscription' => 'Inscription',
 'evenement_organisation' => 'Organisateur-s',
 'evenement_lien' => 'Lien-s',
 'evenement_download' => 'T&eacute;l&eacute;charger',
+'evenement_pagefacebook' => 'Page de l\'&eacute;v&eacute;nement',
 
 
 // F

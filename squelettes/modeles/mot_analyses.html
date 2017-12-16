@@ -1,0 +1,16 @@
+
+
+
+
+
+<B_articles>
+<ul class="spip">
+		<BOUCLE_articles (ARTICLES) {id_mot} {par date} {inverse} [{annee=(#ENV{annee})}] {doublons}>
+		<li><strong><h5><a href="#URL_ARTICLE">[(#TITRE)]</a></strong><br />
+			<small>[<i class="icon-user"></i> (#LESAUTEURS|textebrut) ]
+[<i class=" fa fa-calendar-o"></i> (#DATE|affdate{'d-m-y'})]</small>
+</li>
+</BOUCLE_articles>
+	</ul>
+</B_articles>
+

@@ -34,25 +34,18 @@
 	#SET{fichier,#GET{fichier}|extraire_attribut{src}}
 ]
 
-
-
-
-
-<div class="[pull-(#ENV{align})] [spipdoc-(#ENV{align})]">
-<dl>
-<dt> [<a href="(#GET{url})"	class="[(#ENV{lien_class})] fancybox-button zoomer mediabox" data-rel="fancybox-button" type="#MIME_TYPE" title='[(#TITRE)] [(#DESCRIPTIF)] [(#CREDITS)]'[
+<dl class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[
+	style='float:(#ENV{align}|match{left|right});']>
+<dt>[<a title='[(#TITRE|textebrut)] [ - (#DESCRIPTIF|textebrut)] [ ((#CREDITS|textebrut))]' href="(#GET{url})" class="[(#ENV{lien_class})] fancybox-button zoomer mediabox" data-rel="fancybox-button" title='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)]' [
 	(#ENV{lien}|?{'',type="#MIME_TYPE"})]>]
-
 	<span class="overlay-zoom">
-	<img src='#GET{fichier}' width='#GET{width}' height='#GET{height}' alt='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)]' class="img-responsive" />
-	<span class="zoom-icon"></span></span>[(#GET{url}|?{</a>})]
-</dt>
-[<dt class='#EDIT{titre} spip_doc_titre'[ style='width:(#GET{width}|min{350}|max{120})px;']>(#TITRE)</dt>][
-<dd class='#EDIT{descriptif} spip_doc_descriptif'[ style='width:(#GET{width}|min{350}|max{120})px;']>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</dd>]
-[<dd class='#EDIT{descriptif} spip_doc_descriptif'[ style='width:(#GET{width}|min{350}|max{120})px;']>(#CREDITS)</dd>]
+	<img src='#GET{fichier}' width='#GET{width}' height='#GET{height}' alt='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)]' class='img-responsive center-block'/>
+	<span class="zoom-icon" [
+	style='float:(#ENV{align}|match{left|right});']></span></span>
+	[(#GET{url}|?{</a>})]</dt>[
+<dt class='#EDIT{titre} spip_doc_titre'[ style='width:(#GET{width}|min{350}|max{120})px;']><strong>(#TITRE)</strong></dt>]
+<dd class='#EDIT{descriptif} spip_doc_descriptif'[ style='width:(#GET{width}|min{350}|max{120})px;']>[(#DESCRIPTIF|couper{80}|PtoBR)[(#NOTES|PtoBR)]] [((#CREDITS))]</dd>
 </dl>
-</div>
-
 
 </BOUCLE_doc>
 #FILTRE{trim}
