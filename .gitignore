@@ -1,8 +1,9 @@
 IMG
 tmp
 config/connect.php
+config/.htaccess
 local
 /.buildpath
 .settings*
 .project
-config/.htaccess
+
