@@ -2,3 +2,6 @@ IMG
 tmp
 config/connect.php
 local
+/.buildpath
+.settings*
+.project
