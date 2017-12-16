@@ -5,4 +5,4 @@ local
 /.buildpath
 .settings*
 .project
-*.htaccess
+config/.htaccess
